@@ -1,15 +1,50 @@
-<ion-header class="header">
-    <ion-navbar>
-        <ion-title>
-            <h3>Home</h3>
-        </ion-title>
-    </ion-navbar>
+<ion-header class="home-header">
+    <ion-grid>
+        <ion-row>
+            <ion-col col-2 text-left>
+                <ion-icon class="icons" ios="ios-menu" md="md-menu"></ion-icon>
+            </ion-col>
+            <ion-col col-8 text-center>
+                <ion-title class="title"><img src="assets/images/logo1.png"></ion-title>
+            </ion-col>
+            <ion-col col-2 text-right>
+                <ion-icon class="icons navigate" ios="ios-navigate" md="md-navigate"></ion-icon>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-header>
+<ion-content class="nav-content">
+    <ion-avatar class="navigator" item-start text-center>
+        <!--<img src="assets/images/navigator.png">-->
+        <button class="btn-hrx" ion-button round><ion-icon class="icons navigate nav-request" ios="ios-navigate" md="md-navigate"></ion-icon>Send Request</button>
+    </ion-avatar>
 
-<ion-content padding>
-    <!-- <div class="form-group">
-  <input type="text" class="form-control" name="" value="" placeholder="Enter User Name">
-</div> -->
-    <ion-input type="text" value="" placeholder="Enter User Name"></ion-input>
-    <ion-input type="text" value="" placeholder="Enter Password"></ion-input>
+    <div class="comments">
+        <ion-card class="comment-block">
+            <ion-item class="comment-top">
+                <ion-avatar item-start>
+                    <img src="assets/images/cus-img.png">
+                </ion-avatar>
+                <h2 class="cus-name">Hima shankar</h2>
+                <p class="cus-nav">Akkayyapalem</p>
+            </ion-item>
+            <!--<img src="assets/images/default-img.png">-->
+            <ion-card-content>
+                <p class="cus-comment">Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
+            </ion-card-content>
+        </ion-card>
+        <ion-card class="comment-block">
+            <ion-item class="comment-top">
+                <ion-avatar item-start>
+                    <img src="assets/images/default-img.png">
+                </ion-avatar>
+                <h2 class="cus-name">Hima shankar</h2>
+                <p class="cus-nav">Akkayyapalem</p>
+            </ion-item>
+            <!--<img src="assets/images/default-img.png">-->
+            <ion-card-content>
+                <p class="cus-comment">Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
+            </ion-card-content>
+        </ion-card>
+    </div>
 </ion-content>
