@@ -1,18 +1,62 @@
-<!--
-  Generated template for the ServicesPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>servicesPage</ion-title>
-  </ion-navbar>
-
+<ion-header class="home-header">
+    <ion-grid>
+        <ion-row>
+            <ion-col col-2 text-left>
+                <ion-icon class="icons" ios="ios-menu" md="md-menu"></ion-icon>
+            </ion-col>
+            <ion-col col-8 text-center>
+                <ion-title class="title"><img src="assets/images/logo1.png"></ion-title>
+            </ion-col>
+            <ion-col col-2 text-right>
+                <ion-icon class="icons navigate" ios="ios-navigate" md="md-navigate"></ion-icon>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-header>
-
-
-<ion-content padding>
-
+<ion-content>
+  <h3 class="content-heading" text-center>Services</h3>
+  <ion-grid>
+    <ion-row>
+  <ion-col col-6 *ngFor = "let  service of services" (click)="clickService(service)">
+    <ion-card class="service-block">
+        <ion-card-content>
+          <div class="service-img">
+            <img src="{{service.image}}">
+          </div>
+            <h4>{{service.serviceName}}</h4>
+        </ion-card-content>
+    </ion-card>
+  </ion-col>
+  <!-- <ion-col col-6>
+    <ion-card class="service-block">
+        <ion-card-content>
+          <div class="service-img">
+            <img src="assets/images/ref.png">
+          </div>
+            <h4>Refgirator</h4>
+        </ion-card-content>
+    </ion-card>
+  </ion-col>
+  <ion-col col-6>
+    <ion-card class="service-block">
+        <ion-card-content>
+          <div class="service-img">
+            <img src="assets/images/washing-mechine.png">
+          </div>
+            <h4>Washing Mechine</h4>
+        </ion-card-content>
+    </ion-card>
+  </ion-col>
+  <ion-col col-6>
+    <ion-card class="service-block">
+        <ion-card-content>
+          <div class="service-img">
+            <img src="assets/images/microwowen.png">
+          </div>
+            <h4>Microwave oven</h4>
+        </ion-card-content>
+    </ion-card>
+  </ion-col> -->
+</ion-row>
+</ion-grid>
 </ion-content>

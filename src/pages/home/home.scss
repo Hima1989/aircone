@@ -10,15 +10,14 @@
     transform: rotate(50deg);
 }
 
-page-home {
-    .home-header {
-        color: #364150;
-        // padding: 5px 0;
-        .icons {
-            font-size: 30px;
-        }
-        .title {}
+.home-header {
+    color: #364150;
+    // padding: 5px 0;
+    .icons {
+        font-size: 30px;
     }
+    .title {}
+}
     .nav-content {
         .scroll-content {
             margin-top: 70px !important;
@@ -56,4 +55,3 @@ page-home {
             font-size: 14px;
         }
     }
-}

@@ -31,5 +31,16 @@ export class AirconeProvider {
 
   }
 
+  loadServices() {
+    return new Promise(resolve => {
+      this.http.get('http://localhost:1337/service/getAllSerive')
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+  }
+
 
 }

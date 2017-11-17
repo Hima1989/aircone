@@ -9,7 +9,9 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginpagePage } from '../pages/loginpage/loginpage';
-// import { ServicesPage } from '../pages/services/services';
+import { ServicesPage } from '../pages/services/services';
+import { ServicesHomePage } from '../pages/services-home/services-home';
+import { ProfilePage } from '../pages/profile/profile';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -28,8 +30,10 @@ import { GooglePlus } from "@ionic-native/google-plus";
     ContactPage,
     HomePage,
     TabsPage,
-    LoginpagePage
-    // ServicesPage
+    LoginpagePage,
+    ServicesPage,
+    ServicesHomePage,
+    ProfilePage
   ],
   imports: [
     BrowserModule,
@@ -43,8 +47,10 @@ import { GooglePlus } from "@ionic-native/google-plus";
     ContactPage,
     HomePage,
     TabsPage,
-    LoginpagePage
-    // ServicesPage
+    LoginpagePage,
+    ServicesPage,
+    ServicesHomePage,
+    ProfilePage
   ],
   providers: [
     StatusBar,
