@@ -1,0 +1,39 @@
+page-services-home {
+
+}
+.icon-back{
+  color: #fff;
+  font-size: 30px;
+}
+.tittle-name{
+  font-size: 30px;
+  .toolbar-title-md{
+    color: #fff;
+  }
+}
+.service-top{
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.service-block{
+    padding: 5px 16px;
+}
+.price-chart{
+  border-top: 1px solid #cacfd6;
+  border-bottom: 1px solid #cacfd6;
+  h5{
+    color:#364150;
+    text-transform: uppercase;
+    font-size: 16px;
+  }
+}
+.service-content{
+  // margin: 0;
+  color:#707f93;
+  font-size: 12px;
+  line-height: 20px;
+}
+.navigator.nav-request{
+  margin: 10px 0;
+}
