@@ -1,14 +1,22 @@
 page-services-home {
 
 }
+
+.clear {
+  clear: both;
+}
+
+ion-slides {
+  padding: 45px 11px;
+}
 .icon-back{
-  color: #fff;
+  color: #000000;
   font-size: 30px;
 }
 .tittle-name{
   font-size: 30px;
   .toolbar-title-md{
-    color: #fff;
+    color: #010000;
   }
 }
 .service-top{

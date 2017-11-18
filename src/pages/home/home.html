@@ -16,9 +16,9 @@
 <ion-content class="nav-content">
     <ion-avatar class="navigator" item-start text-center>
         <!--<img src="assets/images/navigator.png">-->
-        <button class="btn-hrx" ion-button round><ion-icon class="icons navigate nav-request" ios="ios-navigate" md="md-navigate"></ion-icon>Send Request</button>
+        <button class="btn-hrx" (click)="sendRequest()" ion-button round><ion-icon class="icons navigate nav-request" ios="ios-navigate" md="md-navigate"></ion-icon>Send Request</button>
     </ion-avatar>
-
+                    
     <div class="comments">
         <ion-card class="comment-block">
             <ion-item class="comment-top">

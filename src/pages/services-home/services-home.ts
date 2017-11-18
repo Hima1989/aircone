@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component,ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Slides  } from 'ionic-angular';
+import { ServicesPage } from '../services/services';
+import { AirconeProvider } from '../../providers/aircone/aircone';
+
 
 /**
  * Generated class for the ServicesHomePage page.
@@ -15,11 +18,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ServicesHomePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    service;
+    @ViewChild(Slides) slides: Slides;
+    
+  constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider) {
+    this.service = navParams.get("postValue");
+    console.log(this.service)    
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ServicesHomePage');
   }
+
+  goBack() {
+    console.log("clicked")
+    this.navCtrl.push(ServicesPage);
+  }
+
 
 }

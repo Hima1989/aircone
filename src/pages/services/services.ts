@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AirconeProvider } from '../../providers/aircone/aircone';
+import { ServicesHomePage } from '../services-home/services-home';
 
 /**
  * Generated class for the ServicesPage page.
@@ -15,11 +17,29 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ServicesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public services: any = [];
+  servicesHomePage: any = ServicesHomePage;
+  
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider) {
+    this.loadServices();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ServicesPage');
+  }
+
+  loadServices() {
+    this.airconeProvider.loadServices()
+    .then(res => {
+      this.services = res;
+    });
+  }
+
+  clickService (service) {
+    this.navCtrl.push(ServicesHomePage, {
+      postValue: service
+    });
   }
 
 }

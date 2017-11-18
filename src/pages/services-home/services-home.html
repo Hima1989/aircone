@@ -3,18 +3,23 @@
     <ion-grid>
         <ion-row>
             <ion-col col-2 text-left>
-                <ion-icon class="icon-back" ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+                <ion-icon class="icon-back" ios="ios-arrow-back" md="md-arrow-back" (click)="goBack()"></ion-icon>
             </ion-col>
             <ion-col col-8 text-center>
-                <ion-title class="title tittle-name">Air Conditioner</ion-title>
+                <ion-title class="title tittle-name">{{service.serviceName}}</ion-title>
             </ion-col>
         </ion-row>
     </ion-grid>
   </div>
-  <img src="assets/images/services-slide.png" alt="">
-  <div class="service-block">
-    <p class="service-content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dol ore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-    <p class="service-content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dol ore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+
+  <ion-slides>
+    <ion-slide *ngFor="let img of service.slider">
+      <img src={{img}}>
+    </ion-slide>
+  </ion-slides>
+
+    <div class="service-block">
+    <p class="service-content">{{service.description}}</p>
       </div>
     <div class="price-chart">
       <div class="service-block">
@@ -30,7 +35,7 @@
                   <img src="assets/images/price-chart.png">
                 </ion-col>
                 <ion-col>
-                  <p class="service-content"><b>Note:</b> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dol ore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+                  <p class="service-content"><b>Note:</b> {{service.note}}</p>
                 </ion-col>
             </ion-row>
       </div>
