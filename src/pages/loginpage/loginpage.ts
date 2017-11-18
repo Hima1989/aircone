@@ -58,7 +58,7 @@ export class LoginpagePage {
             };
 
             this.airconeProvider.socialLogin(userDetails)
-              .then(res => {
+              .then(res => {  
                 // var a: any = res;
                 localStorage.setItem('user', userId);
                 // var b = localStorage.getItem('user');

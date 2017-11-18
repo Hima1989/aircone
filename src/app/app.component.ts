@@ -15,7 +15,7 @@ import { ProfilePage } from '../pages/profile/profile';
 })
 export class MyApp {
 
-  rootPage:any = HomePage;
+  rootPage:any = ProfilePage;
   loginPage: any = LoginpagePage;
   servicesPage: any = ServicesPage
   servicesHomePage: any = ServicesHomePage;
