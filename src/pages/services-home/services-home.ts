@@ -23,7 +23,6 @@ export class ServicesHomePage {
     
   constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider) {
     this.service = navParams.get("postValue");
-    console.log(this.service)    
   }
 
   ionViewDidLoad() {
@@ -31,7 +30,6 @@ export class ServicesHomePage {
   }
 
   goBack() {
-    console.log("clicked")
     this.navCtrl.push(ServicesPage);
   }
 
