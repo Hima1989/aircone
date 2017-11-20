@@ -43,6 +43,8 @@ export class LoginpagePage {
                   this.navCtrl.push(ServicesPage);
                   var userInfo = {
                     "firstName": tempData[0].user.firstName,
+                    "email": tempData[0].user.email,
+                    "phoneNumber": tempData[0].user.phoneNumber,
                     "id": tempData[0].user.id,
                     "lastName": tempData[0].user.lastName,
                     "tokenId": tempData[0].user.tokenId,

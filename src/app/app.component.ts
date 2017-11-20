@@ -8,6 +8,7 @@ import { LoginpagePage } from '../pages/loginpage/loginpage';
 import { HomePage } from '../pages/home/home';
 import { ServicesPage } from '../pages/services/services';
 import { ServicesHomePage } from '../pages/services-home/services-home';
+import { ProfilePage } from '../pages/profile/profile';
 
 @Component({
   templateUrl: 'app.html'
@@ -35,6 +36,7 @@ export class MyApp {
 
   profile() {
     this.menuCtrl.close();
+    this.nav.push(ProfilePage)    
   }
 
   logout() {
