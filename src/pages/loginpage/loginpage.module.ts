@@ -8,7 +8,7 @@ import { AirconeProvider } from '../../providers/aircone/aircone'
     LoginpagePage,
   ],
   providers: [
-    AirconeProvider 
+    AirconeProvider
   ],
   imports: [
     IonicPageModule.forChild(LoginpagePage),

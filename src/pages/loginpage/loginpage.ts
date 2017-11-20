@@ -21,7 +21,7 @@ import { GooglePlus } from '@ionic-native/google-plus';
 export class LoginpagePage {
 
   homePage = HomePage;
-  
+
   constructor(public navCtrl: NavController, public googlePlus: GooglePlus, public navParams: NavParams, public fb: Facebook, public airconeProvider: AirconeProvider) {
   }
 
@@ -30,7 +30,7 @@ export class LoginpagePage {
   // }
 
   facebookLogin() {
-    
+
     alert("clicked")
     // this.navCtrl.push(HomePage);
     let permissions = new Array<string>();
@@ -94,10 +94,10 @@ export class LoginpagePage {
         // alert(userDetails.email);
         // alert(userDetails.role);
         this.airconeProvider.socialLogin(userDetails)
-          .then(res => {            
+          .then(res => {
              var a: any = res;
             // console.log(a.id);
-           
+
             // localStorage.setItem('user', a.id);
             // localStorage.setItem('name', a.firstName);
             // var b = localStorage.getItem('user');

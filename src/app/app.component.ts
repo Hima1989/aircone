@@ -14,13 +14,11 @@ import { ProfilePage } from '../pages/profile/profile';
   templateUrl: 'app.html'
 })
 export class MyApp {
-
-  rootPage:any = HomePage;
+  rootPage:any = ProfilePage;
   loginPage: any = LoginpagePage;
-  servicesPage: any = ServicesPage
+  servicesPage: any = ServicesPage;
   servicesHomePage: any = ServicesHomePage;
   profilePage:any = ProfilePage;
-
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
