@@ -119,7 +119,7 @@ export class LoginpagePage {
           .then(res => {            
             //  var a: any = res;
             // console.log(a.id);
-           
+
             // localStorage.setItem('user', a.id);
             // localStorage.setItem('name', a.firstName);
             // var b = localStorage.getItem('user');

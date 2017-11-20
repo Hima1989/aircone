@@ -20,10 +20,11 @@ export class MyApp {
   loginPage: any = LoginpagePage;
   servicesPage: any = ServicesPage;
   servicesHomePage: any = ServicesHomePage;
-
+  profilePage:any = ProfilePage;
  // nav: NavController
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public menuCtrl: MenuController) {
+
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
