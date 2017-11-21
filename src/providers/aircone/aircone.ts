@@ -54,5 +54,38 @@ export class AirconeProvider {
     });
   }
 
+  getOneService(id) {
+    return new Promise(resolve => {
+      this.http.get('http://localhost:1337/service/'+ id +'/getOneSerive')
+      .map(res => res.json())
+      .subscribe(data => {
+        this.data = data;
+        resolve(this.data);
+      });
+    })
+  }
+
+  sendRequest(data) {
+    return new Promise(resolve => {
+      this.http.post('http://localhost:1337/create/Request',data)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+  }
+
+  loadRequests(userId) {
+    return new Promise(resolve => {
+      this.http.get('http://localhost:1337/get/' +userId+ '/getRequests')
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+  }
+
 
 }

@@ -42,6 +42,6 @@
     </div>
     <ion-avatar class="navigator nav-request" item-start text-center>
         <!--<img src="assets/images/navigator.png">-->
-        <button class="btn-hrx" ion-button round><ion-icon class="icons navigate nav-request" ios="ios-navigate" md="md-navigate"></ion-icon>Send Request</button>
+        <button class="btn-hrx" (click)="sendRequest(service.id)" ion-button round><ion-icon class="icons navigate nav-request" ios="ios-navigate" md="md-navigate"></ion-icon>Send Request</button>
     </ion-avatar>
 </ion-content>

@@ -33,7 +33,6 @@ export class ProfilePage {
   getUserDetails() {
   var  userData = localStorage.getItem('userData');
    this.userDetails = JSON.parse(userData);
-   console.log(this.userDetails)
   }
 
 }
