@@ -2,6 +2,7 @@ import { Component,ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Slides  } from 'ionic-angular';
 import { ServicesPage } from '../services/services';
 import { AirconeProvider } from '../../providers/aircone/aircone';
+import { SendrequestPage } from '../sendrequest/sendrequest';
 
 
 /**
@@ -18,21 +19,43 @@ import { AirconeProvider } from '../../providers/aircone/aircone';
 })
 export class ServicesHomePage {
 
-    service;
+    oneService;
+    serviceId;
+ 
+    public service = {}
     @ViewChild(Slides) slides: Slides;
     
   constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider) {
-    this.service = navParams.get("postValue");
-    console.log(this.service)    
+    this.oneService = navParams.get("postValue");
+    this.serviceId = navParams.get("id");    
+    this.getService()
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ServicesHomePage');
   }
 
+  getService() {
+    var id;
+    if(this.oneService) {
+       id = this.oneService.id;      
+    } else {
+       id = this.serviceId;      
+    }
+    this.airconeProvider.getOneService(id)
+    .then(res => {
+      this.service = res;
+    });
+  }
+
   goBack() {
-    console.log("clicked")
     this.navCtrl.push(ServicesPage);
+  }
+
+  sendRequest(id) {
+    this.navCtrl.push(SendrequestPage, {
+      id: id
+    });    
   }
 
 

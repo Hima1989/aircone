@@ -12,6 +12,9 @@ import { LoginpagePage } from '../pages/loginpage/loginpage';
 import { ServicesPage } from '../pages/services/services';
 import { ServicesHomePage } from '../pages/services-home/services-home';
 import { ProfilePage } from '../pages/profile/profile';
+import { SendrequestPage } from '../pages/sendrequest/sendrequest';
+import { NotificationsPage } from '../pages/notifications/notifications'
+import { RequestslistPage } from '../pages/requestslist/requestslist'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -33,7 +36,10 @@ import { GooglePlus } from "@ionic-native/google-plus";
     LoginpagePage,
     ServicesPage,
     ServicesHomePage,
-    ProfilePage
+    ProfilePage,
+    SendrequestPage,
+    NotificationsPage,
+    RequestslistPage
   ],
   imports: [
     BrowserModule,
@@ -50,7 +56,10 @@ import { GooglePlus } from "@ionic-native/google-plus";
     LoginpagePage,
     ServicesPage,
     ServicesHomePage,
-    ProfilePage
+    ProfilePage,
+    SendrequestPage,
+    NotificationsPage,
+    RequestslistPage
   ],
   providers: [
     StatusBar,

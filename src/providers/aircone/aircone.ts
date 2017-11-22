@@ -31,9 +31,54 @@ export class AirconeProvider {
 
   }
 
+  userLogin(data) {
+    return new Promise(resolve => {
+      this.http.post('http://localhost:1337/user/login',data)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+
+  }
+
   loadServices() {
     return new Promise(resolve => {
       this.http.get('http://localhost:1337/service/getAllSerive')
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+  }
+
+  getOneService(id) {
+    return new Promise(resolve => {
+      this.http.get('http://localhost:1337/service/'+ id +'/getOneSerive')
+      .map(res => res.json())
+      .subscribe(data => {
+        this.data = data;
+        resolve(this.data);
+      });
+    })
+  }
+
+  sendRequest(data) {
+    return new Promise(resolve => {
+      this.http.post('http://localhost:1337/create/Request',data)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+  }
+
+  loadRequests(userId) {
+    return new Promise(resolve => {
+      this.http.get('http://localhost:1337/get/' +userId+ '/getRequests')
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
