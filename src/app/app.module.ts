@@ -13,8 +13,10 @@ import { ServicesPage } from '../pages/services/services';
 import { ServicesHomePage } from '../pages/services-home/services-home';
 import { ProfilePage } from '../pages/profile/profile';
 import { SendrequestPage } from '../pages/sendrequest/sendrequest';
-import { NotificationsPage } from '../pages/notifications/notifications'
-import { RequestslistPage } from '../pages/requestslist/requestslist'
+import { NotificationsPage } from '../pages/notifications/notifications';
+import { RequestslistPage } from '../pages/requestslist/requestslist';
+import { StatusPage } from '../pages/status/status';
+import { Ionic2RatingModule } from 'ionic2-rating';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -39,12 +41,14 @@ import { GooglePlus } from "@ionic-native/google-plus";
     ProfilePage,
     SendrequestPage,
     NotificationsPage,
-    RequestslistPage
+    RequestslistPage,
+    StatusPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
+    Ionic2RatingModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -59,7 +63,8 @@ import { GooglePlus } from "@ionic-native/google-plus";
     ProfilePage,
     SendrequestPage,
     NotificationsPage,
-    RequestslistPage
+    RequestslistPage,
+    StatusPage
   ],
   providers: [
     StatusBar,

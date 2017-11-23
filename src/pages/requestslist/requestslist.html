@@ -16,7 +16,7 @@
 <ion-content padding>
 
     <ion-item-group>
-        <ion-item *ngFor="let request of requests">
+        <ion-item *ngFor="let request of requests" (click)="goToStatus(request)">
           <div><h2>Request For <b>{{request.serviceName}}</b> Service</h2></div>
           <div><p *ngIf="request.status=='ORDER_REQUESTED'">Your Request is pending. click for information</p></div>          
           <div><p *ngIf="request.status=='ORDER_DECLINED'">Your Request is declined. click for information</p></div>          

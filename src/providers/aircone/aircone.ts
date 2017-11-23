@@ -13,14 +13,15 @@ import { Device } from '@ionic-native/device';
 export class AirconeProvider {
 
   data;
-
+ //baseURL = "https://air-cone-backend.appspot.com"; //production
+  baseURL = "http://localhost:80"; //development
   constructor(public http: Http, public device: Device) {
     console.log('Hello AirconeProvider Provider');
   }
 
   socialLogin(data) {
     return new Promise(resolve => {
-      this.http.post('http://localhost:1337/user/createSocialLogin',data)
+      this.http.post(this.baseURL+'/user/createSocialLogin',data)
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
@@ -32,8 +33,9 @@ export class AirconeProvider {
   }
 
   userLogin(data) {
+    console.log("hitted")
     return new Promise(resolve => {
-      this.http.post('http://localhost:1337/user/login',data)
+      this.http.post(this.baseURL+'/user/login',data)
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
@@ -45,7 +47,7 @@ export class AirconeProvider {
 
   loadServices() {
     return new Promise(resolve => {
-      this.http.get('http://localhost:1337/service/getAllSerive')
+      this.http.get(this.baseURL+'/service/getAllSerive')
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
@@ -56,7 +58,7 @@ export class AirconeProvider {
 
   getOneService(id) {
     return new Promise(resolve => {
-      this.http.get('http://localhost:1337/service/'+ id +'/getOneSerive')
+      this.http.get(this.baseURL+'/service/'+ id +'/getOneSerive')
       .map(res => res.json())
       .subscribe(data => {
         this.data = data;
@@ -67,7 +69,7 @@ export class AirconeProvider {
 
   sendRequest(data) {
     return new Promise(resolve => {
-      this.http.post('http://localhost:1337/create/Request',data)
+      this.http.post(this.baseURL+'/create/Request',data)
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
@@ -78,7 +80,18 @@ export class AirconeProvider {
 
   loadRequests(userId) {
     return new Promise(resolve => {
-      this.http.get('http://localhost:1337/get/' +userId+ '/getRequests')
+      this.http.get(this.baseURL+'/get/' +userId+ '/getRequests')
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+  }
+
+  cancelRequest(requestId) {
+    return new Promise(resolve => {
+      this.http.get(this.baseURL+'/cancel/request/'+requestId)
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;

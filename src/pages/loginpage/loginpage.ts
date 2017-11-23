@@ -32,7 +32,7 @@ export class LoginpagePage {
 
   facebookLogin() {
 
-         var userDetails = {"identifier":"balu","password":"gvygvgv","email":"doddibalubharadwaj@gmail.com"}
+         var userDetails = {"identifier":"gleedtech@gmail.com","password":"123123123","email":"doddibalubharadwaj@gmail.com"}
 
             this.airconeProvider.userLogin(userDetails)
               .then(res => {
