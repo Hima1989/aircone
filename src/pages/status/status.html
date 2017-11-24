@@ -1,0 +1,42 @@
+<!--
+  Generated template for the StatusPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>status</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+        <div>
+          <ion-radio  class="status-line" [checked]="request.status=='ORDER_REQUESTED' || request.status=='ORDER_ACCEPTED'"></ion-radio>
+          <ion-radio  class="status-line" [checked]="request.status=='ORDER_ACCEPTED'"></ion-radio>
+          <ion-radio  class="status-line" [checked]="request.status=='ORDER_FINISHED'"></ion-radio>   
+        </div>     
+        <P *ngIf="request.status=='ORDER_REQUESTED'">Your Request Is Pending, Please wait for a confirmation..</P>          
+        <P *ngIf="request.status=='ORDER_ACCEPTED'">Your Request Is Accepted, We Will Contact You Soon...</P> 
+        <P *ngIf="request.status=='ORDER_FINISHED'">Thank You For Using Our Service...</P>          
+  <button ion-button color="danger" (click)="cancelRequest()" round>Cancel Request</button>
+  <div>
+          <ion-label color="primary">Comment</ion-label>
+          <ion-textarea type="text" class="input"></ion-textarea>
+  </div>
+  <div>
+      <ion-label color="primary">Rating</ion-label>
+      <rating [(ngModel)]="rate" 
+      readOnly="false" 
+      max="5" 
+      emptyStarIconName="star-outline" 
+      halfStarIconName="star-half" 
+      starIconName="star" 
+      nullable="false" 
+      (ngModelChange)="onModelChange($event)"></rating>
+  </div>
+  <button ion-button (click)="cancelRequest()" round>Cancel Request</button>
+</ion-content>

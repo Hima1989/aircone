@@ -1,0 +1,41 @@
+<!--
+  Generated template for the LoginpagePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!--<ion-content>
+    
+</ion-content>-->
+
+<ion-content>
+    <div class="login-slider">
+        <ion-grid>
+            <ion-row>
+                <ion-col col-8 offset-2 class="logn-img">
+                    <img src="assets/images/login.png" />
+                    <p>1 Million Happy Customers</p>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+    <div class="login-heading">
+        <h4>Continue with</h4>
+    </div>
+    <ion-grid>
+        <ion-row>
+            <ion-col col-10 offset-1>
+                <div class="login-form">
+                    <button ion-button full class="btn-blue" (click)="facebookLogin()"><span class="social-icon">f</span>Facebook</button>
+                    <button ion-button color="danger" full class="btn-red" (click)="doGoogleLogin()"><span class="social-icon">G</span>Google</button>
+                </div>
+                <div class="terms">
+                    <p>By continuing, you agree to our</p>
+                    <a>Terms & Conditions</a>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+
+</ion-content>
