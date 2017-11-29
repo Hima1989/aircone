@@ -23,10 +23,7 @@
         <P *ngIf="request.status=='ORDER_ACCEPTED'">Your Request Is Accepted, We Will Contact You Soon...</P> 
         <P *ngIf="request.status=='ORDER_FINISHED'">Thank You For Using Our Service...</P>          
   <button ion-button color="danger" (click)="cancelRequest()" round>Cancel Request</button>
-  <div>
-          <ion-label color="primary">Comment</ion-label>
-          <ion-textarea type="text" class="input"></ion-textarea>
-  </div>
+
   <div>
       <ion-label color="primary">Rating</ion-label>
       <rating [(ngModel)]="rate" 
@@ -38,5 +35,9 @@
       nullable="false" 
       (ngModelChange)="onModelChange($event)"></rating>
   </div>
-  <button ion-button (click)="cancelRequest()" round>Cancel Request</button>
+  <form (ngSubmit)="submitComment()">
+    <ion-label color="primary">Comment</ion-label>
+    <ion-textarea type="text" class="input" [(ngModel)]="comment" name="description"></ion-textarea>
+    <button ion-button type="submit" round>Send Comment</button>    
+  </form>
 </ion-content>

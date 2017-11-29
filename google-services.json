@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "21168605319",
+    "firebase_url": "https://chillnjill.firebaseio.com",
+    "project_id": "chillnjill",
+    "storage_bucket": "chillnjill.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:21168605319:android:ddb3b24a33e5f960",
+        "android_client_info": {
+          "package_name": "com.gleed.aircone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "21168605319-vrtcu5v7kkf4h1tbebssaou7s3iann8s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDz9jjvp8Sla4sm_r4nuW7kxnmZNWavheo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

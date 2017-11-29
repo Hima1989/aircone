@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
+import { Push } from "@ionic-native/push";
+import { Network } from "@ionic-native/network";
+
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -73,7 +76,9 @@ import { GooglePlus } from "@ionic-native/google-plus";
     AirconeProvider,
     Facebook,
     Device,
-    GooglePlus
+    GooglePlus,
+    Push,
+    Network
   ]
 })
 export class AppModule {}

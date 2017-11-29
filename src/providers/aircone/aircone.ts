@@ -100,5 +100,39 @@ export class AirconeProvider {
     });
   }
 
+  submitCommentRating(data) {
+    return new Promise(resolve => {
+      this.http.post(this.baseURL+'/create/commentRating', data)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+  }
+
+  pushSetup(deviceTokenVal) { 
+    return new Promise(resolve => {
+      var device = this.getDeviceDetails();
+      var body = {
+        userId: device,
+        deviceToken: deviceTokenVal,
+        appType: 'all'
+        // appType: this.categoryid
+      }
+      this.http.post(this.baseURL+'/user/map', body)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+
+  }
+
+  getDeviceDetails() {
+    return this.device.uuid;
+  }
+
 
 }
