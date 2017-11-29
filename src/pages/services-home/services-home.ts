@@ -4,6 +4,8 @@ import { ServicesPage } from '../services/services';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { SendrequestPage } from '../sendrequest/sendrequest';
 
+// import { ImageViewerController } from "ionic-img-viewer";
+
 
 /**
  * Generated class for the ServicesHomePage page.
@@ -30,11 +32,15 @@ export class ServicesHomePage {
     this.serviceId = navParams.get("id");    
     this.getService()
   }
+  // onClick(imageToView) {
+  //   const viewer = this.imageViewerCtrl.create(imageToView)
+  //   viewer.present();
+  // }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ServicesHomePage');
   }
-
+  images = ['price-chart.png', 'price-chart.png', 'price-chart.png', 'price-chart.png',];
   getService() {
     var id;
     if(this.oneService) {
