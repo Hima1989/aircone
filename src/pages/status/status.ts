@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AirconeProvider } from '../../providers/aircone/aircone';
+import { ServicesPage } from '../services/services'
 
 /**
  * Generated class for the StatusPage page.
@@ -18,6 +19,7 @@ export class StatusPage {
 
   request;
   rate;
+  comment;
   constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider) {
     this.request = navParams.get("request")
   }
@@ -34,8 +36,25 @@ export class StatusPage {
     })
   }
 
-  onModelChange(forms1) {
-    console.log(forms1)
+  onModelChange(rate) {
+  }
+
+  submitComment() {
+    console.log(this.comment)
+    console.log(this.rate)
+    var userData = JSON.parse(localStorage.getItem("userData"));    
+    var commentRating = {
+      commentText: this.comment,
+      rating: this.rate,
+      user: {userId: userData.id, userName: userData.firstName, picture: userData.profilePicture}
+    }
+    this.airconeProvider.submitCommentRating(commentRating)
+    .then(res => {
+      console.log(res)
+      this.comment = '';
+      this.rate = 0;
+      this.navCtrl.push(ServicesPage);
+    })
   }
 
 }
