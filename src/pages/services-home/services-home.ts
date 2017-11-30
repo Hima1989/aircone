@@ -1,5 +1,5 @@
 import { Component,ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Slides  } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Slides, ModalController, ViewController } from 'ionic-angular';
 import { ServicesPage } from '../services/services';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { SendrequestPage } from '../sendrequest/sendrequest';
@@ -21,11 +21,10 @@ export class ServicesHomePage {
 
     oneService;
     serviceId;
- 
     public service = {}
     @ViewChild(Slides) slides: Slides;
     
-  constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider) {
+  constructor(public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider) {
     this.oneService = navParams.get("postValue");
     this.serviceId = navParams.get("id");    
     this.getService()
@@ -33,6 +32,17 @@ export class ServicesHomePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ServicesHomePage');
+  }
+
+  presentProfileModal() {
+    var id;
+    if(this.oneService) {
+       id = this.oneService.id;      
+    } else {
+       id = this.serviceId;      
+    }
+    let profileModal = this.modalCtrl.create(Profile, { serviceId: id });
+    profileModal.present();
   }
 
   getService() {
@@ -58,5 +68,32 @@ export class ServicesHomePage {
     });    
   }
 
+
+}
+
+@Component({
+  selector: 'page-services-home',
+  templateUrl: 'services-model.html',
+})
+export class Profile {
+  @ViewChild(Slides) slides: Slides;
+  serviceId;
+  service = {};
+ constructor(public viewCtrl: ViewController, public airconeProvider: AirconeProvider, params: NavParams) {
+   this.serviceId = params.get('serviceId')
+   this.getService()
+ }
+
+ 
+ getService() {
+  this.airconeProvider.getOneService(this.serviceId)
+  .then(res => {
+    this.service = res;
+  });
+}
+
+ dismiss() {
+   this.viewCtrl.dismiss();
+ }
 
 }

@@ -14,6 +14,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { LoginpagePage } from '../pages/loginpage/loginpage';
 import { ServicesPage } from '../pages/services/services';
 import { ServicesHomePage } from '../pages/services-home/services-home';
+import { Profile } from '../pages/services-home/services-home';
+
 import { ProfilePage } from '../pages/profile/profile';
 import { SendrequestPage } from '../pages/sendrequest/sendrequest';
 import { NotificationsPage } from '../pages/notifications/notifications';
@@ -45,7 +47,8 @@ import { GooglePlus } from "@ionic-native/google-plus";
     SendrequestPage,
     NotificationsPage,
     RequestslistPage,
-    StatusPage
+    StatusPage,
+    Profile
   ],
   imports: [
     BrowserModule,
@@ -67,7 +70,8 @@ import { GooglePlus } from "@ionic-native/google-plus";
     SendrequestPage,
     NotificationsPage,
     RequestslistPage,
-    StatusPage
+    StatusPage,
+    Profile
   ],
   providers: [
     StatusBar,
