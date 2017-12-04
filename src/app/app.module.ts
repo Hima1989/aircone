@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
-import { Push } from "@ionic-native/push";
-import { Network } from "@ionic-native/network";
+//import { Push } from "@ionic-native/push";
+//import { Network } from "@ionic-native/network";
 
 
 import { AboutPage } from '../pages/about/about';
@@ -29,7 +29,10 @@ import { AirconeProvider } from '../providers/aircone/aircone';
 import { Facebook } from '@ionic-native/facebook';
 import { Device } from "@ionic-native/device";
 import { GooglePlus } from "@ionic-native/google-plus";
-
+import {
+  GoogleMaps
+ } from '@ionic-native/google-maps';
+ import { Geolocation } from '@ionic-native/geolocation';
 
 
 
@@ -80,9 +83,9 @@ import { GooglePlus } from "@ionic-native/google-plus";
     AirconeProvider,
     Facebook,
     Device,
+    GoogleMaps,
     GooglePlus,
-    Push,
-    Network
+    Geolocation
   ]
 })
 export class AppModule {}

@@ -14,7 +14,7 @@ export class AirconeProvider {
 
   data;
  //baseURL = "https://air-cone-backend.appspot.com"; //production
-  baseURL = "http://localhost:80"; //development
+   baseURL = "http://localhost:80"; //development
   constructor(public http: Http, public device: Device) {
     console.log('Hello AirconeProvider Provider');
   }
@@ -103,6 +103,17 @@ export class AirconeProvider {
   submitCommentRating(data) {
     return new Promise(resolve => {
       this.http.post(this.baseURL+'/create/commentRating', data)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+  }
+
+  getUserComments() {
+    return new Promise(resolve => {
+      this.http.get(this.baseURL+'/get/allComments')
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;

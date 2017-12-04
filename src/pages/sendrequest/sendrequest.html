@@ -17,7 +17,6 @@
   </ion-grid>
 </ion-header>
 <ion-content text-center padding>
-
   <form class="profile-fields" [formGroup]="orderForm" (ngSubmit)="sendRequest()">
       <ion-item>
           <ion-input type="text" [(ngModel)]="request.name" formControlName="Name" placeholder="Name"></ion-input>
@@ -50,6 +49,13 @@
       <ion-item>
         <ion-input type="number" [(ngModel)]="request.pincode" formControlName="Pincode" placeholder="Pincode"></ion-input>
       </ion-item>
+      <ion-item>
+        <ion-label fixed>Type</ion-label>
+        <ion-select [(ngModel)]="request.Type" formControlName="Type" multiple>
+        <ion-option *ngFor="let subservice of service.subService" [value]="subservice">{{subservice}}<ion-input type="number" formControlName="Quantity" ></ion-input></ion-option>
+      </ion-select>
+      </ion-item>
+      
       <ion-avatar class="navigator nav-request" item-start text-center>
         <!--<img src="assets/images/navigator.png">-->
         <button class="btn-hrx" type="submit" [disabled]="!orderForm.valid" ion-button round><ion-icon class="icons navigate nav-request" ios="ios-navigate" md="md-navigate"></ion-icon>Send Request</button>

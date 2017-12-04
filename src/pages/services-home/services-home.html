@@ -1,44 +1,40 @@
 <ion-content>
-  <div class="service-top">
-    <ion-grid>
-        <ion-row>
-            <ion-col col-2 text-left>
-                <ion-icon class="icon-back" ios="ios-arrow-back" md="md-arrow-back" (click)="goBack()"></ion-icon>
-            </ion-col>
-            <ion-col col-8 text-center>
-                <ion-title class="title tittle-name">{{service.serviceName}}</ion-title>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
-  </div>
-
-  <ion-slides>
-    <ion-slide *ngFor="let img of service.slider">
-      <img src={{img}} />
-    </ion-slide>
-  </ion-slides>
-
-    <div class="service-block">
-    <p class="service-content">{{service.description}}</p>
-      </div>
-    <div class="price-chart">
-      <div class="service-block">
-        <h5>Price chart</h5>
-            <ion-row (click)="presentProfileModal()">
-                <ion-col col-4>
-                  <img src="assets/images/price-chart.png">
+    <div class="service-top">
+        <ion-grid>
+            <ion-row>
+                <ion-col col-2 text-left>
+                    <ion-icon class="icon-back" ios="ios-arrow-back" md="md-arrow-back" (click)="goBack()"></ion-icon>
                 </ion-col>
-                <ion-col col-4>
-                  <img src="assets/images/price-chart.png">
-                </ion-col>
-                <ion-col col-4>
-                  <img src="assets/images/price-chart.png">
-                </ion-col>
-                <ion-col>
-                  <p class="service-content"><b>Note:</b> {{service.note}}</p>
+                <ion-col col-8 text-center>
+                    <ion-title class="title tittle-name">{{service.serviceName}}</ion-title>
                 </ion-col>
             </ion-row>
-      </div>
+        </ion-grid>
+    </div>
+
+    <ion-slides class="slide-block">
+        <ion-slide class="slide-img" *ngFor="let img of service.slider">
+            <img src={{img}} />
+            <!--<ion-img width="80" height="80" src="..."></ion-img>-->
+        </ion-slide>
+    </ion-slides>
+    <div class="service-block">
+        <p class="service-content">{{service.description}}</p>
+    </div>
+    <div class="price-chart">
+        <div class="service-block">
+            <h5>Price chart</h5>
+            <ion-row (click)="presentProfileModal()">
+                <ion-slides class="serviceBlockImg" loop="true">
+                    <ion-slide col-4 class="" *ngFor="let img of service.slider">
+                        <img src="{{img}}" imageViewer>
+                    </ion-slide>
+                </ion-slides>
+                <ion-col>
+                    <p class="service-content"><b>Note:</b> {{service.note}}</p>
+                </ion-col>
+            </ion-row>
+        </div>
     </div>
 
     <ion-avatar class="navigator nav-request" item-start text-center>
