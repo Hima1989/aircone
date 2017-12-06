@@ -127,7 +127,7 @@ export class LoginpagePage {
     // let me = this;
     this.googlePlus.login({
       'scopes': '',
-      'webClientId': '921571607582-htbi22idd872g0ngv2qhe0vuq4jmu7lu.apps.googleusercontent.com',
+      'webClientId': '455882486075-90366665k6ehek4t8rvp5ej9499ga65m.apps.googleusercontent.com',
       'offline': true
     })
       .then(res => {

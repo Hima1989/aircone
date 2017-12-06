@@ -76,9 +76,6 @@
         "APP_ID": "130038091090566",
         "APP_NAME": "airCone"
       },
-      "cordova-plugin-googleplus": {
-        "REVERSED_CLIENT_ID": "com.googleusercontent.apps.921571607582-htbi22idd872g0ngv2qhe0vuq4jmu7lu"
-      },
       "cordova-plugin-admobpro": {},
       "cordova-plugin-network-information": {},
       "cordova-plugin-googlemaps": {
@@ -86,6 +83,9 @@
       },
       "cordova-plugin-geolocation": {
         "GEOLOCATION_USAGE_DESCRIPTION": "To locate you"
+      },
+      "cordova-plugin-googleplus": {
+        "REVERSED_CLIENT_ID": "455882486075-90366665k6ehek4t8rvp5ej9499ga65m.apps.googleusercontent.com"
       }
     },
     "platforms": [
