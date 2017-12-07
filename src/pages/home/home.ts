@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Platform, Content, Slides } from 'ionic-angular';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { LoginpagePage } from '../loginpage/loginpage';
 import {
@@ -15,17 +15,26 @@ import {
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
+
 @IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
 })
 export class HomePage {
-  comments;
+
+  @ViewChild(Content) content: Content;
+  @ViewChild(Slides) slides: Slides;
+
+  comments
+  public comment: any;
+  i;
+  userlocation;
+
 
  map: GoogleMap;
   constructor(public navCtrl: NavController, public platform: Platform, public navParams: NavParams, private airconeProvider: AirconeProvider) {
-    this.getcommentsList()
+    this.getcommentsList();
   }
 
 
@@ -36,9 +45,8 @@ ngAfterViewInit() {
 }
 
 
-
 loadMap() {
-  
+
   var locations = [
     [-33.890542, 151.274856],
     [-33.923036, 151.259052],
@@ -49,7 +57,11 @@ loadMap() {
 
       let mapOptions: GoogleMapOptions = {
         camera: {
-          zoom: 18,
+          target: {
+            lat: -33.890542,
+            lng: 151.274856
+          },
+          zoom: 15,
           tilt: 30
         }
       };
@@ -87,9 +99,13 @@ loadMap() {
   }
 
  getcommentsList() {
+   console.log("asdcasd")
   this.airconeProvider.getUserComments()
   .then(res => {
+
     this.comments = res;
+
+    
   });
  }
 
