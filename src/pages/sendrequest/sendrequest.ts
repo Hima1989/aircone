@@ -31,6 +31,8 @@ export class SendrequestPage {
       Door: ['', Validators.required],
       Street: ['', Validators.required],
       Area: ['', Validators.required],
+      Quantity: [''],
+      Type: ['', Validators.required],
       Pincode: ['', Validators.required]      
     });
     this.serviceId = navParams.get("id");   
@@ -42,14 +44,15 @@ export class SendrequestPage {
   }
 
   sendRequest() {
-  //  console.log(this.orderForm.value)
-    this.orderForm.reset()
+   console.log(this.orderForm.value)
+    //this.orderForm.reset()
     var userData = JSON.parse(localStorage.getItem("userData"));
     var requestDetails = {
       service: this.service,
       user: userData,
       request: this.orderForm.value
     }
+    console.log(requestDetails)
     this.airconeProvider.sendRequest(requestDetails)
     .then(res => {
       console.log(res)

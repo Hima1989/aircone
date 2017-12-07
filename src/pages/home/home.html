@@ -14,36 +14,26 @@
     </ion-grid>
 </ion-header>
 <ion-content class="nav-content">
-    <ion-avatar class="navigator" item-start text-center>
-        <!--<img src="assets/images/navigator.png">-->
+  
+    <div #map id="map"></div> 
         <button class="btn-hrx" (click)="sendRequest()" ion-button round><ion-icon class="icons navigate nav-request" ios="ios-navigate" md="md-navigate"></ion-icon>Send Request</button>
-    </ion-avatar>
+      
+       
+    
+   
                     
     <div class="comments">
-        <ion-card class="comment-block">
+        <ion-card class="comment-block" *ngFor="let comment of comments">
             <ion-item class="comment-top">
                 <ion-avatar item-start>
                     <img src="assets/images/cus-img.png">
                 </ion-avatar>
-                <h2 class="cus-name">Hima shankar</h2>
+                <h2 class="cus-name">{{comment.user.userName}}</h2>
                 <p class="cus-nav">Akkayyapalem</p>
             </ion-item>
             <!--<img src="assets/images/default-img.png">-->
             <ion-card-content>
-                <p class="cus-comment">Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
-            </ion-card-content>
-        </ion-card>
-        <ion-card class="comment-block">
-            <ion-item class="comment-top">
-                <ion-avatar item-start>
-                    <img src="assets/images/default-img.png">
-                </ion-avatar>
-                <h2 class="cus-name">Hima shankar</h2>
-                <p class="cus-nav">Akkayyapalem</p>
-            </ion-item>
-            <!--<img src="assets/images/default-img.png">-->
-            <ion-card-content>
-                <p class="cus-comment">Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
+                <p class="cus-comment">{{comment.commentText}}</p>
             </ion-card-content>
         </ion-card>
     </div>

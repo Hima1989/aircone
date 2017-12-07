@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
-import { Push } from "@ionic-native/push";
-import { Network } from "@ionic-native/network";
+//import { Push } from "@ionic-native/push";
+//import { Network } from "@ionic-native/network";
 
 
 import { AboutPage } from '../pages/about/about';
@@ -14,6 +14,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { LoginpagePage } from '../pages/loginpage/loginpage';
 import { ServicesPage } from '../pages/services/services';
 import { ServicesHomePage } from '../pages/services-home/services-home';
+import { Profile } from '../pages/services-home/services-home';
+
 import { ProfilePage } from '../pages/profile/profile';
 import { SendrequestPage } from '../pages/sendrequest/sendrequest';
 import { NotificationsPage } from '../pages/notifications/notifications';
@@ -27,7 +29,10 @@ import { AirconeProvider } from '../providers/aircone/aircone';
 import { Facebook } from '@ionic-native/facebook';
 import { Device } from "@ionic-native/device";
 import { GooglePlus } from "@ionic-native/google-plus";
-
+import {
+  GoogleMaps
+ } from '@ionic-native/google-maps';
+ import { Geolocation } from '@ionic-native/geolocation';
 
 
 
@@ -45,7 +50,8 @@ import { GooglePlus } from "@ionic-native/google-plus";
     SendrequestPage,
     NotificationsPage,
     RequestslistPage,
-    StatusPage
+    StatusPage,
+    Profile
   ],
   imports: [
     BrowserModule,
@@ -67,7 +73,8 @@ import { GooglePlus } from "@ionic-native/google-plus";
     SendrequestPage,
     NotificationsPage,
     RequestslistPage,
-    StatusPage
+    StatusPage,
+    Profile
   ],
   providers: [
     StatusBar,
@@ -76,9 +83,9 @@ import { GooglePlus } from "@ionic-native/google-plus";
     AirconeProvider,
     Facebook,
     Device,
+    GoogleMaps,
     GooglePlus,
-    Push,
-    Network
+    Geolocation
   ]
 })
 export class AppModule {}
