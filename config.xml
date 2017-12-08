@@ -103,4 +103,5 @@
     <plugin name="cordova-plugin-googleplus" spec="^5.1.1">
         <variable name="REVERSED_CLIENT_ID" value="455882486075-90366665k6ehek4t8rvp5ej9499ga65m.apps.googleusercontent.com" />
     </plugin>
+    <engine name="browser" spec="~5.0.1" />
 </widget>
