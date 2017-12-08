@@ -19,11 +19,9 @@
         <button class="btn-hrx" (click)="sendRequest()" ion-button round><ion-icon class="icons navigate nav-request" ios="ios-navigate" md="md-navigate"></ion-icon>Send Request</button>
       
        
-    
-   
-                    
-    <div class="comments">
-        <ion-card class="comment-block" *ngFor="let comment of comments">
+        <ion-slides *ngIf="comments && comments.length" direction="vertical" autoplay="5000" loop="true" speed="300" slidesPerView="2">
+    <ion-slide class="comments" *ngFor="let comment of comments">
+        <ion-card class="comment-block">
             <ion-item class="comment-top">
                 <ion-avatar item-start>
                     <img src="assets/images/cus-img.png">
@@ -31,10 +29,10 @@
                 <h2 class="cus-name">{{comment.user.userName}}</h2>
                 <p class="cus-nav">Akkayyapalem</p>
             </ion-item>
-            <!--<img src="assets/images/default-img.png">-->
             <ion-card-content>
                 <p class="cus-comment">{{comment.commentText}}</p>
             </ion-card-content>
         </ion-card>
-    </div>
+    </ion-slide>
+</ion-slides>
 </ion-content>
