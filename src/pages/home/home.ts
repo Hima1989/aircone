@@ -30,37 +30,39 @@ export class HomePage {
   public comment: any;
   i;
   userlocation;
-
+ // public location: any;
 
  map: GoogleMap;
   constructor(public navCtrl: NavController, public platform: Platform, public navParams: NavParams, private airconeProvider: AirconeProvider) {
-    this.getcommentsList();
   }
 
 
 ngAfterViewInit() {
   this.platform.ready().then(() => {
     this.loadMap();
-  });
+  });  
 }
 
 
 loadMap() {
 
-  var locations = [
-    [-33.890542, 151.274856],
-    [-33.923036, 151.259052],
-    [-34.028249, 151.157507],
-    [-33.80010128657071, 151.28747820854187],
-    [-33.950198, 151.259302]
-  ];
-
+  this.airconeProvider.getUserComments()
+  .then(res => {
+    this.comments = res;
+    var locations = [];
+    this.comments.forEach(element => {
+      locations.push(element.coords)
+    });
+    
+  // var locations = [
+  //   [-33.890542, 151.274856],
+  //   [-33.923036, 151.259052],
+  //   [-34.028249, 151.157507],
+  //   [-33.80010128657071, 151.28747820854187],
+  //   [-33.950198, 151.259302]
+  // ];
       let mapOptions: GoogleMapOptions = {
         camera: {
-          target: {
-            lat: -33.890542,
-            lng: 151.274856
-          },
           zoom: 15,
           tilt: 30
         }
@@ -70,26 +72,27 @@ loadMap() {
   
       this.map.one(GoogleMapsEvent.MAP_READY)
         .then(() => {
-
-          for (var i = 0; i < locations.length; i++) {
-          this.map.addMarker({
-              title: 'airCone User',
-              icon: 'blue',
-              animation: 'DROP',
-              position: {
-                lat: locations[i][0],
-                lng: locations[i][1]
-              }
-            })
-            .then(marker => {
-              marker.on(GoogleMapsEvent.MARKER_CLICK)
-                .subscribe(() => {
-                  alert('exixtent user');
+          console.log(locations)
+            for (var i = 0; i < locations.length; i++) {
+              this.map.addMarker({
+                  title: locations[i].latitude,
+                  icon: 'blue',
+                  animation: 'DROP',
+                  position: {
+                    lat: locations[i].latitude,
+                    lng: locations[i].longitude
+                  }
+                })
+                .then(marker => {
+                  marker.on(GoogleMapsEvent.MARKER_CLICK)
+                    .subscribe(() => {
+                      alert('exixtent user');
+                    });
                 });
-            });
-          }
-  
+              }
+          
         });
+      });
     }
 
 
@@ -98,15 +101,11 @@ loadMap() {
     this.navCtrl.push(LoginpagePage)
   }
 
- getcommentsList() {
-   console.log("asdcasd")
-  this.airconeProvider.getUserComments()
-  .then(res => {
-
-    this.comments = res;
-
-    
-  });
- }
+//  getcommentsList() {
+//   this.airconeProvider.getUserComments()
+//   .then(res => {
+//     this.comments = res;
+//     });
+//   }
 
 }
