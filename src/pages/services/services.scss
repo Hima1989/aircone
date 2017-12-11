@@ -11,7 +11,7 @@ page-services {}
 
 .icon-padding {
     padding-right: 5px;
-    color:$colorGray;
+    color: $colorGray;
 }
 
 .content-heading {
@@ -37,10 +37,15 @@ page-services {}
         width: 80px;
         height: 80px;
         margin: 10px auto;
+        display: table;
         img {
             // height: 100%;
             width: auto;
             margin: auto;
+        }
+        .service-block-content {
+            display: table-cell;
+            vertical-align: middle;
         }
     }
 }

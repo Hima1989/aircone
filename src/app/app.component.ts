@@ -156,6 +156,10 @@ export class MyApp {
   //     })
   //     .present();
   // }
+  home() {
+    this.menuCtrl.close();
+    this.nav.push(HomePage)    
+  }
 
   profile() {
     this.menuCtrl.close();

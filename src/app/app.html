@@ -1,4 +1,4 @@
- <ion-menu class="menuBar" [content]="content">
+<ion-menu class="menuBar" [content]="content">
 
     <ion-toolbar class="toolbarContent">
         <ion-row>
@@ -12,9 +12,9 @@
     </ion-toolbar>
 
     <ion-content>
-        <ion-list>
-            <button ion-item>
-                    <ion-icon class="icon-padding" ios="ios-person" md="md-person" (click)= "profile()"></ion-icon> Home
+        <ion-list class="ion-menu-top">
+            <button ion-item (click)="home()">
+                    <ion-icon class="icon-padding" ios="ios-home" md="md-home"></ion-icon> Home
               </button>
             <button ion-item (click)="profile()">
                     <ion-icon class="icon-padding" ios="ios-person" md="md-person"></ion-icon> Profile

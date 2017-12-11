@@ -78,14 +78,14 @@
       },
       "cordova-plugin-admobpro": {},
       "cordova-plugin-network-information": {},
-      "cordova-plugin-googlemaps": {
-        "API_KEY_FOR_ANDROID": "AIzaSyBhbyoLIgdKhM8sSOJ9VrfBPMRgHDZAJwI"
-      },
       "cordova-plugin-geolocation": {
         "GEOLOCATION_USAGE_DESCRIPTION": "To locate you"
       },
       "cordova-plugin-googleplus": {
         "REVERSED_CLIENT_ID": "455882486075-90366665k6ehek4t8rvp5ej9499ga65m.apps.googleusercontent.com"
+      },
+      "cordova-plugin-googlemaps": {
+        "API_KEY_FOR_ANDROID": "AIzaSyCyFcQi2rm7EA0X4MfRLEMOeJcM4Y9qSMQ"
       }
     },
     "platforms": [
