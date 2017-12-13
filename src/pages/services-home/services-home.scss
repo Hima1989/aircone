@@ -1,8 +1,8 @@
-
 page-services-home {
-  .slide-temp {
-    background-color: rgba(192,192,192,0.8);;
-  }
+    .slide-temp {
+        background-color: rgba(192, 192, 192, 0.8);
+        ;
+    }
 }
 
 .clear {
@@ -10,7 +10,7 @@ page-services-home {
 }
 
 .icon-back {
-    color: #000000;
+    color: $colorBlack;
     font-size: 30px;
 }
 
@@ -18,7 +18,7 @@ page-services-home {
     font-size: 30px;
     line-height: 30px;
     .toolbar-title-md {
-        color: #fff;
+        color: $colorWhite;
     }
 }
 
@@ -42,7 +42,7 @@ page-services-home {
     z-index: 9999;
     background: rgba(0, 0, 0, 0.3);
     .icon-back {
-        color: #fff;
+        color: $colorWhite;
     }
 }
 
@@ -51,10 +51,10 @@ page-services-home {
 }
 
 .price-chart {
-    border-top: 1px solid #cacfd6;
-    border-bottom: 1px solid #cacfd6;
+    border-top: 1px solid $borderLightGray;
+    border-bottom: 1px solid $borderLightGray;
     h5 {
-        color: #364150;
+        color: $colorLightGray;
         text-transform: uppercase;
         font-size: 16px;
     }
@@ -62,7 +62,7 @@ page-services-home {
 
 .service-content {
     // margin: 0;
-    color: #707f93;
+    color: $fontGray;
     font-size: 12px;
     line-height: 20px;
 }

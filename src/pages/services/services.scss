@@ -15,7 +15,7 @@ page-services {}
 }
 
 .content-heading {
-    color: #364150;
+    color: $colorLightGray;
     font-size: 22px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
@@ -29,8 +29,8 @@ page-services {}
     h4 {
         font-size: 16px;
         text-align: center;
-        font-weight: 700;
-        color: #364150;
+        font-weight: 400;
+        color: colorLightGray;
         min-height: 40px;
     }
     .service-img {
