@@ -12,8 +12,10 @@ import { ServicesPage } from '../pages/services/services';
 import { ServicesHomePage } from '../pages/services-home/services-home';
 import { ProfilePage } from '../pages/profile/profile';
 import { RequestslistPage } from '../pages/requestslist/requestslist';
+import { CustomerservicePage } from '../pages/customerservice/customerservice';
 import { AirconeProvider } from '../providers/aircone/aircone';
 //import { Geolocation } from '@ionic-native/geolocation';
+import firebase from 'firebase';
 
 
 @Component({
@@ -32,14 +34,16 @@ export class MyApp {
 
   constructor(public airconeProvider: AirconeProvider, public platform: Platform, public alertCtrl: AlertController, public statusBar: StatusBar, public splashScreen: SplashScreen, public menuCtrl: MenuController, public toast: ToastController) {
  //   this.initializeApp();
+
+
     
-    // platform.ready().then(() => {
-    //   // Okay, so the platform is ready and our plugins are available.
-    //   // Here you can do any higher level native things you might need.
-    //   statusBar.styleDefault();
-    //   splashScreen.hide();
+    platform.ready().then(() => {
+      // Okay, so the platform is ready and our plugins are available.
+      // Here you can do any higher level native things you might need.
+      statusBar.styleDefault();
+      splashScreen.hide();
     //   this.initPushNotification();      
-    // });
+    });
   }
 
   // ngAfterViewInit() {
@@ -156,6 +160,11 @@ export class MyApp {
   //     })
   //     .present();
   // }
+
+  customerService() {
+    this.menuCtrl.close();
+    this.nav.push(CustomerservicePage)  
+  }
 
   profile() {
     this.menuCtrl.close();

@@ -40,8 +40,6 @@ export class StatusPage {
   }
 
   submitComment() {
-    console.log(this.comment)
-    console.log(this.rate)
     var userData = JSON.parse(localStorage.getItem("userData"));    
     var commentRating = {
       commentText: this.comment,
@@ -50,7 +48,6 @@ export class StatusPage {
     }
     this.airconeProvider.submitCommentRating(commentRating)
     .then(res => {
-      console.log(res)
       this.comment = '';
       this.rate = 0;
       this.navCtrl.push(ServicesPage);

@@ -13,10 +13,9 @@ import { Device } from '@ionic-native/device';
 export class AirconeProvider {
 
   data;
- baseURL = "https://air-cone-backend.appspot.com"; //production
- //  baseURL = "http://localhost:80"; //development
+ //baseURL = "https://air-cone-backend.appspot.com"; //production
+   baseURL = "http://localhost:80"; //development
   constructor(public http: Http, public device: Device) {
-    console.log('Hello AirconeProvider Provider');
   }
 
   socialLogin(data) {
@@ -143,6 +142,17 @@ export class AirconeProvider {
 
   getDeviceDetails() {
     return this.device.uuid;
+  }
+
+  sendFeedback(data) {
+    return new Promise(resolve => {
+      this.http.post(this.baseURL+'/create/feedback', data)
+      .map(res => res.json())
+      .subscribe(data => {
+        this.data = data;
+        resolve(this.data);
+      });
+    });
   }
 
 

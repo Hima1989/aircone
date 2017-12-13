@@ -15,7 +15,7 @@ import { LoginpagePage } from '../pages/loginpage/loginpage';
 import { ServicesPage } from '../pages/services/services';
 import { ServicesHomePage } from '../pages/services-home/services-home';
 import { Profile } from '../pages/services-home/services-home';
-
+import { CustomerservicePage } from '../pages/customerservice/customerservice';
 import { ProfilePage } from '../pages/profile/profile';
 import { SendrequestPage } from '../pages/sendrequest/sendrequest';
 import { NotificationsPage } from '../pages/notifications/notifications';
@@ -33,7 +33,16 @@ import {
   GoogleMaps
  } from '@ionic-native/google-maps';
  import { Geolocation } from '@ionic-native/geolocation';
+ import firebase from 'firebase';
 
+ firebase.initializeApp({
+  apiKey: "AIzaSyCmxpCPemj61ksg62uE8UUhlMD3zZdd7Bw",
+  authDomain: "aircone-2afb8.firebaseapp.com",
+  databaseURL: "https://aircone-2afb8.firebaseio.com",
+  projectId: "aircone-2afb8",
+  storageBucket: "",
+  messagingSenderId: "381828792113"
+});
 
 
 @NgModule({
@@ -51,13 +60,15 @@ import {
     NotificationsPage,
     RequestslistPage,
     StatusPage,
-    Profile
+    Profile,
+    CustomerservicePage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
     Ionic2RatingModule
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -74,7 +85,8 @@ import {
     NotificationsPage,
     RequestslistPage,
     StatusPage,
-    Profile
+    Profile,
+    CustomerservicePage
   ],
   providers: [
     StatusBar,
