@@ -50,12 +50,12 @@ export class SendrequestPage {
     var requestDetails = {
       service: this.service,
       user: userData,
-      request: this.orderForm.value
+      request: this.orderForm.value,
+      status: 'ORDER_REQUESTED'
     }
     console.log(requestDetails)
     this.airconeProvider.sendRequest(requestDetails)
     .then(res => {
-      console.log(res)
       let alert = this.alertCtrl.create({
         title: 'Request Sent!',
         subTitle: 'Your Requests Succesfully Sent, We Will Contact You Soon!',
