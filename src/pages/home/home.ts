@@ -72,7 +72,6 @@ loadMap() {
   
       this.map.one(GoogleMapsEvent.MAP_READY)
         .then(() => {
-          console.log(locations)
             for (var i = 0; i < locations.length; i++) {
               this.map.addMarker({
                   title: locations[i].latitude,
