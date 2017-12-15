@@ -14,14 +14,20 @@
 
 
 <ion-content padding>
-        <div>
+        <div style="overflow: auto;" text-center class row>
+          <div style="float:left;" class col>
           <ion-radio  class="status-line" [checked]="request.status=='ORDER_REQUESTED' || request.status=='ORDER_ACCEPTED'"></ion-radio>
+          <p>Sent</p>
+          </div>
+          <div style="float:left;"  class col>
           <ion-radio  class="status-line" [checked]="request.status=='ORDER_ACCEPTED'"></ion-radio>
-          <ion-radio  class="status-line" [checked]="request.status=='ORDER_FINISHED'"></ion-radio>   
+          <P>Accepted</P>  
+          </div>
+          <div style="float:left;" class col>         
+          <ion-radio  class="status-line" [checked]="request.status=='ORDER_FINISHED'"></ion-radio>  
+          <P>Completed</P> 
+          </div>                   
         </div>     
-        <P *ngIf="request.status=='ORDER_REQUESTED'">Your Request Is Pending, Please wait for a confirmation..</P>          
-        <P *ngIf="request.status=='ORDER_ACCEPTED'">Your Request Is Accepted, We Will Contact You Soon...</P> 
-        <P *ngIf="request.status=='ORDER_FINISHED'">Thank You For Using Our Service...</P>          
   <button ion-button color="danger" (click)="cancelRequest()" round>Cancel Request</button>
 
   <div>
