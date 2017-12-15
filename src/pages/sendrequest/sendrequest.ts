@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, Platform } from 'ionic-angular';
 import { ServicesHomePage } from '../services-home/services-home';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import {Validators, FormBuilder } from '@angular/forms';
@@ -22,7 +22,7 @@ export class SendrequestPage {
   public request = {};
   public service = {};
   orderForm;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, private formBuilder: FormBuilder, public alertCtrl: AlertController) {
+  constructor(public platform: Platform, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, private formBuilder: FormBuilder, public alertCtrl: AlertController) {
     this.orderForm  = this.formBuilder.group({
       Name: ['', Validators.required],
       City: ['', Validators.required],
@@ -36,7 +36,15 @@ export class SendrequestPage {
       Pincode: ['', Validators.required]      
     });
     this.serviceId = navParams.get("id");   
-    this.getService()
+    this.getService();
+    this.platform.ready().then(() => {
+      this.platform.registerBackButtonAction(() => {
+        //this.nav.setRoot(ServicesPage);
+        this.navCtrl.push(ServicesHomePage, {
+          id: this.serviceId
+        });
+      });
+ });
   }
 
   ionViewDidLoad() {
