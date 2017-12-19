@@ -1,19 +1,19 @@
  body {
      font-family: 'Montserrat', sans-serif !important;
  }
-
+ 
  .btn-blue {
-     background: #3b5998;
+     background: $btnLightBlue;
  }
-
+ 
  .btn-red {
-     background: #e33e2b;
+     background: $btnRed;
  }
-
+ 
  .btn-dark-blue {
-     background: #6747cd;
+     background: $btnBlue;
  }
-
+ 
  page-loginpage {
      .login-slider {
          //  background: #6945ce;
@@ -40,7 +40,7 @@
              font-weight: 700;
              font-size: 24px;
              font-family: 'Montserrat', sans-serif;
-             color: #333a46;
+             color: $headingColor;
          }
      }
      .login-form {
@@ -61,13 +61,13 @@
      }
      .terms {
          text-align: center;
-         color: #6d748d;
+         color: $colorDarkGray;
          font-size: 16px;
          p {
              margin: 15px 0 8px 0;
          }
          a {
-             color: #6d748d;
+             color: $colorDarkGray;
              text-decoration: underline;
          }
      }

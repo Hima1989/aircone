@@ -1,6 +1,6 @@
 page-status {
     .input {
-        border: 1px solid black;
+        border: 1px solid $colorBlack;
     }
 
     .div1 {
@@ -18,7 +18,7 @@ ul {
     &.rating li {
         padding: 5px 10px !important;
         background: none;
-        color: #8383BA;
+        color: $fontGreen;
         ion-icon {
             font-size: 30px;
         }

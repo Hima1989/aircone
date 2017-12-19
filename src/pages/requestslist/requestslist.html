@@ -1,15 +1,25 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>My Requests</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>My Requests</ion-title>
+    </ion-navbar>
 </ion-header>
 <ion-content>
     <ion-item-group>
         <ion-item *ngFor="let request of requests" (click)="goToStatus(request)">
-          <div><h2>Request For <b>{{request.serviceName}}</b> Service</h2></div>
-          <div *ngIf="request.status=='ORDER_REQUESTED'"><p>Your Request is pending.</p><p>#id:{{request.id}}</p></div>          
-          <div *ngIf="request.status=='ORDER_DECLINED'"><p>Your Request is declined.</p><p>#id:{{request.id}}</p></div>          
-          <div *ngIf="request.status=='ORDER_ACCEPTED'"><p>Your Request is accepted.</p><p>#id:{{request.id}}</p></div>
+            <ion-avatar item-start>
+                <img src="{{request.serviceImage}}">
+            </ion-avatar>
+            <h2>Request For <b>{{request.serviceName}}</b> Service</h2>
+            <p>#id:{{request.id}}</p>
+            <div *ngIf="request.status=='ORDER_REQUESTED'">
+                <p>Your Request is pending.</p>
+            </div>
+            <div *ngIf="request.status=='ORDER_DECLINED'">
+                <p>Your Request is declined.</p>
+            </div>
+            <div *ngIf="request.status=='ORDER_ACCEPTED'">
+                <p>Your Request is accepted.</p>
+            </div>
         </ion-item>
     </ion-item-group>
 </ion-content>

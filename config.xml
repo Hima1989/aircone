@@ -101,7 +101,11 @@
     <plugin name="cordova-plugin-googleplus" spec="^5.1.1">
         <variable name="REVERSED_CLIENT_ID" value="455882486075-90366665k6ehek4t8rvp5ej9499ga65m.apps.googleusercontent.com" />
     </plugin>
+<<<<<<< HEAD
+    <engine name="browser" spec="~5.0.1" />
+=======
     <plugin name="cordova-plugin-googlemaps" spec="^2.1.1">
         <variable name="API_KEY_FOR_ANDROID" value="AIzaSyCyFcQi2rm7EA0X4MfRLEMOeJcM4Y9qSMQ" />
     </plugin>
+>>>>>>> d642fbfe91a3969ee4dfcdc760113754bdc78b80
 </widget>
