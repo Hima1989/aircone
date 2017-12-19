@@ -1,4 +1,12 @@
-page-services {}
+page-services {
+    .service-block {
+        background: rgba(0, 0, 0, 0.5);
+    }
+}
+
+.ion-service {
+    padding: 5px 0px;
+}
 
 .menu-toggle {
     display: inline-block;
@@ -11,11 +19,11 @@ page-services {}
 
 .icon-padding {
     padding-right: 5px;
-    color:$colorGray;
+    color: $colorGray;
 }
 
 .content-heading {
-    color: #364150;
+    color: $colorLightGray;
     font-size: 22px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
@@ -29,18 +37,23 @@ page-services {}
     h4 {
         font-size: 16px;
         text-align: center;
-        font-weight: 700;
-        color: #364150;
+        font-weight: 400;
+        color: $colorWhite;
         min-height: 40px;
     }
     .service-img {
         width: 80px;
-        height: 80px;
+        height: 105px;
         margin: 10px auto;
+        display: table;
         img {
             // height: 100%;
             width: auto;
             margin: auto;
+        }
+        .service-block-content {
+            display: table-cell;
+            vertical-align: middle;
         }
     }
 }

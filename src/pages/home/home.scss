@@ -1,5 +1,5 @@
 .btn-hrx {
-    background: #6747cd;
+    background: $btnBlue;
 }
 
 .navigate {
@@ -11,69 +11,81 @@
 }
 
 .home-header {
-    color: #364150;
+    color: $colorLightGray;
     // padding: 5px 0;
     .icons {
         font-size: 30px;
+        color: $colorGray;
     }
     .title {}
 }
-    .nav-content {
-        .scroll-content {
-            margin-top: 70px !important;
-        }
-        .navigator {
-            background: url(../assets/images/navigator.png) no-repeat center center;
-            background-size: cover;
-            height: 200px;
-            .btn-hrx {
-                font-size: 18px;
-                text-transform: capitalize;
-                padding: 20px 30px;
-                margin-top: 20px;
-            }
+
+.nav-content {
+    .scroll-content {
+        margin-top: 70px !important;
+    }
+    .navigator {
+        background: url(../assets/images/navigator.png) no-repeat center center;
+        background-size: cover;
+        height: 200px;
+        .btn-hrx {
+            font-size: 18px;
+            text-transform: capitalize;
+            padding: 20px 30px;
+            margin-top: 20px;
         }
     }
-    .nav-request {
-        margin-right: 10px;
-        margin-bottom: 5px;
-    }
-    .comment-block {
-        .comment-top {
-            background: #f7f7f7;
-            
-            h2.cus-name {
-                font-size: 18px;
-            }
-            p.cus-nav {
-                font-size: 12px;
-            }
+}
+
+.nav-request {
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.comment-block {
+    .comment-top {
+        background: $colorLightWhite;
+        h2.cus-name {
+            font-size: 18px;
         }
-        .cus-comment {
-            color: #5f6e82;
-            padding-top: 10px;
-            font-size: 14px;
+        p.cus-nav {
+            font-size: 12px;
         }
     }
+    .cus-comment {
+        color: $colorPink;
+        padding-top: 10px;
+        font-size: 14px;
+    }
+}
 
-
-    page-home {
-
-
-        #floating-panel {
-          position: absolute;
-          top: 10px;
-          right: 5px;
-          z-index: 5;
-          background-color: #fff;
-          padding: 5px;
-          border: 1px solid #999;
-          text-align: center;
-          font-family: 'Roboto','sans-serif';
-          line-height: 30px;
-          padding-left: 10px;
+page-home {
+    #floating-panel {
+        position: absolute;
+        top: 10px;
+        right: 5px;
+        z-index: 5;
+        background-color: $colorWhite;
+        padding: 5px;
+        border: 1px solid $borderColor;
+        text-align: center;
+        font-family: 'Roboto', 'sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+    }
+    #map {
+        height: 50%;
+    }
+    .map {
+        height: 200px;
+        background: $colorBlack;
+    }
+    .btn-hrx {
+        margin-top: 20px;
+    }
+    .comments-tabs {
+        .comments {
+            height: auto !important;
         }
-        #map {
-          height: 50%;
-        }
-      }
+    }
+}

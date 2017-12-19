@@ -54,7 +54,9 @@
     "cordova-android": "~6.3.0"
   },
   "devDependencies": {
+    "@angular/cli": "^1.6.1",
     "@ionic/app-scripts": "2.1.4",
+    "firebase": "^4.8.0",
     "typescript": "2.3.4"
   },
   "description": "An Ionic project",
@@ -84,7 +86,8 @@
       }
     },
     "platforms": [
-      "android"
+      "android",
+      "browser"
     ]
   }
 }

@@ -12,13 +12,13 @@ input[type=number] {
     .icon-create {
         position: absolute;
         font-size: 12px;
-        color: #fff;
+        color: $colorWhite;
         top: 3px;
         right: 3px;
-        background: #6747cd;
+        background: $btnBlue;
         padding: 5px 5px;
         border-radius: 50%;
-        border: 2px solid #fff;
+        border: 2px solid $colorWhite;
     }
 }
 

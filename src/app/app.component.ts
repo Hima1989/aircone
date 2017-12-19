@@ -159,6 +159,10 @@ export class MyApp {
   //     })
   //     .present();
   // }
+  home() {
+    this.menuCtrl.close();
+    this.nav.push(HomePage)    
+  }
 
   customerService() {
     this.menuCtrl.close();
