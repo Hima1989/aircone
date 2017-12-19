@@ -11,7 +11,8 @@
             </ion-row>
         </ion-grid>
     </div>
-    <ion-slides class="slide-block">
+
+    <ion-slides class="slide-block" *ngIf="service.slider && service.slider.length" autoplay="2000" loop="true" speed="300">
         <ion-slide class="slide-img" *ngFor="let img of service.slider">
             <img src={{img}} />
             <!--<ion-img width="80" height="80" src="..."></ion-img>-->

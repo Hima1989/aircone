@@ -1,5 +1,5 @@
 import { Component,ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Slides, ModalController, ViewController } from 'ionic-angular';
+import { Platform, Nav, IonicPage, NavController, NavParams, Slides, ModalController, ViewController } from 'ionic-angular';
 import { ServicesPage } from '../services/services';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { SendrequestPage } from '../sendrequest/sendrequest';
@@ -24,13 +24,21 @@ export class ServicesHomePage {
 
     oneService;
     serviceId;
-    public service = {}
+    public service = {};
     @ViewChild(Slides) slides: Slides;
+    @ViewChild(Nav) nav;
     
-  constructor(public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider) {
+  constructor( public platform: Platform, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider) {
     this.oneService = navParams.get("postValue");
     this.serviceId = navParams.get("id");    
     this.getService()
+
+    this.platform.ready().then(() => {
+      this.platform.registerBackButtonAction(() => {
+        this.navCtrl.push(ServicesPage)
+      });
+ });
+
   }
   // onClick(imageToView) {
   //   const viewer = this.imageViewerCtrl.create(imageToView)
@@ -67,6 +75,7 @@ export class ServicesHomePage {
 
   goBack() {
     this.navCtrl.push(ServicesPage);
+    //this.navCtrl.pop()
   }
 
   sendRequest(id) {

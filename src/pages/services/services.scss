@@ -1,4 +1,12 @@
-page-services {}
+page-services {
+    .service-block {
+        background: rgba(0, 0, 0, 0.5);
+    }
+}
+
+.ion-service {
+    padding: 5px 0px;
+}
 
 .menu-toggle {
     display: inline-block;
@@ -30,12 +38,12 @@ page-services {}
         font-size: 16px;
         text-align: center;
         font-weight: 400;
-        color: colorLightGray;
+        color: $colorWhite;
         min-height: 40px;
     }
     .service-img {
         width: 80px;
-        height: 80px;
+        height: 105px;
         margin: 10px auto;
         display: table;
         img {

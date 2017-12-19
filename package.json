@@ -55,6 +55,7 @@
     "zone.js": "0.8.12"
   },
   "devDependencies": {
+    "@angular/cli": "^1.6.1",
     "@ionic/app-scripts": "2.1.4",
     "firebase": "^4.8.0",
     "typescript": "2.3.4"
