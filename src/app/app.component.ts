@@ -15,7 +15,6 @@ import { RequestslistPage } from '../pages/requestslist/requestslist';
 import { CustomerservicePage } from '../pages/customerservice/customerservice';
 import { AirconeProvider } from '../providers/aircone/aircone';
 //import { Geolocation } from '@ionic-native/geolocation';
-import firebase from 'firebase';
 
 
 @Component({

@@ -21,6 +21,7 @@ import { SendrequestPage } from '../pages/sendrequest/sendrequest';
 import { NotificationsPage } from '../pages/notifications/notifications';
 import { RequestslistPage } from '../pages/requestslist/requestslist';
 import { StatusPage } from '../pages/status/status';
+import { MechanicPage } from '../pages/mechanic/mechanic'
 import { Ionic2RatingModule } from 'ionic2-rating';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -61,7 +62,8 @@ import {
     RequestslistPage,
     StatusPage,
     Profile,
-    CustomerservicePage
+    CustomerservicePage,
+    MechanicPage
   ],
   imports: [
     BrowserModule,
@@ -86,7 +88,8 @@ import {
     RequestslistPage,
     StatusPage,
     Profile,
-    CustomerservicePage
+    CustomerservicePage,
+    MechanicPage
   ],
   providers: [
     StatusBar,

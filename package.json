@@ -31,11 +31,9 @@
     "@ionic-native/splash-screen": "^3.12.1",
     "@ionic-native/status-bar": "^3.14.0",
     "@ionic/storage": "2.0.1",
-    "cordova-android": "^6.3.0",
     "cordova-plugin-admobpro": "^2.29.29",
     "cordova-plugin-device": "^1.1.7",
     "cordova-plugin-extension": "^1.5.3",
-    "cordova-plugin-facebook4": "^1.9.1",
     "cordova-plugin-geolocation": "^3.0.0",
     "cordova-plugin-googlemaps": "^2.1.1",
     "cordova-plugin-googleplus": "^5.1.1",
@@ -52,7 +50,8 @@
     "ionicons": "3.0.0",
     "rxjs": "5.4.0",
     "sw-toolbox": "3.6.0",
-    "zone.js": "0.8.12"
+    "zone.js": "0.8.12",
+    "cordova-android": "~6.3.0"
   },
   "devDependencies": {
     "@ionic/app-scripts": "2.1.4",
@@ -72,10 +71,6 @@
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
-      "cordova-plugin-facebook4": {
-        "APP_ID": "130038091090566",
-        "APP_NAME": "airCone"
-      },
       "cordova-plugin-admobpro": {},
       "cordova-plugin-network-information": {},
       "cordova-plugin-geolocation": {
