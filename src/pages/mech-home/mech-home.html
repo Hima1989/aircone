@@ -1,0 +1,37 @@
+<!--
+  Generated template for the MechHomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>mechHome</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-list-header>
+      Service Information
+    </ion-list-header>
+    <ion-item>ServiceName: {{serviceInfo.serviceName}}</ion-item>
+    <ion-item>Status: {{serviceInfo.status}}</ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-list-header>
+      User Info
+    </ion-list-header>
+    <ion-item>user name      : {{userRequest.Name}}</ion-item>
+    <ion-item>phone          : {{userRequest.Phone}}</ion-item>
+    <ion-item>Alternative Ph :{{userRequest.AltPhone}}</ion-item>
+    <ion-item>Door No        :{{userRequest.Door}}</ion-item>
+    <ion-item>Street         :{{userRequest.Street}}</ion-item>
+    <ion-item>Area           :{{userRequest.Area}}</ion-item>
+    <ion-item>City           :{{userRequest.City}}</ion-item>    
+  </ion-list>
+  <button ion-button (click)="startService()"full>Start Service</button>
+</ion-content>

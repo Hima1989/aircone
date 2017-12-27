@@ -1,0 +1,69 @@
+<!--
+  Generated template for the RepairPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>repair</ion-title>
+  </ion-navbar>
+
+</ion-header>
+  
+
+<ion-content padding>
+
+    <ion-item>
+        <ion-label>Select Spare</ion-label>
+        <ion-select [(ngModel)]="toppings" multiple="true" (ionChange)="spareSelect(toppings)">
+          <ion-option *ngFor="let spare of spares" [value]="">{{spare.sparename}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <!-- <ion-item>
+          <button ion-button (click)="spareSelect(toppings)" round>Ok</button>          
+      </ion-item> -->
+
+  <ion-grid *ngIf="finalSpare">
+    <ion-row>
+      <ion-col>
+        Spare
+      </ion-col>
+      <ion-col>
+        Price
+      </ion-col>
+      <ion-col>
+        Quantity
+      </ion-col>
+      <ion-col>
+        Add
+      </ion-col>
+    </ion-row>
+   
+   <form (ngSubmit)="sendBudget()">
+    <ion-row *ngFor="let spare of finalSpare">
+      <ion-col>
+        {{spare.sparename}}
+      </ion-col>
+      <ion-col>
+        {{spare.sparerate}}
+      </ion-col>
+      <ion-col>
+        <ion-input type="number" name="sparerate-{{spare.id}}" [(ngModel)]="spare.rate"></ion-input>
+      </ion-col>
+      <ion-col>
+          <ion-icon ios="ios-close" md="md-close" (click)="removeSpare(spare)"></ion-icon>
+      </ion-col>
+
+    </ion-row>
+    <ion-row>
+        <ion-input type="number" name="sparerate" [(ngModel)]="serviceRate" placeholder="Service Price" required></ion-input>          
+    </ion-row>
+    <button class="btn-hrx" type="submit"ion-button round>Setup Final Price</button>    
+   </form>
+  </ion-grid>
+  <ion-label *ngIf="spareTotalPrice">Final Service Charge: {{spareTotalPrice}}</ion-label>
+
+  <button ion-button color="danger" (click)="closeRequest()" full>Close Request</button> 
+</ion-content>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { AirconeProvider } from '../../providers/aircone/aircone';
+import { MechHomePage } from '../mech-home/mech-home'
 /**
  * Generated class for the MechanicPage page.
  *
@@ -15,11 +16,31 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MechanicPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public mechRequests: any
+  public showRequest: boolean = false;
+  public showComment: boolean = true;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private airconeProvider: AirconeProvider) {
+    this.getMechanicRequestList()
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MechanicPage');
+  }
+
+  getMechanicRequestList() {
+    var userData = JSON.parse(localStorage.getItem('userData'))
+    this.airconeProvider.getMechanicRequests(userData.id)
+    .then(data => {
+      this.mechRequests = data;
+      if (this.mechRequests.length > 0) {
+        this.showRequest = true;
+        this.showComment = false;
+      }
+      console.log(this.mechRequests)
+    })
+  }
+
+  goToRequest(request) {
+    this.navCtrl.push(MechHomePage, {details: request});
   }
 
 }

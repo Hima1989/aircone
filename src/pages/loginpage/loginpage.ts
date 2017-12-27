@@ -7,7 +7,7 @@ import { GooglePlus } from '@ionic-native/google-plus';
 import { ServicesPage } from '../services/services';
 import { MechanicPage } from '../mechanic/mechanic';
 import { Geolocation } from '@ionic-native/geolocation';
-
+import { MechloginPage } from '../mechlogin/mechlogin';
 
 /**
  * Generated class for the LoginpagePage page.
@@ -173,4 +173,7 @@ export class LoginpagePage {
       .catch(err => alert(err + "IT wont work here"));
   }
 
+  mechLogin() {
+    this.navCtrl.push(MechloginPage);
+  }
 }

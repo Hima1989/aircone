@@ -13,8 +13,8 @@ import { Device } from '@ionic-native/device';
 export class AirconeProvider {
 
   data;
- baseURL = "https://air-cone-backend.appspot.com"; //production
-  //  baseURL = "http://localhost:80"; //development
+ //baseURL = "https://air-cone-backend.appspot.com"; //production
+    baseURL = "http://localhost:80"; //development
   constructor(public http: Http, public device: Device) {
   }
 
@@ -152,6 +152,61 @@ export class AirconeProvider {
         this.data = data;
         resolve(this.data);
       });
+    });
+  }
+
+  getMechanicRequests(mechId) {
+    return new Promise(resolve => {
+      this.http.get(this.baseURL+'/get/'+mechId+'/allMechRequest')
+      .map(res => res.json())
+      .subscribe(data => {
+        this.data = data;
+        resolve(this.data);
+      });
+    });
+  }
+
+  getAdmin() {
+    return new Promise(resolve => {
+      this.http.get(this.baseURL+'/user/getadmin')
+      .map(res => res.json())
+      .subscribe(data => {
+        this.data = data;
+        resolve(this.data);
+      });
+    });
+  }
+
+  getAllPincodes() {
+    return new Promise(resolve => {
+      this.http.get(this.baseURL+'/get/allPincodes')       
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        })
+    });
+  }
+
+  getServiceSpares(serviceId) {
+    return new Promise(resolve => {
+      this.http.get(this.baseURL+'/get/'+serviceId+'/getServiceWiseSpares')       
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        })
+    });
+  }
+
+  closeRequest(requestId, data) {
+    return new Promise(resolve => {
+      this.http.post(this.baseURL+'/get/'+requestId+'/clodeRequest', data)       
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        })
     });
   }
 

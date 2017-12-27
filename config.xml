@@ -84,6 +84,7 @@
     <allow-navigation href="http://192.168.31.162:8100" />
     <allow-navigation href="http://192.168.31.68:8101" />
     <engine name="android" spec="~6.3.0" />
+    <engine name="browser" spec="~5.0.1" />
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
     <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
     <plugin name="cordova-plugin-device" spec="^1.1.7" />
@@ -97,11 +98,7 @@
     <plugin name="cordova-plugin-googleplus" spec="^5.1.1">
         <variable name="REVERSED_CLIENT_ID" value="455882486075-90366665k6ehek4t8rvp5ej9499ga65m.apps.googleusercontent.com" />
     </plugin>
-<<<<<<< HEAD
-    <engine name="browser" spec="~5.0.1" />
-=======
     <plugin name="cordova-plugin-googlemaps" spec="^2.1.1">
         <variable name="API_KEY_FOR_ANDROID" value="AIzaSyCyFcQi2rm7EA0X4MfRLEMOeJcM4Y9qSMQ" />
     </plugin>
->>>>>>> d642fbfe91a3969ee4dfcdc760113754bdc78b80
 </widget>
