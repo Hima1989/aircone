@@ -17,6 +17,7 @@ import { ServicesHomePage } from '../services-home/services-home';
 })
 export class ServicesPage {
 
+  // public services: any = [{images:"assets/images/services-home1.png",serviceName:"Air Conditioner"},{images:"assets/images/services-home2.png",serviceName:"refregirator"},{images:"assets/images/services-home3.png",serviceName:"Microvowen"},{images:"assets/images/services-home4.png",serviceName:"Washing Mechine"}];
   public services: any = [];
   servicesHomePage: any = ServicesHomePage;
   
