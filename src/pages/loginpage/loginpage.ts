@@ -5,8 +5,9 @@ import { AirconeProvider } from '../../providers/aircone/aircone';
 import { HomePage } from '../home/home';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { ServicesPage } from '../services/services';
+import { MechanicPage } from '../mechanic/mechanic';
 import { Geolocation } from '@ionic-native/geolocation';
-
+import { MechloginPage } from '../mechlogin/mechlogin';
 
 /**
  * Generated class for the LoginpagePage page.
@@ -56,14 +57,16 @@ export class LoginpagePage {
 
   facebookLogin() {
 
-         var userDetails = {"identifier":"gleedtech@gmail.com","password":"123123123","email":"doddibalubharadwaj@gmail.com"}
+         var userDetails = {"identifier":"gleedtechuser@gmail.com","password":"123123123","email":"doddibalubharadwaj@gmail.com"}
 
+         //var userDetails = {"identifier":"gleedtechmech@gmail.com","password":"123123123","email":"doddibalubharadwaj@gmail.com"}
+         
             this.airconeProvider.userLogin(userDetails)
               .then(res => {
                 var tempData = [];                
                 tempData.push(res);
                 this.data = res;
-                if (this.data.status === 200) {
+                if (this.data.status === 200 && this.data.user.role[0] == 'USER') {
                 //  console.log(this.coords)
                   this.navCtrl.push(ServicesPage);
                   var userInfo = {
@@ -77,6 +80,20 @@ export class LoginpagePage {
                     "coords": this.coords
                   }
                   localStorage.setItem('userData', JSON.stringify(userInfo));
+                } 
+                else if (this.data.status === 200 && this.data.user.role[0] == 'MECHANIC') {
+                  this.navCtrl.push(MechanicPage);
+                  var mechUserInfo = {
+                    "firstName": tempData[0].user.firstName,
+                    "email": tempData[0].user.email,
+                    "phoneNumber": tempData[0].user.phoneNumber,
+                    "id": tempData[0].user.id,
+                    "lastName": tempData[0].user.lastName,
+                    "tokenId": tempData[0].user.tokenId,
+                    "role": tempData[0].user.role,
+                    "coords": this.coords
+                  }
+                  localStorage.setItem('userData', JSON.stringify(mechUserInfo));
                 }
               })
             
@@ -156,4 +173,7 @@ export class LoginpagePage {
       .catch(err => alert(err + "IT wont work here"));
   }
 
+  mechLogin() {
+    this.navCtrl.push(MechloginPage);
+  }
 }

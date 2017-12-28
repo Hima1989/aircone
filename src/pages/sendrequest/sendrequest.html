@@ -31,7 +31,7 @@
       </ion-item>
 
       <ion-item>
-        <ion-input type="number" [(ngModel)]="request.door" formControlName="Door" placeholder="Door Number"></ion-input>
+        <ion-input type="text" [(ngModel)]="request.door" formControlName="Door" placeholder="Door Number"></ion-input>
       </ion-item>
 
       <ion-item>
@@ -52,7 +52,8 @@
       <ion-item>
         <ion-label fixed>Type</ion-label>
         <ion-select [(ngModel)]="request.Type" formControlName="Type" multiple>
-        <ion-option *ngFor="let subservice of service.subService" [value]="subservice">{{subservice}}<ion-input type="number" formControlName="Quantity" ></ion-input></ion-option>
+        <ion-option *ngFor="let subservice of service.subService" [value]="subservice">{{subservice}}</ion-option>
+        <ion-input type="number" formControlName="Quantity" ></ion-input>
       </ion-select>
       </ion-item>
       

@@ -21,6 +21,10 @@ import { SendrequestPage } from '../pages/sendrequest/sendrequest';
 import { NotificationsPage } from '../pages/notifications/notifications';
 import { RequestslistPage } from '../pages/requestslist/requestslist';
 import { StatusPage } from '../pages/status/status';
+import { MechanicPage } from '../pages/mechanic/mechanic';
+import { MechHomePage } from '../pages/mech-home/mech-home';
+import { RepairPage } from '../pages/repair/repair';
+import { MechloginPage } from '../pages/mechlogin/mechlogin';
 import { Ionic2RatingModule } from 'ionic2-rating';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -61,7 +65,11 @@ import {
     RequestslistPage,
     StatusPage,
     Profile,
-    CustomerservicePage
+    CustomerservicePage,
+    MechanicPage,
+    MechHomePage,
+    RepairPage,
+    MechloginPage
   ],
   imports: [
     BrowserModule,
@@ -86,7 +94,11 @@ import {
     RequestslistPage,
     StatusPage,
     Profile,
-    CustomerservicePage
+    CustomerservicePage,
+    MechanicPage,
+    MechHomePage,
+    RepairPage,
+    MechloginPage
   ],
   providers: [
     StatusBar,

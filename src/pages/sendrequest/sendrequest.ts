@@ -22,6 +22,10 @@ export class SendrequestPage {
   public request = {};
   public service = {};
   orderForm;
+  adminDetails;
+  pincodes;
+  data;
+
   constructor(public platform: Platform, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, private formBuilder: FormBuilder, public alertCtrl: AlertController) {
     this.orderForm  = this.formBuilder.group({
       Name: ['', Validators.required],
@@ -45,31 +49,54 @@ export class SendrequestPage {
         });
       });
  });
+ this.getAdmin()
+ //this.getPincodes();
   }
+
+  getAdmin() {
+    this.airconeProvider.getAdmin()
+    .then( data => {
+      this.adminDetails = data
+    })
+  }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SendrequestPage');
   }
 
   sendRequest() {
-   console.log(this.orderForm.value)
+   //console.log(this.orderForm.value)
     //this.orderForm.reset()
     var userData = JSON.parse(localStorage.getItem("userData"));
     var requestDetails = {
       service: this.service,
       user: userData,
       request: this.orderForm.value,
-      status: 'ORDER_REQUESTED'
+      status: 'ORDER_REQUESTED',
+      assignedBy: userData.id,
+      assignedTo:  this.adminDetails.id
     }
     console.log(requestDetails)
     this.airconeProvider.sendRequest(requestDetails)
     .then(res => {
-      let alert = this.alertCtrl.create({
-        title: 'Request Sent!',
-        subTitle: 'Your Requests Succesfully Sent, We Will Contact You Soon!',
-        buttons: ['OK']
-      });
-      alert.present();
+      this.data = res;
+      if (this.data.status == 200) {
+        let alert = this.alertCtrl.create({
+          title: 'Request Sent!',
+          subTitle: 'Your Requests Succesfully Sent, We Will Contact You Soon!',
+          buttons: ['OK']
+        });
+        alert.present();
+      } else if ( this.data.status == 404) {
+        let alert = this.alertCtrl.create({
+          title: 'Request Cant!',
+          subTitle: 'Sorry Service not available at your location!',
+          buttons: ['OK']
+        });
+        alert.present();
+      }
+
       this.orderForm.reset()      
     });
   }
@@ -80,6 +107,31 @@ export class SendrequestPage {
       this.service = res;
     })
   }
+
+  // getPincodes() {
+  //   this.airconeProvider.getAllPincodes()
+  //   .then(res => {
+  //     this.pincodes = res;
+  //     console.log(this.pincodes)
+  //   })
+  // }
+
+  // pinchange(ev: any){
+  //   let val = ev;
+  //   //val = JSON.stringify(val)
+  //    if (val) {
+  //     this.pincodes.forEach(pin => {
+  //       console.log(pin.pincode)
+  //       console.log(val)
+  //       if (val === pin.pincode) {
+  //         console.log("ok")
+  //       } else {
+  //         console.log("notok")
+  //       }
+  //     });
+  //    }
+
+  // }
 
   goBack() {
     this.navCtrl.push(ServicesHomePage, {
