@@ -1,7 +1,9 @@
 page-services-home {
     .slide-temp {
         background-color: rgba(192, 192, 192, 0.8);
-        ;
+    }
+    .service-block {
+        padding: 5px 16px;
     }
 }
 
@@ -44,10 +46,6 @@ page-services-home {
     .icon-back {
         color: $colorWhite;
     }
-}
-
-.service-block {
-    padding: 5px 16px;
 }
 
 .price-chart {
