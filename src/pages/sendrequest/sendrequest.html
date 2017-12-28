@@ -23,11 +23,11 @@
       </ion-item>
 
       <ion-item>
-          <ion-input type="number" [(ngModel)]="request.phone" formControlName="Phone" placeholder="Phone Number"></ion-input>
+          <ion-input type="number" [pattern]="'^[7-9][0-9]{9}$'" [(ngModel)]="request.phone" formControlName="Phone" placeholder="Phone Number"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-input type="number" [(ngModel)]="request.phonealt" formControlName="AltPhone" placeholder="Alternative  Phone"></ion-input>
+        <ion-input type="number" [pattern]="'^[7-9][0-9]{9}$'" [(ngModel)]="request.phonealt" formControlName="AltPhone" placeholder="Alternative  Phone"></ion-input>
       </ion-item>
 
       <ion-item>
@@ -47,7 +47,7 @@
       </ion-item>
 
       <ion-item>
-        <ion-input type="number" [(ngModel)]="request.pincode" formControlName="Pincode" placeholder="Pincode"></ion-input>
+        <ion-input type="number" [pattern]="'^[1-9][0-9]{5}$'" [(ngModel)]="request.pincode" formControlName="Pincode" placeholder="Pincode"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label fixed>Type</ion-label>

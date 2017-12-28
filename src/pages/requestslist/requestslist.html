@@ -9,16 +9,19 @@
             <ion-avatar item-start>
                 <img src="{{request.serviceImage}}">
             </ion-avatar>
-            <h2>Request For <b>{{request.serviceName}}</b> Service</h2>
+            <h2><b>{{request.serviceName}} Service</b></h2>
             <p>#id:{{request.id}}</p>
             <div *ngIf="request.status=='ORDER_REQUESTED'">
-                <p>Your Request is pending.</p>
+                <button ion-button round>PENDING</button>
             </div>
             <div *ngIf="request.status=='ORDER_DECLINED'">
-                <p>Your Request is declined.</p>
+                <button ion-button color="danger" round>DECLINED</button>
             </div>
-            <div *ngIf="request.status=='ORDER_ACCEPTED'">
-                <p>Your Request is accepted.</p>
+            <div *ngIf="request.status=='ORDER_CLOSED'">
+                <button ion-button color="danger" round>OVER</button>
+            </div>
+            <div *ngIf="request.status=='ORDER_APPROVED'">
+                <button ion-button color="secondary" round>ACCEPTED</button>
             </div>
         </ion-item>
     </ion-item-group>

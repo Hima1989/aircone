@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform, Content, Slides } from 'ionic-angular';
 import { AirconeProvider } from '../../providers/aircone/aircone';
-import { LoginpagePage } from '../loginpage/loginpage';
+import { ServicesPage } from '../services/services'
 import {
   GoogleMaps,
   GoogleMap,
@@ -51,7 +51,9 @@ loadMap() {
     this.comments = res;
     var locations = [];
     this.comments.forEach(element => {
-      locations.push(element.coords)
+      if (element.coords) {
+        locations.push(element.coords)        
+      }
     });
     
   // var locations = [
@@ -62,7 +64,11 @@ loadMap() {
   //   [-33.950198, 151.259302]
   // ];
       let mapOptions: GoogleMapOptions = {
-        camera: {
+        camera: {          
+        // target: {
+        //   lat: 33.80010128657071,
+        //   lng: -151.28747820854187
+        // },
           zoom: 15,
           tilt: 30
         }
@@ -97,7 +103,7 @@ loadMap() {
 
 
   sendRequest() {
-    this.navCtrl.push(LoginpagePage)
+    this.navCtrl.push(ServicesPage)
   }
 
 //  getcommentsList() {
