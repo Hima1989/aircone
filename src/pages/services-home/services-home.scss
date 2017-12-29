@@ -12,7 +12,7 @@ page-services-home {
 }
 
 .icon-back {
-    color: $colorBlack;
+    // color: $colorBlack;
     font-size: 30px;
 }
 
@@ -67,4 +67,25 @@ page-services-home {
 
 .navigator.nav-request {
     margin: 10px 0;
+}
+
+.iconNotification {
+    position: relative;
+    display: table;
+    &:after {
+        position: absolute;
+        content: "1";
+        top: 3px;
+        right: 15px;
+        background: red;
+        width: 15px;
+        height: 15px;
+        font-size: 12px;
+        text-align: center;
+        border-radius: 50%;
+        color: #fff;
+        transform: rotate(0deg);
+        display: table-cell;
+        vertical-align: middle;
+    }
 }

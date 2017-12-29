@@ -2,7 +2,7 @@
     <ion-grid>
         <ion-row>
             <ion-col col-2 text-left>
-                <ion-icon class="icons" ios="ios-menu" md="md-menu" menuToggle></ion-icon>
+                <ion-icon class="icons" ios="ios-menu" md="md-menu"></ion-icon>
             </ion-col>
             <ion-col col-8 text-center>
                 <ion-title class="title">
@@ -16,11 +16,11 @@
     </ion-grid>
 </ion-header>
 <ion-content class="nav-content">
-    <div #map id="map"></div>
-    <!-- <div class="map" text-center> -->
+    <!--<div #map id="map"></div>-->
+    <div class="map" text-center>
         <!--<button class="btn-hrx " (click)="sendRequest()" ion-button round><ion-icon class="icons navigate nav-request" ios="ios-navigate" md="md-navigate"></ion-icon>Send Request</button>-->
-    <!-- </div> -->
-    <ion-slides class="comments-tabs" *ngIf="comments && comments.length" autoplay="5000" loop="true" speed="300">
+    </div>
+    <ion-slides class="comments-tabs" *ngIf="comments && comments.length" direction="vertical" autoplay="5000" loop="true" speed="300" slidesPerView="2">
         <ion-slide class="comments" *ngFor="let comment of comments">
             <ion-card class="comment-block">
                 <ion-item class="comment-top">
