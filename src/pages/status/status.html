@@ -1,49 +1,74 @@
-<!--
-  Generated template for the StatusPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>status</ion-title>
-  </ion-navbar>
-
+<ion-header class="home-header">
+    <ion-grid>
+        <ion-row>
+            <ion-col col-2 text-left (click)="goBack()">
+                <ion-icon class="icons" ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+            </ion-col>
+            <ion-col col-8 text-center>
+                <ion-title class="title">Request Form</ion-title>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-header>
 
-
 <ion-content padding>
-        <div style="overflow: auto;" text-center class row>
-          <div style="float:left;" class col>
-          <ion-radio  class="status-line" [checked]="request.status=='ORDER_REQUESTED' || request.status=='ORDER_ACCEPTED'"></ion-radio>
-          <p>Sent</p>
-          </div>
-          <div style="float:left;"  class col>
-          <ion-radio  class="status-line" [checked]="request.status=='ORDER_ACCEPTED'"></ion-radio>
-          <P>Accepted</P>  
-          </div>
-          <div style="float:left;" class col>         
-          <ion-radio  class="status-line" [checked]="request.status=='ORDER_FINISHED'"></ion-radio>  
-          <P>Completed</P> 
-          </div>                   
-        </div>     
-  <button ion-button color="danger" (click)="cancelRequest()" round>Cancel Request</button>
+    <ion-row class="statusBlock">
+        <ion-col col-4 class="status-mark">
+            <span class="checkMark checkmarkBackground"><ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon></span>
+            <!--<ion-checkbox color="dark" checked="true" round></ion-checkbox>-->
+            <!--<ion-radio class="status-line" [checked]="request.status=='ORDER_REQUESTED' || request.status=='ORDER_ACCEPTED'"></ion-radio>-->
+            <span>Sent</span>
+        </ion-col>
+        <ion-col col-4 class="status-mark">
+            <span class="checkMark"><ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon></span>
+            <!--<ion-radio class="status-line" [checked]="request.status=='ORDER_REQUESTED' || request.status=='ORDER_ACCEPTED'"></ion-radio>-->
+            <span>Accepted</span>
+        </ion-col>
+        <ion-col col-4 class="status-mark">
+            <span class="checkMark"><ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon></span>
+            <!--<ion-radio class="status-line" [checked]="request.status=='ORDER_REQUESTED' || request.status=='ORDER_ACCEPTED'"></ion-radio>-->
+            <span>Completed</span>
+        </ion-col>
+    </ion-row>
+    <button ion-button class="btn-hrx" (click)="cancelRequest()">Cancel Request</button>
+    <div class="clear"></div>
 
-  <div>
-      <ion-label color="primary">Rating</ion-label>
-      <rating [(ngModel)]="rate" 
-      readOnly="false" 
-      max="5" 
-      emptyStarIconName="star-outline" 
-      halfStarIconName="star-half" 
-      starIconName="star" 
-      nullable="false" 
-      (ngModelChange)="onModelChange($event)"></rating>
-  </div>
-  <form (ngSubmit)="submitComment()">
-    <ion-label color="primary">Comment</ion-label>
-    <ion-textarea type="text" class="input" [(ngModel)]="comment" name="description"></ion-textarea>
-    <button ion-button type="submit" round>Send Comment</button>    
-  </form>
+    <div class="comment-rating statusBlock" text-center>
+        <p>How was the help you received?</p>
+        <ion-row class="statusBlock">
+            <ion-col col-1>
+            </ion-col>
+            <ion-col col-2 class="smileReview">
+                <!--<img calss="showSmile" src="assets/images/rating1.png">-->
+                <img class="hideSmile" src="assets/images/rating6.png">
+                <p class="commentAcction">Terrible</p>
+            </ion-col>
+            <ion-col col-2 class="">
+                <img calss="showSmile" src="assets/images/rating2.png">
+                <!--<img class="hideSmile" src="assets/images/rating7.png">-->
+                <p class="commentAcction">Bad</p>
+            </ion-col>
+            <ion-col col-2 class="smileReview">
+                <!--<img calss="showSmile" src="assets/images/rating3.png">-->
+                <img class="hideSmile" src="assets/images/rating8.png">
+                <p class="commentAcction">Okey</p>
+            </ion-col>
+            <ion-col col-2 class="smileReview">
+                <!--<img calss="showSmile" src="assets/images/rating4.png">-->
+                <img class="hideSmile" src="assets/images/rating9.png">
+                <p class="commentAcction">Good</p>
+            </ion-col>
+            <ion-col col-2 class="smileReview">
+                <!--<img calss="showSmile" src="assets/images/rating5.png">-->
+                <img class="hideSmile" src="assets/images/rating10.png">
+                <p class="commentAcction">Great</p>
+            </ion-col>
+        </ion-row>
+        <form (ngSubmit)="submitComment()">
+            <ion-textarea type="text" rows="4" cols="50" class="input" [(ngModel)]="comment" name="description" placeholder="Write a Comments"></ion-textarea>
+            <button ion-button type="submit" class="btn-hrx sendComment">Send Comment</button>
+            <div class="clear"></div>
+        </form>
+    </div>
+
 </ion-content>

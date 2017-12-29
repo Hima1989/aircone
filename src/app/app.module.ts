@@ -18,6 +18,7 @@ import { Profile } from '../pages/services-home/services-home';
 import { CustomerservicePage } from '../pages/customerservice/customerservice';
 import { ProfilePage } from '../pages/profile/profile';
 import { SendrequestPage } from '../pages/sendrequest/sendrequest';
+import { SendrequestModelPage } from '../pages/sendrequest/sendrequest';
 import { NotificationsPage } from '../pages/notifications/notifications';
 import { RequestslistPage } from '../pages/requestslist/requestslist';
 import { StatusPage } from '../pages/status/status';
@@ -33,6 +34,7 @@ import { AirconeProvider } from '../providers/aircone/aircone';
 import { Facebook } from '@ionic-native/facebook';
 import { Device } from "@ionic-native/device";
 import { GooglePlus } from "@ionic-native/google-plus";
+
 import {
   GoogleMaps
  } from '@ionic-native/google-maps';
@@ -61,6 +63,7 @@ import {
     ServicesHomePage,
     ProfilePage,
     SendrequestPage,
+    SendrequestModelPage,
     NotificationsPage,
     RequestslistPage,
     StatusPage,
@@ -90,6 +93,7 @@ import {
     ServicesHomePage,
     ProfilePage,
     SendrequestPage,
+    SendrequestModelPage,
     NotificationsPage,
     RequestslistPage,
     StatusPage,

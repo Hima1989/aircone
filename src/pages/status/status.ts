@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AirconeProvider } from '../../providers/aircone/aircone';
-import { ServicesPage } from '../services/services'
+import { ServicesPage } from '../services/services';
+import { RequestslistPage } from '../requestslist/requestslist';
 
 /**
  * Generated class for the StatusPage page.
@@ -53,5 +54,8 @@ export class StatusPage {
       this.navCtrl.push(ServicesPage);
     })
   }
-
+  goBack() {
+    this.navCtrl.push(RequestslistPage)
+  }
+  
 }

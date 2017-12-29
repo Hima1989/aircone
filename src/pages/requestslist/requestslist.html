@@ -1,7 +1,14 @@
-<ion-header>
-    <ion-navbar>
-        <ion-title>My Requests</ion-title>
-    </ion-navbar>
+<ion-header class="home-header">
+    <ion-grid>
+        <ion-row>
+            <ion-col col-2 text-left (click)="goBack()">
+                <ion-icon class="icons" ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+            </ion-col>
+            <ion-col col-8 text-center>
+                <ion-title class="title">My Requests</ion-title>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-header>
 <ion-content>
     <ion-item-group>

@@ -1,5 +1,23 @@
+<ion-header class="home-header">
+    <ion-grid>
+        <ion-row>
+            <ion-col col-2 text-left>
+                <ion-icon class="icon-back" ios="ios-arrow-back" md="md-arrow-back" (click)="goBack()"></ion-icon>
+            </ion-col>
+            <ion-col col-8 text-center>
+                <ion-title class="title">
+                    <h3 class="content-heading" text-center>{{service.serviceName}}</h3>
+                </ion-title>
+            </ion-col>
+            <ion-col col-2 text-right class="iconNotification">
+                <ion-icon ios="ios-notifications-outline" md="md-notifications-outline" class="icons"></ion-icon>
+                <span class="notification-value"></span>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-header>
 <ion-content>
-    <div class="service-top">
+    <!--<div class="service-top">
         <ion-grid>
             <ion-row>
                 <ion-col col-2 text-left>
@@ -10,8 +28,7 @@
                 </ion-col>
             </ion-row>
         </ion-grid>
-    </div>
-
+    </div>-->
     <ion-slides class="slide-block" *ngIf="service.slider && service.slider.length" autoplay="2000" loop="true" speed="300">
         <ion-slide class="slide-img" *ngFor="let img of service.slider">
             <img src={{img}} />

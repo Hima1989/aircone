@@ -17,23 +17,21 @@
         font-size: 30px;
         color: $colorLightGray;
     }
-    .title {}
 }
 
-.nav-content {
-    .scroll-content {
-        margin-top: 70px !important;
-    }
-    .navigator {
-        background: url(../assets/images/navigator.png) no-repeat center center;
-        background-size: cover;
-        height: 200px;
-        .btn-hrx {
-            font-size: 18px;
-            text-transform: capitalize;
-            padding: 20px 30px;
-            margin-top: 20px;
-        }
+// .nav-content {
+//     .scroll-content {
+//         margin-top: 70px !important;
+//     }
+.navigator {
+    background: url(../assets/images/navigator.png) no-repeat center center;
+    background-size: cover;
+    height: 200px;
+    .btn-hrx {
+        font-size: 18px;
+        text-transform: capitalize;
+        padding: 20px 30px;
+        margin-top: 20px;
     }
 }
 
@@ -84,8 +82,12 @@ page-home {
         margin-top: 20px;
     }
     .comments-tabs {
+        margin: 10px 0;
         .comments {
             height: auto !important;
+            .slide-data {
+                min-height: 80px;
+            }
         }
     }
 }

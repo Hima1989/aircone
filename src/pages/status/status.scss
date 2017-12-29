@@ -1,11 +1,68 @@
+p {
+    margin: 0;
+    padding: 0;
+}
+
 page-status {
     .input {
-        border: 1px solid $colorBlack;
+        border: 1px solid $borderLightGray;
+        background: $colorLightWhite;
     }
-
-    .div1 {
-        margin-left: auto;
-        margin-right: auto;
+    .statusBlock {
+        padding: 25px 0;
+        .smileReview {
+            .showSmile {
+                display: none;
+            }
+            .hideSmile {
+                padding: 2px;
+                display: block;
+            }
+            p {
+                color: $borderLightGray;
+                padding-top: 4px;
+            }
+        }
+    }
+    .status-mark {
+        .checkMark {
+            border: 1px solid $colorGray;
+            display: inline-block;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            text-align: center;
+            margin-left: 0;
+            ion-icon {
+                color: $colorWhite;
+                font-size: 14px;
+            }
+        }
+        .checkmarkBackground {
+            background: $btnBlue;
+            border-color: $btnBlue;
+        }
+        span {
+            display: inline-block;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+    }
+    .comment-rating {
+        .commentAcction {
+            font-size: 11px;
+            color: $colorLightGray;
+        }
+        .sendComment {
+            margin-top: 15px;
+        }
+    }
+    textarea.text-input {
+        resize: none;
+    }
+    .btn-hrx {
+        width: 100%;
+        display: block;
     }
 }
 

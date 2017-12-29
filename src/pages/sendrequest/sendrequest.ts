@@ -139,3 +139,10 @@ export class SendrequestPage {
     })
   }
 }
+@Component({
+  selector: 'page-sendrequest',
+  templateUrl: 'sendrequestModel.html'
+})
+export class SendrequestModelPage {
+
+}
