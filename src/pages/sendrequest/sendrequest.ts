@@ -62,7 +62,6 @@ export class SendrequestPage {
 
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SendrequestPage');
   }
 
   sendRequest() {

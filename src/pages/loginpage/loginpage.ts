@@ -4,7 +4,6 @@ import { Facebook } from '@ionic-native/facebook';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { HomePage } from '../home/home';
 import { GooglePlus } from '@ionic-native/google-plus';
-import { ServicesPage } from '../services/services';
 import { MechanicPage } from '../mechanic/mechanic';
 import { Geolocation } from '@ionic-native/geolocation';
 import { MechloginPage } from '../mechlogin/mechlogin';
