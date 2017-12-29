@@ -56,3 +56,7 @@ input[type=number] {
 .ion-menu-top {
     margin: 45px 0 16px;
 }
+
+ion-list .item .item-inner .input-wrapper ion-label {
+    color: $borderColor;
+}

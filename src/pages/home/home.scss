@@ -17,13 +17,12 @@
         font-size: 30px;
         color: $colorLightGray;
     }
-    .title {}
 }
 
 .nav-content {
     position: relative;
     .scroll-content {
-        margin-top: 70px !important;
+        // margin-top: 70px !important;
     }
     .navigator {
         background: url(../assets/images/navigator.png) no-repeat center center;
@@ -81,11 +80,14 @@ page-home {
         margin-top: 20px;
     }
     .comments-tabs {
+        margin: 10px 0;
         .comments {
             height: auto !important;
+            .slide-data {
+                min-height: 80px;
+            }
         }
     }
-
     ion-slides {
         height: 55%;
         position: absolute;
