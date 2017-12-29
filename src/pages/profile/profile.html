@@ -11,29 +11,30 @@
     </ion-grid>
 </ion-header>
 <ion-content text-center padding>
+    <form (ngSubmit)="submitDetails()">
     <ion-avatar item-start class="profile-img">
-        <img src="assets/images/profile-pic.png" alt="">
-        <ion-icon class="icon-create" ios="ios-create" md="md-create"></ion-icon>
+        <img [src]="base64Image ? base64Image : 'assets/images/profile-pic.png'" />
+        <ion-icon class="icon-create" (click)="accessGallery()" ios="ios-create" md="md-create"></ion-icon>
     </ion-avatar>
 
 
     <ion-list class="profile-fields">
         <ion-item>
             <ion-label floating>Full Name</ion-label>
-            <ion-input type="text" [(ngModel)]="userDetails.firstName"></ion-input>
+            <ion-input type="text" name="name" [(ngModel)]="userDetails.firstName"></ion-input>
         </ion-item>
-
         <ion-item>
             <ion-label floating>Email Id</ion-label>
-            <ion-input type="text" [(ngModel)]="userDetails.email"></ion-input>
+            <ion-input type="text" name="email" [(ngModel)]="userDetails.email" disabled></ion-input>
         </ion-item>
         <ion-item>
             <ion-label floating>Phone Number</ion-label>
-            <ion-input type="number" [(ngModel)]="userDetails.phoneNumber"></ion-input>
+            <ion-input type="number" name="phone" [pattern]="'^[7-9][0-9]{9}$'" [(ngModel)]="userDetails.phoneNumber"></ion-input>
         </ion-item>
     </ion-list>
     <ion-avatar class="navigator nav-request" item-start text-center>
         <!--<img src="assets/images/navigator.png">-->
-        <button class="btn-hrx" ion-button round>Submit</button>
+        <button type="submit" class="btn-hrx" ion-button round>Submit</button>
     </ion-avatar>
+</form>
 </ion-content>

@@ -34,6 +34,7 @@ import { AirconeProvider } from '../providers/aircone/aircone';
 import { Facebook } from '@ionic-native/facebook';
 import { Device } from "@ionic-native/device";
 import { GooglePlus } from "@ionic-native/google-plus";
+import { Camera } from "@ionic-native/camera";
 
 import {
   GoogleMaps
@@ -113,7 +114,8 @@ import {
     Device,
     GoogleMaps,
     GooglePlus,
-    Geolocation
+    Geolocation,
+    Camera
   ]
 })
 export class AppModule {}

@@ -43,7 +43,7 @@
             <h5>Price chart</h5>
             <ion-row (click)="presentProfileModal()">
                 <ion-slides class="serviceBlockImg" loop="true">
-                    <ion-slide col-4 class="" *ngFor="let img of service.slider">
+                    <ion-slide col-4 class="" *ngFor="let img of service.priceChart">
                         <img src="{{img}}" imageViewer>
                     </ion-slide>
                 </ion-slides>

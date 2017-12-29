@@ -21,15 +21,13 @@
         <ion-item>
             <ion-input type="text" [(ngModel)]="request.name" formControlName="Name" placeholder="Name"></ion-input>
         </ion-item>
-
         <ion-item>
-            <ion-input type="number" [(ngModel)]="request.phone" formControlName="Phone" placeholder="Phone Number"></ion-input>
+            <ion-input type="number" [pattern]="'^[7-9][0-9]{9}$'" [(ngModel)]="request.phone" formControlName="Phone" placeholder="Phone Number"></ion-input>
         </ion-item>
 
         <ion-item>
-            <ion-input type="number" [(ngModel)]="request.phonealt" formControlName="AltPhone" placeholder="Alternative  Phone"></ion-input>
+            <ion-input type="number" [pattern]="'^[7-9][0-9]{9}$'" [(ngModel)]="request.phonealt" formControlName="AltPhone" placeholder="Alternative  Phone"></ion-input>
         </ion-item>
-
         <ion-item>
             <ion-input type="text" [(ngModel)]="request.door" formControlName="Door" placeholder="Door Number"></ion-input>
         </ion-item>
@@ -45,9 +43,8 @@
         <ion-item>
             <ion-input type="text" [(ngModel)]="request.city" formControlName="City" placeholder="City"></ion-input>
         </ion-item>
-
         <ion-item>
-            <ion-input type="number" [(ngModel)]="request.pincode" formControlName="Pincode" placeholder="Pincode"></ion-input>
+            <ion-input type="number" [pattern]="'^[1-9][0-9]{5}$'" [(ngModel)]="request.pincode" formControlName="Pincode" placeholder="Pincode"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label fixed>Type</ion-label>
@@ -61,5 +58,11 @@
             <!--<img src="assets/images/navigator.png">-->
             <button class="btn-hrx" type="submit" [disabled]="!orderForm.valid" ion-button round><ion-icon class="icons navigate nav-request" ios="ios-navigate" md="md-navigate"></ion-icon>Send Request</button>
         </ion-avatar>
+    </form>
+
+    <ion-avatar class="navigator nav-request" item-start text-center>
+        <!--<img src="assets/images/navigator.png">-->
+        <button class="btn-hrx" type="submit" [disabled]="!orderForm.valid" ion-button round><ion-icon class="icons navigate nav-request" ios="ios-navigate" md="md-navigate"></ion-icon>Send Request</button>
+    </ion-avatar>
     </form>
 </ion-content>

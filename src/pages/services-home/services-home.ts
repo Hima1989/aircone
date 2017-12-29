@@ -46,7 +46,6 @@ export class ServicesHomePage {
   // }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ServicesHomePage');
   }
 
   presentProfileModal() {

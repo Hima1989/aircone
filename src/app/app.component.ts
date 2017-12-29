@@ -29,6 +29,7 @@ export class MyApp {
   servicesPage: any = ServicesPage;
   servicesHomePage: any = ServicesHomePage;
   profilePage:any = ProfilePage;
+  requestslistPage: any = RequestslistPage;
  // nav: NavController
 
   constructor(public airconeProvider: AirconeProvider, public platform: Platform, public alertCtrl: AlertController, public statusBar: StatusBar, public splashScreen: SplashScreen, public menuCtrl: MenuController, public toast: ToastController) {
