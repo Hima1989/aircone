@@ -15,12 +15,13 @@
     // padding: 5px 0;
     .icons {
         font-size: 30px;
-        color: $colorGray;
+        color: $colorLightGray;
     }
     .title {}
 }
 
 .nav-content {
+    position: relative;
     .scroll-content {
         margin-top: 70px !important;
     }
@@ -74,11 +75,7 @@ page-home {
         padding-left: 10px;
     }
     #map {
-        height: 50%;
-    }
-    .map {
-        height: 200px;
-        background: $colorBlack;
+        height: 100%;
     }
     .btn-hrx {
         margin-top: 20px;
@@ -87,5 +84,12 @@ page-home {
         .comments {
             height: auto !important;
         }
+    }
+
+    ion-slides {
+        height: 55%;
+        position: absolute;
+        bottom: 30px;
+        left: 0;
     }
 }

@@ -24,7 +24,6 @@ export class RequestslistPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RequestslistPage');
   }
 
   loadRequests() {
@@ -32,7 +31,6 @@ export class RequestslistPage {
     this.airconeProvider.loadRequests(userData.id)
     .then(res => {
       this.requests = res;
-      console.log(this.requests)
     })
   }
 

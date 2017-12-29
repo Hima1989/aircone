@@ -4,11 +4,9 @@ import { Facebook } from '@ionic-native/facebook';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { HomePage } from '../home/home';
 import { GooglePlus } from '@ionic-native/google-plus';
-import { ServicesPage } from '../services/services';
 import { MechanicPage } from '../mechanic/mechanic';
 import { Geolocation } from '@ionic-native/geolocation';
 import { MechloginPage } from '../mechlogin/mechlogin';
-
 /**
  * Generated class for the LoginpagePage page.
  *
@@ -68,7 +66,7 @@ export class LoginpagePage {
                 this.data = res;
                 if (this.data.status === 200 && this.data.user.role[0] == 'USER') {
                 //  console.log(this.coords)
-                  this.navCtrl.push(ServicesPage);
+                  this.navCtrl.push(HomePage);
                   var userInfo = {
                     "firstName": tempData[0].user.firstName,
                     "email": tempData[0].user.email,

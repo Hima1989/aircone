@@ -1,3 +1,72 @@
 page-requestslist {
 
+    .ORDER_CLOSED {
+        border-left:5px solid red;
+    }
+
+    .ORDER_APPROVED {
+        border-left:5px solid green;
+    }
+
+    .ORDER_REQUESTED {
+        border-left:5px solid rgb(94, 94, 227);
+    }
+
+    .ORDER_DECLINED {
+        border-left:5px solid red;        
+    }
+
+    .ORDER_CANCELLED {
+        border-left:5px solid blue;        
+    }
+
+    .ORDER_CLOSEDa {
+        background-color: red
+    }
+
+    .ORDER_APPROVEDa {
+        background-color: green
+    }
+
+    .ORDER_REQUESTEDa {
+        background-color: red
+    }
+
+    .ORDER_DECLINEDa {
+        background-color: red
+    }
+
+    .ORDER_CANCELLEDa {
+        background-color: blue
+    }
+
+    .button {
+        border: none;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 10px;
+        font-weight: bold;
+        color: white;
+        padding: 5px 10px;
+        margin: 4px 2px;
+        border-radius: 20px;
+    }
+
+    .inner-request-item {
+        padding: 7px 0 4px 13px;
+        border-top: 1px solid rgb(232, 229, 229);        
+        border-right: 1px solid rgb(232, 229, 229);        
+        border-bottom: 1px solid rgb(232, 229, 229);                
+    }
+
+    .status-image {
+        float: left;
+    }
+    .status-right-service {
+        margin-left: 75px;
+    }
+    .clear {
+        clear: both;
+    }
 }

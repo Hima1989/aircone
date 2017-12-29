@@ -1,11 +1,19 @@
-page-services {
-    .service-block {
-        background: rgba(0, 0, 0, 0.5);
-    }
+page-services {}
+
+.block-space {
+    padding: 15px 5px;
+}
+
+.ion-md-notifications-outline {
+    transform: rotate(25deg);
+}
+
+.ion-md-menu {
+    line-height: 28px;
 }
 
 .ion-service {
-    padding: 5px 0px;
+    padding: 0px;
 }
 
 .menu-toggle {
@@ -28,7 +36,13 @@ page-services {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     margin-bottom: 0;
-    margin-top: 10px;
+    margin-top: 0px;
+}
+
+.service-shadow {
+    -webkit-box-shadow: 0px 12px 18px -8px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 0px 12px 18px -8px rgba(0, 0, 0, 0.7);
+    box-shadow: 0px 12px 18px -8px rgba(0, 0, 0, 0.7);
 }
 
 .service-block {
@@ -38,22 +52,25 @@ page-services {
         font-size: 16px;
         text-align: center;
         font-weight: 400;
-        color: $colorWhite;
+        color: $colorLightGray;
+        text-transform: capitalize;
         min-height: 40px;
+        padding: 0 8px;
+        padding-top: 10px;
     }
-    .service-img {
-        width: 80px;
-        height: 105px;
-        margin: 10px auto;
-        display: table;
-        img {
-            // height: 100%;
-            width: auto;
-            margin: auto;
-        }
-        .service-block-content {
-            display: table-cell;
-            vertical-align: middle;
-        }
-    }
+    // .service-img {
+    //     width: 80px;
+    //     height: 105px;
+    //     margin: 10px auto;
+    //     display: table;
+    //     img {
+    //         // height: 100%;
+    //         width: auto;
+    //         margin: auto;
+    //     }
+    //     .service-block-content {
+    //         display: table-cell;
+    //         vertical-align: middle;
+    //     }
+    // }
 }
