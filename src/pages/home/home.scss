@@ -94,4 +94,22 @@ page-home {
         bottom: 30px;
         left: 0;
     }
+
+    .statusBlock {
+        padding: 25px 0;
+        .smileReview {
+            .showSmile {
+                display: none;
+            }
+            .hideSmile {
+                padding: 2px;
+                display: block;
+            }
+            p {
+                color: $borderLightGray;
+                padding-top: 4px;
+            }
+            float: left;
+        }
+    }
 }

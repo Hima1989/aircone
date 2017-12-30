@@ -13,8 +13,8 @@ import { Device } from '@ionic-native/device';
 export class AirconeProvider {
 
   data;
- baseURL = "https://air-cone-backend.appspot.com"; //production
-    // baseURL = "http://localhost:80"; //development
+baseURL = "https://air-cone-backend.appspot.com"; //production
+//    baseURL = "http://localhost:80"; //development
   constructor(public http: Http, public device: Device) {
   }
 
@@ -80,6 +80,52 @@ export class AirconeProvider {
   loadRequests(userId) {
     return new Promise(resolve => {
       this.http.get(this.baseURL+'/get/' +userId+ '/getRequests')
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+  }
+
+  deleteRequests(requestId) {
+    console.log(requestId)
+    return new Promise(resolve => {
+      this.http.delete(this.baseURL+'/delete/' +requestId+ '/request')
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+  }
+
+  fileUploadBase64(file) {
+    // let headers = new Headers();
+    // let formData: FormData = new FormData();
+    // formData.append('content', file);
+
+    var data:any = {
+      imgbase64:file
+    }
+
+    return new Promise(resolve => {
+      this.http.post('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/file/base64/upload', data)
+      // this.http.post('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/file/uploads3', formData, {
+        // headers: headers
+      // })
+        .map(res => res.json())
+        .subscribe(data => {
+          // console.log(data)
+          this.data = data;
+          resolve(this.data);
+        })
+    });
+  }
+
+  userDetailsUpdate(userDetails) {
+    return new Promise(resolve => {
+      this.http.put(this.baseURL+'/user/'+userDetails.id+'/detailsUpdate', userDetails)
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
@@ -211,7 +257,8 @@ export class AirconeProvider {
   }
 
   fileUpload(file) {
-    console.log(file);
+    //console.log(file);
+    console.log("apphitted")
     let headers = new Headers();
     let formData: FormData = new FormData();
     formData.append('content', file);
@@ -227,7 +274,7 @@ export class AirconeProvider {
       })
         .map(res => res.json())
         .subscribe(data => {
-          // console.log(data)
+           console.log("url generated")
           this.data = data;
           resolve(this.data);
         })

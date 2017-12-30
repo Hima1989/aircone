@@ -33,6 +33,15 @@ export class ProfilePage {
 
   submitDetails() {
     console.log(this.userDetails)
+    
+    if (this.myfile) {
+      this.userDetails.image = JSON.stringify(this.myfile.imageURL);
+    }
+   // this.userDetails.image = "https://my-tips-s3.s3.amazonaws.com/images/1514638844961_file.jpeg";
+    this.airconeProvider.userDetailsUpdate(this.userDetails)
+    .then(res => {
+      console.log(res)
+    })
   }
 
   accessGallery(){
@@ -50,11 +59,11 @@ export class ProfilePage {
    myfile: any;
    fileChange() {
      this.myfile = this.base64Image;
-     this.airconeProvider.fileUpload(this.myfile)
+     this.airconeProvider.fileUploadBase64(this.myfile)
      .then(data => {
-      //  this.service.image = '';
-      //  this.service.image = (data['files'][0].url);
-      console.log(data['files'][0].url);
+      this.myfile = data;
+      
+      console.log(JSON.stringify(this.myfile.imageURL))
      },
    err => {
      console.log(err);

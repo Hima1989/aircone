@@ -14,18 +14,18 @@
 <ion-content padding>
     <ion-row class="statusBlock">
         <ion-col col-4 class="status-mark">
-            <span class="checkMark checkmarkBackground"><ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon></span>
+            <span class="checkMark {{requested}} {{approved}} {{closed}}"><ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon></span>
             <!--<ion-checkbox color="dark" checked="true" round></ion-checkbox>-->
             <!--<ion-radio class="status-line" [checked]="request.status=='ORDER_REQUESTED' || request.status=='ORDER_ACCEPTED'"></ion-radio>-->
             <span>Sent</span>
         </ion-col>
         <ion-col col-4 class="status-mark">
-            <span class="checkMark"><ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon></span>
+            <span class="checkMark {{approved}} {{closed}}"><ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon></span>
             <!--<ion-radio class="status-line" [checked]="request.status=='ORDER_REQUESTED' || request.status=='ORDER_ACCEPTED'"></ion-radio>-->
             <span>Accepted</span>
         </ion-col>
         <ion-col col-4 class="status-mark">
-            <span class="checkMark"><ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon></span>
+            <span class="checkMark {{closed}}"><ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon></span>
             <!--<ion-radio class="status-line" [checked]="request.status=='ORDER_REQUESTED' || request.status=='ORDER_ACCEPTED'"></ion-radio>-->
             <span>Completed</span>
         </ion-col>
@@ -39,28 +39,28 @@
             <ion-col col-1>
             </ion-col>
             <ion-col col-2 class="smileReview">
-                <!--<img calss="showSmile" src="assets/images/rating1.png">-->
-                <img class="hideSmile" src="assets/images/rating6.png">
+                <img calss="showSmile" *ngIf="gsmile.gs1" (click)="smileyAdd(1)" src="assets/images/rating1.png">
+                <img class="hideSmile" *ngIf="lsmile.ls1" (click)="reSmileyAdd(1)" src="assets/images/rating6.png">
                 <p class="commentAcction">Terrible</p>
             </ion-col>
-            <ion-col col-2 class="">
-                <img calss="showSmile" src="assets/images/rating2.png">
-                <!--<img class="hideSmile" src="assets/images/rating7.png">-->
+            <ion-col col-2 class="smileReview">
+                <img calss="showSmile" *ngIf="gsmile.gs2" (click)="smileyAdd(2)" src="assets/images/rating2.png">
+                <img class="hideSmile" *ngIf="lsmile.ls2" (click)="reSmileyAdd(2)" src="assets/images/rating7.png">
                 <p class="commentAcction">Bad</p>
             </ion-col>
             <ion-col col-2 class="smileReview">
-                <!--<img calss="showSmile" src="assets/images/rating3.png">-->
-                <img class="hideSmile" src="assets/images/rating8.png">
+                <img calss="showSmile" *ngIf="gsmile.gs3" (click)="smileyAdd(3)" src="assets/images/rating3.png">
+                <img class="hideSmile" *ngIf="lsmile.ls3" (click)="reSmileyAdd(3)" src="assets/images/rating8.png">
                 <p class="commentAcction">Okey</p>
             </ion-col>
             <ion-col col-2 class="smileReview">
-                <!--<img calss="showSmile" src="assets/images/rating4.png">-->
-                <img class="hideSmile" src="assets/images/rating9.png">
+                <img calss="showSmile" *ngIf="gsmile.gs4" (click)="smileyAdd(4)" src="assets/images/rating4.png">
+                <img class="hideSmile" *ngIf="lsmile.ls4" (click)="reSmileyAdd(4)" src="assets/images/rating9.png">
                 <p class="commentAcction">Good</p>
             </ion-col>
             <ion-col col-2 class="smileReview">
-                <!--<img calss="showSmile" src="assets/images/rating5.png">-->
-                <img class="hideSmile" src="assets/images/rating10.png">
+                <img calss="showSmile" *ngIf="gsmile.gs5" (click)="smileyAdd(5)" src="assets/images/rating5.png">
+                <img class="hideSmile" *ngIf="lsmile.ls5" (click)="reSmileyAdd(5)" src="assets/images/rating10.png">
                 <p class="commentAcction">Great</p>
             </ion-col>
         </ion-row>
