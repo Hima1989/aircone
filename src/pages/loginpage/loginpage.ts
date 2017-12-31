@@ -39,7 +39,7 @@ export class LoginpagePage {
 
   loadMap() {
 
-    var options = { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true };
+    var options = { maximumAge: 3000, timeout: 10000, enableHighAccuracy: true };
 
     this.geolocation.getCurrentPosition(options).then((resp) => {
       this.coords = {

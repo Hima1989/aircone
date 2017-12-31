@@ -29,6 +29,13 @@
                     </ion-avatar>
                     <h2 class="cus-name">{{comment.user.userName}}</h2>
                     <p class="cus-nav">Akkayyapalem</p>
+                    <ion-avatar item-start>
+                        <img class="smileReview" *ngIf="comment.rating == 1" src="assets/images/rating1.png">
+                        <img class="smileReview" *ngIf="comment.rating == 2" src="assets/images/rating2.png">
+                        <img class="smileReview" *ngIf="comment.rating == 3" src="assets/images/rating3.png">
+                        <img class="smileReview" *ngIf="comment.rating == 4" src="assets/images/rating4.png">
+                        <img class="smileReview" *ngIf="comment.rating == 5" src="assets/images/rating5.png">
+                    </ion-avatar>
                 </ion-item>
                 <ion-card-content class="slide-data">
                     <p class="cus-comment">{{comment.commentText}}</p>
