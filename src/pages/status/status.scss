@@ -38,7 +38,15 @@ page-status {
                 font-size: 14px;
             }
         }
-        .checkmarkBackground {
+        .requested {
+            background: $btnBlue;
+            border-color: $btnBlue;
+        }
+        .closed {
+            background: $btnBlue;
+            border-color: $btnBlue;
+        }
+        .approved {
             background: $btnBlue;
             border-color: $btnBlue;
         }

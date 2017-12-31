@@ -12,11 +12,11 @@
 </ion-header>
 <ion-content>
     <ion-item-group>
-        <ion-item *ngFor="let request of requests" no-lines (click)="goToStatus(request)">
+            <ion-list>
+            <ion-item-sliding *ngFor="let request of requests" #item>
+        <ion-item no-lines (click)="goToStatus(request)">
             <div class="inner-request-item {{request.status}}">
-            <!-- <ion-avatar item-start> -->
                 <img width="60" height="60" class="status-image" src="{{request.serviceImage}}">
-            <!-- </ion-avatar> -->
             <div class="status-right-service">
             <h2><b>{{request.serviceName}} Service</b></h2>
             <p>ID: {{request.id}}</p>
@@ -38,5 +38,28 @@
         </div>
     </div>
         </ion-item>
+                     <ion-item-options side="left">
+                <button ion-button color="danger" (click)="delete(request)">Delete</button>
+              </ion-item-options>
+            </ion-item-sliding>
+          </ion-list>
     </ion-item-group>
+
+
+    <!-- <ion-list>
+            <ion-item-sliding *ngFor="let request of requests" #item>
+              <ion-item>
+                Item
+              </ion-item>
+              <ion-item-options side="left">
+                <button ion-button (click)="favorite(item)">Favorite</button>
+                <button ion-button color="danger" (click)="share(item)">Share</button>
+              </ion-item-options>
+          
+              <ion-item-options side="right">
+                <button ion-button (click)="unread(item)">Unread</button>
+              </ion-item-options>
+            </ion-item-sliding>
+          </ion-list> -->
+
 </ion-content>

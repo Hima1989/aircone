@@ -41,4 +41,12 @@ export class RequestslistPage {
     goBack() {
     this.navCtrl.push(HomePage)
   }
+
+  delete(request) {
+  //  console.log(request)
+    this.airconeProvider.deleteRequests(request.id)
+    .then(res => {
+      this.requests.splice(this.requests.indexOf(request),1)
+    })
+  }
 }
