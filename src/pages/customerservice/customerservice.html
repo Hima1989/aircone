@@ -6,19 +6,35 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>customerservice</ion-title>
-  </ion-navbar>
+    <ion-navbar class="header-background">
+        <ion-title>customerservice</ion-title>
+    </ion-navbar>
 
 </ion-header>
-
+<!--<ion-header class="home-header">
+    <ion-grid>
+        <ion-row>
+            <ion-col col-2 text-left>
+                <ion-icon class="icons" ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+            </ion-col>
+            <ion-col col-8 text-center>
+                <ion-title class="title">Customer Service</ion-title>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-header>-->
 
 <ion-content padding>
 
-  <form (ngSubmit)="servicesubmit()">
-    <ion-label stacked>Customer Service</ion-label>
-    <ion-input type="text" [(ngModel)]="comment" placeholder="Text Input" name="comment"></ion-input>
-    <button type="submit" round>submit</button>
-  </form>
+    <!--<form (ngSubmit)="servicesubmit()">
+        <ion-label stacked>Customer Service</ion-label>
+        <textarea type="text" [(ngModel)]="comment" placeholder="Text Input" name="comment"></textarea>
+        <button type="submit" round>submit</button>
+    </form>-->
+    <form (ngSubmit)="servicesubmit()">
+        <ion-textarea type="text" rows="4" cols="50" class="input" [(ngModel)]="comment" name="description" placeholder="Write a Comments"></ion-textarea>
+        <button ion-button type="submit" class="btn-hrx sendComment" float-right>Submit</button>
+        <div class="clear"></div>
+    </form>
 
 </ion-content>

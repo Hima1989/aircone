@@ -56,4 +56,7 @@ export class MechloginPage {
     })
 
   }
+  //   goBack() {
+  //   this.navCtrl.push(HomePage)
+  // }
 }

@@ -12,7 +12,7 @@
 
     <ion-content>
         <ion-list class="ion-menu-top">
-            <button ion-item (click)="home()">
+            <button class="ionMenu" ion-item (click)="home()">
                     <ion-icon class="icon-padding icon-menu" ios="ios-home" md="md-home"></ion-icon> Home
               </button>
             <button ion-item (click)="profile()">
@@ -35,6 +35,6 @@
     </ion-content>
 </ion-menu>
 
-<ion-nav id="nav" [root]="loginPage" #content swipeBackEnabled="false"></ion-nav> 
+<ion-nav id="nav" [root]="loginPage" #content swipeBackEnabled="false"></ion-nav>
 
 <!-- <ion-nav id="nav" [root]="rootPage" #content swipeBackEnabled="false"></ion-nav> -->
