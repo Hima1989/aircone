@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { AirconeProvider } from '../../providers/aircone/aircone';
+import { ServicesHomePage } from '../services-home/services-home';
 
 /**
  * Generated class for the CustomerservicePage page.
@@ -44,6 +45,10 @@ export class CustomerservicePage {
     });
   }
 
-    
+  //   goBack() {
+  //   this.navCtrl.push(ServicesHomePage {
+  //     id: this.serviceId
+  //   })
+  // }  
 
 }

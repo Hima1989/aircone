@@ -23,7 +23,7 @@
     <ion-slides class="comments-tabs" *ngIf="comments && comments.length" autoplay="5000" loop="true" speed="300">
         <ion-slide class="comments" *ngFor="let comment of comments">
             <ion-card class="comment-block">
-                <ion-item class="comment-top">
+                <!--<ion-item class="comment-top">
                     <ion-avatar item-start>
                         <img src="assets/images/cus-img.png">
                     </ion-avatar>
@@ -36,6 +36,24 @@
                         <img class="smileReview" *ngIf="comment.rating == 4" src="assets/images/rating4.png">
                         <img class="smileReview" *ngIf="comment.rating == 5" src="assets/images/rating5.png">
                     </ion-avatar>
+                </ion-item>-->
+                <ion-item class="comment-top">
+                    <ion-row>
+                        <ion-col col-3 class="slide-imgs">
+                            <img src="assets/images/cus-img.png">
+                        </ion-col>
+                        <ion-col col-6>
+                            <h2 class="cus-name">{{comment.user.userName}}</h2>
+                            <p class="cus-nav">Akkayyapalem</p>
+                        </ion-col>
+                        <ion-col class="slide-imgs" col-3>
+                            <img class="smileReview" float-right *ngIf="comment.rating == 1" src="assets/images/rating1.png">
+                            <img class="smileReview" float-right *ngIf="comment.rating == 2" src="assets/images/rating2.png">
+                            <img class="smileReview" float-right *ngIf="comment.rating == 3" src="assets/images/rating3.png">
+                            <img class="smileReview" float-right *ngIf="comment.rating == 4" src="assets/images/rating4.png">
+                            <img class="smileReview" float-right *ngIf="comment.rating == 5" src="assets/images/rating5.png">
+                        </ion-col>
+                    </ion-row>
                 </ion-item>
                 <ion-card-content class="slide-data">
                     <p class="cus-comment">{{comment.commentText}}</p>

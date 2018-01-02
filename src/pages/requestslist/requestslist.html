@@ -10,56 +10,61 @@
         </ion-row>
     </ion-grid>
 </ion-header>
-<ion-content>
-    <ion-item-group>
-            <ion-list>
-            <ion-item-sliding *ngFor="let request of requests" #item>
-        <ion-item no-lines (click)="goToStatus(request)">
-            <div class="inner-request-item {{request.status}}">
-                <img width="60" height="60" class="status-image" src="{{request.serviceImage}}">
-            <div class="status-right-service">
-            <h2><b>{{request.serviceName}} Service</b></h2>
-            <p>ID: {{request.id}}</p>
-            <div *ngIf="request.status=='ORDER_REQUESTED'">
-                 <button class="button {{request.status}}a">PENDING</button>
-            </div>
-            <div *ngIf="request.status=='ORDER_CANCELLED'">
-                 <button class="button {{request.status}}a">CANCELED</button>
-                </div>
-            <div *ngIf="request.status=='ORDER_DECLINED'">
-                <button class="button {{request.status}}a">DECLINED</button>
-            </div>
-            <div *ngIf="request.status=='ORDER_CLOSED'">
-                <button class="button {{request.status}}a">CLOSED</button>
-            </div>
-            <div *ngIf="request.status=='ORDER_APPROVED'">
-                <button class="button {{request.status}}a">ACCEPTED</button>
-            </div>
+<ion-content padding>
+    <!--<ion-item-group>
+        <ion-list>
+            <ion-item-sliding *ngFor="let request of requests" #item> 
+                <ion-item no-lines (click)="goToStatus(request)">
+                    <div class="inner-request-item {{request.status}}">
+                        <img width="60" height="60" class="status-image" src="{{request.serviceImage}}">
+                        <div class="status-right-service">
+                            <h2><b>{{request.serviceName}} Service</b></h2>
+                            <p>ID: {{request.id}}</p>
+                            <div *ngIf="request.status=='ORDER_REQUESTED'">
+                                <button class="button {{request.status}}a">PENDING</button>
+                            </div>
+                            <div *ngIf="request.status=='ORDER_CANCELLED'">
+                                <button class="button {{request.status}}a">CANCELED</button>
+                            </div>
+                            <div *ngIf="request.status=='ORDER_DECLINED'">
+                                <button class="button {{request.status}}a">DECLINED</button>
+                            </div>
+                            <div *ngIf="request.status=='ORDER_CLOSED'">
+                                <button class="button {{request.status}}a">CLOSED</button>
+                            </div>
+                            <div *ngIf="request.status=='ORDER_APPROVED'">
+                                <button class="button {{request.status}}a">ACCEPTED</button>
+                            </div>
+                        </div>
+                    </div>
+                </ion-item>
+                <ion-item-options side="left">
+                    <button ion-button color="danger" (click)="delete(request)">Delete</button>
+                </ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
+    </ion-item-group>-->
+
+    <ion-item *ngFor="let request of requests" #item class="requestStatus ORDER_APPROVED" (click)="goToStatus(request)">
+        <ion-avatar item-start>
+            <img src="{{request.serviceImage}}">
+        </ion-avatar>
+        <h2>{{request.serviceName}} Service</h2>
+        <p>ID: {{request.id}}</p>
+        <div *ngIf="request.status=='ORDER_REQUESTED'">
+            <button class="button {{request.status}}a">PENDING</button>
         </div>
-    </div>
-        </ion-item>
-                     <ion-item-options side="left">
-                <button ion-button color="danger" (click)="delete(request)">Delete</button>
-              </ion-item-options>
-            </ion-item-sliding>
-          </ion-list>
-    </ion-item-group>
-
-
-    <!-- <ion-list>
-            <ion-item-sliding *ngFor="let request of requests" #item>
-              <ion-item>
-                Item
-              </ion-item>
-              <ion-item-options side="left">
-                <button ion-button (click)="favorite(item)">Favorite</button>
-                <button ion-button color="danger" (click)="share(item)">Share</button>
-              </ion-item-options>
-          
-              <ion-item-options side="right">
-                <button ion-button (click)="unread(item)">Unread</button>
-              </ion-item-options>
-            </ion-item-sliding>
-          </ion-list> -->
-
+        <div *ngIf="request.status=='ORDER_CANCELLED'">
+            <button class="button {{request.status}}a">CANCELED</button>
+        </div>
+        <div *ngIf="request.status=='ORDER_DECLINED'">
+            <button class="button {{request.status}}a">DECLINED</button>
+        </div>
+        <div *ngIf="request.status=='ORDER_CLOSED'">
+            <button class="button {{request.status}}a">CLOSED</button>
+        </div>
+        <div *ngIf="request.status=='ORDER_APPROVED'">
+            <button class="button {{request.status}}a">ACCEPTED</button>
+        </div>
+    </ion-item>
 </ion-content>

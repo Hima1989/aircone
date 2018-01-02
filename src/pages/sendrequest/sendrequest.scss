@@ -2,6 +2,9 @@ page-profile {}
 
 .profile-item {
     padding-left: 0px;
+    .text-input-md {
+        margin: 0;
+    }
 }
 
 input[type=number] {

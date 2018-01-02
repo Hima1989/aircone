@@ -1,3 +1,19 @@
-page-mechlogin {
+page-mechlogin {}
 
+.item-md {
+    padding-left: 0;
+}
+
+.ion-menu-top {
+    .item-md {
+        .item-inner {
+            padding-left: 16px;
+        }
+    }
+}
+
+.slide-zoom {
+    .item-md {
+        padding-left: 16px;
+    }
 }

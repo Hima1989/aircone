@@ -5,31 +5,31 @@
   Ionic pages and navigation.
 -->
 <ion-header class="home-header">
-  <ion-grid>
-      <ion-row>
-          <ion-col col-2 text-left>
-              <ion-icon class="icons" ios="ios-menu" md="md-menu"></ion-icon>
-          </ion-col>
-          <ion-col col-8 text-center>
-              <ion-title class="title"><img src="assets/images/logo1.png"></ion-title>
-          </ion-col>
-      </ion-row>
-  </ion-grid>
+    <ion-grid>
+        <ion-row>
+            <ion-col col-2 text-left>
+                <ion-icon class="icons" ios="ios-menu" md="md-menu"></ion-icon>
+            </ion-col>
+            <ion-col col-8 text-center>
+                <ion-title class="title">Tasks</ion-title>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-header>
 
 
 <ion-content padding>
-  <ion-list *ngIf="showRequest">
-    <ion-item *ngFor="let request of mechRequests">
-        <ion-thumbnail item-start>
-            <img src="{{request.serviceImage}}">
-        </ion-thumbnail>
-        <h2>Request For <b>{{request.request.serviceName}}</b> Service</h2>
-        <p>#id:{{request.id}}</p>
-        <button (click)="goToRequest(request)" ion-button clear item-end>View</button>
-    </ion-item>
-</ion-list>
-<ion-list *ngIf="showComment">
-    <h4>Sorry, no Tasks assigned for You!</h4>
-</ion-list>
+    <ion-list *ngIf="showRequest">
+        <ion-item *ngFor="let request of mechRequests">
+            <ion-thumbnail item-start>
+                <img src="{{request.serviceImage}}">
+            </ion-thumbnail>
+            <h2>Request For <b>{{request.request.serviceName}}</b> Service</h2>
+            <p>#id:{{request.id}}</p>
+            <button (click)="goToRequest(request)" ion-button clear item-end>View</button>
+        </ion-item>
+    </ion-list>
+    <ion-list *ngIf="showComment">
+        <h4 class="empty-msg">Sorry, no Tasks assigned for You!</h4>
+    </ion-list>
 </ion-content>

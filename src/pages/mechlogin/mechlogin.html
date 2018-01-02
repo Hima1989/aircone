@@ -4,48 +4,60 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<!--<ion-header>
 
   <ion-navbar>
     <ion-title>mechlogin</ion-title>
   </ion-navbar>
 
+</ion-header>-->
+<ion-header class="home-header">
+    <ion-grid>
+        <ion-row>
+            <ion-col col-2 text-left>
+                <ion-icon class="icons" ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+            </ion-col>
+            <ion-col col-8 text-center>
+                <ion-title class="title">mechlogin</ion-title>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-header>
 
-
 <ion-content padding>
-  <ion-row class="logo-row">
-    <ion-col></ion-col>
-    <ion-row width-67>
-      <!-- <img src="http://placehold.it/300x200"/> -->
-      <h4>AirCone Mechanic Login</h4>
-    </ion-row>
-    <ion-col></ion-col>
-  </ion-row>
-  <div class="login-box">
-    <form (ngSubmit)="login()" [formGroup]="loginForm" #registerForm="ngForm">
-      <ion-row>
-        <ion-col>
-          <ion-list inset>
-            
-            <ion-item>
-              <ion-input type="text" placeholder="Email" formControlName="identifier" name="email" [(ngModel)]="registerCredentials.email" required></ion-input>
-            </ion-item>
-            
-            <ion-item>
-              <ion-input type="password" placeholder="Password" formControlName="password" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
-            </ion-item>
-            
-          </ion-list>
-        </ion-col>
-      </ion-row>
-      
-      <ion-row>
-        <ion-col class="signup-col">
-          <button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Login</button>
-        </ion-col>
-      </ion-row>
-      
-    </form>
-  </div>
+    <!--<ion-row class="logo-row">
+        <ion-col></ion-col>
+        <ion-row width-67>
+            <img src="http://placehold.it/300x200"/>
+            <h4>AirCone Mechanic Login</h4>
+        </ion-row>
+        <ion-col></ion-col>
+    </ion-row>-->
+    <h4 text-center>AirCone Mechanic Login</h4>
+    <div class="login-box">
+        <form (ngSubmit)="login()" [formGroup]="loginForm" #registerForm="ngForm">
+            <ion-row>
+                <ion-col>
+                    <!--<ion-list inset>-->
+                    <ion-list class="profile-fields">
+                        <ion-item>
+                            <ion-label floating>Email</ion-label>
+                            <ion-input type="text" formControlName="identifier" name="email" [(ngModel)]="registerCredentials.email" required></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label floating>password</ion-label>
+                            <ion-input type="password" formControlName="password" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
+                        </ion-item>
+                    </ion-list>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col class="signup-col">
+                    <button ion-button class="submit-btn" full type="submit">Login</button>
+                </ion-col>
+            </ion-row>
+
+        </form>
+    </div>
 </ion-content>
