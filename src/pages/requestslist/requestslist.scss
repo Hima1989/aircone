@@ -81,7 +81,9 @@ page-requestslist {
         &:before {
             position: absolute;
             content: "";
-            border-left: 10px solid red;
+            border-left-style: solid;
+            border-left-width: 10px;
+            // border-left: 10px solid red;
             left: 0;
             top: 0;
             height: 100%;
