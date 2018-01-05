@@ -21,15 +21,18 @@
             <button ion-item (click)="myRequests()">
                     <ion-icon class="icon-padding icon-menu" ios="ios-mail-open" md="md-mail-open"></ion-icon> My Requests
               </button>
-            <button ion-item (click)="profile()">
+            <button ion-item (click)="addAddress()">
                     <ion-icon class="icon-padding icon-menu" ios="ios-pin" md="md-pin"></ion-icon> Manage Address
               </button>
             <button ion-item (click)="customerService()">
-                <ion-icon class="icon-padding icon-menu" ios="ios-contacts" md="md-contacts"></ion-icon> Customer Service
-          </button>
+                    <ion-icon class="icon-padding icon-menu" ios="ios-contacts" md="md-contacts"></ion-icon> Customer Service
+            </button>
+            <button ion-item (click)="otherShare()">
+                    <ion-icon ios="ios-share-alt" md="md-share-alt"></ion-icon> Share App
+            </button>
             <button ion-item (click)="logout()">
                     <ion-icon class="icon-padding" ios="ios-log-out" md="md-log-out"></ion-icon> Logout
-              </button>
+            </button>
 
         </ion-list>
     </ion-content>

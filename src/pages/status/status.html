@@ -30,7 +30,7 @@
             <span>Completed</span>
         </ion-col>
     </ion-row>
-    <button ion-button class="btn-hrx" (click)="cancelRequest()">Cancel Request</button>
+    <button ion-button class="btn-hrx" [disabled]="request.status == 'ORDER_CLOSED'" (click)="cancelRequest()">Cancel Request</button>
     <div class="clear"></div>
 
     <div class="comment-rating statusBlock" text-center>

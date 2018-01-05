@@ -19,6 +19,7 @@ import { CustomerservicePage } from '../pages/customerservice/customerservice';
 import { ProfilePage } from '../pages/profile/profile';
 import { SendrequestPage } from '../pages/sendrequest/sendrequest';
 import { SendrequestModelPage } from '../pages/sendrequest/sendrequest';
+import { ViewAddress } from '../pages/sendrequest/sendrequest';
 import { NotificationsPage } from '../pages/notifications/notifications';
 import { RequestslistPage } from '../pages/requestslist/requestslist';
 import { StatusPage } from '../pages/status/status';
@@ -26,8 +27,10 @@ import { MechanicPage } from '../pages/mechanic/mechanic';
 import { MechHomePage } from '../pages/mech-home/mech-home';
 import { RepairPage } from '../pages/repair/repair';
 import { MechloginPage } from '../pages/mechlogin/mechlogin';
-import { Ionic2RatingModule } from 'ionic2-rating';
+import { ManageAddressPage } from '../pages/manage-address/manage-address';
+import { Address } from '../pages/manage-address/manage-address';
 
+import { Ionic2RatingModule } from 'ionic2-rating';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AirconeProvider } from '../providers/aircone/aircone';
@@ -35,6 +38,7 @@ import { Facebook } from '@ionic-native/facebook';
 import { Device } from "@ionic-native/device";
 import { GooglePlus } from "@ionic-native/google-plus";
 import { Camera } from "@ionic-native/camera";
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 import {
   GoogleMaps
@@ -73,7 +77,10 @@ import {
     MechanicPage,
     MechHomePage,
     RepairPage,
-    MechloginPage
+    MechloginPage,
+    ManageAddressPage,
+    Address,
+    ViewAddress
   ],
   imports: [
     BrowserModule,
@@ -103,7 +110,10 @@ import {
     MechanicPage,
     MechHomePage,
     RepairPage,
-    MechloginPage
+    MechloginPage,
+    ManageAddressPage,
+    Address,
+    ViewAddress
   ],
   providers: [
     StatusBar,
@@ -115,7 +125,8 @@ import {
     GoogleMaps,
     GooglePlus,
     Geolocation,
-    Camera
+    Camera,
+    SocialSharing
   ]
 })
 export class AppModule {}

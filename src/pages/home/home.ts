@@ -30,6 +30,7 @@ export class HomePage {
   public comment: any;
   i;
   userlocation;
+  // showSideBar: boolean = false;
  // public location: any;
 
  map: GoogleMap;
@@ -69,7 +70,7 @@ loadMap() {
         //   lat: 33.80010128657071,
         //   lng: -151.28747820854187
         // },
-          zoom: 15,
+          zoom: 18,
           tilt: 30
         }
       };
