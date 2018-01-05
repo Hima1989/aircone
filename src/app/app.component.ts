@@ -13,7 +13,10 @@ import { ServicesHomePage } from '../pages/services-home/services-home';
 import { ProfilePage } from '../pages/profile/profile';
 import { RequestslistPage } from '../pages/requestslist/requestslist';
 import { CustomerservicePage } from '../pages/customerservice/customerservice';
+import { ManageAddressPage } from '../pages/manage-address/manage-address';
 import { AirconeProvider } from '../providers/aircone/aircone';
+// import { SocialSharing } from '@ionic-native/social-sharing';
+import { SocialSharing } from '@ionic-native/social-sharing';
 //import { Geolocation } from '@ionic-native/geolocation';
 
 
@@ -30,11 +33,11 @@ export class MyApp {
   servicesHomePage: any = ServicesHomePage;
   profilePage:any = ProfilePage;
   requestslistPage: any = RequestslistPage;
+  userInfo;
  // nav: NavController
 
-  constructor(public airconeProvider: AirconeProvider, public platform: Platform, public alertCtrl: AlertController, public statusBar: StatusBar, public splashScreen: SplashScreen, public menuCtrl: MenuController, public toast: ToastController) {
+  constructor(public airconeProvider: AirconeProvider, public platform: Platform, public alertCtrl: AlertController, public statusBar: StatusBar, public splashScreen: SplashScreen, public menuCtrl: MenuController, public toast: ToastController, private socialSharing: SocialSharing) {
  //   this.initializeApp();
-
 
     
     platform.ready().then(() => {
@@ -160,6 +163,18 @@ export class MyApp {
   //     })
   //     .present();
   // }
+
+  otherShare() {
+    this.socialSharing.share("Air Cone","aircone app","http://www.freepngimg.com/download/air_conditioner/6-2-ac-picture.png",
+      "https://play.google.com/store/apps/details?id=com.gleed.mytips&hl=en"
+    )
+      .then((data) => {
+      },
+      (err) => {
+      })
+      this.menuCtrl.close();      
+  }
+
   home() {
     this.menuCtrl.close();
     this.nav.push(HomePage)    
@@ -178,6 +193,11 @@ export class MyApp {
   myRequests() {
     this.menuCtrl.close();
     this.nav.push(RequestslistPage)
+  }
+
+  addAddress() {
+    this.menuCtrl.close();
+    this.nav.push(ManageAddressPage)
   }
 
   logout() {

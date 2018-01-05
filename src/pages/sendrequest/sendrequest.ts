@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, Platform, ViewController, ModalController } from 'ionic-angular';
 import { ServicesHomePage } from '../services-home/services-home';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import {Validators, FormBuilder } from '@angular/forms';
@@ -25,8 +25,10 @@ export class SendrequestPage {
   adminDetails;
   pincodes;
   data;
+  oldAddress;
+  selectedAddress;
 
-  constructor(public platform: Platform, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, private formBuilder: FormBuilder, public alertCtrl: AlertController) {
+  constructor(public platform: Platform, params: NavParams, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, private formBuilder: FormBuilder, public alertCtrl: AlertController) {
     this.orderForm  = this.formBuilder.group({
       Name: ['', Validators.required],
       City: ['', Validators.required],
@@ -50,6 +52,11 @@ export class SendrequestPage {
       });
  });
  this.getAdmin()
+ if (params.get('selectedAddress')) {
+  this.request = navParams.get('selectedAddress')  
+  // this.request =  JSON.stringify(this.selectedAddress)
+  console.log(this.request)
+ }
  //this.getPincodes();
   }
 
@@ -60,6 +67,10 @@ export class SendrequestPage {
     })
   }
 
+  addAddress() {
+    let addressForm = this.modalCtrl.create(ViewAddress, {id: this.serviceId});
+    addressForm.present();
+  }
 
   ionViewDidLoad() {
   }
@@ -137,11 +148,48 @@ export class SendrequestPage {
       id: this.serviceId
     })
   }
+
+
+
 }
 @Component({
   selector: 'page-sendrequest',
   templateUrl: 'sendrequestModel.html'
 })
 export class SendrequestModelPage {
+
+}
+
+
+
+@Component({
+  selector: 'page-address-home',
+  templateUrl: 'addressLoad.html',
+})
+export class ViewAddress {
+  oldAddress;
+  serviceId;
+ constructor(public navCtrl: NavController, navparams: NavParams, public viewCtrl: ViewController, public airconeProvider: AirconeProvider, params: NavParams) {
+   this.loadAddresses();
+   this.serviceId = navparams.get("id"); 
+ }
+
+ 
+ loadAddresses() {
+  var userData = JSON.parse(localStorage.getItem("userData"));
+    this.airconeProvider.getUserAddress(userData.id)
+    .then(data => {
+      this.oldAddress = data;
+    })    
+ }
+
+ addAddress(address) {
+   this.navCtrl.push(SendrequestPage, {selectedAddress: address, id: this.serviceId})
+   this.viewCtrl.dismiss();   
+ }
+
+ dismiss() {
+   this.viewCtrl.dismiss();
+ }
 
 }

@@ -19,9 +19,12 @@ export class MechHomePage {
   serviceInfo;
   userRequest;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.request = navParams.get("details")
-     this.serviceInfo = this.request;
-    this.userRequest = this.request.request;
+    if (navParams.get("details")) {
+      this.request = navParams.get("details")  
+      this.serviceInfo = this.request;
+      this.userRequest = this.request.request;    
+    }
+
   }
 
   ionViewDidLoad() {

@@ -17,34 +17,35 @@
     </ion-grid>
 </ion-header>
 <ion-content text-center padding>
+    <ion-label (click)="addAddress()">choose address</ion-label>
     <form class="profile-fields" [formGroup]="orderForm" (ngSubmit)="sendRequest()">
         <ion-item class="profile-item">
-            <ion-input type="text" [(ngModel)]="request.name" formControlName="Name" placeholder="Name"></ion-input>
+            <ion-input type="text" [(ngModel)]="request.Name" formControlName="Name" placeholder="Name"></ion-input>
         </ion-item>
         <ion-item class="profile-item">
-            <ion-input type="number" [pattern]="'^[7-9][0-9]{9}$'" [(ngModel)]="request.phone" formControlName="Phone" placeholder="Phone Number"></ion-input>
-        </ion-item>
-
-        <ion-item class="profile-item">
-            <ion-input type="number" [pattern]="'^[7-9][0-9]{9}$'" [(ngModel)]="request.phonealt" formControlName="AltPhone" placeholder="Alternative  Phone"></ion-input>
-        </ion-item>
-        <ion-item class="profile-item">
-            <ion-input type="text" [(ngModel)]="request.door" formControlName="Door" placeholder="Door Number"></ion-input>
+            <ion-input type="number" [(ngModel)]="request.Phone" formControlName="Phone" placeholder="Phone Number"></ion-input>
         </ion-item>
 
         <ion-item class="profile-item">
-            <ion-input type="text" [(ngModel)]="request.street" formControlName="Street" placeholder="Street Name"></ion-input>
+            <ion-input type="number" [(ngModel)]="request.AltPhone  " formControlName="AltPhone" placeholder="Alternative  Phone"></ion-input>
+        </ion-item>
+        <ion-item class="profile-item">
+            <ion-input type="text" [(ngModel)]="request.Door" formControlName="Door" placeholder="Door Number"></ion-input>
         </ion-item>
 
         <ion-item class="profile-item">
-            <ion-input type="text" [(ngModel)]="request.area" formControlName="Area" placeholder="Area"></ion-input>
+            <ion-input type="text" [(ngModel)]="request.Street" formControlName="Street" placeholder="Street Name"></ion-input>
         </ion-item>
 
         <ion-item class="profile-item">
-            <ion-input type="text" [(ngModel)]="request.city" formControlName="City" placeholder="City"></ion-input>
+            <ion-input type="text" [(ngModel)]="request.Area" formControlName="Area" placeholder="Area"></ion-input>
+        </ion-item>
+
+        <ion-item class="profile-item">
+            <ion-input type="text" [(ngModel)]="request.City" formControlName="City" placeholder="City"></ion-input>
         </ion-item>
         <ion-item class="profile-item">
-            <ion-input type="number" [pattern]="'^[1-9][0-9]{5}$'" [(ngModel)]="request.pincode" formControlName="Pincode" placeholder="Pincode"></ion-input>
+            <ion-input type="number" [pattern]="'^[1-9][0-9]{5}$'" [(ngModel)]="request.Pincode" formControlName="Pincode" placeholder="Pincode"></ion-input>
         </ion-item>
         <ion-item class="profile-item">
             <ion-label fixed>Type</ion-label>

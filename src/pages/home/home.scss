@@ -3,7 +3,7 @@
 }
 
 .map {
-    background: url(../assets/images/map.png) no-repeat center center;
+    // background: url(../assets/images/map.png) no-repeat center center;
     height: 100%;
     background-size: cover;
 }
@@ -84,6 +84,7 @@ page-home {
         line-height: 30px;
         padding-left: 10px;
     }
+
     #map {
         height: 100%;
     }

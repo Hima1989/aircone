@@ -1,29 +1,29 @@
 page-requestslist {
-    .ORDER_CLOSED {
-        &:before {
-            border-left-color: red;
-        }
-    }
-    .ORDER_APPROVED {
-        &:before {
-            border-left-color: green;
-        }
-    }
-    .ORDER_REQUESTED {
-        &:before {
-            border-left-color: rgb(94, 94, 227);
-        }
-    }
-    .ORDER_DECLINED {
-        &:before {
-            border-left-color: red;
-        }
-    }
-    .ORDER_CANCELLED {
-        &:before {
-            border-left-color: blue;
-        }
-    }
+    // .ORDER_CLOSED {
+    //     &:before {
+    //         border-left: red;
+    //     }
+    // }
+    // .ORDER_APPROVED {
+    //     &:before {
+    //         border-left-color: green;
+    //     }
+    // }
+    // .ORDER_REQUESTED {
+    //     &:before {
+    //         border-left-color: rgb(94, 94, 227);
+    //     }
+    // }
+    // .ORDER_DECLINED {
+    //     &:before {
+    //         border-left-color: red;
+    //     }
+    // }
+    // .ORDER_CANCELLED {
+    //     &:before {
+    //         border-left: 10px solid  blue;
+    //     }
+    // }
     .ORDER_CLOSEDa {
         background-color: red
     }
@@ -78,6 +78,14 @@ page-requestslist {
                 border-radius: 0;
             }
         }
+        // .ORDER_CANCELLED {
+        //     position: absolute;
+        //     content: "";
+        //     border-left: 10px solid red;
+        //     left: 0;
+        //     top: 0;
+        //     height: 100%;
+        // }
         &:before {
             position: absolute;
             content: "";
@@ -97,6 +105,31 @@ page-requestslist {
             p {
                 color: #707f93;
             }
+        }
+    }
+    .ORDER_CANCELLED {
+        &:before {
+            border-left-color: blue;
+        }
+    }
+    .ORDER_APPROVED {
+        &:before {
+            border-left-color: green;
+        }
+    }
+    .ORDER_DECLINED {
+        &:before {
+            border-left-color: red;
+        }
+    }
+    .ORDER_REQUESTED {
+        &:before {
+            border-left-color: rgb(94, 94, 227);
+        }
+    }
+    .ORDER_CLOSED {
+        &:before {
+            border-left-color: red;
         }
     }
 }

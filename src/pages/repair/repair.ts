@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { AirconeProvider } from '../../providers/aircone/aircone';
+import { MechanicPage } from '../mechanic/mechanic';
 
 /**
  * Generated class for the RepairPage page.
@@ -24,7 +25,7 @@ export class RepairPage {
   spareTotalPrice;
   serviceRate;
   finalCharge;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, public alertCtrl: AlertController) {
     this.request = navParams.get("request")
     this.getAllServiceSpares();
   }
@@ -59,11 +60,24 @@ export class RepairPage {
     this.finalSpare.forEach(spare => {
       finalPrice += spare.rate*spare.sparerate
     });
-    if (finalPrice) {
-      finalPrice = finalPrice + parseInt(this.serviceRate)       
-    } else {
-      finalPrice = parseInt(this.serviceRate)
-    }
+
+      if (this.serviceRate) {
+        if (finalPrice) {
+          finalPrice = finalPrice + parseInt(this.serviceRate)       
+        } else {
+          finalPrice = parseInt(this.serviceRate)
+        }
+      } else {
+        let alert = this.alertCtrl.create({
+          title: 'Set up Final Price!',
+          subTitle: 'Please include atleast Service price!',
+          buttons: ['OK']
+        });
+        alert.present();
+      }
+
+
+
     this.spareTotalPrice = finalPrice;  
     console.log(this.spareTotalPrice) 
      this.finalCharge = {spareInfo: this.finalSpare, finalServicePrice: this.spareTotalPrice}
@@ -71,10 +85,20 @@ export class RepairPage {
   }
   
   closeRequest() {
-    this.airconeProvider.closeRequest(this.request.id, this.finalCharge)
-    .then ( data => {
-      console.log(data)
-    })
+    if (this.finalCharge.finalServicePrice > 0) {
+      this.airconeProvider.closeRequest(this.request.id, this.finalCharge)
+      .then ( data => {
+        this.navCtrl.push(MechanicPage)
+      })
+    } else {
+      let alert = this.alertCtrl.create({
+        title: 'Set up Final Price!',
+        subTitle: 'Please include atleast Service price!',
+        buttons: ['OK']
+      });
+      alert.present();
+    }
+
   }
 
 }
