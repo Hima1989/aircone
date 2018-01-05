@@ -30,7 +30,6 @@ export class HomePage {
   public comment: any;
   i;
   userlocation;
-  // showSideBar: boolean = false;
  // public location: any;
 
  map: GoogleMap;

@@ -34,18 +34,11 @@ export class MyApp {
   profilePage:any = ProfilePage;
   requestslistPage: any = RequestslistPage;
   userInfo;
-  // showSideBar: boolean = false;
  // nav: NavController
 
   constructor(public airconeProvider: AirconeProvider, public platform: Platform, public alertCtrl: AlertController, public statusBar: StatusBar, public splashScreen: SplashScreen, public menuCtrl: MenuController, public toast: ToastController, private socialSharing: SocialSharing) {
  //   this.initializeApp();
 
-    // this.userInfo = localStorage.getItem("userData")
-    // if(this.userInfo) {
-    //   this.showSideBar = true;
-    // } else {
-    //   this.showSideBar = false
-    // }
     
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
