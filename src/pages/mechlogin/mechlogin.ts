@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Validators, FormBuilder } from '@angular/forms';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { MechanicPage } from '../mechanic/mechanic';
-
+import { LoginpagePage } from '../loginpage/loginpage'
 /**
  * Generated class for the MechloginPage page.
  *
@@ -56,7 +56,7 @@ export class MechloginPage {
     })
 
   }
-  //   goBack() {
-  //   this.navCtrl.push(HomePage)
-  // }
+    goBack() {
+    this.navCtrl.push(LoginpagePage)
+  }
 }

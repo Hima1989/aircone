@@ -14,7 +14,7 @@ export class AirconeProvider {
 
   data;
 baseURL = "https://air-cone-backend.appspot.com"; //production
-//    baseURL = "http://localhost:80"; //development
+    // baseURL = "http://localhost:80"; //development
   constructor(public http: Http, public device: Device) {
   }
 
@@ -275,6 +275,51 @@ baseURL = "https://air-cone-backend.appspot.com"; //production
         .map(res => res.json())
         .subscribe(data => {
            console.log("url generated")
+          this.data = data;
+          resolve(this.data);
+        })
+    });
+  }
+
+  addAddress(userId, data) {
+    return new Promise(resolve => {
+      this.http.post(this.baseURL+'/user/'+userId+'/adduseraddress', data)       
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        })
+    });
+  }
+
+  updateAddress(userId, addressId, data) {
+    console.log(data)
+    return new Promise(resolve => {
+      this.http.post(this.baseURL+'/user/'+userId+ '/'+addressId+ '/updateUserAddress', data)       
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        })
+    });
+  }
+
+  getUserAddress(userId) {
+    return new Promise(resolve => {
+      this.http.get(this.baseURL+'/user/'+userId+'/loaduserAddress')       
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        })
+    });
+  }
+
+  deleteUserAddress(userId, data) {
+    return new Promise(resolve => {
+      this.http.post(this.baseURL+'/user/'+userId+ '/'+data.id+ '/deleteUserAddress', data)       
+        .map(res => res.json())
+        .subscribe(data => {
           this.data = data;
           resolve(this.data);
         })

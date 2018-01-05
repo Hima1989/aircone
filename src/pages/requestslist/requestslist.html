@@ -45,7 +45,7 @@
         </ion-list>
     </ion-item-group>-->
 
-    <ion-item *ngFor="let request of requests" #item class="requestStatus ORDER_APPROVED" (click)="goToStatus(request)">
+    <ion-item *ngFor="let request of requests" #item [ngClass]="request.status" class="requestStatus" (click)="goToStatus(request)">
         <ion-avatar item-start>
             <img src="{{request.serviceImage}}">
         </ion-avatar>
