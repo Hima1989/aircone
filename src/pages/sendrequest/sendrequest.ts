@@ -38,7 +38,7 @@ export class SendrequestPage {
       Street: ['', Validators.required],
       Area: ['', Validators.required],
       Quantity: [''],
-      Type: ['', Validators.required],
+      // Type: ['', Validators.required],
       Pincode: ['', Validators.required]      
     });
     this.serviceId = navParams.get("id");   
@@ -55,7 +55,6 @@ export class SendrequestPage {
  if (params.get('selectedAddress')) {
   this.request = navParams.get('selectedAddress')  
   // this.request =  JSON.stringify(this.selectedAddress)
-  console.log(this.request)
  }
  //this.getPincodes();
   }
@@ -76,8 +75,7 @@ export class SendrequestPage {
   }
 
   sendRequest() {
-   //console.log(this.orderForm.value)
-    //this.orderForm.reset()
+   this.orderForm.value.Type = serviceType;
     var userData = JSON.parse(localStorage.getItem("userData"));
     var requestDetails = {
       service: this.service,
@@ -87,7 +85,6 @@ export class SendrequestPage {
       assignedBy: userData.id,
       assignedTo:  this.adminDetails.id
     }
-    console.log(requestDetails)
     this.airconeProvider.sendRequest(requestDetails)
     .then(res => {
       this.data = res;
@@ -118,30 +115,6 @@ export class SendrequestPage {
     })
   }
 
-  // getPincodes() {
-  //   this.airconeProvider.getAllPincodes()
-  //   .then(res => {
-  //     this.pincodes = res;
-  //     console.log(this.pincodes)
-  //   })
-  // }
-
-  // pinchange(ev: any){
-  //   let val = ev;
-  //   //val = JSON.stringify(val)
-  //    if (val) {
-  //     this.pincodes.forEach(pin => {
-  //       console.log(pin.pincode)
-  //       console.log(val)
-  //       if (val === pin.pincode) {
-  //         console.log("ok")
-  //       } else {
-  //         console.log("notok")
-  //       }
-  //     });
-  //    }
-
-  // }
 
   goBack() {
     this.navCtrl.push(ServicesHomePage, {
@@ -149,7 +122,11 @@ export class SendrequestPage {
     })
   }
 
-
+  openType() {
+    let TypeForm = this.modalCtrl.create(SendrequestModelPage, {id: this.serviceId});
+    TypeForm.present();
+  
+  }
 
 }
 @Component({
@@ -157,10 +134,32 @@ export class SendrequestPage {
   templateUrl: 'sendrequestModel.html'
 })
 export class SendrequestModelPage {
+  serviceId;
+  service;
+  subService;
+  constructor(public navCtrl: NavController, navparams: NavParams, public viewCtrl: ViewController, public airconeProvider: AirconeProvider, params: NavParams) {
+    this.serviceId = navparams.get("id"); 
+    this.getService();
+  }
 
+  getService() {
+    this.airconeProvider.getOneService(this.serviceId)
+    .then(res => {
+      this.service = res;
+    })
+  }
+
+  sendSubServiceQuantity() {
+    serviceType = this.service.subService
+    this.viewCtrl.dismiss();  
+  }
+
+  goBack() {
+    this.viewCtrl.dismiss();   
+  }
 }
 
-
+var serviceType;
 
 @Component({
   selector: 'page-address-home',
