@@ -9,36 +9,23 @@
                     <h3 class="content-heading" text-center>Home</h3>
                 </ion-title>
             </ion-col>
-            <ion-col col-2 text-right>
-                <ion-icon class="icons navigate" (click)="sendRequest()" ios="ios-navigate" md="md-navigate"></ion-icon>
+            <ion-col col-2 text-right class="iconNotification">
+                <ion-icon ios="ios-notifications-outline" md="md-notifications-outline" class="icons"></ion-icon>
+                <span class="notification-value"></span>
             </ion-col>
         </ion-row>
     </ion-grid>
 </ion-header>
 <ion-content class="nav-content">
     <div #map id="map" class="map"> </div>
-        <!-- <button class="btn-hrx " (click)="sendRequest()" ion-button round><ion-icon class="icons navigate nav-request" ios="ios-navigate" md="md-navigate"></ion-icon>Send Request</button>         -->
-   
+    <!-- <button class="btn-hrx " (click)="sendRequest()" ion-button round><ion-icon class="icons navigate nav-request" ios="ios-navigate" md="md-navigate"></ion-icon>Send Request</button>         -->
+
     <!-- <div class="map" text-center>
         <button class="btn-hrx " (click)="sendRequest()" ion-button round><ion-icon class="icons navigate nav-request" ios="ios-navigate" md="md-navigate"></ion-icon>Send Request</button>
     </div> -->
     <ion-slides class="comments-tabs" *ngIf="comments && comments.length" autoplay="5000" loop="true" speed="300">
         <ion-slide class="comments" *ngFor="let comment of comments">
             <ion-card class="comment-block">
-                <!--<ion-item class="comment-top">
-                    <ion-avatar item-start>
-                        <img src="assets/images/cus-img.png">
-                    </ion-avatar>
-                    <h2 class="cus-name">{{comment.user.userName}}</h2>
-                    <p class="cus-nav">Akkayyapalem</p>
-                    <ion-avatar item-start>
-                        <img class="smileReview" *ngIf="comment.rating == 1" src="assets/images/rating1.png">
-                        <img class="smileReview" *ngIf="comment.rating == 2" src="assets/images/rating2.png">
-                        <img class="smileReview" *ngIf="comment.rating == 3" src="assets/images/rating3.png">
-                        <img class="smileReview" *ngIf="comment.rating == 4" src="assets/images/rating4.png">
-                        <img class="smileReview" *ngIf="comment.rating == 5" src="assets/images/rating5.png">
-                    </ion-avatar>
-                </ion-item>-->
                 <ion-item class="comment-top">
                     <ion-row>
                         <ion-col col-3 class="slide-imgs">
@@ -63,7 +50,7 @@
             </ion-card>
         </ion-slide>
     </ion-slides>
-
-    <button class="btn-hrx " (click)="sendRequest()" ion-button round><ion-icon class="icons navigate nav-request" ios="ios-navigate" md="md-navigate"></ion-icon>Send Request</button>        
-    
+    <div class="sendRequest"><button full class="btn-hrx " (click)="sendRequest()" ion-button round>
+        <ion-icon class="icons navigate nav-request" ios="ios-navigate" md="md-navigate"></ion-icon>Send Request</button>
+    </div>
 </ion-content>

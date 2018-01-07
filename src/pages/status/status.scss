@@ -19,16 +19,18 @@ page-status {
     .statusBlock {
         padding: 25px 0;
         .smileReview {
-            .showSmile {
-                display: none;
-            }
+            // .showSmile {
+            //     display: none;
+            // }
             .hideSmile {
                 padding: 2px;
-                display: block;
+                // display: block;
+                // margin-bottom: 4px;
             }
             p {
                 color: $borderLightGray;
                 padding-top: 4px;
+                font-size: 10px;
             }
         }
     }

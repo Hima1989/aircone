@@ -35,6 +35,8 @@
          }
      }
      .login-heading {
+         margin-top: 50px;
+         padding-top: 10px;
          h4 {
              text-align: center;
              font-weight: 700;
@@ -44,19 +46,30 @@
          }
      }
      .login-form {
-         margin-top: 30px;
+         border: 1px solid #efefef;
+         border-radius: 5px;
          button {
              text-transform: capitalize;
              font-family: 'Montserrat', sans-serif;
              font-size: 20px;
-             margin-top: 10px;
+             margin: 0px;
              padding: 22px 0;
+             width: 50%;
+             border-radius: 5px;
              .social-icon {
                  text-transform: none;
                  font-size: 30px;
                  font-weight: 700;
                  margin-right: 15px;
              }
+         }
+         .btn-blue {
+             border-top-right-radius: 0;
+             border-bottom-right-radius: 0;
+         }
+         .btn-red {
+             border-top-left-radius: 0;
+             border-bottom-left-radius: 0;
          }
      }
      .terms {
@@ -69,6 +82,9 @@
          a {
              color: $colorDarkGray;
              text-decoration: underline;
+         }
+         .meclogin {
+             color: $btnRed;
          }
      }
  }

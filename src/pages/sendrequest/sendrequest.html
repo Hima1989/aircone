@@ -13,11 +13,16 @@
             <ion-col col-8 text-center>
                 <ion-title class="title">Request Form</ion-title>
             </ion-col>
+            <ion-col col-2 text-right (click)="addAddress()">
+                <!--<ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>-->
+                <img class="manageAddress" src="assets/images/address-book.png">
+            </ion-col>
         </ion-row>
     </ion-grid>
 </ion-header>
 <ion-content text-center padding>
-    <ion-label (click)="addAddress()">choose address</ion-label>
+
+    <!--<ion-label (click)="addAddress()">choose address</ion-label>-->
     <form class="profile-fields" [formGroup]="orderForm" (ngSubmit)="sendRequest()">
         <ion-item class="profile-item">
             <ion-input type="text" [(ngModel)]="request.Name" formControlName="Name" placeholder="Name"></ion-input>
