@@ -47,12 +47,12 @@
         <ion-item class="profile-item">
             <ion-input type="number" [pattern]="'^[1-9][0-9]{5}$'" [(ngModel)]="request.Pincode" formControlName="Pincode" placeholder="Pincode"></ion-input>
         </ion-item>
-        <ion-item class="profile-item">
+        <ion-item class="profile-item" (click)="openType()">
             <ion-label fixed>Type</ion-label>
-            <ion-select [(ngModel)]="request.Type" formControlName="Type" multiple>
+            <!-- <ion-select [(ngModel)]="request.Type" formControlName="Type" multiple>
                 <ion-option *ngFor="let subservice of service.subService" [value]="subservice">{{subservice}}</ion-option>
                 <ion-input type="number" formControlName="Quantity"></ion-input>
-            </ion-select>
+            </ion-select> -->
         </ion-item>
 
         <ion-avatar class="navigator nav-request" item-start text-center>
