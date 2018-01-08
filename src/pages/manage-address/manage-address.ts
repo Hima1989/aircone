@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController, ViewController, M
 import {Validators, FormBuilder } from '@angular/forms';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { ServicesPage } from '../services/services';
+import { SendrequestPage } from '../sendrequest/sendrequest';
 
 /**
  * Generated class for the ManageAddressPage page.
@@ -19,13 +20,32 @@ import { ServicesPage } from '../services/services';
 export class ManageAddressPage {
 
   oldAddress;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public airconeProvider: AirconeProvider, public modalCtrl: ModalController) {
+  serviceId;
+  forRequest: boolean = false; 
+  constructor(public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams, public alertCtrl: AlertController, public airconeProvider: AirconeProvider, public modalCtrl: ModalController) {
+    if (navParams.get("id")) {
+      this.serviceId = navParams.get("id"); 
+      this.forRequest = true;
+      console.log(this.serviceId)
+    } else {
+      console.log("noserviceid")      
+    }
+    if (navParams.get("forRequest")) {
+      this.forRequest = true;
+    }
 
     this.loadAddresses();
   }
 
   ionViewDidLoad() {
+  }
+
+  goBackToRequest() {
+    if (this.forRequest) {
+      this.navCtrl.push(SendrequestPage, {id: this.serviceId})
+    } else {
+      this.viewCtrl.dismiss();      
+    }
   }
 
   addAddress() {
@@ -41,8 +61,14 @@ export class ManageAddressPage {
       })    
    }
 
+   addAddressToForm(address) {
+    if (this.forRequest) {
+      this.navCtrl.push(SendrequestPage, {id: this.serviceId, selectedAddress: address})
+    }
+   }
+
    editAddress(address) {
-    let addressModal = this.modalCtrl.create(Address, {userAddress: address});
+    let addressModal = this.modalCtrl.create(Address, {userAddress: address, forRequest: this.forRequest, id: this.serviceId});
     addressModal.present();    
   }
 
@@ -74,15 +100,26 @@ export class Address {
   userAddress;
   oldAdd: boolean = false
   oldAddressId;
- constructor(public navCtrl: NavController,public viewCtrl: ViewController, public airconeProvider: AirconeProvider, params: NavParams, private formBuilder: FormBuilder, public alertCtrl: AlertController) {
+  forRequest;
+  serviveId;
+ constructor(public navCtrl: NavController,public viewCtrl: ViewController, public airconeProvider: AirconeProvider, params: NavParams, private formBuilder: FormBuilder, public alertCtrl: AlertController, public modalCtrl: ModalController) {
   
   if (params.get('userAddress')) {
     this.userAddress = params.get('userAddress')
     this.request = this.userAddress
     // console.log(this.userAddress.id)
     this.oldAddressId = this.userAddress.id;
-    console.log(this.oldAddressId)
     this.oldAdd = true
+  }
+
+  if (params.get('id')) {
+    this.serviveId = params.get('id')
+    console.log(this.serviveId)
+  }
+
+  if (params.get('forRequest')) {
+    this.forRequest = true;
+    console.log(this.forRequest)
   }
   
   this.orderForm  = this.formBuilder.group({
@@ -134,9 +171,15 @@ export class Address {
         let alert = this.alertCtrl.create({
           title: 'Address Updated!',
           subTitle: 'Your Address is Successfully Updated!',
-          buttons: ['OK']
+          buttons: [{text: 'OK', 
+                      handler: () => {
+                      console.log('Cancel clicked');
+                      let addressModal = this.modalCtrl.create(ManageAddressPage, {forRequest: this.forRequest, id: this.serviveId});
+                      addressModal.present(); 
+                }}]
         });
         alert.present();
+        console.log(alert)
       } else if ( this.data.status == 404) {
         let alert = this.alertCtrl.create({
           title: 'Address Cant Update!',
@@ -147,6 +190,8 @@ export class Address {
       }
   
       this.orderForm.reset()  
+      // let addressModal = this.modalCtrl.create(ManageAddressPage, {forRequest: this.forRequest});
+      // addressModal.present(); 
     })
   }
 
@@ -155,7 +200,11 @@ export class Address {
 
 
  dismiss() {
-   this.navCtrl.push(ManageAddressPage)
+   if (this.forRequest) {
+     this.viewCtrl.dismiss()
+   } else {
+    this.navCtrl.push(ManageAddressPage)    
+   }
  }
 
 }

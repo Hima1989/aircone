@@ -6,7 +6,7 @@
 -->
 
 
-<ion-header class="home-header">
+<ion-header *ngIf="!forRequest" class="home-header">
     <ion-grid>
         <ion-row>
             <ion-col col-2 text-left>
@@ -21,18 +21,33 @@
     </ion-grid>
 </ion-header>
 
+<ion-header *ngIf="forRequest" class="home-header">
+    <ion-grid>
+        <ion-row>
+            <ion-col col-2 text-left>
+                <ion-icon class="icon-back" ios="ios-arrow-back" md="md-arrow-back" (click)="goBackToRequest()"></ion-icon>
+            </ion-col>
+            <ion-col col-8 text-center>
+                <ion-title class="title">
+                    <h3 class="content-heading" text-center>Choose Address</h3>
+                </ion-title>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-header>
+
 
 <ion-content text-center padding>
     <ion-label (click)="addAddress()">Add Address</ion-label>
 
     <ion-list>
       <ion-item *ngFor="let address of oldAddress">
-        <div>
+        <div (click)="addAddressToForm(address)">
         {{address.Name}}, {{address.Door}}, {{address.Street}}, 
         <div>{{address.Area}}, {{address.City}}, {{address.Phone}}, </div>
         <div>{{address.Pincode}}</div>
         </div>
-        <div end><button (click)="editAddress(address)" ion-button round>Edit</button> <button (click)="deleteAddress(address)" ion-button round>Delete</button></div>
+        <div end><button (click)="editAddress(address)" ion-button round>Edit</button> <button (click)="deleteAddress(address)" ion-button round>Delete</button> <button (click)="addAddressToForm(address)" *ngIf="forRequest" ion-button round>Select</button></div>
       </ion-item>
   </ion-list>
 

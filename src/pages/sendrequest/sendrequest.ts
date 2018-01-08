@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController, Platform, ViewCon
 import { ServicesHomePage } from '../services-home/services-home';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import {Validators, FormBuilder } from '@angular/forms';
+import { ManageAddressPage } from '../manage-address/manage-address';
 
 /**
  * Generated class for the SendrequestPage page.
@@ -66,8 +67,13 @@ export class SendrequestPage {
     })
   }
 
+  // addAddress() {
+  //   let addressForm = this.modalCtrl.create(ViewAddress, {id: this.serviceId});
+  //   addressForm.present();
+  // }
+
   addAddress() {
-    let addressForm = this.modalCtrl.create(ViewAddress, {id: this.serviceId});
+    let addressForm = this.modalCtrl.create(ManageAddressPage, {id: this.serviceId});
     addressForm.present();
   }
 
