@@ -28,13 +28,38 @@ page-profile {}
         position: absolute;
         right: 0px;
         bottom: 0;
-        color: $btnBlue;
         font-size: 16px;
+        .addBtn {
+            color: $btnBlue;
+        }
+        .cancelBtn {
+            color: $colorBlack;
+        }
+    }
+    .prdListView {
+        width: 100%;
+        color: $colorBlack;
+        .listView {
+            display: inline-block;
+            width: 25%;
+            margin-right: 20px;
+        }
     }
 }
 
 input[type=number] {
     -moz-appearance: textfield;
+}
+
+.profileListView.item-md.item-block .item-inner {
+    border-bottom: none;
+}
+
+.profileListView {
+    background: $colorGray;
+    margin: 5px 0;
+    border-radius: 25px;
+    padding-left: 10px;
 }
 
 .profile-img {
