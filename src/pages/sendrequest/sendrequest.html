@@ -21,7 +21,6 @@
     </ion-grid>
 </ion-header>
 <ion-content text-center padding>
-
     <!--<ion-label (click)="addAddress()">choose address</ion-label>-->
     <form class="profile-fields" [formGroup]="orderForm" (ngSubmit)="sendRequest()">
         <ion-item class="profile-item">
@@ -52,14 +51,42 @@
         <ion-item class="profile-item">
             <ion-input type="number" [pattern]="'^[1-9][0-9]{5}$'" [(ngModel)]="request.Pincode" formControlName="Pincode" placeholder="Pincode"></ion-input>
         </ion-item>
-        <ion-item class="profile-item">
+        <ion-item class="profile-item" (click)="openType()">
             <ion-label fixed>Type</ion-label>
-            <ion-select [(ngModel)]="request.Type" formControlName="Type" multiple>
+            <!-- <ion-select [(ngModel)]="request.Type" formControlName="Type" multiple>
                 <ion-option *ngFor="let subservice of service.subService" [value]="subservice">{{subservice}}</ion-option>
                 <ion-input type="number" formControlName="Quantity"></ion-input>
-            </ion-select>
+            </ion-select> -->
         </ion-item>
-
+        <ion-item class="profile-item">
+            <ion-select placeholder="Type" class="selectType">
+                <ion-option value="01">Split Ac</ion-option>
+                <ion-option value="02">Window Ac</ion-option>
+                <ion-option value="03">Casit Ac</ion-option>
+                <ion-option value="04">Vertical Ac</ion-option>
+            </ion-select>
+            <ion-select placeholder="Tonage" class="selectType">
+                <ion-option>0.8 Ton</ion-option>
+                <ion-option>1.0 Ton</ion-option>
+                <ion-option>1.5 Ton</ion-option>
+                <ion-option>2.0 Ton</ion-option>
+            </ion-select>
+            <ion-select placeholder="Qty" class="selectType">
+                <ion-option>1</ion-option>
+                <ion-option>2</ion-option>
+                <ion-option>3</ion-option>
+                <ion-option>4</ion-option>
+                <ion-option>5</ion-option>
+                <ion-option checked="true">6</ion-option>
+                <ion-option>7</ion-option>
+                <ion-option>8</ion-option>
+                <ion-option>9</ion-option>
+                <ion-option>10</ion-option>
+            </ion-select>
+            <ion-label class="addItem">
+                <ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
+            </ion-label>
+        </ion-item>
         <ion-avatar class="navigator nav-request" item-start text-center>
             <!--<img src="assets/images/navigator.png">-->
             <button class="btn-hrx" type="submit" [disabled]="!orderForm.valid" ion-button round><ion-icon class="icons navigate nav-request" ios="ios-navigate" md="md-navigate"></ion-icon>Send Request</button>

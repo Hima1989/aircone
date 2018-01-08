@@ -10,6 +10,27 @@ page-profile {}
     .text-input-md {
         margin: 0;
     }
+    ion-label {
+        color: $placeholderColor;
+    }
+    .selectType {
+        padding: 0;
+        padding-right: 10px;
+        width: 32%;
+        +.selectType {
+            text-align: center;
+        }
+        &:last-child {
+            width: 28%;
+        }
+    }
+    .addItem {
+        position: absolute;
+        right: 0px;
+        bottom: 0;
+        color: $btnBlue;
+        font-size: 16px;
+    }
 }
 
 input[type=number] {
@@ -67,3 +88,17 @@ ion-input::palceholder {
 }
 
 // input-has-focus item-input-has-focus
+// .header .col {
+//     background-color: lightgrey;
+// }
+// .colTable {
+//     border: solid 1px grey;
+//     border-bottom-style: none;
+//     border-right-style: none;
+// }
+// .colTable:last-child {
+//     border-right: solid 1px grey;
+// }
+// .tableHead:last-child .colTable {
+//     border-bottom: solid 1px grey;
+// }
