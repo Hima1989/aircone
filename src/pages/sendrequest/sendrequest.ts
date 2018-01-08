@@ -4,6 +4,7 @@ import { ServicesHomePage } from '../services-home/services-home';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import {Validators, FormBuilder } from '@angular/forms';
 import { ManageAddressPage } from '../manage-address/manage-address';
+import { ServicesPage } from '../services/services';
 
 /**
  * Generated class for the SendrequestPage page.
@@ -28,6 +29,8 @@ export class SendrequestPage {
   data;
   oldAddress;
   selectedAddress;
+  type: any = [];
+  subService:any = {type: "", ton: "", quantity: ""};
 
   constructor(public platform: Platform, params: NavParams, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, private formBuilder: FormBuilder, public alertCtrl: AlertController) {
     this.orderForm  = this.formBuilder.group({
@@ -39,6 +42,9 @@ export class SendrequestPage {
       Street: ['', Validators.required],
       Area: ['', Validators.required],
       Quantity: [''],
+      subService:[''],
+      serviceTon:[''],
+      serviceQuantity:[''],
       // Type: ['', Validators.required],
       Pincode: ['', Validators.required]      
     });
@@ -77,11 +83,21 @@ export class SendrequestPage {
     addressForm.present();
   }
 
+  addQuantity() {
+    this.type.push(this.subService);
+    this.subService = {type: "", ton: "", quantity: ""};
+  }
+
+  removeQuantity(serviceType) {
+    this.type.splice(this.type.indexOf(serviceType), 1)
+    console.log(this.type)
+  }
+
   ionViewDidLoad() {
   }
 
   sendRequest() {
-   this.orderForm.value.Type = serviceType;
+   this.orderForm.value.Type = this.type;
     var userData = JSON.parse(localStorage.getItem("userData"));
     var requestDetails = {
       service: this.service,
@@ -98,7 +114,10 @@ export class SendrequestPage {
         let alert = this.alertCtrl.create({
           title: 'Request Sent!',
           subTitle: 'Your Requests Succesfully Sent, We Will Contact You Soon!',
-          buttons: ['OK']
+          buttons: [{text: 'OK', 
+          handler: () => {
+          this.navCtrl.push(ServicesPage)
+    }}]
         });
         alert.present();
       } else if ( this.data.status == 404) {
@@ -113,6 +132,8 @@ export class SendrequestPage {
       this.orderForm.reset()      
     });
   }
+
+
 
   getService () {
     this.airconeProvider.getOneService(this.serviceId)
