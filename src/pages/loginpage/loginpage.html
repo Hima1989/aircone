@@ -26,15 +26,16 @@
         <ion-row>
             <ion-col col-10 offset-1>
                 <div class="login-form">
-                    <button ion-button full class="btn-blue" (click)="facebookLogin()"><span class="social-icon">f</span>Facebook</button>
-                    <button ion-button color="danger" full class="btn-red" (click)="doGoogleLogin()"><span class="social-icon">G</span>Google</button>
+                    <button ion-button float-left class="btn-blue" (click)="facebookLogin()"><span class="social-icon">f</span></button>
+                    <button ion-button float-left color="danger" class="btn-red" (click)="doGoogleLogin()"><span class="social-icon">G+</span></button>
+                    <div class="clear"></div>
                 </div>
                 <div class="terms">
                     <p>By continuing, you agree to our</p>
                     <a>Terms & Conditions</a>
                 </div>
                 <div class="terms">
-                    <p (click)="mechLogin()">Mechanic Login</p>
+                    <p class="meclogin" (click)="mechLogin()">Mechanic Login</p>
                 </div>
             </ion-col>
         </ion-row>

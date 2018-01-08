@@ -78,7 +78,6 @@ page-requestslist {
                 border-radius: 0;
             }
         }
-
         // .ORDER_CANCELLED {
         //     position: absolute;
         //     content: "";
@@ -87,13 +86,12 @@ page-requestslist {
         //     top: 0;
         //     height: 100%;
         // }
-
         &:before {
             position: absolute;
             content: "";
-            // border-left: 10px solid red;
             border-left-style: solid;
             border-left-width: 10px;
+            // border-left: 10px solid red;
             left: 0;
             top: 0;
             height: 100%;
@@ -109,33 +107,29 @@ page-requestslist {
             }
         }
     }
-
     .ORDER_CANCELLED {
         &:before {
             border-left-color: blue;
-            }
+        }
     }
     .ORDER_APPROVED {
         &:before {
             border-left-color: green;
-            }
+        }
     }
-
     .ORDER_DECLINED {
         &:before {
             border-left-color: red;
-            }
+        }
     }
-
     .ORDER_REQUESTED {
         &:before {
-            border-left-color:  rgb(94, 94, 227);
-            }
+            border-left-color: rgb(94, 94, 227);
+        }
     }
-
     .ORDER_CLOSED {
         &:before {
-            border-left-color:  red;
-            }
+            border-left-color: red;
+        }
     }
 }
