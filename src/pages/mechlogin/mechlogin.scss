@@ -1,7 +1,18 @@
-page-mechlogin {}
-
-.item-md {
-    padding-left: 0;
+page-mechlogin {
+    .profile-fields {
+        .item-md {
+            padding-left: 0;
+            min-height: auto;
+            &:last-child {
+                .item-inner {
+                    border-bottom: 1px solid $borderGray;
+                }
+            }
+        }
+        .machLogin {
+            margin-top: 0;
+        }
+    }
 }
 
 .ion-menu-top {

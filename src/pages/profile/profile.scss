@@ -13,6 +13,7 @@ input[type=number] {
     height: 100px;
     margin: 40px auto;
     position: relative;
+    border-radius: 50%;
     .icon-create {
         position: absolute;
         font-size: 12px;
@@ -23,6 +24,9 @@ input[type=number] {
         padding: 5px 5px;
         border-radius: 50%;
         border: 2px solid $colorWhite;
+    }
+    .profileImg {
+        border-radius: 50%;
     }
 }
 
