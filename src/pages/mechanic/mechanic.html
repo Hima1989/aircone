@@ -19,7 +19,7 @@
 
 
 <ion-content padding>
-    <ion-list *ngIf="showRequest">
+    <!-- <ion-list *ngIf="showRequest">
         <ion-item *ngFor="let request of mechRequests">
             <ion-thumbnail item-start>
                 <img src="{{request.serviceImage}}">
@@ -31,5 +31,21 @@
     </ion-list>
     <ion-list *ngIf="showComment">
         <h4 class="empty-msg">Sorry, no Tasks assigned for You!</h4>
-    </ion-list>
+    </ion-list> -->
+
+    <ion-item *ngFor="let request of mechRequests" #item [ngClass]="request.status" class="requestStatus" (click)="goToRequest(request)">
+        <ion-avatar item-start>
+            <img src="{{request.serviceImage}}">
+        </ion-avatar>
+        <h2>{{request.serviceName}} Service</h2>
+        <p>ID: {{request.id}}</p>
+        <div *ngIf="request.status=='ORDER_APPROVED'">
+            <button class="button {{request.status}}a">Yet To Repair</button>
+        </div>
+    </ion-item>
+
+    <ion-item *ngIf="showComment">
+        <h4 class="empty-msg">Sorry, no Tasks assigned for You!</h4>
+    </ion-item>
+
 </ion-content>

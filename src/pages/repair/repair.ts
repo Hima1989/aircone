@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { MechanicPage } from '../mechanic/mechanic';
-
+import { MechHomePage } from '../mech-home/mech-home';
 /**
  * Generated class for the RepairPage page.
  *
@@ -99,6 +99,10 @@ export class RepairPage {
       alert.present();
     }
 
+  }
+
+  goBack() {
+    this.navCtrl.push(MechHomePage)
   }
 
 }

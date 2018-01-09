@@ -12,9 +12,9 @@
 </ion-header>
 <ion-content text-center padding>
     <form (ngSubmit)="submitDetails()">
-    <ion-avatar item-start class="profile-img">
+    <ion-avatar item-start (click)="accessGallery()" class="profile-img">
         <img [src]="base64Image ? base64Image : 'assets/images/profile-pic.png'" />
-        <ion-icon class="icon-create" (click)="accessGallery()" ios="ios-create" md="md-create"></ion-icon>
+        <ion-icon class="icon-create" ios="ios-create" md="md-create"></ion-icon>
     </ion-avatar>
 
 
@@ -33,7 +33,6 @@
         </ion-item>
     </ion-list>
     <ion-avatar class="navigator nav-request" item-start text-center>
-        <!--<img src="assets/images/navigator.png">-->
         <button type="submit" class="btn-hrx" ion-button round>Submit</button>
     </ion-avatar>
 </form>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, Platform, ViewController, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, Platform, ModalController, ToastController } from 'ionic-angular';
 import { ServicesHomePage } from '../services-home/services-home';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import {Validators, FormBuilder } from '@angular/forms';
@@ -32,7 +32,7 @@ export class SendrequestPage {
   type: any = [];
   subService:any = {type: "", ton: "", quantity: ""};
 
-  constructor(public platform: Platform, params: NavParams, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, private formBuilder: FormBuilder, public alertCtrl: AlertController) {
+  constructor(private toastCtrl: ToastController, public platform: Platform, params: NavParams, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, private formBuilder: FormBuilder, public alertCtrl: AlertController) {
     this.orderForm  = this.formBuilder.group({
       Name: ['', Validators.required],
       City: ['', Validators.required],
@@ -71,6 +71,32 @@ export class SendrequestPage {
     .then( data => {
       this.adminDetails = data
     })
+  }
+
+  checkForPin(event) {
+  var patt = new RegExp("^[1-9][0-9]{5}$");
+  var res = patt.test(event)
+    if (res) {
+      this.airconeProvider.getUserPincode(event)
+      .then( res => {
+        this.data = res;
+        if (this.data.status == 200) {
+              let toast = this.toastCtrl.create({
+              message: 'Location Available',
+              duration: 4000,
+              position: 'bottom'
+              });
+              toast.present();
+        } else if (this.data.status == 404) {
+          let toast = this.toastCtrl.create({
+            message: 'Location Not Available',
+            duration: 4000,
+            position: 'bottom'
+            });
+            toast.present();
+        }
+      })
+    }
   }
 
   // addAddress() {
@@ -149,73 +175,5 @@ export class SendrequestPage {
     })
   }
 
-  openType() {
-    let TypeForm = this.modalCtrl.create(SendrequestModelPage, {id: this.serviceId});
-    TypeForm.present();
-  
-  }
-
-}
-@Component({
-  selector: 'page-sendrequest',
-  templateUrl: 'sendrequestModel.html'
-})
-export class SendrequestModelPage {
-  serviceId;
-  service;
-  subService;
-  constructor(public navCtrl: NavController, navparams: NavParams, public viewCtrl: ViewController, public airconeProvider: AirconeProvider, params: NavParams) {
-    this.serviceId = navparams.get("id"); 
-    this.getService();
-  }
-
-  getService() {
-    this.airconeProvider.getOneService(this.serviceId)
-    .then(res => {
-      this.service = res;
-    })
-  }
-
-  sendSubServiceQuantity() {
-    serviceType = this.service.subService
-    this.viewCtrl.dismiss();  
-  }
-
-  goBack() {
-    this.viewCtrl.dismiss();   
-  }
 }
 
-var serviceType;
-
-@Component({
-  selector: 'page-address-home',
-  templateUrl: 'addressLoad.html',
-})
-export class ViewAddress {
-  oldAddress;
-  serviceId;
- constructor(public navCtrl: NavController, navparams: NavParams, public viewCtrl: ViewController, public airconeProvider: AirconeProvider, params: NavParams) {
-   this.loadAddresses();
-   this.serviceId = navparams.get("id"); 
- }
-
- 
- loadAddresses() {
-  var userData = JSON.parse(localStorage.getItem("userData"));
-    this.airconeProvider.getUserAddress(userData.id)
-    .then(data => {
-      this.oldAddress = data;
-    })    
- }
-
- addAddress(address) {
-   this.navCtrl.push(SendrequestPage, {selectedAddress: address, id: this.serviceId})
-   this.viewCtrl.dismiss();   
- }
-
- dismiss() {
-   this.viewCtrl.dismiss();
- }
-
-}

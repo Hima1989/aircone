@@ -1,6 +1,72 @@
 page-mechanic {
-    .empty-msg {
-        margin-top: 20px;
-        font-size: 18px;
+    .ORDER_APPROVEDa {
+        background-color: green
     }
+    .button {
+        border: none;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 10px;
+        font-weight: bold;
+        color: white;
+        padding: 5px 10px;
+        margin: 4px 2px;
+        border-radius: 20px;
+    }
+    .inner-request-item {
+        padding: 7px 0 4px 13px;
+        border: 1px solid rgb(232, 229, 229);
+        border-radius: 5px;
+    }
+    .status-image {
+        float: left;
+    }
+    .status-right-service {
+        margin-left: 75px;
+    }
+    .clear {
+        clear: both;
+    }
+    .item-md.requestStatus {
+        border: 1px solid $borderLightGray;
+        border-radius: 5px;
+        padding-left: 20px;
+        margin-bottom: 10px;
+        position: relative;
+        ion-avatar {
+            img {
+                width: 70px;
+                height: 70px;
+                border-radius: 0;
+            }
+        }
+        &:before {
+            position: absolute;
+            content: "";
+            border-left-style: solid;
+            border-left-width: 10px;
+            // border-left: 10px solid red;
+            left: 0;
+            top: 0;
+            height: 100%;
+        }
+        .item-inner {
+            border: none;
+            h2 {
+                color: #364150;
+                font-weight: 700;
+            }
+            p {
+                color: #707f93;
+            }
+        }
+    }
+    .ORDER_APPROVED {
+        &:before {
+            border-left-color: green;
+        }
+    }
+
+
 }

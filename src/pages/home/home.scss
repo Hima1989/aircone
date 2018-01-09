@@ -2,6 +2,10 @@
     background: $btnBlue;
 }
 
+.imageRounded {
+    border-radius: 50%;
+}
+
 .map {
     // background: url(../assets/images/map.png) no-repeat center center;
     height: 100%;
@@ -46,6 +50,7 @@
         margin: 0 10px;
         button {
             position: absolute;
+            z-index:9999;            
             bottom: 10px;
             left: 0;
             right: 0;

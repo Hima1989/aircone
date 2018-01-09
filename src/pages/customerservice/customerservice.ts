@@ -26,22 +26,22 @@ export class CustomerservicePage {
   }
 
   servicesubmit(){
-    console.log(this.comment)
+    if (this.comment) {
     var userData = JSON.parse(localStorage.getItem("userData"));
     var requestDetails = {
       user: userData,
       comment: this.comment   
     }
-    console.log(requestDetails)
     this.airconeProvider.sendFeedback(requestDetails)
     .then(res => {
       let alert = this.alertCtrl.create({
         title: 'Request Sent!',
-        subTitle: 'Your Requests Succesfully Sent, We Will Contact You Soon!',
+        subTitle: 'Thanks For Your Service, We Will Consider Your FeedBack!',
         buttons: ['OK']
       });
       alert.present();
     });
+  }
   }
 
   //   goBack() {

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App, MenuController, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App, MenuController, Platform, ToastController } from 'ionic-angular';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { ServicesHomePage } from '../services-home/services-home';
 
@@ -24,26 +24,14 @@ export class ServicesPage {
   backButtonPressedTimer;
   
   
-  constructor(public platform: Platform, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, public app: App, public menu: MenuController) {
+  constructor(private toastCtrl: ToastController, public platform: Platform, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, public app: App, public menu: MenuController) {
     this.loadServices();
     menu.enable(true);
-    var i = 0;
-    // platform.registerBackButtonAction(() => {
-    //   i++;
-    //    if (i == 2) {
-    //     platform.exitApp(); // IF IT'S THE ROOT, EXIT THE APP.        
-    //    } else {
-    //      alert("double tap to exit the app")      
-    //    }
-      
-    // });
-
     platform.registerBackButtonAction(() => {
       if (this.backButtonPressed) {
         this.platform.exitApp();
       } else {
-        // this.toastCtrl.('Press again to exit App');
-        window.alert('Press again to exit')
+        this.presentToast();
         this.backButtonPressed = true;
         if (this.backButtonPressedTimer) {
           clearTimeout(this.backButtonPressedTimer);
@@ -52,10 +40,21 @@ export class ServicesPage {
           this.backButtonPressed = false
         }, 4000);
       }
-      
     });
+  }
 
-
+  presentToast() {
+    let toast = this.toastCtrl.create({
+      message: 'Double Click To Exit',
+      duration: 3000,
+      position: 'bottom'
+    });
+  
+    // toast.onDidDismiss(() => {
+    //   console.log('Dismissed toast');
+    // });
+  
+    toast.present();
   }
 
   ionViewDidLoad() {
