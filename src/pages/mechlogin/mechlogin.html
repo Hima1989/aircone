@@ -33,28 +33,24 @@
         </ion-row>
         <ion-col></ion-col>
     </ion-row>-->
-    <h4 text-center>AirCone Mechanic Login</h4>
+    <!--<h4 text-center>AirCone Mechanic Login</h4>-->
     <div class="login-box">
         <form (ngSubmit)="login()" [formGroup]="loginForm" #registerForm="ngForm">
-            <ion-row>
-                <ion-col>
-                    <!--<ion-list inset>-->
-                    <ion-list class="profile-fields">
-                        <ion-item>
-                            <ion-label floating>Email</ion-label>
-                            <ion-input type="text" formControlName="identifier" name="email" [(ngModel)]="registerCredentials.email" required></ion-input>
-                        </ion-item>
-                        <ion-item>
-                            <ion-label floating>password</ion-label>
-                            <ion-input type="password" formControlName="password" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
-                        </ion-item>
-                    </ion-list>
-                </ion-col>
-            </ion-row>
+            <!--<ion-list inset>-->
+            <ion-list class="profile-fields">
+                <ion-item>
+                    <ion-label floating class="machLogin">Email</ion-label>
+                    <ion-input type="text" formControlName="identifier" name="email" [(ngModel)]="registerCredentials.email" required></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating class="machLogin">password</ion-label>
+                    <ion-input type="password" formControlName="password" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
+                </ion-item>
+            </ion-list>
 
             <ion-row>
                 <ion-col class="signup-col">
-                    <button ion-button class="submit-btn" full type="submit">Login</button>
+                    <button ion-button class="submit-btn" full round type="submit">Login</button>
                 </ion-col>
             </ion-row>
 

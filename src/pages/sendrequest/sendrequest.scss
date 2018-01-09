@@ -16,7 +16,7 @@ page-profile {}
     .selectType {
         padding: 0;
         padding-right: 10px;
-        width: 32%;
+        width: 31%;
         +.selectType {
             text-align: center;
         }
@@ -38,10 +38,9 @@ page-profile {}
     }
     .prdListView {
         width: 100%;
-        color: $colorBlack;
         .listView {
             display: inline-block;
-            width: 25%;
+            width: 24%;
             margin-right: 20px;
         }
     }
@@ -59,7 +58,17 @@ input[type=number] {
     background: $colorGray;
     margin: 5px 0;
     border-radius: 25px;
-    padding-left: 10px;
+    padding: 5px;
+    min-height: auto;
+    .listView {
+        color: $colorWhite;
+        margin: 0;
+    }
+    .addItem {
+        margin: 0;
+        right: 7px;
+        bottom: 4px;
+    }
 }
 
 .profile-img {
@@ -106,10 +115,6 @@ input[type=number] {
 
 .block {
     display: block;
-}
-
-ion-input::palceholder {
-    color: #000;
 }
 
 // input-has-focus item-input-has-focus

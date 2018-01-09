@@ -21,11 +21,21 @@
 <ion-content padding>
     <!-- <ion-list *ngIf="showRequest">
         <ion-item *ngFor="let request of mechRequests">
+
             <ion-thumbnail item-start>
                 <img src="{{request.serviceImage}}">
             </ion-thumbnail>
             <h2>Request For <b>{{request.request.serviceName}}</b> Service</h2>
             <p>#id:{{request.id}}</p>
+            <button (click)="goToRequest(request)" ion-button clear item-end>View</button>
+        </ion-item>-->
+
+        <!-- <ion-item *ngFor="let request of mechRequests" class="mechstStatus">
+            <ion-avatar item-start>
+                <img src="{{request.serviceImage}}">
+            </ion-avatar>
+            <h2>{{request.serviceName}} Service</h2>
+            <p>ID: {{request.id}}</p>
             <button (click)="goToRequest(request)" ion-button clear item-end>View</button>
         </ion-item>
     </ion-list>
@@ -49,3 +59,4 @@
     </ion-item>
 
 </ion-content>
+

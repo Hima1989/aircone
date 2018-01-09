@@ -69,4 +69,13 @@ page-mechanic {
     }
 
 
+    .mechstStatus {
+        padding-left: 5px;
+        background: $backgroundBlue;
+        border-radius: 5px;
+        margin: 5px 0;
+    }
+    .list-md .item-block .item-inner {
+        border: none;
+    }
 }
