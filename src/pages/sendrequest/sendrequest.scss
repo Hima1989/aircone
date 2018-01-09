@@ -1,14 +1,74 @@
 page-profile {}
 
+.manageAddress {
+    width: 25px;
+    margin-top: 3px;
+}
+
 .profile-item {
     padding-left: 0px;
     .text-input-md {
         margin: 0;
     }
+    ion-label {
+        color: $placeholderColor;
+    }
+    .selectType {
+        padding: 0;
+        padding-right: 10px;
+        width: 31%;
+        +.selectType {
+            text-align: center;
+        }
+        &:last-child {
+            width: 28%;
+        }
+    }
+    .addItem {
+        position: absolute;
+        right: 0px;
+        bottom: 0;
+        font-size: 16px;
+        .addBtn {
+            color: $btnBlue;
+        }
+        .cancelBtn {
+            color: $colorBlack;
+        }
+    }
+    .prdListView {
+        width: 100%;
+        .listView {
+            display: inline-block;
+            width: 24%;
+            margin-right: 20px;
+        }
+    }
 }
 
 input[type=number] {
     -moz-appearance: textfield;
+}
+
+.profileListView.item-md.item-block .item-inner {
+    border-bottom: none;
+}
+
+.profileListView {
+    background: $colorGray;
+    margin: 5px 0;
+    border-radius: 25px;
+    padding: 5px;
+    min-height: auto;
+    .listView {
+        color: $colorWhite;
+        margin: 0;
+    }
+    .addItem {
+        margin: 0;
+        right: 7px;
+        bottom: 4px;
+    }
 }
 
 .profile-img {
@@ -57,8 +117,18 @@ input[type=number] {
     display: block;
 }
 
-ion-input::palceholder {
-    color: #000;
-}
-
 // input-has-focus item-input-has-focus
+// .header .col {
+//     background-color: lightgrey;
+// }
+// .colTable {
+//     border: solid 1px grey;
+//     border-bottom-style: none;
+//     border-right-style: none;
+// }
+// .colTable:last-child {
+//     border-right: solid 1px grey;
+// }
+// .tableHead:last-child .colTable {
+//     border-bottom: solid 1px grey;
+// }

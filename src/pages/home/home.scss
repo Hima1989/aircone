@@ -18,6 +18,7 @@
 
 .home-header {
     color: $colorLightGray;
+    background: $borderGray;
     // padding: 5px 0;
     .icons {
         font-size: 30px;
@@ -39,6 +40,18 @@
             text-transform: capitalize;
             padding: 20px 30px;
             margin-top: 20px;
+        }
+    }
+    .sendRequest {
+        position: relative;
+        margin: 0 10px;
+        button {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            // margin-left: auto;
+            // margin-right: auto;
         }
     }
 }
@@ -84,7 +97,6 @@ page-home {
         line-height: 30px;
         padding-left: 10px;
     }
-
     #map {
         height: 100%;
     }

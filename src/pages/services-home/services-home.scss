@@ -27,8 +27,11 @@ page-services-home {
 .slide-block {
     height: auto;
     // border-bottom: 1px solid #cacfd6;
-    .slide-img {
+    .slide-img.swiper-slide {
         height: 200px;
+        img {
+            max-height: inherit;
+        }
         .slide-zoom {
             position: absolute;
             top: 0;
