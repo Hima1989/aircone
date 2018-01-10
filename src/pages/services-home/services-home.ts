@@ -28,14 +28,14 @@ export class ServicesHomePage {
     @ViewChild(Slides) slides: Slides;
     @ViewChild(Nav) nav;
     
-  constructor( public platform: Platform, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider) {
+  constructor(public viewCtrl: ViewController, public platform: Platform, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider) {
     this.oneService = navParams.get("postValue");
     this.serviceId = navParams.get("id");    
     this.getService()
 
     this.platform.ready().then(() => {
       this.platform.registerBackButtonAction(() => {
-        this.navCtrl.push(ServicesPage)
+        this.navCtrl.push(ServicesPage);
       });
  });
 
@@ -94,9 +94,14 @@ export class Profile {
   @ViewChild(Slides) slides: Slides;
   serviceId;
   service = {};
- constructor(public viewCtrl: ViewController, public airconeProvider: AirconeProvider, params: NavParams) {
+ constructor(public viewCtrl: ViewController, public platform: Platform, public airconeProvider: AirconeProvider, params: NavParams) {
    this.serviceId = params.get('serviceId')
-   this.getService()
+   this.getService();
+   this.platform.ready().then(() => {
+    this.platform.registerBackButtonAction(() => {
+      this.viewCtrl.dismiss();   
+    });
+});
  }
 
  

@@ -18,8 +18,8 @@ import { Profile } from '../pages/services-home/services-home';
 import { CustomerservicePage } from '../pages/customerservice/customerservice';
 import { ProfilePage } from '../pages/profile/profile';
 import { SendrequestPage } from '../pages/sendrequest/sendrequest';
-import { SendrequestModelPage } from '../pages/sendrequest/sendrequest';
-import { ViewAddress } from '../pages/sendrequest/sendrequest';
+// import { SendrequestModelPage } from '../pages/sendrequest/sendrequest';
+// import { ViewAddress } from '../pages/sendrequest/sendrequest';
 import { NotificationsPage } from '../pages/notifications/notifications';
 import { RequestslistPage } from '../pages/requestslist/requestslist';
 import { StatusPage } from '../pages/status/status';
@@ -68,7 +68,7 @@ import {
     ServicesHomePage,
     ProfilePage,
     SendrequestPage,
-    SendrequestModelPage,
+    // SendrequestModelPage,
     NotificationsPage,
     RequestslistPage,
     StatusPage,
@@ -80,7 +80,7 @@ import {
     MechloginPage,
     ManageAddressPage,
     Address,
-    ViewAddress
+    // ViewAddress
   ],
   imports: [
     BrowserModule,
@@ -101,7 +101,7 @@ import {
     ServicesHomePage,
     ProfilePage,
     SendrequestPage,
-    SendrequestModelPage,
+    // SendrequestModelPage,
     NotificationsPage,
     RequestslistPage,
     StatusPage,
@@ -113,7 +113,7 @@ import {
     MechloginPage,
     ManageAddressPage,
     Address,
-    ViewAddress
+    // ViewAddress
   ],
   providers: [
     StatusBar,

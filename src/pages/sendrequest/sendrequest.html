@@ -49,58 +49,41 @@
             <ion-input class="text-input" type="text" [(ngModel)]="request.City" formControlName="City" placeholder="City"></ion-input>
         </ion-item>
         <ion-item class="profile-item">
-            <ion-input class="text-input" type="number" [pattern]="'^[1-9][0-9]{5}$'" [(ngModel)]="request.Pincode" formControlName="Pincode" placeholder="Pincode"></ion-input>
+            <ion-input type="number" [pattern]="'^[1-9][0-9]{5}$'" (ngModelChange)="checkForPin($event)" [(ngModel)]="request.Pincode" formControlName="Pincode" placeholder="Pincode"></ion-input>
         </ion-item>
-        <!--<ion-item class="profile-item" (click)="openType()">
-            <ion-label fixed>Type</ion-label>
-        </ion-item>-->
         <ion-item class="profile-item">
-            <ion-select placeholder="Type" class="selectType">
-                <ion-option value="01">Split Ac</ion-option>
-                <ion-option value="02">Window Ac</ion-option>
-                <ion-option value="03">Casit Ac</ion-option>
-                <ion-option value="04">Vertical Ac</ion-option>
+            <ion-select placeholder="Type" formControlName="subService" [(ngModel)]="subService.type" class="selectType">
+                <ion-option *ngFor="let type of service.subService" value={{type.subServiceName}}>{{type.subServiceName}}</ion-option>
             </ion-select>
-            <ion-select placeholder="Tonage" class="selectType">
-                <ion-option>0.8 Ton</ion-option>
-                <ion-option>1.0 Ton</ion-option>
-                <ion-option>1.5 Ton</ion-option>
-                <ion-option>2.0 Ton</ion-option>
+            <ion-select placeholder="Tonage" formControlName="serviceTon" [(ngModel)]="subService.ton" class="selectType">
+                <ion-option *ngFor="let ton of service.servicetype" value={{ton}}>{{ton}}</ion-option>
             </ion-select>
-            <ion-select placeholder="Qty" class="selectType">
-                <ion-option>1</ion-option>
-                <ion-option>2</ion-option>
-                <ion-option>3</ion-option>
-                <ion-option>4</ion-option>
-                <ion-option>5</ion-option>
-                <ion-option checked="true">6</ion-option>
-                <ion-option>7</ion-option>
-                <ion-option>8</ion-option>
-                <ion-option>9</ion-option>
-                <ion-option>10</ion-option>
+            <ion-select placeholder="Qty" formControlName="serviceQuantity" [(ngModel)]="subService.quantity" class="selectType">
+                <ion-option value="1">1</ion-option>
+                <ion-option value="2">2</ion-option>
+                <ion-option value="3">3</ion-option>
+                <ion-option value="4">4</ion-option>
+                <ion-option value="5">5</ion-option>
+                <ion-option value="6">6</ion-option>
+                <ion-option value="7">7</ion-option>
+                <ion-option value="8">8</ion-option>
+                <ion-option value="9">9</ion-option>
+                <ion-option value="10">10</ion-option>
             </ion-select>
             <ion-label class="addItem">
-                <ion-icon class="addBtn" ios="ios-add-circle" md="md-add-circle"></ion-icon>
+
+                <ion-icon class="addBtn" ios="ios-add-circle" md="md-add-circle" (click)="addQuantity()"></ion-icon>
             </ion-label>
         </ion-item>
-        <ion-item class="profile-item profileListView">
+        <ion-item class="profile-item profileListView" *ngFor="let serviceType of type">
             <ion-label class="addItem">
-                <ion-icon class="cancelBtn" ios="ios-close-circle" md="md-close-circle"></ion-icon>
+                <ion-icon class="cancelBtn" ios="ios-close-circle" (click)="removeQuantity(serviceType)" md="md-close-circle"></ion-icon>
             </ion-label>
-            <ion-label class="listView" text-center>Window Ac</ion-label>
-            <ion-label class="listView" text-center>2.0 Ton</ion-label>
-            <ion-label class="listView" text-center>10 No's</ion-label>
-        </ion-item>
-        <ion-item class="profile-item profileListView">
-            <ion-label class="addItem">
-                <ion-icon class="cancelBtn" ios="ios-close-circle" md="md-close-circle"></ion-icon>
-            </ion-label>
-            <ion-label class="listView" text-center>Window Ac</ion-label>
-            <ion-label class="listView" text-center>2.0 Ton</ion-label>
-            <ion-label class="listView" text-center>10 No's</ion-label>
+            <ion-label class="listView" text-center>{{serviceType.type}}</ion-label>
+            <ion-label class="listView" text-center>{{serviceType.ton}}</ion-label>
+            <ion-label class="listView" text-center>{{serviceType.quantity}}</ion-label>
         </ion-item>
         <ion-avatar class="navigator nav-request" item-start text-center>
-            <!--<img src="assets/images/navigator.png">-->
             <button class="btn-hrx" type="submit" [disabled]="!orderForm.valid" ion-button round><ion-icon class="icons navigate nav-request" ios="ios-navigate" md="md-navigate"></ion-icon>Send Request</button>
         </ion-avatar>
     </form>

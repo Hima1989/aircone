@@ -13,8 +13,8 @@ import { Device } from '@ionic-native/device';
 export class AirconeProvider {
 
   data;
-baseURL = "https://air-cone-backend.appspot.com"; //production
-    // baseURL = "http://localhost:80"; //development
+// baseURL = "https://air-cone-backend.appspot.com"; //production
+    baseURL = "http://localhost:80"; //development
   constructor(public http: Http, public device: Device) {
   }
 
@@ -35,6 +35,18 @@ baseURL = "https://air-cone-backend.appspot.com"; //production
     console.log("hitted")
     return new Promise(resolve => {
       this.http.post(this.baseURL+'/user/login',data)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+
+  }
+
+  loaduser(uderId) {
+    return new Promise(resolve => {
+      this.http.get(this.baseURL+'/user/'+uderId+'/listOneUser')
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
@@ -223,9 +235,9 @@ baseURL = "https://air-cone-backend.appspot.com"; //production
     });
   }
 
-  getAllPincodes() {
+  getUserPincode(pincode) {
     return new Promise(resolve => {
-      this.http.get(this.baseURL+'/get/allPincodes')       
+      this.http.get(this.baseURL+'/get/'+pincode+'/checkPincode')       
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
