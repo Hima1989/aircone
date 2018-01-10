@@ -1,3 +1,12 @@
+[padding] h1:first-child,
+[padding] h2:first-child,
+[padding] h3:first-child,
+[padding] h4:first-child,
+[padding] h5:first-child,
+[padding] h6:first-child {
+    margin: 0;
+}
+
 page-mechanic {
     .ORDER_APPROVEDa {
         background-color: green
@@ -67,27 +76,17 @@ page-mechanic {
             border-left-color: green;
         }
     }
-
-
     .mechstStatus {
         padding-left: 5px;
         background: $backgroundBlue;
         border-radius: 5px;
         margin: 5px 0;
-        h2 {
+        .serviceCategory {
             margin-bottom: 5px;
+            color: $colorWhite;
         }
     }
-    .list-md .item-block .item-inner {
+    .item-md.item-block .item-inner {
         border: none;
     }
-}
-
-[padding] h1:first-child,
-[padding] h2:first-child,
-[padding] h3:first-child,
-[padding] h4:first-child,
-[padding] h5:first-child,
-[padding] h6:first-child {
-    margin: 0;
 }
