@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { AirconeProvider } from '../../providers/aircone/aircone';
+import { ServicesPage } from '../services/services'
 // import { ServicesHomePage } from '../services-home/services-home';
 
 /**
@@ -19,7 +20,7 @@ export class CustomerservicePage {
 
   comment;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, public alertCtrl: AlertController) {
+  constructor(private toastCtrl: ToastController, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -41,6 +42,9 @@ export class CustomerservicePage {
       });
       alert.present();
     });
+    this.navCtrl.push(ServicesPage)
+  } else {
+    this.presentToast()
   }
   }
 
@@ -49,5 +53,19 @@ export class CustomerservicePage {
   //     id: this.serviceId
   //   })
   // }  
+
+  presentToast() {
+    let toast = this.toastCtrl.create({
+      message: 'Please Enter Comment',
+      duration: 3000,
+      position: 'bottom'
+    });
+  
+    // toast.onDidDismiss(() => {
+    //   console.log('Dismissed toast');
+    // });
+  
+    toast.present();
+  }
 
 }
