@@ -102,7 +102,7 @@ export class RepairPage {
   }
 
   goBack() {
-    this.navCtrl.push(MechHomePage)
+    this.navCtrl.push(MechHomePage, {details: this.request})
   }
 
 }
