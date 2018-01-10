@@ -8,8 +8,20 @@ page-mechanic {
         background: $backgroundBlue;
         border-radius: 5px;
         margin: 5px 0;
+        h2 {
+            margin-bottom: 5px;
+        }
     }
     .list-md .item-block .item-inner {
         border: none;
     }
+}
+
+[padding] h1:first-child,
+[padding] h2:first-child,
+[padding] h3:first-child,
+[padding] h4:first-child,
+[padding] h5:first-child,
+[padding] h6:first-child {
+    margin: 0;
 }
