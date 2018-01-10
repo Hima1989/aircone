@@ -34,12 +34,17 @@ export class MyApp {
   profilePage:any = ProfilePage;
   requestslistPage: any = RequestslistPage;
   userInfo;
+  role
  // nav: NavController
 
   constructor(public airconeProvider: AirconeProvider, public platform: Platform, public alertCtrl: AlertController, public statusBar: StatusBar, public splashScreen: SplashScreen, public menuCtrl: MenuController, public toast: ToastController, private socialSharing: SocialSharing) {
  //   this.initializeApp();
+    // if (localStorage.getItem("userData")) {
+    //   var userDetails  = JSON.parse(localStorage.getItem("userData"));
+    //   this.role = userDetails.role[0];
+    //   console.log(this.role)
+    // }
 
-    
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.

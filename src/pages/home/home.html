@@ -29,7 +29,7 @@
                 <ion-item class="comment-top">
                     <ion-row>
                         <ion-col col-3 class="slide-imgs">
-                            <img src="assets/images/cus-img.png">
+                            <img class="imageRounded" [src]="comment.image ? comment.image : 'assets/images/cus-img.png'" />
                         </ion-col>
                         <ion-col col-6>
                             <h2 class="cus-name">{{comment.user.userName}}</h2>
@@ -50,7 +50,7 @@
             </ion-card>
         </ion-slide>
     </ion-slides>
-    <div class="sendRequest"><button full class="btn-hrx " (click)="sendRequest()" ion-button round>
+    <div class="sendRequest"><button full class="btn-hrx" (click)="sendRequest()" ion-button round>
         <ion-icon class="icons navigate nav-request" ios="ios-navigate" md="md-navigate"></ion-icon>Send Request</button>
     </div>
 </ion-content>

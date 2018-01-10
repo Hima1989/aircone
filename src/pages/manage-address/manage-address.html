@@ -6,7 +6,7 @@
 -->
 
 
-<ion-header class="home-header">
+<ion-header *ngIf="!forRequest" class="home-header">
     <ion-grid>
         <ion-row>
             <ion-col col-2 text-left>
@@ -25,13 +25,29 @@
     </ion-grid>
 </ion-header>
 
+<ion-header *ngIf="forRequest" class="home-header">
+    <ion-grid>
+        <ion-row>
+            <ion-col col-2 text-left>
+                <ion-icon class="icon-back" ios="ios-arrow-back" md="md-arrow-back" (click)="goBackToRequest()"></ion-icon>
+            </ion-col>
+            <ion-col col-8 text-center>
+                <ion-title class="title">
+                    <h3 class="content-heading" text-center>Choose Address</h3>
+                </ion-title>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-header>
+
 
 <ion-content text-center padding>
     <!--<ion-label (click)="addAddress()">Add Address</ion-label>-->
 
     <ion-list>
+
         <ion-item *ngFor="let address of oldAddress" class="addressBlock">
-            <div class="addressText">
+            <div class="addressText" (click)="addAddressToForm(address)">
                 {{address.Name}},<br>{{address.Door}},<br>{{address.Street}},
                 <br>{{address.Area}},<br>{{address.City}},<br>{{address.Phone}},<br> {{address.Pincode}}
             </div>

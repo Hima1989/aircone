@@ -34,18 +34,22 @@ export class HomePage {
 
  map: GoogleMap;
   constructor(public navCtrl: NavController, public platform: Platform, public navParams: NavParams, private airconeProvider: AirconeProvider) {
+    this.loadMap();
   }
 
 
-ngAfterViewInit() {
-  this.platform.ready().then(() => {
-    this.loadMap();
-  });  
-}
+// ngAfterViewInit() {
+//   this.platform.ready().then(() => {
+//     this.loadMap();
+//   });  
+// }
+
+  ionViewDidLoad() {
+  }
 
 
 loadMap() {
-
+  console.log("map function loded")
   this.airconeProvider.getUserComments()
   .then(res => {
     this.comments = res;
@@ -55,7 +59,7 @@ loadMap() {
         locations.push(element.coords)        
       }
     });
-    
+    console.log("locations taking")
   // var locations = [
   //   [-33.890542, 151.274856],
   //   [-33.923036, 151.259052],
@@ -78,6 +82,7 @@ loadMap() {
   
       this.map.one(GoogleMapsEvent.MAP_READY)
         .then(() => {
+          console.log("entered into maps")
             for (var i = 0; i < locations.length; i++) {
               this.map.addMarker({
                   title: locations[i].latitude,
@@ -89,6 +94,7 @@ loadMap() {
                   }
                 })
                 .then(marker => {
+                  console.log("ok")
                   marker.on(GoogleMapsEvent.MARKER_CLICK)
                     .subscribe(() => {
                       alert('exixtent user');

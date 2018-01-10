@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RepairPage } from '../repair/repair';
+import { MechanicPage } from '../mechanic/mechanic';
 /**
  * Generated class for the MechHomePage page.
  *
@@ -33,6 +34,10 @@ export class MechHomePage {
 
   startService() {
     this.navCtrl.push(RepairPage, {request: this.request})
+  }
+
+  goBack() {
+    this.navCtrl.push(MechanicPage)
   }
 
 
