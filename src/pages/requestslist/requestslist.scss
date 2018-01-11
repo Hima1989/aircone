@@ -1,43 +1,18 @@
 page-requestslist {
-    // .ORDER_CLOSED {
-    //     &:before {
-    //         border-left: red;
-    //     }
-    // }
-    // .ORDER_APPROVED {
-    //     &:before {
-    //         border-left-color: green;
-    //     }
-    // }
-    // .ORDER_REQUESTED {
-    //     &:before {
-    //         border-left-color: rgb(94, 94, 227);
-    //     }
-    // }
-    // .ORDER_DECLINED {
-    //     &:before {
-    //         border-left-color: red;
-    //     }
-    // }
-    // .ORDER_CANCELLED {
-    //     &:before {
-    //         border-left: 10px solid  blue;
-    //     }
-    // }
     .ORDER_CLOSEDa {
-        background-color: red
+        background-color: $statusGreen;
     }
     .ORDER_APPROVEDa {
-        background-color: green
+        background-color: $statusLightGreen;
     }
     .ORDER_REQUESTEDa {
-        background-color: red
+        background-color: $statusLightBlue;
     }
     .ORDER_DECLINEDa {
-        background-color: red
+        background-color: $statusLightRed;
     }
     .ORDER_CANCELLEDa {
-        background-color: blue
+        background-color: $statusLightRed;
     }
     .button {
         border: none;
@@ -109,27 +84,27 @@ page-requestslist {
     }
     .ORDER_CANCELLED {
         &:before {
-            border-left-color: blue;
+            border-left-color: $statusLightRed;
         }
     }
     .ORDER_APPROVED {
         &:before {
-            border-left-color: green;
+            border-left-color: $statusLightGreen;
         }
     }
     .ORDER_DECLINED {
         &:before {
-            border-left-color: red;
+            border-left-color: $statusLightRed;
         }
     }
     .ORDER_REQUESTED {
         &:before {
-            border-left-color: rgb(94, 94, 227);
+            border-left-color: $statusLightBlue;
         }
     }
     .ORDER_CLOSED {
         &:before {
-            border-left-color: red;
+            border-left-color: $statusGreen;
         }
     }
 }
