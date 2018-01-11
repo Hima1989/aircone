@@ -90,7 +90,7 @@ export class SendrequestPage {
         } else if (this.data.status == 404) {
           let toast = this.toastCtrl.create({
             message: 'Location Not Available',
-            duration: 4000,
+            duration: 10000,
             position: 'bottom'
             });
             toast.present();
@@ -110,8 +110,18 @@ export class SendrequestPage {
   }
 
   addQuantity() {
-    this.type.push(this.subService);
-    this.subService = {type: "", ton: "", quantity: ""};
+    if (this.subService.type == '' && this.subService.ton == '' && this.subService.quantity == '') {
+      let toast = this.toastCtrl.create({
+        message: 'Please Enter Type Of Service and Quantity',
+        duration: 4000,
+        position: 'bottom'
+        });
+        toast.present();
+    } else {
+      this.type.push(this.subService);
+      this.subService = {type: "", ton: "", quantity: ""};
+    }
+
   }
 
   removeQuantity(serviceType) {
@@ -123,6 +133,8 @@ export class SendrequestPage {
   }
 
   sendRequest() {
+    if (this.type.length > 0 && this.type[0].quantity != '') {
+      
    this.orderForm.value.Type = this.type;
     var userData = JSON.parse(localStorage.getItem("userData"));
     var requestDetails = {
@@ -157,6 +169,14 @@ export class SendrequestPage {
 
       this.orderForm.reset()      
     });
+  } else {
+    let toast = this.toastCtrl.create({
+      message: 'Please Enter Type Of Service and Quantity',
+      duration: 8000,
+      position: 'bottom'
+      });
+      toast.present();
+  }
   }
 
 
