@@ -57,6 +57,8 @@ export class LoginpagePage {
 
          var userDetails = {"identifier":"gleedtechuser@gmail.com","password":"123123123","email":"doddibalubharadwaj@gmail.com"}
 
+        //  var userDetails = {"identifier":"doddibalubharadwaj@gmail.com","password":"123123123","email":"doddibalubharadwaj@gmail.com"}
+         
          //var userDetails = {"identifier":"gleedtechmech@gmail.com","password":"123123123","email":"doddibalubharadwaj@gmail.com"}
          
             this.airconeProvider.userLogin(userDetails)

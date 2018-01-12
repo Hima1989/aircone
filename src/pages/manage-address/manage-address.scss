@@ -1,11 +1,5 @@
 page-manage-address {
     .addressBlock {
-        border: 1px solid $borderGray;
-        border-radius: 5px;
-        padding: 10px;
-        padding-top: 30px;
-        margin-bottom: 10px;
-        background: rgba(0, 0, 0, 0.7);
         .addressText {
             color: $colorWhite;
             text-transform: capitalize;
@@ -19,4 +13,13 @@ page-manage-address {
     .list-md .item-block .item-inner {
         border: none;
     }
+}
+
+.addressBlock {
+    border: 1px solid $borderGray;
+    border-radius: 5px;
+    padding: 10px;
+    padding-top: 30px;
+    margin-bottom: 10px;
+    background: rgba(0, 0, 0, 0.7);
 }

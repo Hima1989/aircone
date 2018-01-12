@@ -39,10 +39,9 @@ import { Device } from "@ionic-native/device";
 import { GooglePlus } from "@ionic-native/google-plus";
 import { Camera } from "@ionic-native/camera";
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { Toast } from '@ionic-native/toast';
 
-import {
-  GoogleMaps
- } from '@ionic-native/google-maps';
+import { GoogleMaps } from '@ionic-native/google-maps';
  import { Geolocation } from '@ionic-native/geolocation';
  import firebase from 'firebase';
 
@@ -126,7 +125,8 @@ import {
     GooglePlus,
     Geolocation,
     Camera,
-    SocialSharing
+    SocialSharing,
+    Toast
   ]
 })
 export class AppModule {}

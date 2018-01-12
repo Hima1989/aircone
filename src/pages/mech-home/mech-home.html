@@ -21,15 +21,27 @@
 
 
 <ion-content padding>
-  <ion-list>
-    <ion-list-header>
-      Service Information
-    </ion-list-header>
-    <ion-item>ServiceName: {{serviceInfo.serviceName}}</ion-item>
-    <ion-item>Status: {{serviceInfo.status}}</ion-item>
-    <ion-item>Date Of Request: {{serviceInfo.createdAt}}</ion-item>
-  </ion-list>
-  <ion-list>
+    <ion-list>
+        <!--<ion-list-header text-center>-->
+        <h4 text-center>Service Information</h4>
+        <!--</ion-list-header>-->
+        <!--<ion-item>ServiceName: {{serviceInfo.serviceName}}</ion-item>
+    <ion-item>Status: {{serviceInfo.status}}</ion-item>-->
+        <ion-item class="addressBlock">
+            <div class="addressText">
+                <p><span class="fielsList">ServiceName</span><span class="userList">:{{serviceInfo.serviceName}},</span></p>
+                <p><span class="fielsList">Status</span><span class="userList">:{{serviceInfo.status}},</span></p>
+                <p><span class="fielsList">user name</span><span class="userList">:{{userRequest.Name}},</span></p>
+                <p><span class="fielsList">phone</span><span class="userList">:{{userRequest.Phone}},</span></p>
+                <p><span class="fielsList">Alternative Ph</span><span class="userList">:{{userRequest.AltPhone}},</span></p>
+                <p><span class="fielsList">Door No </span><span class="userList">:{{userRequest.Door}},</span></p>
+                <p><span class="fielsList">Street </span><span class="userList">:{{userRequest.Street}},</span></p>
+                <p><span class="fielsList">Area </span><span class="userList">:{{userRequest.Area}},</span></p>
+                <p><span class="fielsList">City </span><span class="userList">:{{userRequest.City}}.</span></p>
+            </div>
+        </ion-item>
+    </ion-list>
+    <!--<ion-list>
     <ion-list-header>
       User Info
     </ion-list-header>
@@ -40,6 +52,6 @@
     <ion-item>Street         :{{userRequest.Street}}</ion-item>
     <ion-item>Area           :{{userRequest.Area}}</ion-item>
     <ion-item>City           :{{userRequest.City}}</ion-item>    
-  </ion-list>
-  <button ion-button (click)="startService()"full>Start Service</button>
+  </ion-list>-->
+    <button ion-button (click)="startService()" full round>Start Service</button>
 </ion-content>
