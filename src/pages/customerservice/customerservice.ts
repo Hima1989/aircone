@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { ServicesPage } from '../services/services';
+import { HomePage } from '../home/home';
+
 import { Toast } from '@ionic-native/toast';
 // import { ServicesHomePage } from '../services-home/services-home';
 
@@ -47,26 +49,26 @@ export class CustomerservicePage {
   } else {
     this.presentToast()
   }
-  }
-
-  //   goBack() {
-  //   this.navCtrl.push(ServicesHomePage {
-  //     id: this.serviceId
-  //   })
-  // }  
-
-  presentToast() {
+}
+presentToast() {
     this.toast.show(`Please Enter Comment`, '5000', 'center').subscribe(
   toast => {
     console.log(toast);
   }
 );
+  }
+
+goBack() {
+      this.navCtrl.push(HomePage)
+  }  
+
+  
     // let toast = this.toastCtrl.create({
     //   message: 'Please Enter Comment',
     //   duration: 2000,
     //   position: 'middle'
     // });  
     // toast.present();
-  }
+
 
 }

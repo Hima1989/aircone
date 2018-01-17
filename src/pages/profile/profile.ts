@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ServicesPage } from '../services/services';
 import { Camera } from '@ionic-native/camera';
 import { AirconeProvider } from '../../providers/aircone/aircone';
+import { Toast } from '@ionic-native/toast';
 
 /**
  * Generated class for the ProfilePage page.
@@ -21,7 +22,7 @@ export class ProfilePage {
   public userDetails: any = {firstName: '', email: '', phoneNumber: ''};
   base64Image:any;
   orderForm;
-  constructor(private toastCtrl: ToastController, public navCtrl: NavController, public navParams: NavParams, public camera:Camera, public airconeProvider: AirconeProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public camera:Camera, public airconeProvider: AirconeProvider,private toast: Toast) {
     this.getUserDetails();
     // this.orderForm  = this.formBuilder.group({
           
@@ -32,25 +33,38 @@ export class ProfilePage {
   }
 
   submitDetails() {
-    
-    if (this.myfile) {
+    if(this.userDetails.firstName != ""){
+       if (this.myfile) {
       this.userDetails.image = this.myfile.imageURL;
     }
    // this.userDetails.image = "https://my-tips-s3.s3.amazonaws.com/images/1514638844961_file.jpeg";
     this.airconeProvider.userDetailsUpdate(this.userDetails)
     .then(res => {
-      this.presentToast();
+      this.updateToast();
+      // setTimeout(this.timeOut(), 3000);
       this.navCtrl.push(ServicesPage)
     })
+    }else{
+      this.presentToast();
+    }
   } 
+// timeOut(){
+//  this.navCtrl.push(ServicesPage)
 
+// }
   presentToast() {
-    let toast = this.toastCtrl.create({
-      message: 'Profile Successfully Updated',
-      duration: 3000,
-      position: 'middle'
-    });
-    toast.present();
+     this.toast.show(`Profile not update`, '5000', 'center').subscribe(
+            toast => {
+              console.log(toast);
+            }
+          );     
+  }
+    updateToast() {
+     this.toast.show(`Profile updated`, '5000', 'center').subscribe(
+            toast => {
+              console.log(toast);
+            }
+          );     
   }
 
   accessGallery(){
