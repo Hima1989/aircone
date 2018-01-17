@@ -32,6 +32,10 @@
                 <ion-label floating>Phone Number</ion-label>
                 <ion-input type="number" name="phone" [pattern]="'^[7-9][0-9]{9}$'" [(ngModel)]="userDetails.phoneNumber"></ion-input>
             </ion-item>
+            <ion-item>
+                <ion-label floating>Referral Code</ion-label>
+                <ion-input type="text" [disabled]="!referral" name="referral" [(ngModel)]="userDetails.referredBy"></ion-input>
+            </ion-item>
         </ion-list>
         <ion-avatar class="navigator nav-request" item-start text-center>
             <!--<img src="assets/images/navigator.png">-->

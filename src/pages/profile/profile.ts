@@ -22,7 +22,8 @@ export class ProfilePage {
   public userDetails: any = {firstName: '', email: '', phoneNumber: ''};
   base64Image:any;
   orderForm;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public camera:Camera, public airconeProvider: AirconeProvider,private toast: Toast) {
+  referral: boolean = true;
+  constructor(private toast: Toast, public navCtrl: NavController, public navParams: NavParams, public camera:Camera, public airconeProvider: AirconeProvider) {
     this.getUserDetails();
     // this.orderForm  = this.formBuilder.group({
           
@@ -37,7 +38,6 @@ export class ProfilePage {
        if (this.myfile) {
       this.userDetails.image = this.myfile.imageURL;
     }
-   // this.userDetails.image = "https://my-tips-s3.s3.amazonaws.com/images/1514638844961_file.jpeg";
     this.airconeProvider.userDetailsUpdate(this.userDetails)
     .then(res => {
       this.updateToast();
@@ -102,7 +102,9 @@ export class ProfilePage {
    .then(data => {
     this.userDetails = data
     this.base64Image = this.userDetails.image
-    console.log(this.userDetails)
+    if(this.userDetails.referredBy) {
+      this.referral = false;
+    }
    })
   }
 

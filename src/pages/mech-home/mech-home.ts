@@ -29,7 +29,6 @@ export class MechHomePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MechHomePage');
   }
 
   startService() {

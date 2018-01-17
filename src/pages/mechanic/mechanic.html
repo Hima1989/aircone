@@ -35,7 +35,9 @@
             <img src="{{request.serviceImage}}">
         </ion-avatar>
         <h2>{{request.serviceName}} Service</h2>
+        <h4>{{request.request.Name}}</h4>
         <p>ID: {{request.id}}</p>
+        <p>Date: {{request.createdAt}}</p>
         <div *ngIf="request.status=='ORDER_APPROVED'">
             <button class="button {{request.status}}a">Yet To Repair</button>
         </div>-->
