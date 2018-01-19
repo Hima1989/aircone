@@ -9,12 +9,12 @@
 <ion-header *ngIf="!forRequest" class="home-header">
     <ion-grid>
         <ion-row>
-            <ion-col col-2 text-left>
-                <ion-icon class="icon-back" ios="ios-arrow-back" md="md-arrow-back" (click)="goBack()"></ion-icon>
+            <ion-col col-2 text-left (click)="goBack()">
+                <ion-icon class="icon-back" ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
             </ion-col>
             <ion-col col-8 text-center>
                 <ion-title class="title">
-                    <h3 class="content-heading" text-center>manageAddress</h3>
+                    <h3 class="content-heading" text-center>ManageAddress</h3>
                 </ion-title>
             </ion-col>
             <ion-col col-2 text-right (click)="addAddress()">
@@ -43,9 +43,7 @@
 
 <ion-content text-center padding>
     <!--<ion-label (click)="addAddress()">Add Address</ion-label>-->
-
     <ion-list>
-
         <ion-item *ngFor="let address of oldAddress" class="addressBlock">
             <div class="addressText" (click)="addAddressToForm(address)">
                 {{address.Name}},<br>{{address.Door}},<br>{{address.Street}},
@@ -53,9 +51,8 @@
             </div>
             <div class="addDelIcons">
                 <button (click)="editAddress(address)" ion-button round><ion-icon ios="ios-create" md="md-create"></ion-icon></button>
-                <button (click)="deleteAddress(address)" ion-button round><ion-icon ios="ios-trash" md="md-trash"></ion-icon></button>
+                <button (click)="doConfirm(address)" ion-button round><ion-icon ios="ios-trash" md="md-trash"></ion-icon></button>
             </div>
         </ion-item>
     </ion-list>
-
 </ion-content>

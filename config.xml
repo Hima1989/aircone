@@ -85,6 +85,7 @@
     <allow-navigation href="http://192.168.31.68:8101" />
     <allow-navigation href="http://192.168.31.163:8101" />
     <allow-navigation href="http://192.168.31.207:8101" />
+    <allow-navigation href="http://192.168.31.207:8100" />
     <engine name="android" spec="~6.3.0" />
     <engine name="browser" spec="~5.0.1" />
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />

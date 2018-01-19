@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, Platform, ModalController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, Platform, ModalController } from 'ionic-angular';
 import { ServicesHomePage } from '../services-home/services-home';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import {Validators, FormBuilder } from '@angular/forms';
 import { ManageAddressPage } from '../manage-address/manage-address';
 import { ServicesPage } from '../services/services';
+import { Toast } from '@ionic-native/toast';
 
 /**
  * Generated class for the SendrequestPage page.
@@ -32,7 +33,7 @@ export class SendrequestPage {
   type: any = [];
   subService:any = {type: "", ton: "", quantity: ""};
 
-  constructor(private toastCtrl: ToastController, public platform: Platform, params: NavParams, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, private formBuilder: FormBuilder, public alertCtrl: AlertController) {
+  constructor(private toast: Toast, public platform: Platform, params: NavParams, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, private formBuilder: FormBuilder, public alertCtrl: AlertController) {
     this.orderForm  = this.formBuilder.group({
       Name: ['', Validators.required],
       City: ['', Validators.required],
@@ -81,12 +82,17 @@ export class SendrequestPage {
       .then( res => {
         this.data = res;
         if (this.data.status == 200) {
-              let toast = this.toastCtrl.create({
-              message: 'Location Available',
-              duration: 4000,
-              position: 'bottom'
-              });
-              toast.present();
+              // let toast = this.toastCtrl.create({
+              // message: 'Location Available',
+              // duration: 4000,
+              // position: 'bottom'
+              // });
+              this.toast.show(`I'm a toast`, '5000', 'center').subscribe(
+  toast => {
+    console.log(toast);
+  }
+);
+              // toast.present();
         } else if (this.data.status == 404) {
           let toast = this.toastCtrl.create({
             message: 'Location Not Available',

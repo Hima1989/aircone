@@ -5,6 +5,7 @@ import { AirconeProvider } from '../../providers/aircone/aircone';
 import { ServicesPage } from '../services/services';
 import { SendrequestPage } from '../sendrequest/sendrequest';
 
+
 /**
  * Generated class for the ManageAddressPage page.
  *
@@ -72,13 +73,46 @@ export class ManageAddressPage {
     addressModal.present();    
   }
 
-   deleteAddress(address) {
-    var userData = JSON.parse(localStorage.getItem("userData"));
+  //  deleteAddress(address) {
+  //   var userData = JSON.parse(localStorage.getItem("userData"));
+  //   this.airconeProvider.deleteUserAddress(userData.id, address)
+  //   .then(data => {
+  //       this.loadAddresses()
+  //   })   
+  //   this.doConfirm()
+  //  }
+
+   
+  doConfirm(address) {
+    let alert = this.alertCtrl.create({
+      title: 'Confirm Items',
+      message: 'Do you want to remove this?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass:'icon-color',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Ok',
+          cssClass:'icon-color',
+          handler: data => {
+            console.log('Items Removed!');
+            var userData = JSON.parse(localStorage.getItem("userData"));
     this.airconeProvider.deleteUserAddress(userData.id, address)
     .then(data => {
         this.loadAddresses()
-    })   
-   }
+    }) 
+            //Call you API to remove Items here.
+          }
+        }
+      ]
+    });
+    alert.present();
+}
 
    goBack() {
      this.navCtrl.push(ServicesPage)
