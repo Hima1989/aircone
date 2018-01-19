@@ -55,14 +55,12 @@ export class ProfilePage {
   presentToast() {
      this.toast.show(`Profile not update`, '5000', 'center').subscribe(
             toast => {
-              console.log(toast);
             }
           );     
   }
     updateToast() {
      this.toast.show(`Profile updated`, '5000', 'center').subscribe(
             toast => {
-              console.log(toast);
             }
           );     
   }

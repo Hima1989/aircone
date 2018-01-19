@@ -26,7 +26,8 @@ export class ServicesPage {
   
   constructor(private toastCtrl: ToastController, public platform: Platform, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, public app: App, public menu: MenuController) {
     this.loadServices();
-    menu.enable(true);
+    menu.enable(true)
+  
     platform.registerBackButtonAction(() => {
       if (this.backButtonPressed) {
         this.platform.exitApp();

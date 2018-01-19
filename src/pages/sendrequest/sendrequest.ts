@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, Platform, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, Platform, ModalController, ToastController } from 'ionic-angular';
 import { ServicesHomePage } from '../services-home/services-home';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import {Validators, FormBuilder } from '@angular/forms';
@@ -33,7 +33,7 @@ export class SendrequestPage {
   type: any = [];
   subService:any = {type: "", ton: "", quantity: ""};
 
-  constructor(private toast: Toast, public platform: Platform, params: NavParams, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, private formBuilder: FormBuilder, public alertCtrl: AlertController) {
+  constructor(private toastCtrl: ToastController,private toast: Toast, public platform: Platform, params: NavParams, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, private formBuilder: FormBuilder, public alertCtrl: AlertController) {
     this.orderForm  = this.formBuilder.group({
       Name: ['', Validators.required],
       City: ['', Validators.required],
@@ -89,7 +89,6 @@ export class SendrequestPage {
               // });
               this.toast.show(`I'm a toast`, '5000', 'center').subscribe(
   toast => {
-    console.log(toast);
   }
 );
               // toast.present();
@@ -132,7 +131,6 @@ export class SendrequestPage {
 
   removeQuantity(serviceType) {
     this.type.splice(this.type.indexOf(serviceType), 1)
-    console.log(this.type)
   }
 
   ionViewDidLoad() {

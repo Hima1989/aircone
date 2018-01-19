@@ -43,7 +43,7 @@
 
 <ion-content text-center padding>
     <!--<ion-label (click)="addAddress()">Add Address</ion-label>-->
-    <ion-list>
+    <ion-list *ngIf="oldAddress">
         <ion-item *ngFor="let address of oldAddress" class="addressBlock">
             <div class="addressText" (click)="addAddressToForm(address)">
                 {{address.Name}},<br>{{address.Door}},<br>{{address.Street}},
