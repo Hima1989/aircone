@@ -89,7 +89,6 @@ export class SendrequestPage {
               // });
               this.toast.show(`I'm a toast`, '5000', 'center').subscribe(
   toast => {
-    console.log(toast);
   }
 );
               // toast.present();
@@ -132,7 +131,6 @@ export class SendrequestPage {
 
   removeQuantity(serviceType) {
     this.type.splice(this.type.indexOf(serviceType), 1)
-    console.log(this.type)
   }
 
   ionViewDidLoad() {

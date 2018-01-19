@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, ViewController, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, App, NavParams, AlertController, ViewController, ModalController } from 'ionic-angular';
 import {Validators, FormBuilder } from '@angular/forms';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { ServicesPage } from '../services/services';
@@ -23,18 +23,14 @@ export class ManageAddressPage {
   oldAddress;
   serviceId;
   forRequest: boolean = false; 
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams, public alertCtrl: AlertController, public airconeProvider: AirconeProvider, public modalCtrl: ModalController) {
+  constructor(public app: App, public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams, public alertCtrl: AlertController, public airconeProvider: AirconeProvider, public modalCtrl: ModalController) {
     if (navParams.get("id")) {
       this.serviceId = navParams.get("id"); 
       this.forRequest = true;
-      console.log(this.serviceId)
-    } else {
-      console.log("noserviceid")      
     }
     if (navParams.get("forRequest")) {
       this.forRequest = true;
     }
-
     this.loadAddresses();
   }
 
@@ -42,11 +38,7 @@ export class ManageAddressPage {
   }
 
   goBackToRequest() {
-    if (this.forRequest) {
-      this.navCtrl.push(SendrequestPage, {id: this.serviceId})
-    } else {
-      this.viewCtrl.dismiss();      
-    }
+      this.viewCtrl.dismiss();  
   }
 
   addAddress() {
@@ -63,26 +55,19 @@ export class ManageAddressPage {
    }
 
    addAddressToForm(address) {
-    if (this.forRequest) {
-      this.navCtrl.push(SendrequestPage, {id: this.serviceId, selectedAddress: address})
-    }
+     if (this.forRequest) {
+    this.viewCtrl.dismiss().then(() => {
+      this.app.getRootNav().push(SendrequestPage, {id: this.serviceId, selectedAddress: address});
+    });
+     }
    }
 
    editAddress(address) {
+     this.viewCtrl.dismiss()
     let addressModal = this.modalCtrl.create(Address, {userAddress: address, forRequest: this.forRequest, id: this.serviceId});
     addressModal.present();    
   }
 
-  //  deleteAddress(address) {
-  //   var userData = JSON.parse(localStorage.getItem("userData"));
-  //   this.airconeProvider.deleteUserAddress(userData.id, address)
-  //   .then(data => {
-  //       this.loadAddresses()
-  //   })   
-  //   this.doConfirm()
-  //  }
-
-   
   doConfirm(address) {
     let alert = this.alertCtrl.create({
       title: 'Confirm Items',
@@ -93,20 +78,17 @@ export class ManageAddressPage {
           role: 'cancel',
           cssClass:'icon-color',
           handler: () => {
-            console.log('Cancel clicked');
           }
         },
         {
           text: 'Ok',
           cssClass:'icon-color',
           handler: data => {
-            console.log('Items Removed!');
             var userData = JSON.parse(localStorage.getItem("userData"));
     this.airconeProvider.deleteUserAddress(userData.id, address)
     .then(data => {
         this.loadAddresses()
     }) 
-            //Call you API to remove Items here.
           }
         }
       ]
@@ -136,24 +118,21 @@ export class Address {
   oldAddressId;
   forRequest;
   serviveId;
- constructor(public navCtrl: NavController,public viewCtrl: ViewController, public airconeProvider: AirconeProvider, params: NavParams, private formBuilder: FormBuilder, public alertCtrl: AlertController, public modalCtrl: ModalController) {
+ constructor(public app: App, public navCtrl: NavController,public viewCtrl: ViewController, public airconeProvider: AirconeProvider, params: NavParams, private formBuilder: FormBuilder, public alertCtrl: AlertController, public modalCtrl: ModalController) {
   
   if (params.get('userAddress')) {
     this.userAddress = params.get('userAddress')
     this.request = this.userAddress
-    // console.log(this.userAddress.id)
     this.oldAddressId = this.userAddress.id;
     this.oldAdd = true
   }
 
   if (params.get('id')) {
     this.serviveId = params.get('id')
-    console.log(this.serviveId)
   }
 
   if (params.get('forRequest')) {
     this.forRequest = true;
-    console.log(this.forRequest)
   }
   
   this.orderForm  = this.formBuilder.group({
@@ -166,7 +145,6 @@ export class Address {
     Area: ['', Validators.required],
     Pincode: ['', Validators.required]      
   }); 
-
 
 }
 
@@ -196,8 +174,6 @@ export class Address {
       this.orderForm.reset()  
     })
   } else if(this.oldAdd) {
-    // console.log(this.orderForm.value)
-    // console.log(this.oldAddressId)
     this.airconeProvider.updateAddress(userData.id, this.oldAddressId, this.orderForm.value)
     .then(data => {
          this.data = data;
@@ -207,13 +183,18 @@ export class Address {
           subTitle: 'Your Address is Successfully Updated!',
           buttons: [{text: 'OK', 
                       handler: () => {
-                      console.log('Cancel clicked');
-                      let addressModal = this.modalCtrl.create(ManageAddressPage, {forRequest: this.forRequest, id: this.serviveId});
-                      addressModal.present(); 
+                      if (this.forRequest) {
+                      this.viewCtrl.dismiss().then(() => {
+                        this.app.getRootNav().push(ManageAddressPage, {forRequest: this.forRequest, id: this.serviveId});
+                      })
+                      } else {
+                      this.viewCtrl.dismiss().then(() => {
+                        this.app.getRootNav().push(ManageAddressPage);
+                      });
+                      }
                 }}]
         });
         alert.present();
-        console.log(alert)
       } else if ( this.data.status == 404) {
         let alert = this.alertCtrl.create({
           title: 'Address Cant Update!',
@@ -224,8 +205,6 @@ export class Address {
       }
   
       this.orderForm.reset()  
-      // let addressModal = this.modalCtrl.create(ManageAddressPage, {forRequest: this.forRequest});
-      // addressModal.present(); 
     })
   }
 
@@ -237,7 +216,7 @@ export class Address {
    if (this.forRequest) {
      this.viewCtrl.dismiss()
    } else {
-    this.navCtrl.push(ManageAddressPage)    
+    this.viewCtrl.dismiss()    
    }
  }
 
