@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, ToastController } from 'ionic-angular';
 import { Facebook } from '@ionic-native/facebook';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { HomePage } from '../home/home';
 import { GooglePlus } from '@ionic-native/google-plus';
-import { MechanicPage } from '../mechanic/mechanic';
+import { ProfilePage } from '../profile/profile';
 import { Geolocation } from '@ionic-native/geolocation';
 import { MechloginPage } from '../mechlogin/mechlogin';
 /**
@@ -24,8 +24,10 @@ export class LoginpagePage {
   homePage = HomePage;
   data;
   coords;
-  constructor(public platform: Platform, public navCtrl: NavController, public googlePlus: GooglePlus, public navParams: NavParams, public fb: Facebook, public airconeProvider: AirconeProvider, private geolocation: Geolocation) {
+  constructor(private toastCtrl: ToastController, public platform: Platform, public navCtrl: NavController, public googlePlus: GooglePlus, public navParams: NavParams, public fb: Facebook, public airconeProvider: AirconeProvider, private geolocation: Geolocation) {
+
   }
+
 
   // ionViewDidLoad() {
   //   console.log('ionViewDidLoad LoginpagePage');
@@ -53,9 +55,18 @@ export class LoginpagePage {
 
   }
 
+  presentToast() {
+    let toast = this.toastCtrl.create({
+      message: 'Please Updated Profile',
+      duration: 3000,
+      position: 'middle'
+    });
+    toast.present();
+  }
+
   facebookLogin() {
 
-         var userDetails = {"identifier":"gleedtechuser@gmail.com","password":"123123123","email":"doddibalubharadwaj@gmail.com"}
+         var userDetails = {"identifier":"gleedtechuser1@gmail.com","password":"123123123","email":"gleedtechuser1@gmail.com"}
 
         //  var userDetails = {"identifier":"doddibalubharadwaj@gmail.com","password":"123123123","email":"doddibalubharadwaj@gmail.com"}
          
@@ -67,8 +78,12 @@ export class LoginpagePage {
                 tempData.push(res);
                 this.data = res;
                 if (this.data.status === 200 && this.data.user.role[0] == 'USER') {
-                //  console.log(this.coords)
-                  this.navCtrl.push(HomePage);
+                  if (!tempData[0].user.firstName || !tempData[0].user.email || !tempData[0].user.phoneNumber || tempData[0].user.firstName == "" || tempData[0].user.email == "" || tempData[0].user.phoneNumber == "") {
+                    this.navCtrl.push(ProfilePage)
+                    this.presentToast();
+                  } else {
+                    this.navCtrl.push(HomePage);                    
+                  }
                   var userInfo = {
                     "firstName": tempData[0].user.firstName,
                     "email": tempData[0].user.email,
@@ -81,20 +96,20 @@ export class LoginpagePage {
                   }
                   localStorage.setItem('userData', JSON.stringify(userInfo));
                 } 
-                else if (this.data.status === 200 && this.data.user.role[0] == 'MECHANIC') {
-                  this.navCtrl.push(MechanicPage);
-                  var mechUserInfo = {
-                    "firstName": tempData[0].user.firstName,
-                    "email": tempData[0].user.email,
-                    "phoneNumber": tempData[0].user.phoneNumber,
-                    "id": tempData[0].user.id,
-                    "lastName": tempData[0].user.lastName,
-                    "tokenId": tempData[0].user.tokenId,
-                    "role": tempData[0].user.role,
-                    "coords": this.coords
-                  }
-                  localStorage.setItem('userData', JSON.stringify(mechUserInfo));
-                }
+                // else if (this.data.status === 200 && this.data.user.role[0] == 'MECHANIC') {
+                //   this.navCtrl.push(MechanicPage);
+                //   var mechUserInfo = {
+                //     "firstName": tempData[0].user.firstName,
+                //     "email": tempData[0].user.email,
+                //     "phoneNumber": tempData[0].user.phoneNumber,
+                //     "id": tempData[0].user.id,
+                //     "lastName": tempData[0].user.lastName,
+                //     "tokenId": tempData[0].user.tokenId,
+                //     "role": tempData[0].user.role,
+                //     "coords": this.coords
+                //   }
+                //   localStorage.setItem('userData', JSON.stringify(mechUserInfo));
+                // }
               })
             
 

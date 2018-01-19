@@ -30,11 +30,21 @@ export class HomePage {
   public comment: any;
   i;
   userlocation;
+  role;
  // public location: any;
 
  map: GoogleMap;
   constructor(public navCtrl: NavController, public platform: Platform, public navParams: NavParams, private airconeProvider: AirconeProvider) {
-    this.loadMap();
+    if (localStorage.getItem("userData")) {
+      var userDetails  = JSON.parse(localStorage.getItem("userData"));
+      // this.role = userDetails.role[0];
+      // console.log(this.role)
+      if (userDetails.role[0] == 'USER') {
+        this.role = true;
+        
+      }
+    }
+
   }
 
 
@@ -46,6 +56,33 @@ export class HomePage {
 
   ionViewDidLoad() {
   }
+
+//   ionViewWillEnter() {
+//   this.platform.ready().then(() => {
+//     this.loadMap();
+//   });  
+
+// }
+
+
+ionViewDidEnter() {
+  this.platform.ready().then(() => {
+    this.loadMap();
+    // this.map.setVisible(true)
+  });
+
+
+}
+
+// ionViewDidLeave() {
+//   if(this.map!=null){
+//     this.map.clear();
+//     this.map.setVisible(false);
+//     this.map.setDiv(null);
+
+// }
+//   // this.map = null;
+// }
 
 
 loadMap() {
@@ -74,12 +111,11 @@ loadMap() {
         //   lng: -151.28747820854187
         // },
           zoom: 18,
-          tilt: 30
+          tilt: 30,
         }
       };
   
       this.map = GoogleMaps.create('map', mapOptions);
-  
       this.map.one(GoogleMapsEvent.MAP_READY)
         .then(() => {
           console.log("entered into maps")

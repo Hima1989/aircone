@@ -19,8 +19,19 @@ export class MechanicPage {
   public mechRequests: any
   public showRequest: boolean = false;
   public showComment: boolean = true;
+  role;
   constructor(public navCtrl: NavController, public navParams: NavParams, private airconeProvider: AirconeProvider) {
-    this.getMechanicRequestList()
+    this.getMechanicRequestList();
+    // if (localStorage.getItem("userData")) {
+    //   var userDetails  = JSON.parse(localStorage.getItem("userData"));
+    //   // this.role = userDetails.role[0];
+    //   // console.log(this.role)
+    //   if (userDetails.role[0] == 'USER') {
+    //     this.role = false;
+        
+    //   }
+    // }
+
   }
 
   ionViewDidLoad() {
