@@ -25,9 +25,12 @@ export class RepairPage {
   spareTotalPrice;
   serviceRate;
   finalCharge;
+  service;
+  serviceRateQuantity;
   constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, public alertCtrl: AlertController) {
     this.request = navParams.get("request")
     this.getAllServiceSpares();
+    this.getService();
   }
 
   ionViewDidLoad() {
@@ -55,33 +58,34 @@ export class RepairPage {
     })
   }
 
+  getService() {
+    this.airconeProvider.getOneService(this.request.serviceId)
+    .then(res => {
+      this.service = res;
+    });
+  }
+
   sendBudget() {
+    // console.log(this.serviceRate)
     var finalPrice = 0;
     this.finalSpare.forEach(spare => {
       finalPrice += spare.rate*spare.sparerate
     });
 
-      if (this.serviceRate) {
-        if (finalPrice) {
-          finalPrice = finalPrice + parseInt(this.serviceRate)       
+        // if (finalPrice) {
+        //   finalPrice = finalPrice + this.serviceRate.Price*this.serviceRateQuantity     
+        // } else {
+        //   finalPrice = this.serviceRate.Price*this.serviceRateQuantity
+        // }
+
+        if(this.serviceRate) {
+          this.spareTotalPrice = finalPrice + this.serviceRate.Price*this.serviceRateQuantity   
         } else {
-          finalPrice = parseInt(this.serviceRate)
+          this.spareTotalPrice = finalPrice
         }
-      } else {
-        let alert = this.alertCtrl.create({
-          title: 'Set up Final Price!',
-          subTitle: 'Please include atleast Service price!',
-          buttons: ['OK']
-        });
-        alert.present();
-      }
 
-
-
-    this.spareTotalPrice = finalPrice;  
-    console.log(this.spareTotalPrice) 
-     this.finalCharge = {spareInfo: this.finalSpare, finalServicePrice: this.spareTotalPrice}
-     console.log(this.finalCharge)     
+    // this.spareTotalPrice = finalPrice;  
+     this.finalCharge = {spareInfo: this.finalSpare, finalServicePrice: this.spareTotalPrice, service: this.serviceRate}
   }
   
   closeRequest() {

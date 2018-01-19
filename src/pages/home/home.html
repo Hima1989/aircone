@@ -27,7 +27,7 @@
         <ion-slide class="comments" *ngFor="let comment of comments">
             <ion-card class="comment-block">
                 <ion-item class="comment-top">
-                    <ion-row>
+                    <!--<ion-row>
                         <ion-col col-3 class="slide-imgs">
                             <img class="imageRounded" [src]="comment.image ? comment.image : 'assets/images/cus-img.png'" />
                         </ion-col>
@@ -42,7 +42,19 @@
                             <img class="smileReview" float-right *ngIf="comment.rating == 4" src="assets/images/rating4.png">
                             <img class="smileReview" float-right *ngIf="comment.rating == 5" src="assets/images/rating5.png">
                         </ion-col>
-                    </ion-row>
+                    </ion-row>-->
+                    <ion-avatar item-start>
+                        <img [src]="comment.image ? comment.image : 'assets/images/cus-img.png'">
+                    </ion-avatar>
+                    <h2 class="cus-name">{{comment.user.userName}}</h2>
+                    <p class="cus-nav">Akkayyapalem</p>
+                    <ion-avatar item-end>
+                        <img class="smileReview" float-right *ngIf="comment.rating == 1" src="assets/images/rating1.png">
+                        <img class="smileReview" float-right *ngIf="comment.rating == 2" src="assets/images/rating2.png">
+                        <img class="smileReview" float-right *ngIf="comment.rating == 3" src="assets/images/rating3.png">
+                        <img class="smileReview" float-right *ngIf="comment.rating == 4" src="assets/images/rating4.png">
+                        <img class="smileReview" float-right *ngIf="comment.rating == 5" src="assets/images/rating5.png">
+                    </ion-avatar>
                 </ion-item>
                 <ion-card-content class="slide-data">
                     <p class="cus-comment">{{comment.commentText}}</p>

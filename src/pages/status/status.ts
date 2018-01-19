@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { ServicesPage } from '../services/services';
 import { RequestslistPage } from '../requestslist/requestslist';
+import { Toast } from '@ionic-native/toast';
 
 /**
  * Generated class for the StatusPage page.
@@ -26,7 +27,7 @@ export class StatusPage {
   approved
   gsmile: any = {gs1: 's', gs2: 's', gs3: 's', gs4: 's', gs5: 's'}
   lsmile: any = {ls1: '', ls2: '', ls3: '', ls4: '', ls5: ''}
-  constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController, public airconeProvider: AirconeProvider,private toast: Toast) {
     this.request = navParams.get("request")
     console.log(this.request.status)
     if (this.request.status == 'ORDER_REQUESTED') {
@@ -104,7 +105,8 @@ export class StatusPage {
   }
 
   submitComment() {
-    var userData = JSON.parse(localStorage.getItem("userData"));    
+    if(this.comment && this.rate){
+      var userData = JSON.parse(localStorage.getItem("userData"));    
     var commentRating = {
       commentText: this.comment,
       rating: this.rate,
@@ -115,11 +117,23 @@ export class StatusPage {
     .then(res => {
       this.comment = '';
       this.rate = 0;
+       let alert = this.alertCtrl.create({
+        title: 'Request Sent!',
+        subTitle: 'Thanks For Your Service, We Will Consider Your FeedBack!',
+        buttons: ['OK']
+    });
+    alert.present();
       this.navCtrl.push(ServicesPage);
     })
+    }else{
+            this.toast.show(`Write a Comment & select an emoji`, '5000', 'center').subscribe(
+            toast => {
+              console.log(toast);
+            }
+          );
+    }
   }
   goBack() {
     this.navCtrl.push(RequestslistPage)
-  }
-  
+  } 
 }

@@ -1,3 +1,17 @@
 page-repair {
-
+    .profileListView {
+        background: none;
+        border-radius: 0;
+        .listView {
+            color: $colorBlack;
+        }
+    }
+    .profile-item {
+        .selectType {
+            width: 23%;
+        }
+        .addItem {
+            margin-right: 0;
+        }
+    }
 }

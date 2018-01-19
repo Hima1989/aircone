@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { AirconeProvider } from '../../providers/aircone/aircone';
-import { ServicesPage } from '../services/services'
+import { ServicesPage } from '../services/services';
+import { HomePage } from '../home/home';
+
+import { Toast } from '@ionic-native/toast';
 // import { ServicesHomePage } from '../services-home/services-home';
 
 /**
@@ -20,7 +23,7 @@ export class CustomerservicePage {
 
   comment;
 
-  constructor(private toastCtrl: ToastController, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, public alertCtrl: AlertController,private toast: Toast) {
   }
 
   ionViewDidLoad() {
@@ -46,26 +49,26 @@ export class CustomerservicePage {
   } else {
     this.presentToast()
   }
+}
+presentToast() {
+    this.toast.show(`Please Enter Comment`, '5000', 'center').subscribe(
+  toast => {
+    console.log(toast);
+  }
+);
   }
 
-  //   goBack() {
-  //   this.navCtrl.push(ServicesHomePage {
-  //     id: this.serviceId
-  //   })
-  // }  
+goBack() {
+      this.navCtrl.push(HomePage)
+  }  
 
-  presentToast() {
-    let toast = this.toastCtrl.create({
-      message: 'Please Enter Comment',
-      duration: 3000,
-      position: 'bottom'
-    });
   
-    // toast.onDidDismiss(() => {
-    //   console.log('Dismissed toast');
-    // });
-  
-    toast.present();
-  }
+    // let toast = this.toastCtrl.create({
+    //   message: 'Please Enter Comment',
+    //   duration: 2000,
+    //   position: 'middle'
+    // });  
+    // toast.present();
+
 
 }

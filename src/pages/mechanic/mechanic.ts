@@ -35,7 +35,6 @@ export class MechanicPage {
         this.showRequest = true;
         this.showComment = false;
       }
-      console.log(this.mechRequests)
     })
   }
 
