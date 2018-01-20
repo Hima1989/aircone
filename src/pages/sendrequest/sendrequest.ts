@@ -87,19 +87,19 @@ export class SendrequestPage {
               // duration: 4000,
               // position: 'bottom'
               // });
-              this.toast.show(`I'm a toast`, '5000', 'center').subscribe(
-  toast => {
-    console.log(toast);
-  }
-);
+              this.toast.show(`Location Available`, '5000', 'center').subscribe(
+                  toast => {
+                    console.log(toast);
+                  }
+                );
               // toast.present();
         } else if (this.data.status == 404) {
-          let toast = this.toastCtrl.create({
-            message: 'Location Not Available',
-            duration: 10000,
-            position: 'bottom'
-            });
-            toast.present();
+           this.toast.show(`Location Not Available`, '5000', 'center').subscribe(
+                  toast => {
+                    console.log(toast);
+                  }
+                );
+            // toast.present();
         }
       })
     }
@@ -117,12 +117,12 @@ export class SendrequestPage {
 
   addQuantity() {
     if (this.subService.type == '' && this.subService.ton == '' && this.subService.quantity == '') {
-      let toast = this.toastCtrl.create({
-        message: 'Please Enter Type Of Service and Quantity',
-        duration: 4000,
-        position: 'bottom'
-        });
-        toast.present();
+           this.toast.show(`Please Enter Type Of Service and Quantity`, '5000', 'center').subscribe(
+                  toast => {
+                    console.log(toast);
+                  }
+                );
+        // toast.present();
     } else {
       this.type.push(this.subService);
       this.subService = {type: "", ton: "", quantity: ""};
@@ -176,12 +176,12 @@ export class SendrequestPage {
       this.orderForm.reset()      
     });
   } else {
-    let toast = this.toastCtrl.create({
-      message: 'Please Enter Type Of Service and Quantity',
-      duration: 8000,
-      position: 'bottom'
-      });
-      toast.present();
+     this.toast.show(`Please Enter Type Of Service and Quantity`, '5000', 'center').subscribe(
+                  toast => {
+                    console.log(toast);
+                  }
+                );
+      // toast.present();
   }
   }
 
