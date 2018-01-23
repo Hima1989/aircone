@@ -29,8 +29,15 @@
     <ion-item>Status: {{serviceInfo.status}}</ion-item>-->
         <ion-item class="addressBlock">
             <div class="addressText">
+                    <p><span class="fielsList">Service Info</span></p>
+                    
                 <p><span class="fielsList">ServiceName</span><span class="userList">:{{serviceInfo.serviceName}},</span></p>
                 <p><span class="fielsList">Status</span><span class="userList">:{{serviceInfo.status}},</span></p>
+                <p *ngFor="let serviceSpareInfo of request.spareInfo"><span class="fielsList">{{serviceSpareInfo.sparename}}</span><span class="userList">:{{serviceSpareInfo.sparerate}},</span></p>
+                <p><span class="fielsList">Final Price</span><span class="userList">:{{request.finalPrice}},</span></p>
+                
+                <p><span class="fielsList">User Info</span></p>
+                
                 <p><span class="fielsList">user name</span><span class="userList">:{{userRequest.Name}},</span></p>
                 <p><span class="fielsList">phone</span><span class="userList">:{{userRequest.Phone}},</span></p>
                 <p><span class="fielsList">Alternative Ph</span><span class="userList">:{{userRequest.AltPhone}},</span></p>

@@ -40,6 +40,7 @@ import { GooglePlus } from "@ionic-native/google-plus";
 import { Camera } from "@ionic-native/camera";
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Toast } from '@ionic-native/toast';
+import { PhonegapLocalNotification } from '@ionic-native/phonegap-local-notification';
 
 import { GoogleMaps } from '@ionic-native/google-maps';
  import { Geolocation } from '@ionic-native/geolocation';
@@ -126,7 +127,8 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     Geolocation,
     Camera,
     SocialSharing,
-    Toast
+    Toast,
+    PhonegapLocalNotification
   ]
 })
 export class AppModule {}

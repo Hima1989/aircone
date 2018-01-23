@@ -4,6 +4,7 @@ import { ServicesPage } from '../services/services';
 import { Camera } from '@ionic-native/camera';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { Toast } from '@ionic-native/toast';
+import { MechanicPage } from '../mechanic/mechanic';
 
 /**
  * Generated class for the ProfilePage page.
@@ -23,6 +24,8 @@ export class ProfilePage {
   base64Image:any;
   orderForm;
   referral: boolean = true;
+  forMech: boolean;
+  forUser: boolean;
   constructor(private toast: Toast, public navCtrl: NavController, public navParams: NavParams, public camera:Camera, public airconeProvider: AirconeProvider) {
     this.getUserDetails();
     // this.orderForm  = this.formBuilder.group({
@@ -90,7 +93,12 @@ export class ProfilePage {
    }
 
   goBack() {
-    this.navCtrl.push(ServicesPage);    
+    if (this.forUser) {
+      this.navCtrl.push(ServicesPage);          
+    }
+    if (this.forMech) {
+      this.navCtrl.push(MechanicPage);          
+    }
   }
 
   getUserDetails() {
@@ -99,6 +107,14 @@ export class ProfilePage {
    this.airconeProvider.loaduser(user.id)
    .then(data => {
     this.userDetails = data
+    if(this.userDetails.role[0] == 'MECHANIC') {
+      this.forMech = true;
+      this.forUser = false;
+    }
+    if(this.userDetails.role[0] == 'USER') {
+      this.forMech = false;
+      this.forUser = true;
+    }
     this.base64Image = this.userDetails.image
     if(this.userDetails.referredBy) {
       this.referral = false;

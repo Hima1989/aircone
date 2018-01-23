@@ -86,7 +86,8 @@ export class RepairPage {
 
     // this.spareTotalPrice = finalPrice;  
      this.finalCharge = {spareInfo: this.finalSpare, finalServicePrice: this.spareTotalPrice, service: this.serviceRate}
-  }
+        console.log(this.finalCharge)
+    }
   
   closeRequest() {
     if (this.finalCharge.finalServicePrice > 0) {

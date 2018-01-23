@@ -23,7 +23,8 @@ export class MechHomePage {
     if (navParams.get("details")) {
       this.request = navParams.get("details")  
       this.serviceInfo = this.request;
-      this.userRequest = this.request.request;    
+      this.userRequest = this.request.request;   
+      console.log(this.request.spareInfo) 
     }
 
   }

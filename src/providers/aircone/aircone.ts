@@ -13,10 +13,12 @@ import { Device } from '@ionic-native/device';
 export class AirconeProvider {
 
   data;
-baseURL = "https://air-cone-backend.appspot.com"; //production
-    // baseURL = "http://localhost:80"; //development
+  paramData;
+// baseURL = "https://air-cone-backend.appspot.com"; //production
+    baseURL = "http://localhost:80"; //development
   constructor(public http: Http, public device: Device) {
   }
+  
 
   socialLogin(data) {
     return new Promise(resolve => {
@@ -24,12 +26,12 @@ baseURL = "https://air-cone-backend.appspot.com"; //production
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
-          console.log(this.data)
           resolve(this.data);
         });
     });
 
   }
+
 
   userLogin(data) {
     console.log("hitted")
@@ -101,7 +103,6 @@ baseURL = "https://air-cone-backend.appspot.com"; //production
   }
 
   deleteRequests(requestId) {
-    console.log(requestId)
     return new Promise(resolve => {
       this.http.delete(this.baseURL+'/delete/' +requestId+ '/request')
         .map(res => res.json())
@@ -128,7 +129,6 @@ baseURL = "https://air-cone-backend.appspot.com"; //production
       // })
         .map(res => res.json())
         .subscribe(data => {
-          // console.log(data)
           this.data = data;
           resolve(this.data);
         })
@@ -180,10 +180,13 @@ baseURL = "https://air-cone-backend.appspot.com"; //production
   }
 
   pushSetup(deviceTokenVal) { 
+    var userData = JSON.parse(localStorage.getItem("userData"));  
+
     return new Promise(resolve => {
       var device = this.getDeviceDetails();
       var body = {
-        userId: device,
+        userId: userData.id,
+        deviceId: device,
         deviceToken: deviceTokenVal,
         appType: 'all'
         // appType: this.categoryid
@@ -216,6 +219,18 @@ baseURL = "https://air-cone-backend.appspot.com"; //production
   getMechanicRequests(mechId) {
     return new Promise(resolve => {
       this.http.get(this.baseURL+'/get/'+mechId+'/allMechRequest')
+      .map(res => res.json())
+      .subscribe(data => {
+        this.data = data;
+        resolve(this.data);
+      });
+    });
+  }
+
+  getMechanicCompletedRequests(mechId) {
+    console.log("provide hitted")
+    return new Promise(resolve => {
+      this.http.get(this.baseURL+'/get/'+mechId+'/allMechCompletedRequest')
       .map(res => res.json())
       .subscribe(data => {
         this.data = data;
@@ -269,8 +284,6 @@ baseURL = "https://air-cone-backend.appspot.com"; //production
   }
 
   fileUpload(file) {
-    //console.log(file);
-    console.log("apphitted")
     let headers = new Headers();
     let formData: FormData = new FormData();
     formData.append('content', file);
@@ -286,7 +299,6 @@ baseURL = "https://air-cone-backend.appspot.com"; //production
       })
         .map(res => res.json())
         .subscribe(data => {
-           console.log("url generated")
           this.data = data;
           resolve(this.data);
         })
@@ -305,7 +317,6 @@ baseURL = "https://air-cone-backend.appspot.com"; //production
   }
 
   updateAddress(userId, addressId, data) {
-    console.log(data)
     return new Promise(resolve => {
       this.http.post(this.baseURL+'/user/'+userId+ '/'+addressId+ '/updateUserAddress', data)       
         .map(res => res.json())

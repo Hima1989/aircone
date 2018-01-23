@@ -17,6 +17,7 @@ import { ManageAddressPage } from '../pages/manage-address/manage-address';
 import { AirconeProvider } from '../providers/aircone/aircone';
 // import { SocialSharing } from '@ionic-native/social-sharing';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { MechanicPage } from '../pages/mechanic/mechanic'
 //import { Geolocation } from '@ionic-native/geolocation';
 
 
@@ -33,17 +34,13 @@ export class MyApp {
   servicesHomePage: any = ServicesHomePage;
   profilePage:any = ProfilePage;
   requestslistPage: any = RequestslistPage;
+  mechPage: any = MechanicPage
+  data: any = {id: 1}
   userInfo;
   role
  // nav: NavController
 
   constructor(public airconeProvider: AirconeProvider, public platform: Platform, public alertCtrl: AlertController, public statusBar: StatusBar, public splashScreen: SplashScreen, public menuCtrl: MenuController, public toast: ToastController, private socialSharing: SocialSharing) {
- //   this.initializeApp();
-    // if (localStorage.getItem("userData")) {
-    //   var userDetails  = JSON.parse(localStorage.getItem("userData"));
-    //   this.role = userDetails.role[0];
-    //   console.log(this.role)
-    // }
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -180,7 +177,17 @@ export class MyApp {
       this.menuCtrl.close();      
   }
 
-  home() {
+  completedRequests() {
+    this.menuCtrl.close()
+    this.nav.push(MechanicPage, {status: true})
+  }
+
+  pendingRequests() {
+    this.menuCtrl.close()
+    this.nav.push(MechanicPage, {status: false})
+  }
+
+  home() {  
     this.menuCtrl.close();
     this.nav.push(HomePage)    
   }

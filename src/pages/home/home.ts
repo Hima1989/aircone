@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform, Content, Slides } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, Content, Slides, ToastController, MenuController } from 'ionic-angular';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { ServicesPage } from '../services/services'
 import {
@@ -31,10 +31,12 @@ export class HomePage {
   i;
   userlocation;
   role;
+  backButtonPressed;
+  backButtonPressedTimer;
  // public location: any;
 
  map: GoogleMap;
-  constructor(public navCtrl: NavController, public platform: Platform, public navParams: NavParams, private airconeProvider: AirconeProvider) {
+  constructor(private toastCtrl: ToastController, public navCtrl: NavController, public platform: Platform, public navParams: NavParams, private airconeProvider: AirconeProvider, public menu: MenuController) {
     if (localStorage.getItem("userData")) {
       var userDetails  = JSON.parse(localStorage.getItem("userData"));
       // this.role = userDetails.role[0];
@@ -44,9 +46,39 @@ export class HomePage {
         
       }
     }
+    platform.registerBackButtonAction(() => {
+      if (this.backButtonPressed) {
+        this.platform.exitApp();
+      } else {
+        this.presentToast();
+        this.backButtonPressed = true;
+        if (this.backButtonPressedTimer) {
+          clearTimeout(this.backButtonPressedTimer);
+        }
+        this.backButtonPressedTimer = setTimeout(() => {
+          this.backButtonPressed = false
+        }, 4000);
+      }
+    });
+    this.airconeProvider.paramData = "hi all";
+
+    this.menu.enable(true, 'user');
+    this.menu.enable(false, 'mech');
 
   }
-
+  presentToast() {
+    let toast = this.toastCtrl.create({
+      message: 'Double Click To Exit',
+      duration: 3000,
+      position: 'bottom'
+    });
+  
+    // toast.onDidDismiss(() => {
+    //   console.log('Dismissed toast');
+    // });
+  
+    toast.present();
+  }
 
 // ngAfterViewInit() {
 //   this.platform.ready().then(() => {

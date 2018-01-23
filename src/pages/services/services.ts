@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, App, MenuController, Platform, ToastController } from 'ionic-angular';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { ServicesHomePage } from '../services-home/services-home';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the ServicesPage page.
@@ -27,22 +28,29 @@ export class ServicesPage {
   constructor(private toastCtrl: ToastController, public platform: Platform, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, public app: App, public menu: MenuController) {
     this.loadServices();
     menu.enable(true)
-  
+    
     platform.registerBackButtonAction(() => {
-      if (this.backButtonPressed) {
-        this.platform.exitApp();
-      } else {
-        this.presentToast();
-        this.backButtonPressed = true;
-        if (this.backButtonPressedTimer) {
-          clearTimeout(this.backButtonPressedTimer);
-        }
-        this.backButtonPressedTimer = setTimeout(() => {
-          this.backButtonPressed = false
-        }, 4000);
+      if(menu.isOpen != null) {   
+        // console.log(menu.isOpen)
+        console.log(menu.isOpen)        
+        menu.close()
       }
-    });
+      if (!menu.isOpen) {
+        this.navCtrl.push(HomePage)                
+      }
+      
+    });    
+   
   }
+
+  ionOpen() {
+    console.log("hitted")
+    this.platform.registerBackButtonAction(() => {
+      this.menu.close()
+    }); 
+  }
+
+  
 
   presentToast() {
     let toast = this.toastCtrl.create({
