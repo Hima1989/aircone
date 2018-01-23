@@ -82,11 +82,6 @@ export class SendrequestPage {
       .then( res => {
         this.data = res;
         if (this.data.status == 200) {
-              // let toast = this.toastCtrl.create({
-              // message: 'Location Available',
-              // duration: 4000,
-              // position: 'bottom'
-              // });
               this.toast.show(`Location Available`, '5000', 'center').subscribe(
                   toast => {
                     console.log(toast);
@@ -132,7 +127,6 @@ export class SendrequestPage {
 
   removeQuantity(serviceType) {
     this.type.splice(this.type.indexOf(serviceType), 1)
-    console.log(this.type)
   }
 
   ionViewDidLoad() {

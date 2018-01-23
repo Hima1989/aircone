@@ -28,11 +28,9 @@ export class MechloginPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MechloginPage');
   }
 
   login() {
-    console.log(this.loginForm.value.password);
    
     this.airconeProvider.userLogin(this.loginForm.value)
     .then(res => {

@@ -29,7 +29,6 @@ export class StatusPage {
   lsmile: any = {ls1: '', ls2: '', ls3: '', ls4: '', ls5: ''}
   constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController, public airconeProvider: AirconeProvider,private toast: Toast) {
     this.request = navParams.get("request")
-    console.log(this.request.status)
     if (this.request.status == 'ORDER_REQUESTED') {
       this.requested = 'requested';
     }
@@ -46,7 +45,6 @@ export class StatusPage {
 
    smileyAdd(isSmile) {
      this.rate = isSmile;
-     console.log(isSmile)
      if (isSmile == 1) {
        this.lsmile = {ls1: undefined, ls2: 's', ls3: 's', ls4: 's', ls5: 's'}
        this.gsmile = {gs1: 's', gs2: undefined, gs3: undefined, gs4: undefined, gs5: undefined}
@@ -94,11 +92,31 @@ export class StatusPage {
    }
 
   cancelRequest(){
-    console.log(this.request)   
-    this.airconeProvider.cancelRequest(this.request.id)
-    .then(res => {
-      console.log(res)
-    })
+    let alert = this.alertCtrl.create({
+    title: 'Confirm Delete Request',
+    // message: 'Confirm Delete Request',
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      },
+      {
+        text: 'Ok',
+        handler: () => {
+          console.log('Ok clicked');
+           this.airconeProvider.cancelRequest(this.request.id)
+            .then(res => {
+              this.navCtrl.push(RequestslistPage)
+            })
+        }
+      }
+    ]
+  });
+  alert.present();
+   
   }
 
   onModelChange(rate) {
@@ -112,7 +130,6 @@ export class StatusPage {
       rating: this.rate,
       user: {userId: userData.id, userName: userData.firstName, picture: userData.profilePicture}
     }
-    console.log(commentRating)
     this.airconeProvider.submitCommentRating(commentRating)
     .then(res => {
       this.comment = '';
@@ -128,7 +145,6 @@ export class StatusPage {
     }else{
             this.toast.show(`Write a Comment & select an emoji`, '5000', 'center').subscribe(
             toast => {
-              console.log(toast);
             }
           );
     }

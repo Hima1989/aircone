@@ -7,6 +7,14 @@ page-services-home {
     }
 }
 
+ion-spinner * {
+    width: 500px;
+    height: 500px;
+    margin: auto;
+    stroke: #444;
+    fill: #222;
+  }
+
 .clear {
     clear: both;
 }

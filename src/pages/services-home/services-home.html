@@ -29,7 +29,9 @@
             </ion-row>
         </ion-grid>
     </div>-->
-    <ion-slides class="slide-block" *ngIf="service.slider && service.slider.length" autoplay="3000" loop="true" speed="500">
+    <ion-spinner name="bubbles" *ngIf="showSpinner"></ion-spinner>
+    
+    <ion-slides class="slide-block" *ngIf="service.slider && service.slider.length showSlider" autoplay="3000" loop="true" speed="500">
         <ion-slide class="slide-img" *ngFor="let img of service.slider">
             <img src={{img}} />
             <!--<ion-img width="80" height="80" src="..."></ion-img>-->
@@ -38,7 +40,9 @@
     <div class="service-block">
         <p class="service-content">{{service.description}}</p>
     </div>
-    <div class="price-chart">
+    <!-- <ion-spinner name="bubbles" *ngIf="showSpinner"></ion-spinner> -->
+    
+    <div class="price-chart" *ngIf="showSlider">
         <div class="service-block">
             <h5>Price chart</h5>
             <ion-row (click)="presentProfileModal()">
@@ -58,4 +62,7 @@
         <!--<img src="assets/images/navigator.png">-->
         <button class="btn-hrx" (click)="sendRequest(service.id)" ion-button round><ion-icon class="icons navigate nav-request" ios="ios-navigate" md="md-navigate"></ion-icon>Send Request</button>
     </ion-avatar>
+
+    
 </ion-content>
+

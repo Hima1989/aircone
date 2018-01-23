@@ -1,5 +1,5 @@
 import { Component,ViewChild } from '@angular/core';
-import { Platform, Nav, IonicPage, NavController, NavParams, Slides, ModalController, ViewController } from 'ionic-angular';
+import { Platform, Nav, IonicPage, NavController, NavParams, Slides, LoadingController, ModalController, ViewController } from 'ionic-angular';
 import { ServicesPage } from '../services/services';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { SendrequestPage } from '../sendrequest/sendrequest';
@@ -27,8 +27,10 @@ export class ServicesHomePage {
     public service = {};
     @ViewChild(Slides) slides: Slides;
     @ViewChild(Nav) nav;
+    showSlider: boolean = false;
+    showSpinner: boolean = true;
     
-  constructor(public viewCtrl: ViewController, public platform: Platform, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider) {
+  constructor(public loadingCtrl: LoadingController, public viewCtrl: ViewController, public platform: Platform, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider) {
     this.oneService = navParams.get("postValue");
     this.serviceId = navParams.get("id");    
     this.getService()
@@ -38,7 +40,7 @@ export class ServicesHomePage {
         this.navCtrl.push(ServicesPage);
       });
  });
-
+// this.presentLoadingCustom();
   }
   // onClick(imageToView) {
   //   const viewer = this.imageViewerCtrl.create(imageToView)
@@ -46,6 +48,19 @@ export class ServicesHomePage {
   // }
 
   ionViewDidLoad() {
+  }
+
+  presentLoadingCustom() {
+    let loading = this.loadingCtrl.create({
+      spinner: 'hide',
+      content: `
+        <div class="custom-spinner-container">
+          <div class="custom-spinner-box"></div>
+        </div>`,
+      duration: 5000
+    });
+  
+    loading.present();
   }
 
   presentProfileModal() {
@@ -69,6 +84,8 @@ export class ServicesHomePage {
     this.airconeProvider.getOneService(id)
     .then(res => {
       this.service = res;
+      this.showSpinner = false;
+      this.showSlider = true;
     });
   }
 

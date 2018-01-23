@@ -44,7 +44,7 @@
             <ion-input type="text" [(ngModel)]="request.City" formControlName="City" placeholder="City"></ion-input>
         </ion-item>
         <ion-item class="profile-item">
-            <ion-input type="number" [pattern]="'^[1-9][0-9]{5}$'" [(ngModel)]="request.Pincode" formControlName="Pincode" placeholder="Pincode"></ion-input>
+            <ion-input type="number" [pattern]="'^[1-9][0-9]{5}$'" (ngModelChange)="checkForPin($event)" [(ngModel)]="request.Pincode" formControlName="Pincode" placeholder="Pincode"></ion-input>
         </ion-item>
         <!-- <ion-item class="profile-item">
         <ion-label fixed>Type</ion-label>
