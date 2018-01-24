@@ -26,7 +26,6 @@ export class MechanicPage {
     this.menu.enable(true, 'mech');
     if (navParams.get("status")) {
       this.getCompleted = navParams.get("status");
-      console.log(this.getCompleted)
     }
     this.getMechanicRequestList();
     
@@ -46,7 +45,6 @@ export class MechanicPage {
   }
 
   getMechanicRequestList() {
-    console.log(this.getCompleted)
     
     if (this.getCompleted == false) {
       var userData = JSON.parse(localStorage.getItem('userData'))
@@ -59,7 +57,6 @@ export class MechanicPage {
         }
       })
     } else if(this.getCompleted == true) {  
-      console.log("completed requests list")    
       var userDataa = JSON.parse(localStorage.getItem('userData'))
       this.airconeProvider.getMechanicCompletedRequests(userDataa.id)
       .then(data => {
@@ -73,7 +70,62 @@ export class MechanicPage {
   }
 
   goToRequest(request) {
-    this.navCtrl.push(MechHomePage, {details: request});
+    this.navCtrl.push(MechHomePage, {details: request, status: this.getCompleted});
   }
 
 }
+
+
+
+// import {Validators, FormBuilder } from '@angular/forms';
+// import { Toast } from '@ionic-native/toast';
+// @Component({
+//   selector: 'changePassword-page-mechanic',
+//   templateUrl: 'changePassword.html',
+// })
+// export class ChangePasswordPage {
+
+//   orderForm;
+//   userDetails: any = {email: '', oldPass: '', newPass: '',ReNewPass: ''}
+
+//   constructor(private toast: Toast, public navCtrl: NavController, public navParams: NavParams, private airconeProvider: AirconeProvider, private formBuilder: FormBuilder) {
+//     this.getUserDetails();
+//     this.orderForm = this.formBuilder.group({
+//       email: ['', Validators.required],
+//       oldPass: ['', Validators.required],
+//       newPass: ['', Validators.required],
+//       ReNewPass: ['', Validators.required],
+//     })
+//   }
+
+//   goBack() {
+
+//   }
+
+//   getUserDetails() {
+//     var  userData = localStorage.getItem('userData');
+//      var user = JSON.parse(userData);
+//      this.airconeProvider.loaduser(user.id)
+//      .then(data => {
+//        this.userDetails = data;
+//      })
+//   }
+
+//   submitDetails() {
+//     var pass = this.orderForm.value
+//     var  userData = localStorage.getItem('userData');
+//     var user = JSON.parse(userData);
+//     if (pass.newPass == pass.oldPass) {
+//       this.airconeProvider.changePassword(user.id, pass)
+//       .then(data => {
+//         // this.userDetails = data;
+//         console.log(data)
+//       })   
+//     } else {
+//       this.toast.show(`Old and New password not equal`, '3000', 'center').subscribe(
+//         toast => {
+//         })
+//     }
+//     console.log(this.orderForm.value)
+//   }
+// }

@@ -46,6 +46,17 @@ export class AirconeProvider {
 
   }
 
+  changePassword(userId, data) {
+    return new Promise(resolve => {
+      this.http.post(this.baseURL+'/user/' +userId+ '/change/userPassword',data)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+  }
+
   loaduser(uderId) {
     return new Promise(resolve => {
       this.http.get(this.baseURL+'/user/'+uderId+'/listOneUser')

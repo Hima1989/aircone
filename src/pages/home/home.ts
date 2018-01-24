@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform, Content, Slides, ToastController, MenuController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, Content, Slides, LoadingController, ToastController, MenuController } from 'ionic-angular';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { ServicesPage } from '../services/services'
 import {
@@ -7,6 +7,7 @@ import {
   GoogleMap,
   GoogleMapsEvent,
   GoogleMapOptions,
+  LatLng
  } from '@ionic-native/google-maps';
  //import { Geolocation } from '@ionic-native/geolocation';
 /**
@@ -33,19 +34,11 @@ export class HomePage {
   role;
   backButtonPressed;
   backButtonPressedTimer;
+  load;
  // public location: any;
 
  map: GoogleMap;
-  constructor(private toastCtrl: ToastController, public navCtrl: NavController, public platform: Platform, public navParams: NavParams, private airconeProvider: AirconeProvider, public menu: MenuController) {
-    if (localStorage.getItem("userData")) {
-      var userDetails  = JSON.parse(localStorage.getItem("userData"));
-      // this.role = userDetails.role[0];
-      // console.log(this.role)
-      if (userDetails.role[0] == 'USER') {
-        this.role = true;
-        
-      }
-    }
+  constructor(private loading: LoadingController, private toastCtrl: ToastController, public navCtrl: NavController, public platform: Platform, public navParams: NavParams, private airconeProvider: AirconeProvider, public menu: MenuController) {
     platform.registerBackButtonAction(() => {
       if (this.backButtonPressed) {
         this.platform.exitApp();
@@ -60,23 +53,22 @@ export class HomePage {
         }, 4000);
       }
     });
-    this.airconeProvider.paramData = "hi all";
+    this.load = this.loading.create({
+      content: 'Veuillez patienter...'
+  });
 
+  // this.load.present();
     this.menu.enable(true, 'user');
     this.menu.enable(false, 'mech');
-
   }
+
+
   presentToast() {
     let toast = this.toastCtrl.create({
       message: 'Double Click To Exit',
       duration: 3000,
       position: 'bottom'
     });
-  
-    // toast.onDidDismiss(() => {
-    //   console.log('Dismissed toast');
-    // });
-  
     toast.present();
   }
 
@@ -100,25 +92,51 @@ export class HomePage {
 ionViewDidEnter() {
   this.platform.ready().then(() => {
     this.loadMap();
-    // this.map.setVisible(true)
   });
 
 
 }
 
-// ionViewDidLeave() {
-//   if(this.map!=null){
-//     this.map.clear();
-//     this.map.setVisible(false);
-//     this.map.setDiv(null);
+// loadMap() {
+//   var locations = [
+// {latitude: -33.890542, longitude: 151.274856},
+// {latitude: -33.923036, longitude: 151.259052},
+// {latitude: -34.028249, longitude: 151.157507},
+// {latitude: -33.80010128657071, longitude: 151.28747820854187},
+// {latitude: -33.950198, longitude: 151.259302}
+// ];
+// let self = this;
 
-// }
-//   // this.map = null;
-// }
+// let mapOptions: GoogleMapOptions = {
+//     camera: {
+//         target: {
+//             lat: -33.890542,
+//             lng: 151.274856
+//         },
+//         zoom: 15,
+//         tilt: 30
+//     }
+// };
 
+// this.map = GoogleMaps.create('map', mapOptions);
+
+// // let restaurants = this.restaurants;
+// this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
+//     self.load.dismiss();
+//     // this.load.dismiss()
+// // console.log("entered")
+//     for (let location of locations) {
+//         let restaurant_position: LatLng = new LatLng(location.latitude, location.longitude);
+
+//         this.map.addMarker({position: restaurant_position })
+//         .then((marker) => {
+//       });
+//     }
+
+// });
+// }
 
 loadMap() {
-  console.log("map function loded")
   this.airconeProvider.getUserComments()
   .then(res => {
     this.comments = res;
@@ -128,7 +146,6 @@ loadMap() {
         locations.push(element.coords)        
       }
     });
-    console.log("locations taking")
   // var locations = [
   //   [-33.890542, 151.274856],
   //   [-33.923036, 151.259052],
@@ -150,25 +167,31 @@ loadMap() {
       this.map = GoogleMaps.create('map', mapOptions);
       this.map.one(GoogleMapsEvent.MAP_READY)
         .then(() => {
-          console.log("entered into maps")
-            for (var i = 0; i < locations.length; i++) {
-              this.map.addMarker({
-                  title: locations[i].latitude,
-                  icon: 'blue',
-                  animation: 'DROP',
-                  position: {
-                    lat: locations[i].latitude,
-                    lng: locations[i].longitude
-                  }
-                })
-                .then(marker => {
-                  console.log("ok")
-                  marker.on(GoogleMapsEvent.MARKER_CLICK)
-                    .subscribe(() => {
-                      alert('exixtent user');
-                    });
-                });
-              }
+          this.load.dismiss();
+            // for (var i = 0; i < locations.length; i++) {
+            //   this.map.addMarker({
+            //       title: locations[i].latitude,
+            //       icon: 'blue',
+            //       animation: 'DROP',
+            //       position: {
+            //         lat: locations[i].latitude,
+            //         lng: locations[i].longitude
+            //       }
+            //     })
+            //     .then(marker => {
+            //       marker.on(GoogleMapsEvent.MARKER_CLICK)
+            //         .subscribe(() => {
+            //           alert('exixtent user');
+            //         });
+            //     });
+            //   }
+            for (let location of locations) {
+              let restaurant_position: LatLng = new LatLng(location.latitude, location.longitude);
+      
+              this.map.addMarker({position: restaurant_position })
+              .then((marker) => {
+            });
+          }
           
         });
       });
@@ -180,11 +203,11 @@ loadMap() {
     this.navCtrl.push(ServicesPage)
   }
 
-//  getcommentsList() {
-//   this.airconeProvider.getUserComments()
-//   .then(res => {
-//     this.comments = res;
-//     });
-//   }
+ getcommentsList() {
+  this.airconeProvider.getUserComments()
+  .then(res => {
+    this.comments = res;
+    });
+  }
 
 }

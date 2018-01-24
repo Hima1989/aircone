@@ -17,7 +17,8 @@ import { ManageAddressPage } from '../pages/manage-address/manage-address';
 import { AirconeProvider } from '../providers/aircone/aircone';
 // import { SocialSharing } from '@ionic-native/social-sharing';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { MechanicPage } from '../pages/mechanic/mechanic'
+import { MechanicPage } from '../pages/mechanic/mechanic';
+import { ChangePasswordPage } from '../pages/change-password/change-password';
 //import { Geolocation } from '@ionic-native/geolocation';
 
 
@@ -177,6 +178,10 @@ export class MyApp {
       this.menuCtrl.close();      
   }
 
+  changePassword() {
+    this.menuCtrl.close()
+    this.nav.push(ChangePasswordPage)
+  }
   completedRequests() {
     this.menuCtrl.close()
     this.nav.push(MechanicPage, {status: true})
@@ -189,7 +194,7 @@ export class MyApp {
 
   home() {  
     this.menuCtrl.close();
-    this.nav.push(HomePage)    
+    this.nav.popToRoot()
   }
 
   customerService() {

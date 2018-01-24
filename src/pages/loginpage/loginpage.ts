@@ -96,6 +96,8 @@ export class LoginpagePage {
                   }
                   localStorage.setItem('userData', JSON.stringify(userInfo));
                 } 
+                      this.navCtrl.setRoot(HomePage);
+
                 // else if (this.data.status === 200 && this.data.user.role[0] == 'MECHANIC') {
                 //   this.navCtrl.push(MechanicPage);
                 //   var mechUserInfo = {

@@ -24,6 +24,7 @@ import { NotificationsPage } from '../pages/notifications/notifications';
 import { RequestslistPage } from '../pages/requestslist/requestslist';
 import { StatusPage } from '../pages/status/status';
 import { MechanicPage } from '../pages/mechanic/mechanic';
+import { ChangePasswordPage } from '../pages/change-password/change-password';
 import { MechHomePage } from '../pages/mech-home/mech-home';
 import { RepairPage } from '../pages/repair/repair';
 import { MechloginPage } from '../pages/mechlogin/mechlogin';
@@ -80,6 +81,7 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     MechloginPage,
     ManageAddressPage,
     Address,
+    ChangePasswordPage
     // ViewAddress
   ],
   imports: [
@@ -113,6 +115,7 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     MechloginPage,
     ManageAddressPage,
     Address,
+    ChangePasswordPage
     // ViewAddress
   ],
   providers: [
