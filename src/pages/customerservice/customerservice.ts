@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AirconeProvider } from '../../providers/aircone/aircone';
-import { ServicesPage } from '../services/services';
-import { HomePage } from '../home/home';
-
 import { Toast } from '@ionic-native/toast';
 // import { ServicesHomePage } from '../services-home/services-home';
 
@@ -23,7 +20,7 @@ export class CustomerservicePage {
 
   comment;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, public alertCtrl: AlertController,private toast: Toast) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, private toast: Toast) {
   }
 
   ionViewDidLoad() {
@@ -38,14 +35,12 @@ export class CustomerservicePage {
     }
     this.airconeProvider.sendFeedback(requestDetails)
     .then(res => {
-      let alert = this.alertCtrl.create({
-        title: 'Request Sent!',
-        subTitle: 'Thanks For Your Service, We Will Consider Your FeedBack!',
-        buttons: ['OK']
-      });
-      alert.present();
+      this.toast.show(`Thanks For Your Service, We Will Consider Your FeedBack!`, '5000', 'center').subscribe(
+        toast => {
+        }
+      );
     });
-    this.navCtrl.push(ServicesPage)
+    this.navCtrl.popToRoot()
   } else {
     this.presentToast()
   }
@@ -53,22 +48,12 @@ export class CustomerservicePage {
 presentToast() {
     this.toast.show(`Please Enter Comment`, '5000', 'center').subscribe(
   toast => {
-    console.log(toast);
   }
 );
   }
 
 goBack() {
-      this.navCtrl.push(HomePage)
-  }  
-
-  
-    // let toast = this.toastCtrl.create({
-    //   message: 'Please Enter Comment',
-    //   duration: 2000,
-    //   position: 'middle'
-    // });  
-    // toast.present();
-
+  this.navCtrl.popToRoot()
+}  
 
 }

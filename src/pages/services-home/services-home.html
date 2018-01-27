@@ -28,10 +28,8 @@
                 </ion-col>
             </ion-row>
         </ion-grid>
-    </div>-->
-    <ion-spinner name="bubbles" *ngIf="showSpinner"></ion-spinner>
-    
-    <ion-slides class="slide-block" *ngIf="service.slider && service.slider.length showSlider" autoplay="3000" loop="true" speed="500">
+    </div>-->    
+    <ion-slides class="slide-block" *ngIf="service.slider && service.slider.length" autoplay="3000" loop="true" speed="500" shouldLockSwipes=true>
         <ion-slide class="slide-img" *ngFor="let img of service.slider">
             <img src={{img}} />
             <!--<ion-img width="80" height="80" src="..."></ion-img>-->
@@ -42,11 +40,11 @@
     </div>
     <!-- <ion-spinner name="bubbles" *ngIf="showSpinner"></ion-spinner> -->
     
-    <div class="price-chart" *ngIf="showSlider">
+    <div class="price-chart">
         <div class="service-block">
             <h5>Price chart</h5>
             <ion-row (click)="presentProfileModal()">
-                <ion-slides class="serviceBlockImg" loop="true" shouldLockSwipes=false>
+                <ion-slides class="serviceBlockImg" loop="true">
                     <ion-slide col-4 class="" *ngFor="let img of service.priceChart">
                         <img src="{{img}}" imageViewer>
                     </ion-slide>

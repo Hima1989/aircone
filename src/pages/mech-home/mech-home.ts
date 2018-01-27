@@ -19,12 +19,15 @@ export class MechHomePage {
   request;
   serviceInfo;
   userRequest;
+  getCompleted;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     if (navParams.get("details")) {
       this.request = navParams.get("details")  
+
       this.serviceInfo = this.request;
-      this.userRequest = this.request.request;    
+      this.userRequest = this.request.request;   
     }
+    this.getCompleted = navParams.get("status")
 
   }
 
@@ -32,11 +35,11 @@ export class MechHomePage {
   }
 
   startService() {
-    this.navCtrl.push(RepairPage, {request: this.request})
+    this.navCtrl.push(RepairPage, {request: this.request, status: this.getCompleted})
   }
 
   goBack() {
-    this.navCtrl.push(MechanicPage)
+    this.navCtrl.push(MechanicPage, {status: this.getCompleted})
   }
 
 

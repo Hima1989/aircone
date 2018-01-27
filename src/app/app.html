@@ -1,4 +1,42 @@
-<ion-menu class="menuBar" [content]="content" swipeEnabled="false" type="push">
+<ion-menu class="menuBar" id="mech" [content]="content" swipeEnabled="false" type="push">
+    <ion-toolbar class="toolbarContent">
+        <ion-row>
+            <ion-col>
+                <ion-title>Menu</ion-title>
+            </ion-col>
+            <ion-col text-right>
+                <span class="menu-toggle" (click)="closeSideBar()">close</span>
+            </ion-col>
+        </ion-row>
+    </ion-toolbar>
+
+    <ion-content>
+        <ion-list class="ion-menu-top">
+                <button ion-item (click)="pendingRequests()">
+                        <ion-icon ios="ios-list" md="md-list"></ion-icon> Pending Requests
+                </button>
+                <button ion-item (click)="completedRequests()">
+                        <ion-icon ios="ios-list" md="md-list"></ion-icon> Completed Requests
+                </button>
+            <button ion-item (click)="profile()">
+                    <ion-icon class="icon-padding icon-menu" ios="ios-person" md="md-person"></ion-icon> Profile
+            </button>
+            <button ion-item (click)="changePassword()">
+                <ion-icon ios="ios-key" md="md-key"></ion-icon> Change Password
+            </button>
+            <button ion-item (click)="otherShare()">
+                    <ion-icon class="icon-padding icon-menu" ios="ios-share-alt" md="md-share-alt"></ion-icon> Share App
+            </button>
+            <button ion-item (click)="logout()">
+                    <ion-icon class="icon-padding" ios="ios-log-out" md="md-log-out"></ion-icon> Logout
+            </button>
+
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+
+<ion-menu class="menuBar" id="user" [content]="content" swipeEnabled="false" type="push">
     <ion-toolbar class="toolbarContent">
         <ion-row>
             <ion-col>

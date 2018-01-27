@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, App, MenuController, Platform, ToastController } from 'ionic-angular';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { ServicesHomePage } from '../services-home/services-home';
+// import { HomePage } from '../home/home';
 
 /**
  * Generated class for the ServicesPage page.
@@ -21,40 +22,25 @@ export class ServicesPage {
   public services: any = [];
   servicesHomePage: any = ServicesHomePage;
   backButtonPressed: boolean;
-  backButtonPressedTimer;
-  
+  backButtonPressedTimer;  
   
   constructor(private toastCtrl: ToastController, public platform: Platform, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, public app: App, public menu: MenuController) {
     this.loadServices();
     menu.enable(true)
-  
     platform.registerBackButtonAction(() => {
-      if (this.backButtonPressed) {
-        this.platform.exitApp();
-      } else {
-        this.presentToast();
-        this.backButtonPressed = true;
-        if (this.backButtonPressedTimer) {
-          clearTimeout(this.backButtonPressedTimer);
-        }
-        this.backButtonPressedTimer = setTimeout(() => {
-          this.backButtonPressed = false
-        }, 4000);
-      }
-    });
+      this.menu.close()
+        this.navCtrl.popToRoot() 
+    });    
+   
   }
-
+  
   presentToast() {
     let toast = this.toastCtrl.create({
       message: 'Double Click To Exit',
       duration: 3000,
       position: 'bottom'
     });
-  
-    // toast.onDidDismiss(() => {
-    //   console.log('Dismissed toast');
-    // });
-  
+
     toast.present();
   }
 
