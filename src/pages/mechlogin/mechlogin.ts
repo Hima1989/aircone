@@ -3,7 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Validators, FormBuilder } from '@angular/forms';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { MechanicPage } from '../mechanic/mechanic';
-import { LoginpagePage } from '../loginpage/loginpage'
+import { LoginpagePage } from '../loginpage/loginpage';
+import { Toast } from '@ionic-native/toast';
 /**
  * Generated class for the MechloginPage page.
  *
@@ -20,7 +21,7 @@ export class MechloginPage {
   registerCredentials: any = {};
   loginForm;
   data
-  constructor(public navCtrl: NavController,public airconeProvider: AirconeProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
+  constructor(public navCtrl: NavController, private toast: Toast, public airconeProvider: AirconeProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
     this.loginForm = this.formBuilder.group({
       identifier: ['', Validators.required],
       password: ['', Validators.required],
@@ -50,6 +51,15 @@ export class MechloginPage {
           "role": tempData[0].user.role,
         }
         localStorage.setItem('userData', JSON.stringify(mechUserInfo));
+      }
+      else{
+        // console.log("this is mech login page");
+        
+        this.toast.show('Invalied User Id and Password', '5000', 'center').subscribe(
+          toast => {
+            console.log(toast);
+          }
+        );
       }
     })
 
