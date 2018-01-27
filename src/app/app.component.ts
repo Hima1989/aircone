@@ -168,8 +168,10 @@ export class MyApp {
   // }
 
   otherShare() {
+    var userData = JSON.parse(localStorage.getItem('userData'));
+
     this.socialSharing.share("Air Cone","aircone app","http://www.freepngimg.com/download/air_conditioner/6-2-ac-picture.png",
-      "https://play.google.com/store/apps/details?id=com.gleed.mytips&hl=en"
+      "https://play.google.com/store/apps/details?id=com.gleed.mytips&hl=en"+""+"Referral Code"+userData.referralCode
     )
       .then((data) => {
       },

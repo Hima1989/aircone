@@ -28,31 +28,19 @@ export class ServicesPage {
     this.loadServices();
     menu.enable(true)
     platform.registerBackButtonAction(() => {
+      this.menu.close()
         this.navCtrl.popToRoot() 
     });    
    
   }
-
-  ionOpen() {
-    console.log("hitted")
-    this.platform.registerBackButtonAction(() => {
-      this.menu.close()
-    }); 
-  }
-
   
-
   presentToast() {
     let toast = this.toastCtrl.create({
       message: 'Double Click To Exit',
       duration: 3000,
       position: 'bottom'
     });
-  
-    // toast.onDidDismiss(() => {
-    //   console.log('Dismissed toast');
-    // });
-  
+
     toast.present();
   }
 

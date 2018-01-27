@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ServicesPage } from '../services/services';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { Camera } from '@ionic-native/camera';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { Toast } from '@ionic-native/toast';
@@ -26,8 +25,10 @@ export class ProfilePage {
   referral: boolean = true;
   forMech: boolean;
   forUser: boolean;
-  constructor(private toast: Toast, public navCtrl: NavController, public navParams: NavParams, public camera:Camera, public airconeProvider: AirconeProvider) {
+  constructor(private toast: Toast, public navCtrl: NavController, public navParams: NavParams, public camera:Camera, public airconeProvider: AirconeProvider, public menu: MenuController) {
     this.getUserDetails();
+    this.menu.enable(true, 'user');
+    this.menu.enable(false, 'mech');
     // this.orderForm  = this.formBuilder.group({
           
     // });
@@ -37,24 +38,19 @@ export class ProfilePage {
   }
 
   submitDetails() {
-    if(this.userDetails.firstName != ""){
-       if (this.myfile) {
-      this.userDetails.image = this.myfile.imageURL;
-    }
-    this.airconeProvider.userDetailsUpdate(this.userDetails)
-    .then(res => {
-      this.updateToast();
-      // setTimeout(this.timeOut(), 3000);
-      this.navCtrl.push(ServicesPage)
-    })
-    }else{
+    if(this.userDetails.firstName == undefined || this.userDetails.phoneNumber == undefined || this.userDetails.phoneNumber == "" || this.userDetails.firstName == ""){
       this.presentToast();
+    }else{
+      if (this.myfile) {
+        this.userDetails.image = this.myfile.imageURL;
+      }
+      this.airconeProvider.userDetailsUpdate(this.userDetails)
+      .then(res => {
+        this.updateToast();
+        this.navCtrl.popToRoot()
+      })
     }
-  } 
-// timeOut(){
-//  this.navCtrl.push(ServicesPage)
-
-// }
+  }
   presentToast() {
      this.toast.show(`Profile not update`, '5000', 'center').subscribe(
             toast => {
@@ -94,7 +90,7 @@ export class ProfilePage {
 
   goBack() {
     if (this.forUser) {
-      this.navCtrl.push(ServicesPage);          
+      this.navCtrl.popToRoot()
     }
     if (this.forMech) {
       this.navCtrl.push(MechanicPage);          

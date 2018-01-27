@@ -29,7 +29,7 @@ import { MechHomePage } from '../pages/mech-home/mech-home';
 import { RepairPage } from '../pages/repair/repair';
 import { MechloginPage } from '../pages/mechlogin/mechlogin';
 import { ManageAddressPage } from '../pages/manage-address/manage-address';
-import { Address } from '../pages/manage-address/manage-address';
+import { AddaddressPage } from '../pages/addaddress/addaddress';
 
 import { Ionic2RatingModule } from 'ionic2-rating';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -80,8 +80,9 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     RepairPage,
     MechloginPage,
     ManageAddressPage,
-    Address,
-    ChangePasswordPage
+    // Address,
+    ChangePasswordPage,
+    AddaddressPage
     // ViewAddress
   ],
   imports: [
@@ -114,8 +115,9 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     RepairPage,
     MechloginPage,
     ManageAddressPage,
-    Address,
-    ChangePasswordPage
+    // Address,
+    ChangePasswordPage,
+    AddaddressPage
     // ViewAddress
   ],
   providers: [

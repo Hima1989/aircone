@@ -14,8 +14,8 @@ export class AirconeProvider {
 
   data;
   paramData;
-// baseURL = "https://air-cone-backend.appspot.com"; //production
-    baseURL = "http://localhost:80"; //development
+baseURL = "https://air-cone-backend.appspot.com"; //production
+    // baseURL = "http://localhost:80"; //development
   constructor(public http: Http, public device: Device) {
   }
   

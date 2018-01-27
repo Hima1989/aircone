@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { Facebook } from '@ionic-native/facebook';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { HomePage } from '../home/home';
@@ -7,6 +7,7 @@ import { GooglePlus } from '@ionic-native/google-plus';
 import { ProfilePage } from '../profile/profile';
 import { Geolocation } from '@ionic-native/geolocation';
 import { MechloginPage } from '../mechlogin/mechlogin';
+import { Toast } from '@ionic-native/toast';
 /**
  * Generated class for the LoginpagePage page.
  *
@@ -24,7 +25,7 @@ export class LoginpagePage {
   homePage = HomePage;
   data;
   coords;
-  constructor(private toastCtrl: ToastController, public platform: Platform, public navCtrl: NavController, public googlePlus: GooglePlus, public navParams: NavParams, public fb: Facebook, public airconeProvider: AirconeProvider, private geolocation: Geolocation) {
+  constructor(public platform: Platform, public navCtrl: NavController, public googlePlus: GooglePlus, public navParams: NavParams, public fb: Facebook, public airconeProvider: AirconeProvider, private geolocation: Geolocation,private toast: Toast) {
 
   }
 
@@ -55,34 +56,28 @@ export class LoginpagePage {
 
   }
 
-  presentToast() {
-    let toast = this.toastCtrl.create({
-      message: 'Please Updated Profile',
-      duration: 3000,
-      position: 'middle'
-    });
-    toast.present();
-  }
-
   facebookLogin() {
 
-         var userDetails = {"identifier":"gleedtechuser1@gmail.com","password":"123123123","email":"gleedtechuser1@gmail.com"}
+         var userDetails = {"identifier":"gleedtechuser@gmail.com","password":"123123123","email":"gleedtechuser@gmail.com"}
 
         //  var userDetails = {"identifier":"doddibalubharadwaj@gmail.com","password":"123123123","email":"doddibalubharadwaj@gmail.com"}
-         
-         //var userDetails = {"identifier":"gleedtechmech@gmail.com","password":"123123123","email":"doddibalubharadwaj@gmail.com"}
-         
+
             this.airconeProvider.userLogin(userDetails)
               .then(res => {
                 var tempData = [];                
                 tempData.push(res);
                 this.data = res;
                 if (this.data.status === 200 && this.data.user.role[0] == 'USER') {
+                  this.navCtrl.setRoot(HomePage);                                      
                   if (!tempData[0].user.firstName || !tempData[0].user.email || !tempData[0].user.phoneNumber || tempData[0].user.firstName == "" || tempData[0].user.email == "" || tempData[0].user.phoneNumber == "") {
                     this.navCtrl.push(ProfilePage)
-                    this.presentToast();
+                    this.toast.show(`Please Update Profile`, '5000', 'center').subscribe(
+                      toast => {
+                      }
+                    );                 
                   } else {
-                    this.navCtrl.push(HomePage);                    
+                    this.navCtrl.setRoot(HomePage);                                                          
+                    // this.navCtrl.push(HomePage);  
                   }
                   var userInfo = {
                     "firstName": tempData[0].user.firstName,
@@ -96,7 +91,6 @@ export class LoginpagePage {
                   }
                   localStorage.setItem('userData', JSON.stringify(userInfo));
                 } 
-                      this.navCtrl.setRoot(HomePage);
 
                 // else if (this.data.status === 200 && this.data.user.role[0] == 'MECHANIC') {
                 //   this.navCtrl.push(MechanicPage);
@@ -156,38 +150,9 @@ export class LoginpagePage {
   }
 
   doGoogleLogin() {
-    // let nav = this.navCtrl;
-    // let env = this;
-    // let me = this;
-    this.googlePlus.login({
-      'scopes': '',
-      'webClientId': '455882486075-90366665k6ehek4t8rvp5ej9499ga65m.apps.googleusercontent.com',
-      'offline': true
-    })
-      .then(res => {
-        alert(res)
-        var userDetails: any = {
-          firstName: res.displayName,
-          email: res.email,
-          profilePic: res.imageUrl,
-          role: "USER",
-          socialType: 'GOOGLE'
-        };
-        alert(userDetails.firstName);
-        // alert(userDetails.profilePic);
-        // alert(userDetails.email);
-        // alert(userDetails.role);
-        this.airconeProvider.socialLogin(userDetails)
-          .then(res => {            
-            //  var a: any = res;
-            // console.log(a.id);
-
-            // localStorage.setItem('user', a.id);
-            // localStorage.setItem('name', a.firstName);
-            // var b = localStorage.getItem('user');
-          }, err => {})
-      })
-      .catch(err => alert(err + "IT wont work here"));
+    this.googlePlus.login({})
+    .then(res => console.log(res))
+    .catch(err => console.error(err));
   }
 
   mechLogin() {

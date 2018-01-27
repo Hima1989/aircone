@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { AirconeProvider } from '../../providers/aircone/aircone';
-import { ServicesPage } from '../services/services';
 import { RequestslistPage } from '../requestslist/requestslist';
 import { Toast } from '@ionic-native/toast';
 
@@ -112,13 +111,11 @@ export class StatusPage {
     .then(res => {
       this.comment = '';
       this.rate = 0;
-       let alert = this.alertCtrl.create({
-        title: 'Request Sent!',
-        subTitle: 'Thanks For Your Service, We Will Consider Your FeedBack!',
-        buttons: ['OK']
-    });
-    alert.present();
-      this.navCtrl.push(ServicesPage);
+      this.toast.show(`Thanx for your feedback`, '5000', 'center').subscribe(
+        toast => {
+        }
+      );
+      this.navCtrl.popToRoot()
     })
     }else{
             this.toast.show(`Write a Comment & select an emoji`, '5000', 'center').subscribe(

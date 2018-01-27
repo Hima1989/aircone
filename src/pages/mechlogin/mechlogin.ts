@@ -50,6 +50,7 @@ export class MechloginPage {
           "lastName": tempData[0].user.lastName,
           "tokenId": tempData[0].user.tokenId,
           "role": tempData[0].user.role,
+          "referralCode": tempData[0].user.referralCode
         }
         localStorage.setItem('userData', JSON.stringify(mechUserInfo));
       } else if (this.data.status === 404) {
