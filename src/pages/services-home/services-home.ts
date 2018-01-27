@@ -27,14 +27,11 @@ export class ServicesHomePage {
     public service = {};
     @ViewChild(Slides) slides: Slides;
     @ViewChild(Nav) nav;
-    showSlider: boolean = false;
-    showSpinner: boolean = true;
     
   constructor(public loadingCtrl: LoadingController, public viewCtrl: ViewController, public platform: Platform, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider) {
     this.oneService = navParams.get("postValue");
     this.serviceId = navParams.get("id");    
     this.getService()
-
     this.platform.ready().then(() => {
       this.platform.registerBackButtonAction(() => {
         this.navCtrl.push(ServicesPage);
@@ -48,7 +45,9 @@ export class ServicesHomePage {
   // }
 
   ionViewDidLoad() {
+    // this.slides.lockSwipes(true)
   }
+
 
   presentLoadingCustom() {
     let loading = this.loadingCtrl.create({
@@ -84,8 +83,6 @@ export class ServicesHomePage {
     this.airconeProvider.getOneService(id)
     .then(res => {
       this.service = res;
-      this.showSpinner = false;
-      this.showSlider = true;
     });
   }
 
@@ -119,6 +116,7 @@ export class Profile {
       this.viewCtrl.dismiss();   
     });
 });
+
  }
 
  

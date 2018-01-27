@@ -49,7 +49,7 @@ export class LoginpagePage {
         latitude: resp.coords.latitude,
         longitude: resp.coords.longitude
       }
-    //  console.log(this.coords)
+     console.log(this.coords.latitude)
      }).catch((error) => {
        console.log('Error getting location', error);
      });

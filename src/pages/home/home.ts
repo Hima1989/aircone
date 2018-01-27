@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform, Content, Slides, LoadingController, ToastController, MenuController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, Content, Slides, LoadingController, MenuController } from 'ionic-angular';
 import { AirconeProvider } from '../../providers/aircone/aircone';
+import { Toast } from '@ionic-native/toast';
 import { ServicesPage } from '../services/services'
 import {
   GoogleMaps,
@@ -32,18 +33,21 @@ export class HomePage {
   i;
   userlocation;
   role;
-  backButtonPressed;
+  backButtonPressed: boolean = false
   backButtonPressedTimer;
   load;
  // public location: any;
 
  map: GoogleMap;
-  constructor(private loading: LoadingController, private toastCtrl: ToastController, public navCtrl: NavController, public platform: Platform, public navParams: NavParams, private airconeProvider: AirconeProvider, public menu: MenuController) {
+  constructor(private toast: Toast, private loading: LoadingController, public navCtrl: NavController, public platform: Platform, public navParams: NavParams, private airconeProvider: AirconeProvider, public menu: MenuController) {
     platform.registerBackButtonAction(() => {
       if (this.backButtonPressed) {
         this.platform.exitApp();
       } else {
-        this.presentToast();
+        this.toast.show(`Press again to exit airTech`, '4000', 'bottom').subscribe(
+          toast => {
+          }
+        );
         this.backButtonPressed = true;
         if (this.backButtonPressedTimer) {
           clearTimeout(this.backButtonPressedTimer);
@@ -53,24 +57,20 @@ export class HomePage {
         }, 4000);
       }
     });
-    this.load = this.loading.create({
-      content: 'Veuillez patienter...'
-  });
-
   // this.load.present();
     this.menu.enable(true, 'user');
     this.menu.enable(false, 'mech');
   }
 
 
-  presentToast() {
-    let toast = this.toastCtrl.create({
-      message: 'Double Click To Exit',
-      duration: 3000,
-      position: 'bottom'
-    });
-    toast.present();
-  }
+  // presentToast() {
+  //   let toast = this.toastCtrl.create({
+  //     message: 'Double Click To Exit',
+  //     duration: 3000,
+  //     position: 'bottom'
+  //   });
+  //   toast.present();
+  // }
 
 // ngAfterViewInit() {
 //   this.platform.ready().then(() => {
@@ -93,8 +93,10 @@ ionViewDidEnter() {
   this.platform.ready().then(() => {
     this.loadMap();
   });
-
-
+  this.load = this.loading.create({
+    content: 'Please Wait...'
+});
+this.load.present()
 }
 
 // loadMap() {
@@ -146,6 +148,7 @@ loadMap() {
         locations.push(element.coords)        
       }
     });
+    this.load.dismiss();    
   // var locations = [
   //   [-33.890542, 151.274856],
   //   [-33.923036, 151.259052],
@@ -155,19 +158,25 @@ loadMap() {
   // ];
       let mapOptions: GoogleMapOptions = {
         camera: {          
-        // target: {
-        //   lat: 33.80010128657071,
-        //   lng: -151.28747820854187
-        // },
-          zoom: 18,
+        target: {
+          lat: 33.80010128657071,
+          lng: -151.28747820854187
+        },
+          zoom: 0,
           tilt: 30,
+        },
+        gestures:{
+          rotate:false,
+          tilt:false,
+          scroll:false,
+          zoom: false
         }
+      
       };
   
       this.map = GoogleMaps.create('map', mapOptions);
       this.map.one(GoogleMapsEvent.MAP_READY)
         .then(() => {
-          this.load.dismiss();
             // for (var i = 0; i < locations.length; i++) {
             //   this.map.addMarker({
             //       title: locations[i].latitude,
@@ -189,7 +198,7 @@ loadMap() {
               let restaurant_position: LatLng = new LatLng(location.latitude, location.longitude);
       
               this.map.addMarker({position: restaurant_position })
-              .then((marker) => {
+              .then((marker) => { 
             });
           }
           
