@@ -17,17 +17,20 @@
             <span class="checkMark {{requested}} {{approved}} {{closed}}"><ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon></span>
             <!--<ion-checkbox color="dark" checked="true" round></ion-checkbox>-->
             <!--<ion-radio class="status-line" [checked]="request.status=='ORDER_REQUESTED' || request.status=='ORDER_ACCEPTED'"></ion-radio>-->
-            <span>Sent</span>
+            <span class="checkData">Sent</span>
+            <div class="clear"></div>
         </ion-col>
         <ion-col col-4 class="status-mark">
             <span class="checkMark {{approved}} {{closed}}"><ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon></span>
             <!--<ion-radio class="status-line" [checked]="request.status=='ORDER_REQUESTED' || request.status=='ORDER_ACCEPTED'"></ion-radio>-->
-            <span>Accepted</span>
+            <span class="checkData">Accepted</span>
+            <div class="clear"></div>
         </ion-col>
         <ion-col col-4 class="status-mark">
             <span class="checkMark {{closed}}"><ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon></span>
             <!--<ion-radio class="status-line" [checked]="request.status=='ORDER_REQUESTED' || request.status=='ORDER_ACCEPTED'"></ion-radio>-->
-            <span>Completed</span>
+            <span class="checkData">Completed</span>
+            <div class="clear"></div>
         </ion-col>
     </ion-row>
     <button ion-button class="btn-hrx" [disabled]="request.status == 'ORDER_CLOSED'" (click)="cancelRequest()">Cancel Request</button>

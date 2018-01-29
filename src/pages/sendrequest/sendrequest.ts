@@ -106,18 +106,17 @@ export class SendrequestPage {
   // }
 
   addAddress() {
-    let addressForm = this.modalCtrl.create(ManageAddressPage, {id: this.serviceId});
-    addressForm.present();
+    // let addressForm = this.modalCtrl.create(ManageAddressPage, {id: this.serviceId});
+    // addressForm.present();
+    this.navCtrl.push(ManageAddressPage, {id: this.serviceId})
   }
 
   addQuantity() {
-    if (this.subService.type == '' && this.subService.ton == '' && this.subService.quantity == '') {
-           this.toast.show(`Please Enter Type Of Service and Quantity`, '5000', 'center').subscribe(
-                  toast => {
-                    console.log(toast);
-                  }
-                );
-        // toast.present();
+    if (this.subService.type == '' || this.subService.ton == '' || this.subService.quantity == '' || this.subService.type == undefined || this.subService.ton == undefined || this.subService.quantity == undefined) {
+        this.toast.show(`Please Enter Type Of Service and Quantity`, '5000', 'center').subscribe(
+          toast => {
+          }
+        );  
     } else {
       this.type.push(this.subService);
       this.subService = {type: "", ton: "", quantity: ""};

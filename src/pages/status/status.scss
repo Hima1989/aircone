@@ -43,6 +43,10 @@ page-status {
             height: 16px;
             text-align: center;
             margin-left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            float: left;
             ion-icon {
                 color: $colorWhite;
                 font-size: 14px;
@@ -64,6 +68,7 @@ page-status {
             display: inline-block;
             font-size: 12px;
             margin-left: 5px;
+            float: left;
         }
     }
     .comment-rating {

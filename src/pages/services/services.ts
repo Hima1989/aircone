@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, App, MenuController, Platform } fr
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { ServicesHomePage } from '../services-home/services-home';
 import { Toast } from '@ionic-native/toast';
+// import { HomePage } from '../home/home';
 
 /**
  * Generated class for the ServicesPage page.
@@ -22,29 +23,18 @@ export class ServicesPage {
   public services: any = [];
   servicesHomePage: any = ServicesHomePage;
   backButtonPressed: boolean;
-  backButtonPressedTimer;
-  
+  backButtonPressedTimer;  
   
   constructor(private toast: Toast, public platform: Platform, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, public app: App, public menu: MenuController) {
     this.loadServices();
     menu.enable(true)
-  
     platform.registerBackButtonAction(() => {
-      if (this.backButtonPressed) {
-        this.platform.exitApp();
-      } else {
-        this.presentToast();
-        this.backButtonPressed = true;
-        if (this.backButtonPressedTimer) {
-          clearTimeout(this.backButtonPressedTimer);
-        }
-        this.backButtonPressedTimer = setTimeout(() => {
-          this.backButtonPressed = false
-        }, 4000);
-      }
-    });
+      this.menu.close()
+        this.navCtrl.popToRoot() 
+    });    
+   
   }
-
+  
   presentToast() {
     this.toast.show('Double Click To Exit', '5000', 'center').subscribe(
                   toast => {

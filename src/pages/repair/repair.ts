@@ -27,8 +27,10 @@ export class RepairPage {
   finalCharge;
   service;
   serviceRateQuantity;
+  getCompleted;
   constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, public alertCtrl: AlertController) {
     this.request = navParams.get("request")
+    this.getCompleted = navParams.get("status")    
     this.getAllServiceSpares();
     this.getService();
   }
@@ -86,7 +88,7 @@ export class RepairPage {
 
     // this.spareTotalPrice = finalPrice;  
      this.finalCharge = {spareInfo: this.finalSpare, finalServicePrice: this.spareTotalPrice, service: this.serviceRate}
-  }
+    }
   
   closeRequest() {
     if (this.finalCharge.finalServicePrice > 0) {
@@ -106,7 +108,7 @@ export class RepairPage {
   }
 
   goBack() {
-    this.navCtrl.push(MechHomePage, {details: this.request})
+    this.navCtrl.push(MechHomePage, {details: this.request, status: this.getCompleted})
   }
 
 }

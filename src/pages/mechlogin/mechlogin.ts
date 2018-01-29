@@ -5,6 +5,7 @@ import { AirconeProvider } from '../../providers/aircone/aircone';
 import { MechanicPage } from '../mechanic/mechanic';
 import { LoginpagePage } from '../loginpage/loginpage';
 import { Toast } from '@ionic-native/toast';
+
 /**
  * Generated class for the MechloginPage page.
  *
@@ -35,7 +36,7 @@ export class MechloginPage {
    
     this.airconeProvider.userLogin(this.loginForm.value)
     .then(res => {
-      this.loginForm.reset()      
+      // this.loginForm.reset()      
       var tempData = [];                
       tempData.push(res);
       this.data = res;
@@ -49,8 +50,14 @@ export class MechloginPage {
           "lastName": tempData[0].user.lastName,
           "tokenId": tempData[0].user.tokenId,
           "role": tempData[0].user.role,
+          "referralCode": tempData[0].user.referralCode
         }
         localStorage.setItem('userData', JSON.stringify(mechUserInfo));
+      } else if (this.data.status === 404) {
+        this.toast.show(`User or Password mismatch`, '3000', 'center').subscribe(
+          toast => {
+          }
+        );   
       }
       else{
         // console.log("this is mech login page");

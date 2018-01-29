@@ -3,7 +3,7 @@
     <name>airCone</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content original-src="index.html" src="http://192.168.31.162:8101" />
+    <content original-src="index.html" src="http://192.168.31.163:8101" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -98,9 +98,6 @@
     <plugin name="cordova-plugin-geolocation" spec="^3.0.0">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
     </plugin>
-    <plugin name="cordova-plugin-googleplus" spec="^5.1.1">
-        <variable name="REVERSED_CLIENT_ID" value="455882486075-90366665k6ehek4t8rvp5ej9499ga65m.apps.googleusercontent.com" />
-    </plugin>
     <plugin name="cordova-plugin-googlemaps" spec="^2.1.1">
         <variable name="API_KEY_FOR_ANDROID" value="AIzaSyCyFcQi2rm7EA0X4MfRLEMOeJcM4Y9qSMQ" />
     </plugin>
@@ -109,4 +106,7 @@
     <plugin name="cordova-plugin-x-socialsharing" spec="^5.2.1" />
     <plugin name="cordova-plugin-compat" spec="^1.2.0" />
     <plugin name="cordova-plugin-x-toast" spec="^2.6.0" />
+    <plugin name="cordova-plugin-googleplus" spec="^5.2.1">
+        <variable name="REVERSED_CLIENT_ID" value="455882486075-90366665k6ehek4t8rvp5ej9499ga65m.apps.googleusercontent.com" />
+    </plugin>
 </widget>

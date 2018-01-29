@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ServicesPage } from '../services/services';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { Camera } from '@ionic-native/camera';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { Toast } from '@ionic-native/toast';
+import { MechanicPage } from '../mechanic/mechanic';
 
 /**
  * Generated class for the ProfilePage page.
@@ -23,8 +23,12 @@ export class ProfilePage {
   base64Image:any;
   orderForm;
   referral: boolean = true;
-  constructor(private toast: Toast, public navCtrl: NavController, public navParams: NavParams, public camera:Camera, public airconeProvider: AirconeProvider) {
+  forMech: boolean;
+  forUser: boolean;
+  constructor(private toast: Toast, public navCtrl: NavController, public navParams: NavParams, public camera:Camera, public airconeProvider: AirconeProvider, public menu: MenuController) {
     this.getUserDetails();
+    this.menu.enable(true, 'user');
+    this.menu.enable(false, 'mech');
     // this.orderForm  = this.formBuilder.group({
           
     // });
@@ -34,24 +38,19 @@ export class ProfilePage {
   }
 
   submitDetails() {
-    if(this.userDetails.firstName != ""){
-       if (this.myfile) {
-      this.userDetails.image = this.myfile.imageURL;
-    }
-    this.airconeProvider.userDetailsUpdate(this.userDetails)
-    .then(res => {
-      this.updateToast();
-      // setTimeout(this.timeOut(), 3000);
-      this.navCtrl.push(ServicesPage)
-    })
-    }else{
+    if(this.userDetails.firstName == undefined || this.userDetails.phoneNumber == undefined || this.userDetails.phoneNumber == "" || this.userDetails.firstName == ""){
       this.presentToast();
+    }else{
+      if (this.myfile) {
+        this.userDetails.image = this.myfile.imageURL;
+      }
+      this.airconeProvider.userDetailsUpdate(this.userDetails)
+      .then(res => {
+        this.updateToast();
+        this.navCtrl.popToRoot()
+      })
     }
-  } 
-// timeOut(){
-//  this.navCtrl.push(ServicesPage)
-
-// }
+  }
   presentToast() {
      this.toast.show(`Profile not update`, '5000', 'center').subscribe(
             toast => {
@@ -90,7 +89,12 @@ export class ProfilePage {
    }
 
   goBack() {
-    this.navCtrl.push(ServicesPage);    
+    if (this.forUser) {
+      this.navCtrl.popToRoot()
+    }
+    if (this.forMech) {
+      this.navCtrl.push(MechanicPage);          
+    }
   }
 
   getUserDetails() {
@@ -99,6 +103,14 @@ export class ProfilePage {
    this.airconeProvider.loaduser(user.id)
    .then(data => {
     this.userDetails = data
+    if(this.userDetails.role[0] == 'MECHANIC') {
+      this.forMech = true;
+      this.forUser = false;
+    }
+    if(this.userDetails.role[0] == 'USER') {
+      this.forMech = false;
+      this.forUser = true;
+    }
     this.base64Image = this.userDetails.image
     if(this.userDetails.referredBy) {
       this.referral = false;
