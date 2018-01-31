@@ -91,9 +91,31 @@ export class StatusPage {
    }
 
   cancelRequest(){
-    this.airconeProvider.cancelRequest(this.request.id)
-    .then(res => {
-    })
+    let alert = this.alertCtrl.create({
+    title: 'Confirm Delete Request',
+    // message: 'Confirm Delete Request',
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      },
+      {
+        text: 'Ok',
+        handler: () => {
+          console.log('Ok clicked');
+           this.airconeProvider.cancelRequest(this.request.id)
+            .then(res => {
+              this.navCtrl.push(RequestslistPage)
+            })
+        }
+      }
+    ]
+  });
+  alert.present();
+   
   }
 
   onModelChange(rate) {

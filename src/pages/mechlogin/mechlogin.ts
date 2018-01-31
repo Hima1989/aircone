@@ -22,7 +22,7 @@ export class MechloginPage {
   registerCredentials: any = {};
   loginForm;
   data
-  constructor(private toast: Toast, public navCtrl: NavController,public airconeProvider: AirconeProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
+  constructor(public navCtrl: NavController, private toast: Toast, public airconeProvider: AirconeProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
     this.loginForm = this.formBuilder.group({
       identifier: ['', Validators.required],
       password: ['', Validators.required],
@@ -58,6 +58,15 @@ export class MechloginPage {
           toast => {
           }
         );   
+      }
+      else{
+        // console.log("this is mech login page");
+        
+        this.toast.show('Invalied User Id and Password', '5000', 'center').subscribe(
+          toast => {
+            console.log(toast);
+          }
+        );
       }
     })
 

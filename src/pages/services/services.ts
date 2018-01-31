@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App, MenuController, Platform, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App, MenuController, Platform } from 'ionic-angular';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { ServicesHomePage } from '../services-home/services-home';
+import { Toast } from '@ionic-native/toast';
 // import { HomePage } from '../home/home';
 
 /**
@@ -24,7 +25,7 @@ export class ServicesPage {
   backButtonPressed: boolean;
   backButtonPressedTimer;  
   
-  constructor(private toastCtrl: ToastController, public platform: Platform, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, public app: App, public menu: MenuController) {
+  constructor(private toast: Toast, public platform: Platform, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, public app: App, public menu: MenuController) {
     this.loadServices();
     menu.enable(true)
     platform.registerBackButtonAction(() => {
@@ -35,13 +36,11 @@ export class ServicesPage {
   }
   
   presentToast() {
-    let toast = this.toastCtrl.create({
-      message: 'Double Click To Exit',
-      duration: 3000,
-      position: 'bottom'
-    });
-
-    toast.present();
+    this.toast.show('Double Click To Exit', '5000', 'center').subscribe(
+                  toast => {
+                    console.log(toast);
+                  }
+                );
   }
 
   ionViewDidLoad() {

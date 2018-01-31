@@ -8,6 +8,13 @@ page-manage-address {
             position: absolute;
             top: 5px;
             right: 5px;
+            .addDel {
+                width: 25px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                float: left;
+            }
         }
     }
     .list-md .item-block .item-inner {
