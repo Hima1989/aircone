@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import {Validators, FormBuilder } from '@angular/forms';
 import { Toast } from '@ionic-native/toast';
 import { AirconeProvider } from '../../providers/aircone/aircone';
@@ -23,7 +23,7 @@ export class ChangePasswordPage {
   userDetails: any = {email: '', oldPass: '', newPass: '',ReNewPass: ''};
   data;
 
-  constructor(private toast: Toast, public navCtrl: NavController, public navParams: NavParams, private airconeProvider: AirconeProvider, private formBuilder: FormBuilder) {
+  constructor(private toast: Toast, public navCtrl: NavController, public navParams: NavParams, private airconeProvider: AirconeProvider, private formBuilder: FormBuilder, public platform: Platform) {
     this.getUserDetails();
     this.orderForm = this.formBuilder.group({
       email: ['', Validators.required],
@@ -31,6 +31,9 @@ export class ChangePasswordPage {
       newPass: ['', Validators.required],
       ReNewPass: ['', Validators.required],
     })
+    platform.registerBackButtonAction(() => {
+      this.navCtrl.push(MechanicPage, {status: true})
+    });
   }
 
   ionViewDidLoad() {

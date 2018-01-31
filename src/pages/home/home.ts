@@ -33,7 +33,7 @@ export class HomePage {
   i;
   userlocation;
   role;
-  backButtonPressed: boolean = false
+  backButtonPressed: boolean
   backButtonPressedTimer;
   load;
  // public location: any;
@@ -56,6 +56,7 @@ export class HomePage {
           this.backButtonPressed = false
         }, 4000);
       }
+      this.menu.close()    
     });
   // this.load.present();
     this.menu.enable(true, 'user');
@@ -89,7 +90,7 @@ export class HomePage {
 // }
 
 
-ionViewDidEnter() {
+ionViewWillEnter() {
   this.platform.ready().then(() => {
     this.loadMap();
   });
@@ -139,6 +140,7 @@ this.load.present()
 // }
 
 loadMap() {
+  // let self = this
   this.airconeProvider.getUserComments()
   .then(res => {
     this.comments = res;
@@ -148,7 +150,6 @@ loadMap() {
         locations.push(element.coords)        
       }
     });
-    this.load.dismiss();    
   // var locations = [
   //   [-33.890542, 151.274856],
   //   [-33.923036, 151.259052],
@@ -201,8 +202,8 @@ loadMap() {
               .then((marker) => { 
             });
           }
-          
         });
+        this.load.dismiss();                            
       });
     }
 

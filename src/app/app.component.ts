@@ -4,7 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 //import { Push, PushObject } from "@ionic-native/push";
 //import { Network } from "@ionic-native/network";
-
+// import { AdMob } from "@ionic-native/admob";
 // import { TabsPage } from '../pages/tabs/tabs';
 import { LoginpagePage } from '../pages/loginpage/loginpage';
 import { HomePage } from '../pages/home/home';
@@ -41,14 +41,32 @@ export class MyApp {
   role
  // nav: NavController
 
-  constructor(public airconeProvider: AirconeProvider, public platform: Platform, public alertCtrl: AlertController, public statusBar: StatusBar, public splashScreen: SplashScreen, public menuCtrl: MenuController, public toast: ToastController, private socialSharing: SocialSharing) {
+  constructor(
+    // public AdMob: AdMob,
+     public airconeProvider: AirconeProvider, public platform: Platform, public alertCtrl: AlertController, public statusBar: StatusBar, public splashScreen: SplashScreen, public menuCtrl: MenuController, public toast: ToastController, private socialSharing: SocialSharing) {
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      statusBar.styleDefault();
+      this.statusBar.overlaysWebView(false);
+      this.statusBar.backgroundColorByHexString("#A9A9A9");
       splashScreen.hide();
-    //   this.initPushNotification();      
+      // let options = {
+      //   adId: "ca-app-pub-7071565575097936/1606114384",
+      //   isTesting: false
+      // };
+
+      // let optionsA = {
+      //   adId: "ca-app-pub-7071565575097936/5566687883"
+      // };
+
+      // // for video ads
+      // //  AdMob.prepareInterstitial(optionsA)
+      // // .then(() => { AdMob.showInterstitial(); });
+      // AdMob.createBanner(options).then(() => {
+      //   AdMob.showBanner(8);
+      // });
+    //   this.initPushNotification(); 
     });
   }
 

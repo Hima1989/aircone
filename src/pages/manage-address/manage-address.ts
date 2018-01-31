@@ -3,6 +3,8 @@ import { IonicPage, NavController, App, Platform, NavParams, AlertController, Vi
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { SendrequestPage } from '../sendrequest/sendrequest';
 import { AddaddressPage } from '../addaddress/addaddress';
+import { HomePage } from '../home/home';
+
 
 /**
  * Generated class for the ManageAddressPage page.
@@ -34,7 +36,9 @@ export class ManageAddressPage {
       if (this.forRequest) {
         this.navCtrl.push(SendrequestPage, {id: this.serviceId})  
       } else {
-        this.navCtrl.popToRoot()
+        this.navCtrl.setRoot(HomePage).then(() =>{
+          this.navCtrl.popToRoot();
+        });
       }
   }); 
   }
@@ -99,7 +103,9 @@ export class ManageAddressPage {
 }
 
    goBack() {
-    this.navCtrl.popToRoot()
+    this.navCtrl.setRoot(HomePage).then(() =>{
+      this.navCtrl.popToRoot();
+    });
   }
 
 }

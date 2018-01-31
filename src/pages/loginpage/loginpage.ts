@@ -25,8 +25,26 @@ export class LoginpagePage {
   homePage = HomePage;
   data;
   coords;
+  backButtonPressed: boolean
+  backButtonPressedTimer;
   constructor(public platform: Platform, public navCtrl: NavController, public googlePlus: GooglePlus, public navParams: NavParams, public fb: Facebook, public airconeProvider: AirconeProvider, private geolocation: Geolocation,private toast: Toast) {
-
+    platform.registerBackButtonAction(() => {
+      if (this.backButtonPressed) {
+        this.platform.exitApp();
+      } else {
+        this.toast.show(`Press again to exit airTech`, '4000', 'bottom').subscribe(
+          toast => {
+          }
+        );
+        this.backButtonPressed = true;
+        if (this.backButtonPressedTimer) {
+          clearTimeout(this.backButtonPressedTimer);
+        }
+        this.backButtonPressedTimer = setTimeout(() => {
+          this.backButtonPressed = false
+        }, 4000);
+      }
+    });
   }
 
 
@@ -49,7 +67,6 @@ export class LoginpagePage {
         latitude: resp.coords.latitude,
         longitude: resp.coords.longitude
       }
-     console.log(this.coords.latitude)
      }).catch((error) => {
        console.log('Error getting location', error);
      });
@@ -76,8 +93,11 @@ export class LoginpagePage {
                       }
                     );                 
                   } else {
+                    this.toast.show(`Logged in as `+tempData[0].user.firstName, '3000', 'top').subscribe(
+                      toast => {
+                      }
+                    );  
                     this.navCtrl.setRoot(HomePage);                                                          
-                    // this.navCtrl.push(HomePage);  
                   }
                   var userInfo = {
                     "firstName": tempData[0].user.firstName,
