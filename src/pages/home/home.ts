@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform, Content, Slides, LoadingController, MenuController } from 'ionic-angular';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { Toast } from '@ionic-native/toast';
+import { StatusBar } from '@ionic-native/status-bar';
 import { ServicesPage } from '../services/services'
 import {
   GoogleMaps,
@@ -39,7 +40,7 @@ export class HomePage {
  // public location: any;
 
  map: GoogleMap;
-  constructor(private toast: Toast, private loading: LoadingController, public navCtrl: NavController, public platform: Platform, public navParams: NavParams, private airconeProvider: AirconeProvider, public menu: MenuController) {
+  constructor(private toast: Toast,private statusBar: StatusBar, private loading: LoadingController, public navCtrl: NavController, public platform: Platform, public navParams: NavParams, private airconeProvider: AirconeProvider, public menu: MenuController) {
     platform.registerBackButtonAction(() => {
       if (this.backButtonPressed) {
         this.platform.exitApp();
@@ -57,11 +58,18 @@ export class HomePage {
         }, 4000);
       }
     });
+
+    
+      // let status bar overlay webview
+this.statusBar.overlaysWebView(false);
+
+// set status bar to white
+this.statusBar.backgroundColorByHexString('#dedede');
+
   // this.load.present();
     this.menu.enable(true, 'user');
     this.menu.enable(false, 'mech');
   }
-
 
   // presentToast() {
   //   let toast = this.toastCtrl.create({
