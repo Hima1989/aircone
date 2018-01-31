@@ -41,7 +41,10 @@ export class RequestslistPage {
   }
 
   goToStatus(request) {
-    this.navCtrl.push(StatusPage, {request: request})
+    if(request.status != 'ORDER_CANCELLED'){
+      this.navCtrl.push(StatusPage, {request: request})
+    }
+   
   }
     goBack() {
       this.navCtrl.setRoot(HomePage).then(() =>{

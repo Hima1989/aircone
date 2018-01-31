@@ -92,9 +92,12 @@ export class SendrequestPage {
   }
 );
         } else if (this.data.status == 404) {
-          this.toast.show(`Location not available`, '5000', 'center').subscribe(
-            toast => {
-            })
+           this.toast.show(`Location Not Available`, '5000', 'center').subscribe(
+                  toast => {
+                    console.log(toast);
+                  }
+                );
+            // toast.present();
         }
       })
     }

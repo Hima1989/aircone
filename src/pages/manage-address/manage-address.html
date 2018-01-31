@@ -50,8 +50,9 @@
                 <br>{{address.Area}},<br>{{address.City}},<br>{{address.Phone}},<br> {{address.Pincode}}
             </div>
             <div class="addDelIcons">
-                <button (click)="editAddress(address)" ion-button round><ion-icon ios="ios-create" md="md-create"></ion-icon></button>
-                <button (click)="doConfirm(address)" ion-button round><ion-icon ios="ios-trash" md="md-trash"></ion-icon></button>
+                <button (click)="editAddress(address)" class="addDel" ion-button round><ion-icon ios="ios-create" md="md-create"></ion-icon></button>
+                <button (click)="doConfirm(address)" class="addDel" ion-button round><ion-icon ios="ios-trash" md="md-trash"></ion-icon></button>
+                <div class="clearfix"></div>
             </div>
         </ion-item>
     </ion-list>
