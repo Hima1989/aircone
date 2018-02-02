@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, App, MenuController, Platform } from 'ionic-angular';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { ServicesHomePage } from '../services-home/services-home';
+import { HomePage } from '../home/home';
 import { Toast } from '@ionic-native/toast';
 // import { HomePage } from '../home/home';
 
@@ -21,16 +22,21 @@ export class ServicesPage {
 
   // public services: any = [{images:"assets/images/services-home1.png",serviceName:"Air Conditioner"},{images:"assets/images/services-home2.png",serviceName:"refregirator"},{images:"assets/images/services-home3.png",serviceName:"Microvowen"},{images:"assets/images/services-home4.png",serviceName:"Washing Mechine"}];
   public services: any = [];
-  servicesHomePage: any = ServicesHomePage;
-  backButtonPressed: boolean;
-  backButtonPressedTimer;  
+  // servicesHomePage: any = ServicesHomePage;
+  // backButtonPressed: boolean;
+  // backButtonPressedTimer;  
   
   constructor(private toast: Toast, public platform: Platform, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, public app: App, public menu: MenuController) {
     this.loadServices();
-    menu.enable(true)
+    // menu.enable(true)
+    // platform.
     platform.registerBackButtonAction(() => {
       this.menu.close()
-        this.navCtrl.popToRoot() 
+        // this.navCtrl.popToRoot() 
+        this.navCtrl.setRoot(HomePage).then(() =>{
+          this.navCtrl.popToRoot();
+     });
+        // this.navCtrl.push(HomePage)
     });    
    
   }

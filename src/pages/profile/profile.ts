@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, Platform } from 'ionic-angular';
 import { Camera } from '@ionic-native/camera';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { Toast } from '@ionic-native/toast';
 import { MechanicPage } from '../mechanic/mechanic';
+import { HomePage } from '../home/home';
+
 
 /**
  * Generated class for the ProfilePage page.
@@ -25,13 +27,23 @@ export class ProfilePage {
   referral: boolean = true;
   forMech: boolean;
   forUser: boolean;
-  constructor(private toast: Toast, public navCtrl: NavController, public navParams: NavParams, public camera:Camera, public airconeProvider: AirconeProvider, public menu: MenuController) {
+  constructor(private toast: Toast, public navCtrl: NavController, public navParams: NavParams, public camera:Camera, public airconeProvider: AirconeProvider, public menu: MenuController, public platform: Platform) {
     this.getUserDetails();
     this.menu.enable(true, 'user');
     this.menu.enable(false, 'mech');
     // this.orderForm  = this.formBuilder.group({
           
     // });
+    platform.registerBackButtonAction(() => {
+      if (this.forUser) {
+        this.navCtrl.setRoot(HomePage).then(() =>{
+          this.navCtrl.popToRoot();
+        });
+      }
+      if (this.forMech) {
+        this.navCtrl.push(MechanicPage);          
+      }
+    });  
   }
 
   ionViewDidLoad() {
@@ -47,7 +59,14 @@ export class ProfilePage {
       this.airconeProvider.userDetailsUpdate(this.userDetails)
       .then(res => {
         this.updateToast();
-        this.navCtrl.popToRoot()
+        if (this.forUser) {
+          this.navCtrl.setRoot(HomePage).then(() =>{
+            this.navCtrl.popToRoot();
+          });
+        }
+        if (this.forMech) {
+          this.navCtrl.push(MechanicPage);          
+        }
       })
     }
   }
@@ -90,7 +109,9 @@ export class ProfilePage {
 
   goBack() {
     if (this.forUser) {
-      this.navCtrl.popToRoot()
+      this.navCtrl.setRoot(HomePage).then(() =>{
+        this.navCtrl.popToRoot();
+      });
     }
     if (this.forMech) {
       this.navCtrl.push(MechanicPage);          

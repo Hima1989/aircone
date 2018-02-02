@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import {Validators, FormBuilder } from '@angular/forms';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { MechanicPage } from '../mechanic/mechanic';
@@ -22,11 +22,14 @@ export class MechloginPage {
   registerCredentials: any = {};
   loginForm;
   data
-  constructor(public navCtrl: NavController, private toast: Toast, public airconeProvider: AirconeProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
+  constructor(private toast: Toast, public navCtrl: NavController,public airconeProvider: AirconeProvider, public navParams: NavParams, private formBuilder: FormBuilder, public platform: Platform) {
     this.loginForm = this.formBuilder.group({
       identifier: ['', Validators.required],
       password: ['', Validators.required],
     })
+    platform.registerBackButtonAction(() => {
+      this.navCtrl.push(LoginpagePage)
+    });
   }
 
   ionViewDidLoad() {
@@ -41,7 +44,13 @@ export class MechloginPage {
       tempData.push(res);
       this.data = res;
       if (this.data.status === 200 && this.data.user.role[0] == 'MECHANIC') {
+        console.log(this.data)        
         this.navCtrl.push(MechanicPage);
+        this.toast.show(`Logged in as `+tempData[0].user.firstName, '3000', 'top').subscribe(
+          toast => {
+          }
+        );  
+        // this.navCtrl.setRoot(MechanicPage);                                                                  
         var mechUserInfo = {
           "firstName": tempData[0].user.firstName,
           "email": tempData[0].user.email,

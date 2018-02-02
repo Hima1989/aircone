@@ -2,7 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform, Content, Slides, LoadingController, MenuController } from 'ionic-angular';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { Toast } from '@ionic-native/toast';
-import { StatusBar } from '@ionic-native/status-bar';
 import { ServicesPage } from '../services/services'
 import {
   GoogleMaps,
@@ -34,13 +33,13 @@ export class HomePage {
   i;
   userlocation;
   role;
-  backButtonPressed: boolean = false
+  backButtonPressed: boolean
   backButtonPressedTimer;
   load;
  // public location: any;
 
  map: GoogleMap;
-  constructor(private toast: Toast,private statusBar: StatusBar, private loading: LoadingController, public navCtrl: NavController, public platform: Platform, public navParams: NavParams, private airconeProvider: AirconeProvider, public menu: MenuController) {
+  constructor(private toast: Toast, private loading: LoadingController, public navCtrl: NavController, public platform: Platform, public navParams: NavParams, private airconeProvider: AirconeProvider, public menu: MenuController) {
     platform.registerBackButtonAction(() => {
       if (this.backButtonPressed) {
         this.platform.exitApp();
@@ -57,14 +56,9 @@ export class HomePage {
           this.backButtonPressed = false
         }, 4000);
       }
+      this.menu.close()    
     });
 
-    
-      // let status bar overlay webview
-this.statusBar.overlaysWebView(false);
-
-// set status bar to white
-this.statusBar.backgroundColorByHexString('#dedede');
 
   // this.load.present();
     this.menu.enable(true, 'user');
@@ -97,7 +91,7 @@ this.statusBar.backgroundColorByHexString('#dedede');
 // }
 
 
-ionViewDidEnter() {
+ionViewWillEnter() {
   this.platform.ready().then(() => {
     this.loadMap();
   });
@@ -147,6 +141,7 @@ this.load.present()
 // }
 
 loadMap() {
+  // let self = this
   this.airconeProvider.getUserComments()
   .then(res => {
     this.comments = res;
@@ -156,7 +151,6 @@ loadMap() {
         locations.push(element.coords)        
       }
     });
-    this.load.dismiss();    
   // var locations = [
   //   [-33.890542, 151.274856],
   //   [-33.923036, 151.259052],
@@ -209,8 +203,8 @@ loadMap() {
               .then((marker) => { 
             });
           }
-          
         });
+        this.load.dismiss();                            
       });
     }
 

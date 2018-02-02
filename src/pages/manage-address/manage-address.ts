@@ -6,6 +6,8 @@ import { SendrequestPage } from '../sendrequest/sendrequest';
 
 
 import { AddaddressPage } from '../addaddress/addaddress';
+import { HomePage } from '../home/home';
+
 
 
 /**
@@ -38,7 +40,9 @@ export class ManageAddressPage {
       if (this.forRequest) {
         this.navCtrl.push(SendrequestPage, {id: this.serviceId})  
       } else {
-        this.navCtrl.popToRoot()
+        this.navCtrl.setRoot(HomePage).then(() =>{
+          this.navCtrl.popToRoot();
+        });
       }
   }); 
   }
@@ -103,7 +107,9 @@ export class ManageAddressPage {
 }
 
    goBack() {
-        this.navCtrl.popToRoot()
+    this.navCtrl.setRoot(HomePage).then(() =>{
+      this.navCtrl.popToRoot();
+    });
   }
   // goBack() {
 //      this.navCtrl.push(ServicesPage)

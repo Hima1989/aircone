@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { RepairPage } from '../repair/repair';
 import { MechanicPage } from '../mechanic/mechanic';
 /**
@@ -20,7 +20,7 @@ export class MechHomePage {
   serviceInfo;
   userRequest;
   getCompleted;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform) {
     if (navParams.get("details")) {
       this.request = navParams.get("details")  
 
@@ -28,6 +28,10 @@ export class MechHomePage {
       this.userRequest = this.request.request;   
     }
     this.getCompleted = navParams.get("status")
+
+    platform.registerBackButtonAction(() => {
+      this.navCtrl.push(MechanicPage, {status: this.getCompleted})
+    });
 
   }
 

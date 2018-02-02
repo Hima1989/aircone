@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { RequestslistPage } from '../requestslist/requestslist';
 import { Toast } from '@ionic-native/toast';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the StatusPage page.
@@ -92,30 +93,37 @@ export class StatusPage {
 
   cancelRequest(){
     let alert = this.alertCtrl.create({
-    title: 'Confirm Delete Request',
-    // message: 'Confirm Delete Request',
-    buttons: [
-      {
-        text: 'Cancel',
-        role: 'cancel',
-        handler: () => {
-          console.log('Cancel clicked');
-        }
-      },
-      {
-        text: 'Ok',
-        handler: () => {
-          console.log('Ok clicked');
-           this.airconeProvider.cancelRequest(this.request.id)
+      title: 'Confirm Items',
+      message: 'Do you want to cancel this Request?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass:'icon-color',
+          handler: () => {
+          }
+        },
+        {
+          text: 'Ok',
+          cssClass:'icon-color',
+          handler: data => {
+            this.airconeProvider.cancelRequest(this.request.id)
             .then(res => {
-              this.navCtrl.push(RequestslistPage)
+              this.toast.show(`Your Request Is Cancelled `, '5000', 'center').subscribe(
+                toast => {
+                }
+              );
+              this.navCtrl.setRoot(HomePage).then(() =>{
+                this.navCtrl.popToRoot();
+              });
             })
+          }
         }
-      }
-    ]
-  });
-  alert.present();
-   
+      ]
+    });
+    alert.present();
+
+
   }
 
   onModelChange(rate) {
@@ -137,7 +145,9 @@ export class StatusPage {
         toast => {
         }
       );
-      this.navCtrl.popToRoot()
+      this.navCtrl.setRoot(HomePage).then(() =>{
+        this.navCtrl.popToRoot();
+      });
     })
     }else{
             this.toast.show(`Write a Comment & select an emoji`, '5000', 'center').subscribe(
