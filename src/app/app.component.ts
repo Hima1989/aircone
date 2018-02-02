@@ -19,6 +19,8 @@ import { AirconeProvider } from '../providers/aircone/aircone';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { MechanicPage } from '../pages/mechanic/mechanic';
 import { ChangePasswordPage } from '../pages/change-password/change-password';
+import { Facebook } from '@ionic-native/facebook';
+
 //import { Geolocation } from '@ionic-native/geolocation';
 
 
@@ -43,13 +45,13 @@ export class MyApp {
 
   constructor(
     // public AdMob: AdMob,
-     public airconeProvider: AirconeProvider, public platform: Platform, public alertCtrl: AlertController, public statusBar: StatusBar, public splashScreen: SplashScreen, public menuCtrl: MenuController, public toast: ToastController, private socialSharing: SocialSharing) {
+     public airconeProvider: AirconeProvider, public platform: Platform, public alertCtrl: AlertController, public statusBar: StatusBar, public splashScreen: SplashScreen, public menuCtrl: MenuController, public toast: ToastController, private socialSharing: SocialSharing, private fb: Facebook) {
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.overlaysWebView(false);
-      this.statusBar.backgroundColorByHexString("#A9A9A9");
+      this.statusBar.backgroundColorByHexString("#ff6d79");
       splashScreen.hide();
       // let options = {
       //   adId: "ca-app-pub-7071565575097936/1606114384",
@@ -241,6 +243,9 @@ export class MyApp {
     this.menuCtrl.close();
     this.nav.push(LoginpagePage)
     localStorage.removeItem("userData")
+      this.fb.logout()
+    .then( res => {})
+    .catch(e => console.log('Error logout from Facebook', e));
   //  this.nav.push(LoginpagePage); 
    }
 
