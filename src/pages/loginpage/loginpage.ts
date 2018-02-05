@@ -124,13 +124,13 @@ export class LoginpagePage {
               );  
               this.navCtrl.setRoot(HomePage);                                                          
             }
-            
             var userInfo = {
               "firstName": tempData[0].firstName,
               "email": tempData[0].email,
               "phoneNumber": tempData[0].phoneNumber,
               "id": tempData[0].id,
               "tokenId": tempData[0].tokenId,
+              "role": tempData[0].role,
               // "coords": this.coords
             }
             localStorage.setItem('userData', JSON.stringify(userInfo));

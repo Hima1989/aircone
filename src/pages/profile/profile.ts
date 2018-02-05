@@ -52,12 +52,10 @@ export class ProfilePage {
   submitDetails() {
     if(this.userDetails.firstName == undefined || this.userDetails.phoneNumber == undefined || this.userDetails.phoneNumber == "" || this.userDetails.firstName == ""){
       this.presentToast();
-      console.log("notok")
     }else{
       if (this.myfile) {
         this.userDetails.image = this.myfile.imageURL;
       }
-      console.log("ok")      
       this.airconeProvider.userDetailsUpdate(this.userDetails)
       .then(res => {
         this.updateToast();
