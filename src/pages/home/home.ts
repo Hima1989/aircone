@@ -10,6 +10,7 @@ import {
   GoogleMapOptions,
   LatLng
  } from '@ionic-native/google-maps';
+ import { StatusBar } from '@ionic-native/status-bar';
  //import { Geolocation } from '@ionic-native/geolocation';
 /**
  * Generated class for the HomePage page.
@@ -39,7 +40,7 @@ export class HomePage {
  // public location: any;
 
  map: GoogleMap;
-  constructor(private toast: Toast, private loading: LoadingController, public navCtrl: NavController, public platform: Platform, public navParams: NavParams, private airconeProvider: AirconeProvider, public menu: MenuController) {
+  constructor(private statusBar:StatusBar, private toast: Toast, private loading: LoadingController, public navCtrl: NavController, public platform: Platform, public navParams: NavParams, private airconeProvider: AirconeProvider, public menu: MenuController) {
     platform.registerBackButtonAction(() => {
       if (this.backButtonPressed) {
         this.platform.exitApp();
@@ -65,6 +66,10 @@ export class HomePage {
     this.menu.enable(false, 'mech');
   }
 
+  ionViewDidLoad() {
+    this.statusBar.backgroundColorByHexString('#A9A9A9');
+  }
+
   // presentToast() {
   //   let toast = this.toastCtrl.create({
   //     message: 'Double Click To Exit',
@@ -80,8 +85,8 @@ export class HomePage {
 //   });  
 // }
 
-  ionViewDidLoad() {
-  }
+  // ionViewDidLoad() {
+  // }
 
 //   ionViewWillEnter() {
 //   this.platform.ready().then(() => {

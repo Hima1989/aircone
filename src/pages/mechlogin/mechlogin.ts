@@ -5,7 +5,7 @@ import { AirconeProvider } from '../../providers/aircone/aircone';
 import { MechanicPage } from '../mechanic/mechanic';
 import { LoginpagePage } from '../loginpage/loginpage';
 import { Toast } from '@ionic-native/toast';
-
+import { StatusBar } from '@ionic-native/status-bar';
 /**
  * Generated class for the MechloginPage page.
  *
@@ -22,7 +22,7 @@ export class MechloginPage {
   registerCredentials: any = {};
   loginForm;
   data
-  constructor(private toast: Toast, public navCtrl: NavController,public airconeProvider: AirconeProvider, public navParams: NavParams, private formBuilder: FormBuilder, public platform: Platform) {
+  constructor(private statusBar:StatusBar, private toast: Toast, public navCtrl: NavController,public airconeProvider: AirconeProvider, public navParams: NavParams, private formBuilder: FormBuilder, public platform: Platform) {
     this.loginForm = this.formBuilder.group({
       identifier: ['', Validators.required],
       password: ['', Validators.required],
@@ -33,6 +33,7 @@ export class MechloginPage {
   }
 
   ionViewDidLoad() {
+    this.statusBar.backgroundColorByHexString('#A9A9A9');
   }
 
   login() {
@@ -44,7 +45,6 @@ export class MechloginPage {
       tempData.push(res);
       this.data = res;
       if (this.data.status === 200 && this.data.user.role[0] == 'MECHANIC') {
-        console.log(this.data)        
         this.navCtrl.push(MechanicPage);
         this.toast.show(`Logged in as `+tempData[0].user.firstName, '3000', 'top').subscribe(
           toast => {

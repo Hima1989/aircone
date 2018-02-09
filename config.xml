@@ -111,4 +111,9 @@
     <plugin name="cordova-plugin-googleplus" spec="^5.2.1">
         <variable name="REVERSED_CLIENT_ID" value="455882486075-90366665k6ehek4t8rvp5ej9499ga65m.apps.googleusercontent.com" />
     </plugin>
+    <plugin name="phonegap-plugin-local-notification" spec="^1.0.1" />
+    <plugin name="cordova-plugin-facebook4" spec="^1.9.1">
+        <variable name="APP_ID" value="161659434566848" />
+        <variable name="APP_NAME" value="airCone" />
+    </plugin>
 </widget>
