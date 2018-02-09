@@ -29,6 +29,7 @@ export class LoginpagePage {
   coords;
   backButtonPressed: boolean
   backButtonPressedTimer;
+  errr;
   constructor(private statusBar:StatusBar, public platform: Platform, public navCtrl: NavController, public googlePlus: GooglePlus, public navParams: NavParams, private fb: Facebook, public airconeProvider: AirconeProvider, private geolocation: Geolocation,private toast: Toast) {
     platform.registerBackButtonAction(() => {
       if (this.backButtonPressed) {
@@ -124,13 +125,13 @@ export class LoginpagePage {
               );  
               this.navCtrl.setRoot(HomePage);                                                          
             }
-            
             var userInfo = {
               "firstName": tempData[0].firstName,
               "email": tempData[0].email,
               "phoneNumber": tempData[0].phoneNumber,
               "id": tempData[0].id,
               "tokenId": tempData[0].tokenId,
+              "role": tempData[0].role,
               // "coords": this.coords
             }
             localStorage.setItem('userData', JSON.stringify(userInfo));
@@ -239,9 +240,14 @@ export class LoginpagePage {
   }
 
   doGoogleLogin() {
-    this.googlePlus.login({})
-    .then(res => console.log("ok"))
-    .catch(err => console.error(err));
+    this.googlePlus.login({
+      'scopes': '', // optional, space-separated list of scopes, If not included or empty, defaults to `profile` and `email`.
+      'webClientId': '399098528529-ekgcf7skomc1a4j37p52e1hfere4p9vo.apps.googleusercontent.com', // optional clientId of your Web application from Credentials settings of your project - On Android, this MUST be included to get an idToken. On iOS, it is not required.
+      'offline': true
+    })
+    .then(res => this.errr = 'ok')
+    .catch(err => this.errr = err);
+    
   }
 
   mechLogin() {

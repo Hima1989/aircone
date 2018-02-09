@@ -1,27 +1,35 @@
 {
   "project_info": {
-    "project_number": "21168605319",
-    "firebase_url": "https://chillnjill.firebaseio.com",
-    "project_id": "chillnjill",
-    "storage_bucket": "chillnjill.appspot.com"
+    "project_number": "399098528529",
+    "firebase_url": "https://airtech-96709.firebaseio.com",
+    "project_id": "airtech-96709",
+    "storage_bucket": "airtech-96709.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:21168605319:android:ddb3b24a33e5f960",
+        "mobilesdk_app_id": "1:399098528529:android:c2abd065d8f22d4b",
         "android_client_info": {
-          "package_name": "com.gleed.aircone"
+          "package_name": "com.gleed.aircone3"
         }
       },
       "oauth_client": [
         {
-          "client_id": "21168605319-vrtcu5v7kkf4h1tbebssaou7s3iann8s.apps.googleusercontent.com",
+          "client_id": "399098528529-3bbkpiov4ev0q3i97tinco0vnmhla6v8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gleed.aircone3",
+            "certificate_hash": "e283d61f1545175c93fe0d6abc2179805e2c562d"
+          }
+        },
+        {
+          "client_id": "399098528529-ekgcf7skomc1a4j37p52e1hfere4p9vo.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDz9jjvp8Sla4sm_r4nuW7kxnmZNWavheo"
+          "current_key": "AIzaSyA6gqzR5xoXYE_Fd0tqAbm0YYKZ3rbOAlE"
         }
       ],
       "services": {
@@ -29,39 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:21168605319:android:ed33a7ec332a574a",
-        "android_client_info": {
-          "package_name": "com.gleed.aircone2"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "21168605319-vrtcu5v7kkf4h1tbebssaou7s3iann8s.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDz9jjvp8Sla4sm_r4nuW7kxnmZNWavheo"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "399098528529-ekgcf7skomc1a4j37p52e1hfere4p9vo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

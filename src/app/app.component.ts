@@ -53,6 +53,17 @@ export class MyApp {
       this.statusBar.overlaysWebView(false);
       this.statusBar.backgroundColorByHexString("#dedede");
       splashScreen.hide();
+      if (localStorage.getItem('userData')) {
+        var userData = JSON.parse(localStorage.getItem('userData')); 
+        console.log(userData.role)
+        if(userData.role == 'USER') {
+          this.nav.setRoot(HomePage);                                                                            
+        }
+        if (userData.role == 'MECHANIC') {
+          this.nav.push(MechanicPage, {status: false})
+        }
+      }
+
       // let options = {
       //   adId: "ca-app-pub-7071565575097936/1606114384",
       //   isTesting: false

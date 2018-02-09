@@ -65,9 +65,8 @@ export class MechanicPage {
   }
 
   getMechanicRequestList() {
-    
-    if (this.getCompleted == false) {
-      var userData = JSON.parse(localStorage.getItem('userData'))
+    var userData = JSON.parse(localStorage.getItem('userData'))
+    if (this.getCompleted == false && userData) {
       this.airconeProvider.getMechanicRequests(userData.id)
       .then(data => {
         this.mechRequests = data;
@@ -76,9 +75,8 @@ export class MechanicPage {
           this.showComment = false;
         }
       })
-    } else if(this.getCompleted == true) {  
-      var userDataa = JSON.parse(localStorage.getItem('userData'))
-      this.airconeProvider.getMechanicCompletedRequests(userDataa.id)
+    } else if(this.getCompleted == true && userData) {  
+      this.airconeProvider.getMechanicCompletedRequests(userData.id)
       .then(data => {
         this.mechRequests = data;
         if (this.mechRequests.length > 0) {
