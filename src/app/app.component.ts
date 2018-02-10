@@ -213,7 +213,7 @@ export class MyApp {
 
   changePassword() {
     this.menuCtrl.close()
-    this.nav.push(ChangePasswordPage)
+    this.nav.push(ChangePasswordPage, {forChangePassword: true})
   }
   completedRequests() {
     this.menuCtrl.close()

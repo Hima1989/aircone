@@ -90,7 +90,7 @@ export class RepairPage {
         }
 
     // this.spareTotalPrice = finalPrice;  
-     this.finalCharge = {spareInfo: this.finalSpare, finalServicePrice: this.spareTotalPrice, service: this.serviceRate}
+     this.finalCharge = {spareInfo: this.finalSpare, finalServicePrice: this.spareTotalPrice, service: this.serviceRate, serviceQuantity: this.serviceRateQuantity}
     }
   
   closeRequest() {
