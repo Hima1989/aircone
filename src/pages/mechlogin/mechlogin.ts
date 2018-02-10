@@ -34,7 +34,7 @@ export class MechloginPage {
   }
 
   ionViewDidLoad() {
-    this.statusBar.backgroundColorByHexString('#A9A9A9');
+    this.statusBar.backgroundColorByHexString('#dedede');
   }
 
   login() {
@@ -48,7 +48,10 @@ export class MechloginPage {
       this.data = res;
       if (this.data.status === 200 && this.data.user.role[0] == 'MECHANIC') {
         this.navCtrl.push(MechanicPage);
-
+        // this.toast.show(`Logged in as `+tempData[0].user.firstName, '3000', 'top').subscribe(
+        //   toast => {
+        //   }
+        // );  
         // this.navCtrl.setRoot(MechanicPage);                                                                  
         var mechUserInfo = {
           "firstName": tempData[0].user.firstName,

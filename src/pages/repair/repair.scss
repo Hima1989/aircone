@@ -14,4 +14,57 @@ page-repair {
             margin-right: 0;
         }
     }
+    .priceBill .col.priceCol {
+        background-color: lightgrey;
+        .nullPadding {
+            align-items: inherit;
+            min-height: auto;
+            .item-inner {
+                border: none;
+            }
+        }
+    }
+    .priceSheet .col.priceCol {
+        .nullPadding {
+            align-items: inherit;
+            min-height: auto;
+            .item-inner {
+                border: none;
+            }
+        }
+    }
+    .col.priceCol {
+        border: solid 1px grey;
+        border-bottom-style: none;
+        border-right-style: none;
+        position: relative;
+        .addItem {
+            position: absolute;
+            top: 6px;
+            right: 2px;
+        }
+    }
+    .col.priceCol:last-child {
+        border-right: solid 1px grey;
+    }
+    .row:last-child .col.priceCol {
+        border-bottom: solid 1px grey;
+    }
+    .nullPadding {
+        padding: 0;
+        .select-md.spareSelect {
+            padding: 0;
+            max-width: 100%;
+            width: 100%;
+            font-size: 14px;
+            .select-icon {
+                width: 18px;
+            }
+        }
+        .selectType.spareSelect {
+            padding-left: 10px;
+            text-align: right;
+            width: 30%;
+        }
+    }
 }

@@ -20,6 +20,12 @@
     transform: rotate(50deg);
 }
 
+// ion-header {
+//     padding-top: 20px;
+// }
+// ion-menu {
+//     margin-top: 20px;
+// }
 .home-header {
     color: $colorLightGray;
     background: $borderGray;
@@ -51,7 +57,7 @@
         margin: 0 10px;
         button {
             position: absolute;
-            z-index:9999;            
+            z-index: 9999;
             bottom: 10px;
             left: 0;
             right: 0;
