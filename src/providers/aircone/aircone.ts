@@ -14,8 +14,8 @@ export class AirconeProvider {
 
   data;
   paramData;
-baseURL = "https://air-cone-backend.appspot.com"; //production
-    // baseURL = "http://localhost:80"; //development
+// baseURL = "https://air-cone-backend.appspot.com"; //production
+    baseURL = "http://localhost:80"; //development
   constructor(public http: Http, public device: Device) {
   }
   
@@ -49,6 +49,18 @@ baseURL = "https://air-cone-backend.appspot.com"; //production
   changePassword(userId, data) {
     return new Promise(resolve => {
       this.http.post(this.baseURL+'/user/' +userId+ '/change/userPassword',data)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+  }
+
+  resetPassword(data) {
+    console.log(data)
+    return new Promise(resolve => {
+      this.http.post(this.baseURL+'/user/mechPassword/forgotpassword',data)
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;

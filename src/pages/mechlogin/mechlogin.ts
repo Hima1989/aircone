@@ -6,6 +6,7 @@ import { MechanicPage } from '../mechanic/mechanic';
 import { LoginpagePage } from '../loginpage/loginpage';
 import { Toast } from '@ionic-native/toast';
 import { StatusBar } from '@ionic-native/status-bar';
+import { ChangePasswordPage } from '../change-password/change-password';
 /**
  * Generated class for the MechloginPage page.
  *
@@ -63,6 +64,10 @@ export class MechloginPage {
           "referralCode": tempData[0].user.referralCode
         }
         localStorage.setItem('userData', JSON.stringify(mechUserInfo));
+        // this.toast.show(`Logged in as `+tempData[0].user.firstName, '3000', 'top').subscribe(
+        //   toast => {
+        //   }
+        // );  
       } else if (this.data.status === 404) {
         this.toast.show(`User or Password mismatch`, '3000', 'center').subscribe(
           toast => {
@@ -79,6 +84,11 @@ export class MechloginPage {
     })
 
   }
+
+  forgotPassword() {
+    this.navCtrl.push(ChangePasswordPage, {forChangePassword: false})
+  }
+
     goBack() {
     this.navCtrl.push(LoginpagePage)
   }
