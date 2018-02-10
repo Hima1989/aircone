@@ -51,7 +51,7 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.overlaysWebView(false);
-      this.statusBar.backgroundColorByHexString("#dedede");
+      this.statusBar.backgroundColorByHexString("#8526e4");
       splashScreen.hide();
       if (localStorage.getItem('userData')) {
         var userData = JSON.parse(localStorage.getItem('userData')); 

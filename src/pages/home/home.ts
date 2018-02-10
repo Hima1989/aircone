@@ -67,7 +67,7 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
-    this.statusBar.backgroundColorByHexString('#A9A9A9');
+    this.statusBar.backgroundColorByHexString('#dedede');
   }
 
   // presentToast() {

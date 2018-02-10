@@ -70,6 +70,7 @@ export class MechanicPage {
       this.airconeProvider.getMechanicRequests(userData.id)
       .then(data => {
         this.mechRequests = data;
+        console.log(this.mechRequests);        
         if (this.mechRequests.length > 0) {
           this.showRequest = true;
           this.showComment = false;
