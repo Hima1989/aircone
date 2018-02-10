@@ -82,12 +82,15 @@ export class SendrequestPage {
       .then( res => {
         this.data = res;
         if (this.data.status == 200) {
-              this.toast.show(`Location Available`, '5000', 'center').subscribe(
-                  toast => {
-                    console.log(toast);
-                  }
-                );
-              // toast.present();
+              // let toast = this.toastCtrl.create({
+              // message: 'Location Available',
+              // duration: 4000,
+              // position: 'bottom'
+              // });
+              this.toast.show(`Location available`, '5000', 'center').subscribe(
+  toast => {
+  }
+);
         } else if (this.data.status == 404) {
            this.toast.show(`Location Not Available`, '5000', 'center').subscribe(
                   toast => {
@@ -169,12 +172,10 @@ export class SendrequestPage {
       this.orderForm.reset()      
     });
   } else {
-     this.toast.show(`Please Enter Type Of Service and Quantity`, '5000', 'center').subscribe(
-                  toast => {
-                    console.log(toast);
-                  }
-                );
-      // toast.present();
+    this.toast.show(`Please Enter Type Of Service and Quantity`, '5000', 'center').subscribe(
+      toast => {
+      }
+    );  
   }
   }
 

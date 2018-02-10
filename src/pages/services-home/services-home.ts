@@ -32,11 +32,12 @@ export class ServicesHomePage {
     this.oneService = navParams.get("postValue");
     this.serviceId = navParams.get("id");    
     this.getService()
-    this.platform.ready().then(() => {
+    // this.platform.ready().then(() => {
+      console.log("clicked")
       this.platform.registerBackButtonAction(() => {
         this.navCtrl.push(ServicesPage);
       });
- });
+//  });
 // this.presentLoadingCustom();
   }
   // onClick(imageToView) {
@@ -111,11 +112,11 @@ export class Profile {
  constructor(public viewCtrl: ViewController, public platform: Platform, public airconeProvider: AirconeProvider, params: NavParams) {
    this.serviceId = params.get('serviceId')
    this.getService();
-   this.platform.ready().then(() => {
+  //  this.platform.ready().then(() => {
     this.platform.registerBackButtonAction(() => {
       this.viewCtrl.dismiss();   
     });
-});
+// });
 
  }
 

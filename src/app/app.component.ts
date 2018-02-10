@@ -4,7 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 //import { Push, PushObject } from "@ionic-native/push";
 //import { Network } from "@ionic-native/network";
-
+// import { AdMob } from "@ionic-native/admob";
 // import { TabsPage } from '../pages/tabs/tabs';
 import { LoginpagePage } from '../pages/loginpage/loginpage';
 import { HomePage } from '../pages/home/home';
@@ -19,6 +19,8 @@ import { AirconeProvider } from '../providers/aircone/aircone';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { MechanicPage } from '../pages/mechanic/mechanic';
 import { ChangePasswordPage } from '../pages/change-password/change-password';
+import { Facebook } from '@ionic-native/facebook';
+
 //import { Geolocation } from '@ionic-native/geolocation';
 
 
@@ -41,14 +43,43 @@ export class MyApp {
   role
  // nav: NavController
 
-  constructor(public airconeProvider: AirconeProvider, public platform: Platform, public alertCtrl: AlertController, public statusBar: StatusBar, public splashScreen: SplashScreen, public menuCtrl: MenuController, public toast: ToastController, private socialSharing: SocialSharing) {
+  constructor(
+    // public AdMob: AdMob,
+     public airconeProvider: AirconeProvider, public platform: Platform, public alertCtrl: AlertController, public statusBar: StatusBar, public splashScreen: SplashScreen, public menuCtrl: MenuController, public toast: ToastController, private socialSharing: SocialSharing, private fb: Facebook) {
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      statusBar.styleDefault();
+      this.statusBar.overlaysWebView(false);
+      this.statusBar.backgroundColorByHexString("#ff6d79");
       splashScreen.hide();
-    //   this.initPushNotification();      
+      if (localStorage.getItem('userData')) {
+        var userData = JSON.parse(localStorage.getItem('userData')); 
+        console.log(userData.role)
+        if(userData.role == 'USER') {
+          this.nav.setRoot(HomePage);                                                                            
+        }
+        if (userData.role == 'MECHANIC') {
+          this.nav.push(MechanicPage, {status: false})
+        }
+      }
+
+      // let options = {
+      //   adId: "ca-app-pub-7071565575097936/1606114384",
+      //   isTesting: false
+      // };
+
+      // let optionsA = {
+      //   adId: "ca-app-pub-7071565575097936/5566687883"
+      // };
+
+      // // for video ads
+      // //  AdMob.prepareInterstitial(optionsA)
+      // // .then(() => { AdMob.showInterstitial(); });
+      // AdMob.createBanner(options).then(() => {
+      //   AdMob.showBanner(8);
+      // });
+    //   this.initPushNotification(); 
     });
   }
 
@@ -223,6 +254,9 @@ export class MyApp {
     this.menuCtrl.close();
     this.nav.push(LoginpagePage)
     localStorage.removeItem("userData")
+      this.fb.logout()
+    .then( res => {})
+    .catch(e => console.log('Error logout from Facebook', e));
   //  this.nav.push(LoginpagePage); 
    }
 

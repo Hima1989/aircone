@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, Platform } from 'ionic-angular';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { MechanicPage } from '../mechanic/mechanic';
 import { MechHomePage } from '../mech-home/mech-home';
@@ -28,11 +28,14 @@ export class RepairPage {
   service;
   serviceRateQuantity;
   getCompleted;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, public alertCtrl: AlertController, public platform: Platform) {
     this.request = navParams.get("request")
     this.getCompleted = navParams.get("status")    
     this.getAllServiceSpares();
     this.getService();
+    platform.registerBackButtonAction(() => {
+      this.navCtrl.push(MechHomePage, {details: this.request, status: this.getCompleted})
+    });
   }
 
   ionViewDidLoad() {

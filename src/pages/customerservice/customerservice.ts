@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { Toast } from '@ionic-native/toast';
+import { HomePage } from '../home/home';
+
 // import { ServicesHomePage } from '../services-home/services-home';
 
 /**
@@ -20,7 +22,12 @@ export class CustomerservicePage {
 
   comment;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, private toast: Toast) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, private toast: Toast, public platform: Platform) {
+    platform.registerBackButtonAction(() => {
+      this.navCtrl.setRoot(HomePage).then(() =>{
+        this.navCtrl.popToRoot();
+      });
+    }); 
   }
 
   ionViewDidLoad() {
@@ -40,7 +47,9 @@ export class CustomerservicePage {
         }
       );
     });
-    this.navCtrl.popToRoot()
+    this.navCtrl.setRoot(HomePage).then(() =>{
+      this.navCtrl.popToRoot();
+    });
   } else {
     this.presentToast()
   }
@@ -53,7 +62,9 @@ presentToast() {
   }
 
 goBack() {
-  this.navCtrl.popToRoot()
+  this.navCtrl.setRoot(HomePage).then(() =>{
+    this.navCtrl.popToRoot();
+  });
 }  
 
 }

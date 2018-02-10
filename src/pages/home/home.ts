@@ -10,6 +10,7 @@ import {
   GoogleMapOptions,
   LatLng
  } from '@ionic-native/google-maps';
+ import { StatusBar } from '@ionic-native/status-bar';
  //import { Geolocation } from '@ionic-native/geolocation';
 /**
  * Generated class for the HomePage page.
@@ -33,13 +34,13 @@ export class HomePage {
   i;
   userlocation;
   role;
-  backButtonPressed: boolean = false
+  backButtonPressed: boolean
   backButtonPressedTimer;
   load;
  // public location: any;
 
  map: GoogleMap;
-  constructor(private toast: Toast, private loading: LoadingController, public navCtrl: NavController, public platform: Platform, public navParams: NavParams, private airconeProvider: AirconeProvider, public menu: MenuController) {
+  constructor(private statusBar:StatusBar, private toast: Toast, private loading: LoadingController, public navCtrl: NavController, public platform: Platform, public navParams: NavParams, private airconeProvider: AirconeProvider, public menu: MenuController) {
     platform.registerBackButtonAction(() => {
       if (this.backButtonPressed) {
         this.platform.exitApp();
@@ -56,10 +57,15 @@ export class HomePage {
           this.backButtonPressed = false
         }, 4000);
       }
+      this.menu.close()    
     });
   // this.load.present();
     this.menu.enable(true, 'user');
     this.menu.enable(false, 'mech');
+  }
+
+  ionViewDidLoad() {
+    this.statusBar.backgroundColorByHexString('#A9A9A9');
   }
 
 
@@ -78,8 +84,8 @@ export class HomePage {
 //   });  
 // }
 
-  ionViewDidLoad() {
-  }
+  // ionViewDidLoad() {
+  // }
 
 //   ionViewWillEnter() {
 //   this.platform.ready().then(() => {
@@ -89,7 +95,7 @@ export class HomePage {
 // }
 
 
-ionViewDidEnter() {
+ionViewWillEnter() {
   this.platform.ready().then(() => {
     this.loadMap();
   });
@@ -139,6 +145,7 @@ this.load.present()
 // }
 
 loadMap() {
+  // let self = this
   this.airconeProvider.getUserComments()
   .then(res => {
     this.comments = res;
@@ -148,7 +155,6 @@ loadMap() {
         locations.push(element.coords)        
       }
     });
-    this.load.dismiss();    
   // var locations = [
   //   [-33.890542, 151.274856],
   //   [-33.923036, 151.259052],
@@ -201,8 +207,8 @@ loadMap() {
               .then((marker) => { 
             });
           }
-          
         });
+        this.load.dismiss();                            
       });
     }
 

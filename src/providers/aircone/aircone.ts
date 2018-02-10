@@ -71,7 +71,7 @@ baseURL = "https://air-cone-backend.appspot.com"; //production
 
   loadServices() {
     return new Promise(resolve => {
-      this.http.get(this.baseURL+'/service/getAllSerive')
+      this.http.get(this.baseURL+'/service/getAllServicesForAdmin')
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;

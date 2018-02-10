@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { StatusPage } from '../status/status';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the RequestslistPage page.
@@ -19,8 +20,13 @@ export class RequestslistPage {
 
   requests;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, public platform: Platform) {
     this.loadRequests()
+    platform.registerBackButtonAction(() => {
+      this.navCtrl.setRoot(HomePage).then(() =>{
+        this.navCtrl.popToRoot();
+      });
+    });  
   }
 
   ionViewDidLoad() {
@@ -41,7 +47,9 @@ export class RequestslistPage {
    
   }
     goBack() {
-      this.navCtrl.popToRoot()
+      this.navCtrl.setRoot(HomePage).then(() =>{
+        this.navCtrl.popToRoot();
+      });
     }
 
   delete(request) {

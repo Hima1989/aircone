@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import {Validators, FormBuilder } from '@angular/forms';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { MechanicPage } from '../mechanic/mechanic';
 import { LoginpagePage } from '../loginpage/loginpage';
 import { Toast } from '@ionic-native/toast';
-
+import { StatusBar } from '@ionic-native/status-bar';
 /**
  * Generated class for the MechloginPage page.
  *
@@ -22,26 +22,36 @@ export class MechloginPage {
   registerCredentials: any = {};
   loginForm;
   data
-  constructor(public navCtrl: NavController, private toast: Toast, public airconeProvider: AirconeProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
+  constructor(private statusBar:StatusBar, private toast: Toast, public navCtrl: NavController,public airconeProvider: AirconeProvider, public navParams: NavParams, private formBuilder: FormBuilder, public platform: Platform) {
     this.loginForm = this.formBuilder.group({
       identifier: ['', Validators.required],
       password: ['', Validators.required],
     })
+    platform.registerBackButtonAction(() => {
+      this.navCtrl.push(LoginpagePage)
+    });
   }
 
   ionViewDidLoad() {
+    this.statusBar.backgroundColorByHexString('#A9A9A9');
   }
 
   login() {
    
     this.airconeProvider.userLogin(this.loginForm.value)
     .then(res => {
-      // this.loginForm.reset()      
+      // this.loginForm.reset()   
+      console.log("ok")   
       var tempData = [];                
       tempData.push(res);
       this.data = res;
       if (this.data.status === 200 && this.data.user.role[0] == 'MECHANIC') {
         this.navCtrl.push(MechanicPage);
+        this.toast.show(`Logged in as `+tempData[0].user.firstName, '3000', 'top').subscribe(
+          toast => {
+          }
+        );  
+        // this.navCtrl.setRoot(MechanicPage);                                                                  
         var mechUserInfo = {
           "firstName": tempData[0].user.firstName,
           "email": tempData[0].user.email,
@@ -60,11 +70,9 @@ export class MechloginPage {
         );   
       }
       else{
-        // console.log("this is mech login page");
         
         this.toast.show('Invalied User Id and Password', '5000', 'center').subscribe(
           toast => {
-            console.log(toast);
           }
         );
       }

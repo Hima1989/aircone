@@ -45,6 +45,8 @@ import { Toast } from '@ionic-native/toast';
 import { GoogleMaps } from '@ionic-native/google-maps';
  import { Geolocation } from '@ionic-native/geolocation';
  import firebase from 'firebase';
+ import { AdMob } from "@ionic-native/admob";
+ 
 
  firebase.initializeApp({
   apiKey: "AIzaSyCmxpCPemj61ksg62uE8UUhlMD3zZdd7Bw",
@@ -127,6 +129,7 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     Facebook,
     Device,
     GoogleMaps,
+    AdMob,
     GooglePlus,
     Geolocation,
     Camera,
