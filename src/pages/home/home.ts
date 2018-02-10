@@ -59,15 +59,16 @@ export class HomePage {
       }
       this.menu.close()    
     });
+
+
   // this.load.present();
     this.menu.enable(true, 'user');
     this.menu.enable(false, 'mech');
   }
 
   ionViewDidLoad() {
-    this.statusBar.backgroundColorByHexString('#A9A9A9');
+    this.statusBar.backgroundColorByHexString('#dedede');
   }
-
 
   // presentToast() {
   //   let toast = this.toastCtrl.create({
