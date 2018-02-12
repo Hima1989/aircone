@@ -7,6 +7,9 @@ import { LoginpagePage } from '../loginpage/loginpage';
 import { Toast } from '@ionic-native/toast';
 import { StatusBar } from '@ionic-native/status-bar';
 import { ChangePasswordPage } from '../change-password/change-password';
+import { HomePage } from '../home/home';
+import { ProfilePage } from '../profile/profile';
+import { SignupPage } from '../signup/signup';
 /**
  * Generated class for the MechloginPage page.
  *
@@ -22,12 +25,18 @@ import { ChangePasswordPage } from '../change-password/change-password';
 export class MechloginPage {
   registerCredentials: any = {};
   loginForm;
-  data
+  data;
+  mechLogin: boolean;
   constructor(private statusBar:StatusBar, private toast: Toast, public navCtrl: NavController,public airconeProvider: AirconeProvider, public navParams: NavParams, private formBuilder: FormBuilder, public platform: Platform) {
     this.loginForm = this.formBuilder.group({
       identifier: ['', Validators.required],
       password: ['', Validators.required],
     })
+    if(navParams.get("mechLogin")) {
+      this.mechLogin = navParams.get("mechLogin")
+    } else {
+      this.mechLogin = navParams.get("mechLogin")
+    }
     platform.registerBackButtonAction(() => {
       this.navCtrl.push(LoginpagePage)
     });
@@ -68,6 +77,33 @@ export class MechloginPage {
         //   toast => {
         //   }
         // );  
+      } else if (this.data.status === 200 && this.data.user.role[0] == 'USER'){
+        // if (this.data.status === 200 && this.data.user.role[0] == 'USER') {
+          this.navCtrl.setRoot(HomePage);                                      
+          if (!tempData[0].firstName || tempData[0].email == null || tempData[0].phoneNumber == null || tempData[0].firstName == "" || tempData[0].email == "" || tempData[0].phoneNumber == "") {
+            this.navCtrl.push(ProfilePage)
+            // this.toast.show(`Please Update Profile`, '5000', 'center').subscribe(
+            //   toast => {
+            //   }
+            // );                 
+          } else {
+            // this.toast.show(`Logged in as `+tempData[0].firstName, '3000', 'top').subscribe(
+            //   toast => {
+            //   }
+            // );  
+            this.navCtrl.setRoot(HomePage);                                                          
+          }
+          var userInfo = {
+            "firstName": tempData[0].firstName,
+            "email": tempData[0].email,
+            "phoneNumber": tempData[0].phoneNumber,
+            "id": tempData[0].id,
+            "tokenId": tempData[0].tokenId,
+            "role": tempData[0].role,
+            // "coords": this.coords
+          }
+          localStorage.setItem('userData', JSON.stringify(userInfo));
+        // } 
       } else if (this.data.status === 404) {
         this.toast.show(`User or Password mismatch`, '3000', 'center').subscribe(
           toast => {
@@ -87,6 +123,10 @@ export class MechloginPage {
 
   forgotPassword() {
     this.navCtrl.push(ChangePasswordPage, {forChangePassword: false})
+  }
+
+  signUp() {
+    this.navCtrl.push(SignupPage)
   }
 
     goBack() {

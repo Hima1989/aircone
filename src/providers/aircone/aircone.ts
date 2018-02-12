@@ -32,6 +32,17 @@ export class AirconeProvider {
 
   }
 
+  appUserRegister(data) {
+    return new Promise(resolve => {
+      this.http.post(this.baseURL+'/user/appUser/register',data)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+  }
+
 
   userLogin(data) {
     console.log("hitted")
