@@ -42,9 +42,11 @@ export class RepairPage {
   }
 
   spareSelect(topping) {
+    this.finalSpare = [];
     topping.forEach(top => {
       this.spares.forEach(spare => {
         if (top == spare.sparename) {
+          spare.rate = 1
           this.finalSpare.push(spare);
         }
       });

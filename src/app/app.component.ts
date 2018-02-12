@@ -55,7 +55,6 @@ export class MyApp {
       splashScreen.hide();
       if (localStorage.getItem('userData')) {
         var userData = JSON.parse(localStorage.getItem('userData')); 
-        console.log(userData.role)
         if(userData.role == 'USER') {
           this.nav.setRoot(HomePage);                                                                            
         }
