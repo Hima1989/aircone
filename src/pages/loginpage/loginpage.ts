@@ -251,6 +251,11 @@ export class LoginpagePage {
   }
 
   mechLogin() {
-    this.navCtrl.push(MechloginPage);
+    this.navCtrl.push(MechloginPage, {mechLogin: true} );
   }
+
+  login() {
+    this.navCtrl.push(MechloginPage, {mechLogin: false} );
+  }
+  
 }

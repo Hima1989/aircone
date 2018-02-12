@@ -17,8 +17,11 @@
             <ion-col col-2 text-left>
                 <ion-icon class="icons" ios="ios-arrow-back" md="md-arrow-back" (click)="goBack()"></ion-icon>
             </ion-col>
-            <ion-col col-8 text-center>
+            <ion-col col-8 *ngIf="mechLogin" text-center>
                 <ion-title class="title">mechlogin</ion-title>
+            </ion-col>
+            <ion-col col-8 *ngIf="!mechLogin" text-center>
+                <ion-title class="title">User Login</ion-title>
             </ion-col>
         </ion-row>
     </ion-grid>
@@ -53,8 +56,11 @@
                     <button ion-button class="submit-btn" full round type="submit">Login</button>
                 </ion-col>
             </ion-row>
-            <ion-row>
-                <ion-col class="signup-col">
+            <ion-row >
+                <ion-col *ngIf="!mechLogin" class="signup-col" pull-left>
+                    <a (click)="signUp()">Sign Up</a>
+                </ion-col>
+                <ion-col class="signup-col" pull-right>
                     <a (click)="forgotPassword()">forgot password</a>
                 </ion-col>
             </ion-row>
