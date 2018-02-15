@@ -64,7 +64,6 @@ export class SendrequestPage {
   this.request = navParams.get('selectedAddress')  
   // this.request =  JSON.stringify(this.selectedAddress)
  }
- //this.getPincodes();
   }
 
   getAdmin() {
@@ -78,6 +77,7 @@ export class SendrequestPage {
   var patt = new RegExp("^[1-9][0-9]{5}$");
   var res = patt.test(event)
     if (res) {
+      console.log(event)
       this.airconeProvider.getUserPincode(event)
       .then( res => {
         this.data = res;
@@ -94,7 +94,6 @@ export class SendrequestPage {
         } else if (this.data.status == 404) {
            this.toast.show(`Location Not Available`, '5000', 'center').subscribe(
                   toast => {
-                    console.log(toast);
                   }
                 );
             // toast.present();

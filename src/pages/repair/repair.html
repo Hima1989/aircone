@@ -27,11 +27,11 @@
     </ion-item>
     <ion-item *ngIf="service" class="nullPadding">
         <!--<ion-label>Tonnage</ion-label>-->
-        <ion-select class="spareSelect" name="servicerate" [(ngModel)]="serviceRate" placeholder="Tonnage">
+        <ion-select class="spareSelect" name="servicerate" [(ngModel)]="serviceRate" multiple="true" (ionChange)="serviceSelect(serviceRate)" placeholder="Tonnage">
             <ion-option *ngFor="let sub of service.subServicePrice" [value]="sub">{{sub.name}}, {{sub.type}}</ion-option>
         </ion-select>
         <!--<ion-label>Quantity</ion-label>-->
-        <ion-select name="sparerateQuantity" [(ngModel)]="serviceRateQuantity" class="selectType spareSelect" placeholder="Qty">
+        <!-- <ion-select name="sparerateQuantity" [(ngModel)]="serviceRateQuantity" class="selectType spareSelect" placeholder="Qty">
             <ion-option value="1">1</ion-option>
             <ion-option value="2">2</ion-option>
             <ion-option value="3">3</ion-option>
@@ -42,68 +42,9 @@
             <ion-option value="8">8</ion-option>
             <ion-option value="9">9</ion-option>
             <ion-option value="10">10</ion-option>
-        </ion-select>
+        </ion-select> -->
     </ion-item>
 
-
-    <!-- <ion-grid>
-        <ion-item class="profile-item profileListView" *ngIf="finalSpare.length > 0">
-            <ion-label class="addItem">
-                <ion-icon class="cancelBtn" ios="ios-close-circle" md="md-close-circle"></ion-icon>
-            </ion-label>
-            <ion-label class="listView" text-center>Spare</ion-label>
-            <ion-label class="listView" text-center>Cost</ion-label>
-            <ion-label class="listView" text-center>Qty</ion-label>
-            <ion-label class="listView" text-center>Price</ion-label>
-        </ion-item>
-
-        <form (ngSubmit)="sendBudget()">
-            <div *ngIf="finalSpare.length > 0">
-            <ion-item class="profile-item profileListView" *ngFor="let spare of finalSpare">
-                <ion-label class="addItem">
-                    <ion-icon class="cancelBtn" ios="ios-close-circle" md="md-close-circle" (click)="removeSpare(spare)"></ion-icon>
-                </ion-label>
-                <ion-label class="listView" text-center>{{spare.sparename}}</ion-label>
-                <ion-label class="listView" text-center>{{spare.sparerate}}</ion-label>
-
-                <ion-select name="sparerate-{{spare.id}}" [(ngModel)]="spare.rate" class="selectType">
-                    <ion-option value="1">1</ion-option>
-                    <ion-option value="2">2</ion-option>
-                    <ion-option value="3">3</ion-option>
-                    <ion-option value="4">4</ion-option>
-                    <ion-option value="5">5</ion-option>
-                    <ion-option value="6">6</ion-option>
-                    <ion-option value="7">7</ion-option>
-                    <ion-option value="8">8</ion-option>
-                    <ion-option value="9">9</ion-option>
-                    <ion-option value="10">10</ion-option>
-                </ion-select>
-                <ion-label class="listView" *ngIf="spare.rate" text-center>{{spare.sparerate*spare.rate}}</ion-label>
-
-            </ion-item>
-        </div>
-            <ion-item class="profile-item profileListView" *ngIf="serviceRate && serviceRateQuantity">
-                <ion-label class="addItem">
-                    <ion-icon class="cancelBtn" ios="ios-close-circle" md="md-close-circle"></ion-icon>
-                </ion-label>
-                <ion-label class="listView" text-center>Service</ion-label>
-                <ion-label class="listView" text-center>Tonnage</ion-label>
-                <ion-label class="listView" text-center>Quantity</ion-label>
-                <ion-label class="listView" text-center>Price</ion-label>
-            </ion-item>
-            <ion-item class="profile-item profileListView" *ngIf="serviceRate && serviceRateQuantity">
-                <ion-label class="addItem">
-                    <ion-icon class="cancelBtn" ios="ios-close-circle" md="md-close-circle"></ion-icon>
-                </ion-label>
-                <ion-label class="listView" text-center>{{serviceRate.name}}</ion-label>
-                <ion-label class="listView" text-center>{{serviceRate.type}}</ion-label>
-                <ion-label class="listView" text-center>{{serviceRateQuantity}}</ion-label>
-                <ion-label class="listView" text-center>{{serviceRate.Price*serviceRateQuantity}}</ion-label>
-            </ion-item>
-            <button class="btn-hrx" type="submit" ion-button round>Setup Final Price</button>
-        </form>
-
-    </ion-grid> -->
     <form (ngSubmit)="sendBudget()">
             <!-- <div *ngIf="finalSpare.length > 0"> -->
     <div class="priceTable">
@@ -112,7 +53,6 @@
             <div class="col priceCol">Cost</div>
             <div class="col priceCol">Qty</div>
             <div class="col priceCol">Price</div>
-            <!--<div class="col priceCol"></div>-->
         </div>
         <div class="priceSheet" *ngIf="finalSpare.length > 0">
             <div class="row" *ngFor="let spare of finalSpare">
@@ -150,15 +90,29 @@
 
 
 
-        <div class="priceSheet" *ngIf="serviceRate && serviceRateQuantity">
-            <div class="row">
-                <div class="col priceCol">{{serviceRate.name}}</div>
-                <div class="col priceCol">{{serviceRate.type}}</div>
+        <div class="priceSheet" *ngIf="finalService">
+            <div class="row" *ngFor="let service of finalService">
+                <div class="col priceCol">{{service.name}}</div>
+                <div class="col priceCol">{{service.type}}</div>
 
-                <div class="col priceCol">{{serviceRateQuantity}}
+                <div class="col priceCol">        
+                    <ion-select name="sparerate-{{service.id}}" [(ngModel)]="service.rate" placeholder="Qty">
+                    <ion-option value="1">1</ion-option>
+                    <ion-option value="2">2</ion-option>
+                    <ion-option value="3">3</ion-option>
+                    <ion-option value="4">4</ion-option>
+                    <ion-option value="5">5</ion-option>
+                    <ion-option value="6">6</ion-option>
+                    <ion-option value="7">7</ion-option>
+                    <ion-option value="8">8</ion-option>
+                    <ion-option value="9">9</ion-option>
+                    <ion-option value="10">10</ion-option>
+                    </ion-select>
                 </div>
-                <div class="col priceCol">{{serviceRate.Price*serviceRateQuantity}}
-                        
+                <div class="col priceCol">{{service.Price*service.rate}}
+                        <div class="addItem">
+                                <ion-icon class="cancelBtn" ios="ios-close-circle" md="md-close-circle" (click)="removeService(service)"></ion-icon>
+                            </div>
                     </div>
                 <!--<div class="col priceCol"><button class="button">Add</button></div>-->
             </div>
@@ -169,7 +123,7 @@
     </div>
     <button class="btn-hrx" type="submit" ion-button round>Setup Final Price</button>
 </form>
-    <ion-label *ngIf="spareTotalPrice">Final Service Charge: {{spareTotalPrice}}</ion-label>
-    <button color="secondary" ion-button round>Aggree Final Price</button>
+    <ion-label *ngIf="finalCharge">Final Service Charge: {{finalCharge}}</ion-label>
+    <button color="secondary" (click)="getSpareStatus()" ion-button round>Aggree Final Price</button>
     <button ion-button color="danger" (click)="closeRequest()" full round>Complete Request</button>
 </ion-content>

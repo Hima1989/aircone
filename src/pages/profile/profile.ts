@@ -29,8 +29,8 @@ export class ProfilePage {
   forUser: boolean;
   constructor(private toast: Toast, public navCtrl: NavController, public navParams: NavParams, public camera:Camera, public airconeProvider: AirconeProvider, public menu: MenuController, public platform: Platform) {
     this.getUserDetails();
-    this.menu.enable(true, 'user');
-    this.menu.enable(false, 'mech');
+    // this.menu.enable(true, 'user');
+    // this.menu.enable(false, 'mech');
     // this.orderForm  = this.formBuilder.group({
           
     // });
@@ -56,8 +56,9 @@ export class ProfilePage {
       if (this.myfile) {
         this.userDetails.image = this.myfile.imageURL;
       }
+      console.log(this.userDetails)
       this.airconeProvider.userDetailsUpdate(this.userDetails)
-      .then(res => {
+      .then(res => {        
         this.updateToast();
         if (this.forUser) {
           this.navCtrl.setRoot(HomePage).then(() =>{
@@ -121,22 +122,26 @@ export class ProfilePage {
   getUserDetails() {
   var  userData = localStorage.getItem('userData');
    var user = JSON.parse(userData);
-   this.airconeProvider.loaduser(user.id)
-   .then(data => {
-    this.userDetails = data
-    if(this.userDetails.role[0] == 'MECHANIC') {
-      this.forMech = true;
-      this.forUser = false;
-    }
-    if(this.userDetails.role[0] == 'USER') {
-      this.forMech = false;
-      this.forUser = true;
-    }
-    this.base64Image = this.userDetails.image
-    if(this.userDetails.referredBy) {
-      this.referral = false;
-    }
-   })
-  }
+   if(user) {
+    this.airconeProvider.loaduser(user.id)
+    .then(data => {
+     this.userDetails = data
+     console.log(this.userDetails)
+     if(this.userDetails.role[0] == 'MECHANIC') {
+       this.forMech = true;
+       this.forUser = false;
+     }
+     if(this.userDetails.role[0] == 'USER') {
+       this.forMech = false;
+       this.forUser = true;
+     }
+     this.base64Image = this.userDetails.image
+     if(this.userDetails.referredBy) {
+       this.referral = false;
+     }
+    })
+   }
+   }
+
 
 }

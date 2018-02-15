@@ -48,6 +48,7 @@ export class LoginpagePage {
         }, 4000);
       }
     });
+    this.statusBar.backgroundColorByHexString('#ff6d79');
   }
 
   ionViewDidLoad() {
@@ -132,6 +133,7 @@ export class LoginpagePage {
               "id": tempData[0].id,
               "tokenId": tempData[0].tokenId,
               "role": tempData[0].role,
+              "accountType": tempData[0].accountType,
               // "coords": this.coords
             }
             localStorage.setItem('userData', JSON.stringify(userInfo));
@@ -144,16 +146,20 @@ export class LoginpagePage {
   }
 
   facebookLogin() {
+                    // this.toast.show(`Google Login comming soon...`, '3000', 'top').subscribe(
+                    //   toast => {
+                    //   }
+                    // ); 
+        //  var userDetails = {"identifier":"gleedtechuser@gmail.com","password":"123123123","email":"gleedtechuser@gmail.com"}
 
-         var userDetails = {"identifier":"gleedtechuser@gmail.com","password":"123123123","email":"gleedtechuser@gmail.com"}
-
-        //  var userDetails = {"identifier":"doddibalubharadwaj@gmail.com","password":"123123123","email":"doddibalubharadwaj@gmail.com"}
+         var userDetails = {"identifier":"doddibalubharadwaj@gmail.com","password":"123123123","email":"doddibalubharadwaj@gmail.com"}
 
             this.airconeProvider.userLogin(userDetails)
               .then(res => {
                 var tempData = [];                
                 tempData.push(res);
                 this.data = res;
+                console.log(this.data)
                 if (this.data.status === 200 && this.data.user.role[0] == 'USER') {
                   this.navCtrl.setRoot(HomePage);                                      
                   if (!tempData[0].user.firstName || !tempData[0].user.email || !tempData[0].user.phoneNumber || tempData[0].user.firstName == "" || tempData[0].user.email == "" || tempData[0].user.phoneNumber == "") {
@@ -177,26 +183,27 @@ export class LoginpagePage {
                     "lastName": tempData[0].user.lastName,
                     "tokenId": tempData[0].user.tokenId,
                     "role": tempData[0].user.role,
-                    "coords": this.coords
+                    "accountType": tempData[0].user.accountType,
+                    "coords": this.coords,
                   }
                   localStorage.setItem('userData', JSON.stringify(userInfo));
                 } 
 
-                // else if (this.data.status === 200 && this.data.user.role[0] == 'MECHANIC') {
-                //   this.navCtrl.push(MechanicPage);
-                //   var mechUserInfo = {
-                //     "firstName": tempData[0].user.firstName,
-                //     "email": tempData[0].user.email,
-                //     "phoneNumber": tempData[0].user.phoneNumber,
-                //     "id": tempData[0].user.id,
-                //     "lastName": tempData[0].user.lastName,
-                //     "tokenId": tempData[0].user.tokenId,
-                //     "role": tempData[0].user.role,
-                //     "coords": this.coords
-                //   }
-                //   localStorage.setItem('userData', JSON.stringify(mechUserInfo));
-                // }
-              })
+        //         // else if (this.data.status === 200 && this.data.user.role[0] == 'MECHANIC') {
+        //         //   this.navCtrl.push(MechanicPage);
+        //         //   var mechUserInfo = {
+        //         //     "firstName": tempData[0].user.firstName,
+        //         //     "email": tempData[0].user.email,
+        //         //     "phoneNumber": tempData[0].user.phoneNumber,
+        //         //     "id": tempData[0].user.id,
+        //         //     "lastName": tempData[0].user.lastName,
+        //         //     "tokenId": tempData[0].user.tokenId,
+        //         //     "role": tempData[0].user.role,
+        //         //     "coords": this.coords
+        //         //   }
+        //         //   localStorage.setItem('userData', JSON.stringify(mechUserInfo));
+        //         // }
+        //       })
             
 
     // alert("clicked")
@@ -236,7 +243,7 @@ export class LoginpagePage {
 
     //   }, function (error) {
     //     // alert(error);
-    //   });
+      });
   }
 
   doGoogleLogin() {
@@ -257,5 +264,5 @@ export class LoginpagePage {
   login() {
     this.navCtrl.push(MechloginPage, {mechLogin: false} );
   }
-  
+
 }

@@ -24,7 +24,9 @@ export class StatusPage {
   comment;
   requested;
   closed;
-  approved
+  approved;
+  reasons;
+  popUp: boolean = true
   gsmile: any = {gs1: 's', gs2: 's', gs3: 's', gs4: 's', gs5: 's'}
   lsmile: any = {ls1: '', ls2: '', ls3: '', ls4: '', ls5: ''}
   constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController, public airconeProvider: AirconeProvider,private toast: Toast) {
@@ -91,39 +93,23 @@ export class StatusPage {
      }
    }
 
+   openPopUp() {
+     this.popUp = true;
+   }
+
   cancelRequest(){
-    let alert = this.alertCtrl.create({
-      title: 'Confirm Items',
-      message: 'Do you want to cancel this Request?',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass:'icon-color',
-          handler: () => {
+    var data = {reason: this.reasons}
+    this.airconeProvider.cancelRequest(this.request.id, data)
+    .then(res => {
+        this.toast.show(`Your Request Is Cancelled `, '5000', 'center').subscribe(
+            toast => {
           }
-        },
-        {
-          text: 'Ok',
-          cssClass:'icon-color',
-          handler: data => {
-            this.airconeProvider.cancelRequest(this.request.id)
-            .then(res => {
-              this.toast.show(`Your Request Is Cancelled `, '5000', 'center').subscribe(
-                toast => {
-                }
-              );
-              this.navCtrl.setRoot(HomePage).then(() =>{
-                this.navCtrl.popToRoot();
-              });
-            })
-          }
-        }
-      ]
-    });
-    alert.present();
-
-
+        );
+        this.navCtrl.setRoot(HomePage).then(() =>{
+            this.navCtrl.popToRoot();
+          });
+        })
+      
   }
 
   onModelChange(rate) {
