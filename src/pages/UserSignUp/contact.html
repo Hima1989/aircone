@@ -1,0 +1,45 @@
+<!-- <ion-header class="home-header">
+  <ion-grid>
+      <ion-row>
+          <ion-col col-2 text-left (click)="goBack()">
+              <ion-icon class="icons" ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+          </ion-col>
+          <ion-col col-8 text-center>
+              <ion-title class="title">Sign Up</ion-title>
+          </ion-col>
+      </ion-row>
+  </ion-grid>
+</ion-header>
+<ion-content text-center padding>
+  <form (ngSubmit)="submitDetails()">
+      <ion-avatar (click)="accessGallery()" class="profile-img">
+          <img class="profileImg" [src]="base64Image ? base64Image : 'assets/images/profile-pic.png'" />
+          <ion-icon class="icon-create" ios="ios-create" md="md-create"></ion-icon>
+      </ion-avatar>
+      <ion-list class="profile-fields">
+          <ion-item>
+              <ion-label floating>Full Name</ion-label>
+              <ion-input type="text" name="name" [(ngModel)]="userDetails.firstName"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label floating>Email Id</ion-label>
+              <ion-input type="text" name="email" [(ngModel)]="userDetails.email" disabled></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label floating>Phone Number</ion-label>
+              <ion-input type="number" name="phone" [pattern]="'^[7-9][0-9]{9}$'" [(ngModel)]="userDetails.phoneNumber"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="forUser">
+              <ion-label floating>Referral Code</ion-label>
+              <ion-input type="text" [disabled]="!referral" name="referral" [(ngModel)]="userDetails.referredBy"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="forMech">
+              <ion-label floating>Referral Code</ion-label>
+              <ion-input type="text" [disabled]="true" name="referrall" [(ngModel)]="userDetails.referralCode"></ion-input>
+          </ion-item>
+      </ion-list>
+      <ion-avatar class="navigator nav-request" item-start text-center>
+          <button type="submit" class="btn-hrx" ion-button round>Submit</button>
+      </ion-avatar>
+  </form>
+</ion-content> -->

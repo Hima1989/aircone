@@ -8,9 +8,8 @@ import { HttpModule } from '@angular/http';
 
 
 import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
+import { SignupPage } from '../pages/signup/signup';
 import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
 import { LoginpagePage } from '../pages/loginpage/loginpage';
 import { ServicesPage } from '../pages/services/services';
 import { ServicesHomePage } from '../pages/services-home/services-home';
@@ -62,9 +61,8 @@ import { GoogleMaps } from '@ionic-native/google-maps';
   declarations: [
     MyApp,
     AboutPage,
-    ContactPage,
+    SignupPage,
     HomePage,
-    TabsPage,
     LoginpagePage,
     ServicesPage,
     ServicesHomePage,
@@ -97,9 +95,8 @@ import { GoogleMaps } from '@ionic-native/google-maps';
   entryComponents: [
     MyApp,
     AboutPage,
-    ContactPage,
+    SignupPage,
     HomePage,
-    TabsPage,
     LoginpagePage,
     ServicesPage,
     ServicesHomePage,

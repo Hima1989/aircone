@@ -42,9 +42,11 @@ export class RepairPage {
   }
 
   spareSelect(topping) {
+    this.finalSpare = [];
     topping.forEach(top => {
       this.spares.forEach(spare => {
         if (top == spare.sparename) {
+          spare.rate = 1
           this.finalSpare.push(spare);
         }
       });
@@ -90,7 +92,7 @@ export class RepairPage {
         }
 
     // this.spareTotalPrice = finalPrice;  
-     this.finalCharge = {spareInfo: this.finalSpare, finalServicePrice: this.spareTotalPrice, service: this.serviceRate}
+     this.finalCharge = {spareInfo: this.finalSpare, finalServicePrice: this.spareTotalPrice, service: this.serviceRate, serviceQuantity: this.serviceRateQuantity}
     }
   
   closeRequest() {
