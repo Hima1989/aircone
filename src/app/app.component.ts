@@ -212,7 +212,11 @@ export class MyApp {
 
   changePassword() {
     this.menuCtrl.close()
-    this.nav.push(ChangePasswordPage, {forChangePassword: true})
+    this.nav.push(ChangePasswordPage, {forChangePassword: true, forMech: true})
+  }
+  changeUserPassword() {
+    this.menuCtrl.close()
+    this.nav.push(ChangePasswordPage, {forChangePassword: true, forMech: false})
   }
   completedRequests() {
     this.menuCtrl.close()
@@ -253,9 +257,9 @@ export class MyApp {
     this.menuCtrl.close();
     this.nav.push(LoginpagePage)
     localStorage.removeItem("userData")
-      this.fb.logout()
-    .then( res => {})
-    .catch(e => console.log('Error logout from Facebook', e));
+    //   this.fb.logout()
+    // .then( res => {})
+    // .catch(e => console.log('Error logout from Facebook', e));
   //  this.nav.push(LoginpagePage); 
    }
 

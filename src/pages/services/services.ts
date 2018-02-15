@@ -20,7 +20,6 @@ import { Toast } from '@ionic-native/toast';
 })
 export class ServicesPage {
 
-  // public services: any = [{images:"assets/images/services-home1.png",serviceName:"Air Conditioner"},{images:"assets/images/services-home2.png",serviceName:"refregirator"},{images:"assets/images/services-home3.png",serviceName:"Microvowen"},{images:"assets/images/services-home4.png",serviceName:"Washing Mechine"}];
   public services: any = [];
   // servicesHomePage: any = ServicesHomePage;
   // backButtonPressed: boolean;
@@ -41,13 +40,6 @@ export class ServicesPage {
    
   }
   
-  presentToast() {
-    this.toast.show('Double Click To Exit', '5000', 'center').subscribe(
-                  toast => {
-                    console.log(toast);
-                  }
-                );
-  }
 
   ionViewDidLoad() {
   }

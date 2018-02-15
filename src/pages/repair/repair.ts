@@ -20,14 +20,11 @@ export class RepairPage {
   spares;
   toppings;
   finalSpare: any = [];
-  spareRate;
-  spare;
-  spareTotalPrice;
-  serviceRate;
   finalCharge;
+  finalSpareServiceCharge;
   service;
-  serviceRateQuantity;
   getCompleted;
+  finalService
   constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, public alertCtrl: AlertController, public platform: Platform) {
     this.request = navParams.get("request")
     this.getCompleted = navParams.get("status")    
@@ -53,8 +50,24 @@ export class RepairPage {
     });
   }
 
+  serviceSelect(topping) {
+    this.finalService = [];
+    topping.forEach(top => {
+      this.service.subServicePrice.forEach(spare => {
+        if (top.id == spare.id) {
+          spare.rate = 1
+          this.finalService.push(spare);
+        }
+      });
+    });
+  }
+
   removeSpare(spare) {
-    this.finalSpare.splice(this.finalSpare.indexOf(spare),1)
+    this.finalService.splice(this.finalService.indexOf(spare),1)
+  }
+
+  removeService(service) {
+    this.finalSpare.splice(this.finalSpare.indexOf(service),1)
   }
 
   getAllServiceSpares() {
@@ -73,33 +86,29 @@ export class RepairPage {
   }
 
   sendBudget() {
-    // console.log(this.serviceRate)
-    var finalPrice = 0;
+
+    var finalSparePrice = 0;
     this.finalSpare.forEach(spare => {
-      finalPrice += spare.rate*spare.sparerate
+      finalSparePrice += spare.rate*spare.sparerate
     });
 
-        // if (finalPrice) {
-        //   finalPrice = finalPrice + this.serviceRate.Price*this.serviceRateQuantity     
-        // } else {
-        //   finalPrice = this.serviceRate.Price*this.serviceRateQuantity
-        // }
+    var finalServicePrice = 0;
+    this.finalService.forEach(service => {
+      finalServicePrice += service.rate*service.Price
+    });
 
-        if(this.serviceRate) {
-          this.spareTotalPrice = finalPrice + this.serviceRate.Price*this.serviceRateQuantity   
-        } else {
-          this.spareTotalPrice = finalPrice
-        }
+    var finalCharge = finalSparePrice + finalServicePrice
+    this.finalCharge = finalCharge
 
-    // this.spareTotalPrice = finalPrice;  
-     this.finalCharge = {spareInfo: this.finalSpare, finalServicePrice: this.spareTotalPrice, service: this.serviceRate, serviceQuantity: this.serviceRateQuantity}
+     this.finalSpareServiceCharge = {finalSparePrice: finalSparePrice, finalSpare: this.finalSpare, finalServicePrice: finalServicePrice, finalService: this.finalService, finalCharge: finalCharge }
+     
     }
   
   closeRequest() {
-    if (this.finalCharge.finalServicePrice > 0) {
-      this.airconeProvider.closeRequest(this.request.id, this.finalCharge)
+    if (this.finalSpareServiceCharge && this.finalCharge) {
+      this.airconeProvider.closeRequest(this.request.id, this.finalSpareServiceCharge)
       .then ( data => {
-        this.navCtrl.push(MechanicPage)
+        this.navCtrl.push(MechanicPage, {status: this.getCompleted})
       })
     } else {
       let alert = this.alertCtrl.create({
@@ -110,6 +119,27 @@ export class RepairPage {
       alert.present();
     }
 
+  }
+
+  getSpareStatus() {
+    if (this.finalSpareServiceCharge && this.finalCharge) {
+      this.airconeProvider.getSpareStatus(this.request.id, this.finalSpareServiceCharge)
+      .then ( data => {
+        let alert = this.alertCtrl.create({
+          title: 'Spares Sended!',
+          subTitle: 'Spares List Is Successfully sended!',
+          buttons: ['OK']
+        });
+        alert.present();    
+      })
+    } else {
+      let alert = this.alertCtrl.create({
+        title: 'Set up Final Price!',
+        subTitle: 'Please include atleast Service price!',
+        buttons: ['OK']
+      });
+      alert.present();
+    }
   }
 
   goBack() {

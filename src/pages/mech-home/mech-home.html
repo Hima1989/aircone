@@ -33,9 +33,11 @@
                     
                 <p><span class="fielsList">ServiceName</span><span class="userList">:{{serviceInfo.serviceName}},</span></p>
                 <p><span class="fielsList">Status</span><span class="userList">:{{serviceInfo.status}},</span></p>
-                <p *ngFor="let serviceSpareInfo of request.spareInfo"><span class="fielsList">{{serviceSpareInfo.sparename}}</span><span class="userList">:{{serviceSpareInfo.sparerate}},</span></p>
-                <p><span class="fielsList">Final Price</span><span class="userList">:{{request.finalPrice}},</span></p>
-                
+                <div *ngIf="serviceInfo.finalSpare || serviceInfo.finalService">
+                <p *ngFor="let serviceSpareInfo of request.finalSpare"><span class="fielsList">{{serviceSpareInfo.sparename}}</span><span class="userList">:{{serviceSpareInfo.sparerate *serviceSpareInfo.rate}},</span></p>
+                <p *ngFor="let serviceSpareInfo of request.finalService"><span class="fielsList">{{serviceSpareInfo.name}}, {{serviceSpareInfo.type}}</span><span class="userList">:{{serviceSpareInfo.Price *serviceSpareInfo.rate}},</span></p>
+                <p><span class="fielsList">Final Price</span><span class="userList">:{{request.finalCharge}},</span></p>
+                </div>
                 <p><span class="fielsList">User Info</span></p>
                 
                 <p><span class="fielsList">user name</span><span class="userList">:{{userRequest.Name}},</span></p>
@@ -60,5 +62,5 @@
     <ion-item>Area           :{{userRequest.Area}}</ion-item>
     <ion-item>City           :{{userRequest.City}}</ion-item>    
   </ion-list>-->
-    <button ion-button (click)="startService()" full round>Start Service</button>
+    <button ion-button (click)="startService()" [disabled]="request.status === 'ORDER_CLOSED'" full round>Start Service</button>
 </ion-content>

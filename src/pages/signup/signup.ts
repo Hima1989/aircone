@@ -26,6 +26,7 @@ export class SignupPage {
   orderForm;
   referredBy;
   coords;
+  data;
   constructor(private toast: Toast, public navCtrl: NavController, public navParams: NavParams, public camera:Camera, public airconeProvider: AirconeProvider, public platform: Platform, private formBuilder: FormBuilder, private geolocation: Geolocation) {
 
     this.orderForm  = this.formBuilder.group({
@@ -58,7 +59,6 @@ export class SignupPage {
       }
 
   submitDetails() {
-    console.log(this.orderForm.value)
     if (this.referredBy) {
       this.orderForm.value.referredBy = this.referredBy;
     }
@@ -72,19 +72,30 @@ export class SignupPage {
     if (this.orderForm.value.password === this.orderForm.value.rePassword) {
       this.airconeProvider.appUserRegister(this.orderForm.value)
       .then( res => {
-        console.log("success fully registered")
+         this.data = res;
+        if(this.data.status == 412) {
+          this.toast.show(`User Already exixted`, '5000', 'center').subscribe(
+            toast => {
+            }
+          );  
+        }
+        this.orderForm.reset()        
+        this.presentToast()
+        this.navCtrl.push(MechloginPage, {mechLogin: false} );
       })
+    } else {
+      this.updateToast()
     }
   }
   presentToast() {
-     this.toast.show(`Profile not update`, '5000', 'center').subscribe(
+     this.toast.show(`Account Successfully Created`, '5000', 'center').subscribe(
             toast => {
             }
           );     
   }
 
   updateToast() {
-     this.toast.show(`Profile updated`, '5000', 'center').subscribe(
+     this.toast.show(`passwords missmatch`, '5000', 'center').subscribe(
             toast => {
             }
           );     
