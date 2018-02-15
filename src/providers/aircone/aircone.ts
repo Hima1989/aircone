@@ -14,8 +14,8 @@ export class AirconeProvider {
 
   data;
   paramData;
-// baseURL = "https://air-cone-backend.appspot.com"; //production
-    baseURL = "http://localhost:80"; //development
+baseURL = "https://air-cone-backend.appspot.com"; //production
+    // baseURL = "http://localhost:80"; //development
   constructor(public http: Http, public device: Device) {
   }
   
@@ -68,10 +68,32 @@ export class AirconeProvider {
     });
   }
 
+  changeuserPassword(userId, data) {
+    console.log("hitted")
+    return new Promise(resolve => {
+      this.http.post(this.baseURL+'/user/' +userId+ '/changePassword/userPassword',data)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+      });
+    }
+
   resetPassword(data) {
-    console.log(data)
     return new Promise(resolve => {
       this.http.post(this.baseURL+'/user/mechPassword/forgotpassword',data)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+  }
+
+  resetUserPassword(data) {
+    return new Promise(resolve => {
+      this.http.post(this.baseURL+'/user/userPassword/forgotpassword',data)
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
@@ -180,9 +202,9 @@ export class AirconeProvider {
     });
   }
 
-  cancelRequest(requestId) {
+  cancelRequest(requestId, data) {
     return new Promise(resolve => {
-      this.http.get(this.baseURL+'/cancel/request/'+requestId)
+      this.http.post(this.baseURL+'/cancel/request/'+requestId, data)
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
@@ -286,7 +308,7 @@ export class AirconeProvider {
 
   getUserPincode(pincode) {
     return new Promise(resolve => {
-      this.http.get(this.baseURL+'/get/'+pincode+'/checkPincode')       
+      this.http.get(this.baseURL+'/get/'+pincode+'/UserPincode')       
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
@@ -309,6 +331,17 @@ export class AirconeProvider {
   closeRequest(requestId, data) {
     return new Promise(resolve => {
       this.http.post(this.baseURL+'/get/'+requestId+'/clodeRequest', data)       
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        })
+    });
+  }
+
+  getSpareStatus(requestId, data) {
+    return new Promise(resolve => {
+      this.http.post(this.baseURL+'/send/'+requestId+'/sparesList', data)       
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;

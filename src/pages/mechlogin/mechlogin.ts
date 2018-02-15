@@ -51,17 +51,12 @@ export class MechloginPage {
     this.airconeProvider.userLogin(this.loginForm.value)
     .then(res => {
       // this.loginForm.reset()   
-      console.log("ok")   
       var tempData = [];                
       tempData.push(res);
       this.data = res;
       if (this.data.status === 200 && this.data.user.role[0] == 'MECHANIC') {
-        this.navCtrl.push(MechanicPage);
-        // this.toast.show(`Logged in as `+tempData[0].user.firstName, '3000', 'top').subscribe(
-        //   toast => {
-        //   }
-        // );  
-        // this.navCtrl.setRoot(MechanicPage);                                                                  
+        this.navCtrl.push(MechanicPage); 
+        this.navCtrl.setRoot(MechanicPage);                                                                  
         var mechUserInfo = {
           "firstName": tempData[0].user.firstName,
           "email": tempData[0].user.email,
@@ -78,9 +73,8 @@ export class MechloginPage {
         //   }
         // );  
       } else if (this.data.status === 200 && this.data.user.role[0] == 'USER'){
-        // if (this.data.status === 200 && this.data.user.role[0] == 'USER') {
           this.navCtrl.setRoot(HomePage);                                      
-          if (!tempData[0].firstName || tempData[0].email == null || tempData[0].phoneNumber == null || tempData[0].firstName == "" || tempData[0].email == "" || tempData[0].phoneNumber == "") {
+          if (this.data.user.firstName == null || this.data.user.email == null || this.data.user.phoneNumber == null || this.data.user.firstName == "" || this.data.user.email == "" || this.data.user.phoneNumber == "") {
             this.navCtrl.push(ProfilePage)
             // this.toast.show(`Please Update Profile`, '5000', 'center').subscribe(
             //   toast => {
@@ -94,12 +88,13 @@ export class MechloginPage {
             this.navCtrl.setRoot(HomePage);                                                          
           }
           var userInfo = {
-            "firstName": tempData[0].firstName,
-            "email": tempData[0].email,
-            "phoneNumber": tempData[0].phoneNumber,
-            "id": tempData[0].id,
-            "tokenId": tempData[0].tokenId,
-            "role": tempData[0].role,
+            "firstName": this.data.user.firstName,
+            "email": this.data.user.email,
+            "phoneNumber": this.data.user.phoneNumber,
+            "id": this.data.user.id,
+            "tokenId": this.data.user.tokenId,
+            "accountType": this.data.user.accountType,
+            "role": this.data.user.role,
             // "coords": this.coords
           }
           localStorage.setItem('userData', JSON.stringify(userInfo));
@@ -117,7 +112,13 @@ export class MechloginPage {
           }
         );
       }
-    })
+    }).catch( err => {
+        this.toast.show(`User not verified Yet`, '3000', 'top').subscribe(
+          toast => {
+          }
+        );  
+          })
+    
 
   }
 

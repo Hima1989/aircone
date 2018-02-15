@@ -76,6 +76,50 @@
     </ion-content>
 </ion-menu>
 
+
+<ion-menu class="menuBar" id="registerUser" [content]="content" swipeEnabled="false" type="push">
+    <ion-toolbar class="toolbarContent">
+        <ion-row>
+            <ion-col>
+                <ion-title>Menu</ion-title>
+            </ion-col>
+            <ion-col text-right>
+                <span class="menu-toggle" (click)="closeSideBar()">close</span>
+            </ion-col>
+        </ion-row>
+    </ion-toolbar>
+
+    <ion-content>
+        <ion-list class="ion-menu-top">
+            <button class="ionMenu" ion-item (click)="home()">
+                    <ion-icon class="icon-padding icon-menu" ios="ios-home" md="md-home"></ion-icon> Home
+              </button>
+            <button ion-item (click)="profile()">
+                    <ion-icon class="icon-padding icon-menu" ios="ios-person" md="md-person"></ion-icon> Profile
+              </button>
+            <button ion-item (click)="changeUserPassword()">
+                <ion-icon ios="ios-key" md="md-key"></ion-icon> Change Password
+            </button>
+            <button ion-item (click)="myRequests()">
+                    <ion-icon class="icon-padding icon-menu" ios="ios-mail-open" md="md-mail-open"></ion-icon> My Requests
+              </button>
+            <button ion-item (click)="addAddress()">
+                    <ion-icon class="icon-padding icon-menu" ios="ios-pin" md="md-pin"></ion-icon> Manage Address
+              </button>
+            <button ion-item (click)="customerService()">
+                    <ion-icon class="icon-padding icon-menu" ios="ios-contacts" md="md-contacts"></ion-icon> Customer Service
+            </button>
+            <button ion-item (click)="otherShare()">
+                    <ion-icon class="icon-padding icon-menu" ios="ios-share-alt" md="md-share-alt"></ion-icon> Share App
+            </button>
+            <button ion-item (click)="logout()">
+                    <ion-icon class="icon-padding" ios="ios-log-out" md="md-log-out"></ion-icon> Logout
+            </button>
+
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
 <ion-nav id="nav" [root]="loginPage" #content swipeBackEnabled="false"></ion-nav>
 
 <!-- <ion-nav id="nav" [root]="servicesPage" #content swipeBackEnabled="false"></ion-nav> -->

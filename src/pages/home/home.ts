@@ -37,6 +37,7 @@ export class HomePage {
   backButtonPressed: boolean
   backButtonPressedTimer;
   load;
+  accountType;
  // public location: any;
 
  map: GoogleMap;
@@ -59,11 +60,17 @@ export class HomePage {
       }
       this.menu.close()    
     });
-
-
-  // this.load.present();
-    this.menu.enable(true, 'user');
-    this.menu.enable(false, 'mech');
+    var userdata = JSON.parse(localStorage.getItem("userData"))
+    if(userdata) {
+      this.accountType = userdata.accountType
+      if(this.accountType == 'social') {
+        this.menu.enable(false, 'registerUser');
+        this.menu.enable(true, 'user');
+      } else if (this.accountType == 'web') {
+        this.menu.enable(true, 'registerUser');
+        this.menu.enable(false, 'user');
+      }
+    }
   }
 
   ionViewDidLoad() {

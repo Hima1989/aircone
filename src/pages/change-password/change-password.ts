@@ -5,6 +5,7 @@ import { Toast } from '@ionic-native/toast';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { MechanicPage } from '../mechanic/mechanic';
 import { MechloginPage } from '../mechlogin/mechlogin';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the ChangePasswordPage page.
@@ -24,10 +25,18 @@ export class ChangePasswordPage {
   userDetails: any = {email: '', oldPass: '', newPass: '',ReNewPass: ''};
   data;
   forChangePassword;
-
+  forMech;
   constructor(private toast: Toast, public navCtrl: NavController, public navParams: NavParams, private airconeProvider: AirconeProvider, private formBuilder: FormBuilder, public platform: Platform) {
     if(navParams.get("forChangePassword")) {
       this.forChangePassword = true
+      this.getUserDetails();      
+    }
+    if(navParams.get("forMech")) {
+      this.forMech = true
+      this.getUserDetails();      
+    }
+    if(navParams.get("forMech") === false) {
+      this.forMech = false
       this.getUserDetails();      
     }
     if(navParams.get("forChangePassword") === false) {
@@ -40,11 +49,12 @@ export class ChangePasswordPage {
       ReNewPass: ['', Validators.required],
     })
     platform.registerBackButtonAction(() => {
-      if (this.forChangePassword) {
-        this.navCtrl.push(MechanicPage, {status: true})      
-      } else {
-        this.navCtrl.push(MechloginPage)
-      }
+      // if (this.forChangePassword) {
+      //   this.navCtrl.push(MechanicPage, {status: true})      
+      // } else {
+      //   this.navCtrl.push(MechloginPage)
+      // }
+      this.navCtrl.pop()
     });
   }
 
@@ -52,11 +62,12 @@ export class ChangePasswordPage {
   }
 
   goBack() {
-    if (this.forChangePassword) {
-      this.navCtrl.push(MechanicPage, {status: true})      
-    } else {
-      this.navCtrl.push(MechloginPage)
-    }
+    this.navCtrl.pop()
+    // if (this.forChangePassword) {
+    //   this.navCtrl.push(MechanicPage, {status: true})      
+    // } else {
+    //   this.navCtrl.push(MechloginPage)
+    // }
   }
     
       getUserDetails() {
@@ -65,34 +76,56 @@ export class ChangePasswordPage {
          this.airconeProvider.loaduser(user.id)
          .then(data => {
            this.userDetails = data;
+           console.log(this.userDetails)
+           
          })
       }
     
       submitDetails() {
           var pass = this.orderForm.value
-          
+          console.log(this.forMech === false)
           if (this.forChangePassword) {
-            console.log(this.forChangePassword)
-            console.log("hitted")
             var  userData = localStorage.getItem('userData');
             var user = JSON.parse(userData);
-            if (pass.newPass == pass.ReNewPass && !pass.oldPass) {
-              this.airconeProvider.changePassword(user.id, pass)
-              .then(res => {
-                var tempData = [];                
-                tempData.push(res);
-                this.data = res;
-                if(this.data.status === 200) {
-                  this.navCtrl.push(MechanicPage, {status: true})              
+            if (pass.newPass == pass.ReNewPass && pass.oldPass && this.forMech === false) {
+              if(this.userDetails.accountType) {
+                this.airconeProvider.changeuserPassword(user.id, pass)
+                .then(res => {
+                  var tempData = [];                
+                  tempData.push(res);
+                  this.data = res;
+                  if(this.data.status === 200) {
+                    this.navCtrl.setRoot(HomePage).then(() =>{
+                      this.navCtrl.popToRoot();
+                 });                   
                   this.toast.show(`New Password has updated`, '3000', 'center').subscribe(
-                    toast => {
-                    })
-                } else if (this.data.status === 404) {
-                  this.toast.show(`Old Password Incorrect`, '3000', 'center').subscribe(
-                    toast => {
-                    })
-                }
-              })   
+                      toast => {
+                      })
+                  } else if (this.data.status === 404) {
+                    this.toast.show(`Old Password Incorrect`, '3000', 'center').subscribe(
+                      toast => {
+                      })
+                  }
+                })  
+              } else {
+                this.airconeProvider.changePassword(user.id, pass)
+                .then(res => {
+                  var tempData = [];                
+                  tempData.push(res);
+                  this.data = res;
+                  if(this.data.status === 200) {
+                    this.navCtrl.push(MechanicPage, {status: true})              
+                    this.toast.show(`New Password has updated`, '3000', 'center').subscribe(
+                      toast => {
+                      })
+                  } else if (this.data.status === 404) {
+                    this.toast.show(`Old Password Incorrect`, '3000', 'center').subscribe(
+                      toast => {
+                      })
+                  }
+                })
+              }
+ 
             } else {
               this.toast.show(`Old and New password not equal`, '3000', 'center').subscribe(
                 toast => {
@@ -100,12 +133,22 @@ export class ChangePasswordPage {
             }
           } else {
             if (pass.newPass == pass.ReNewPass) {
-              this.airconeProvider.resetPassword(pass)
-              .then( res => {
-                this.toast.show(`New Password has updated`, '3000', 'center').subscribe(
-                  toast => {
-                  })
-              })
+              if(this.userDetails.accountType) { 
+                this.airconeProvider.resetUserPassword(pass)
+                .then( res => {
+                  this.toast.show(`New Password has updated`, '3000', 'center').subscribe(
+                    toast => {
+                    })
+                })
+              } else {
+                this.airconeProvider.resetPassword(pass)
+                .then( res => {
+                  this.toast.show(`New Password has updated`, '3000', 'center').subscribe(
+                    toast => {
+                    })
+                })
+              }
+
             }  else {
               this.toast.show(`Old and New password not equal`, '3000', 'center').subscribe(
                 toast => {
