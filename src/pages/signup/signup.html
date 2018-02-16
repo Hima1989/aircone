@@ -6,50 +6,50 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>signup</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>signup</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content text-center padding>
-  <form [formGroup]="orderForm" (ngSubmit)="submitDetails()">
-      <ion-avatar (click)="accessGallery()" class="profile-img">
-          <img class="profileImg" [src]="base64Image ? base64Image : 'assets/images/profile-pic.png'" />
-          <ion-icon class="icon-create" ios="ios-create" md="md-create"></ion-icon>
-      </ion-avatar>
-      <ion-list class="profile-fields">
-          <ion-item>
-              <ion-label floating>Full Name</ion-label>
-              <ion-input type="text" formControlName="firstName"></ion-input>
-          </ion-item>
-          <ion-item>
-              <ion-label floating>Phone Number</ion-label>
-              <ion-input type="number" formControlName="phoneNumber"></ion-input>
-          </ion-item>
+    <form [formGroup]="orderForm" (ngSubmit)="submitDetails()">
+        <ion-avatar (click)="accessGallery()" class="profile-img">
+            <img class="profileImg" [src]="base64Image ? base64Image : 'assets/images/profile-pic.png'" />
+            <ion-icon class="icon-create" ios="ios-create" md="md-create"></ion-icon>
+        </ion-avatar>
+        <ion-list class="profile-fields">
+            <ion-item>
+                <ion-label floating>Full Name</ion-label>
+                <ion-input type="text" formControlName="firstName"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Phone Number</ion-label>
+                <ion-input type="number" formControlName="phoneNumber"></ion-input>
+            </ion-item>
 
-          <ion-item>
-            <ion-label floating>Email Id</ion-label>
-            <ion-input type="email" formControlName="email"></ion-input>
-          </ion-item>
+            <ion-item>
+                <ion-label floating>Email Id</ion-label>
+                <ion-input type="email" formControlName="email"></ion-input>
+            </ion-item>
 
-          <ion-item>
-            <ion-label floating>Password</ion-label>
-            <ion-input type="password" formControlName="password"></ion-input>
-          </ion-item>
+            <ion-item>
+                <ion-label floating>Password</ion-label>
+                <ion-input type="password" formControlName="password"></ion-input>
+            </ion-item>
 
-          <ion-item>
-            <ion-label floating>Re Enter Passowrd</ion-label>
-            <ion-input type="password" formControlName="rePassword"></ion-input>
-          </ion-item>
-          <ion-item>
-              <ion-label floating>Referral Code</ion-label>
-              <ion-input type="text" name="referredBy" [(ngModel)]="referredBy" [ngModelOptions]="{standalone: true}"></ion-input>
-          </ion-item>
-      </ion-list>
-      <ion-avatar class="navigator nav-request" item-start text-center>
-          <button type="submit" class="btn-hrx" [disabled]="!orderForm.valid" ion-button round>Submit</button>
-      </ion-avatar>
-  </form>
-</ion-content> 
+            <ion-item>
+                <ion-label floating>Re Enter Passowrd</ion-label>
+                <ion-input type="password" formControlName="rePassword"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Referral Code</ion-label>
+                <ion-input type="text" name="referredBy" [(ngModel)]="referredBy" [ngModelOptions]="{standalone: true}"></ion-input>
+            </ion-item>
+        </ion-list>
+        <ion-avatar class="navigator nav-request" item-start text-center>
+            <button type="submit" class="btn-hrx" [disabled]="!orderForm.valid" ion-button round>Submit</button>
+        </ion-avatar>
+    </form>
+</ion-content>
