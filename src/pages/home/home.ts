@@ -173,10 +173,10 @@ loadMap() {
       let mapOptions: GoogleMapOptions = {
         camera: {          
         target: {
-          lat: 33.80010128657071,
-          lng: -151.28747820854187
+          lat: 17.7262172,
+          lng: 83.31547030000002
         },
-          zoom: 0,
+          zoom: 11.5,
           tilt: 30,
         },
         gestures:{

@@ -27,6 +27,7 @@ export class MechloginPage {
   loginForm;
   data;
   mechLogin: boolean;
+  resetUserPassword;
   constructor(private statusBar:StatusBar, private toast: Toast, public navCtrl: NavController,public airconeProvider: AirconeProvider, public navParams: NavParams, private formBuilder: FormBuilder, public platform: Platform) {
     this.loginForm = this.formBuilder.group({
       identifier: ['', Validators.required],
@@ -36,6 +37,10 @@ export class MechloginPage {
       this.mechLogin = navParams.get("mechLogin")
     } else {
       this.mechLogin = navParams.get("mechLogin")
+    }
+
+    if(navParams.get("resetUserPassword")) {
+      this.resetUserPassword = navParams.get("resetUserPassword")
     }
     platform.registerBackButtonAction(() => {
       this.navCtrl.push(LoginpagePage)
@@ -68,23 +73,23 @@ export class MechloginPage {
           "referralCode": tempData[0].user.referralCode
         }
         localStorage.setItem('userData', JSON.stringify(mechUserInfo));
-        // this.toast.show(`Logged in as `+tempData[0].user.firstName, '3000', 'top').subscribe(
-        //   toast => {
-        //   }
-        // );  
+        this.toast.show(`Logged in as `+tempData[0].user.firstName, '3000', 'top').subscribe(
+          toast => {
+          }
+        );  
       } else if (this.data.status === 200 && this.data.user.role[0] == 'USER'){
           this.navCtrl.setRoot(HomePage);                                      
           if (this.data.user.firstName == null || this.data.user.email == null || this.data.user.phoneNumber == null || this.data.user.firstName == "" || this.data.user.email == "" || this.data.user.phoneNumber == "") {
             this.navCtrl.push(ProfilePage)
-            // this.toast.show(`Please Update Profile`, '5000', 'center').subscribe(
-            //   toast => {
-            //   }
-            // );                 
+            this.toast.show(`Please Update Profile`, '5000', 'center').subscribe(
+              toast => {
+              }
+            );                 
           } else {
-            // this.toast.show(`Logged in as `+tempData[0].firstName, '3000', 'top').subscribe(
-            //   toast => {
-            //   }
-            // );  
+            this.toast.show(`Logged in as `+this.data.user.firstName, '3000', 'top').subscribe(
+              toast => {
+              }
+            );  
             this.navCtrl.setRoot(HomePage);                                                          
           }
           var userInfo = {
@@ -123,7 +128,7 @@ export class MechloginPage {
   }
 
   forgotPassword() {
-    this.navCtrl.push(ChangePasswordPage, {forChangePassword: false})
+    this.navCtrl.push(ChangePasswordPage, {forChangePassword: false, resetUserPassword: this.resetUserPassword})
   }
 
   signUp() {
