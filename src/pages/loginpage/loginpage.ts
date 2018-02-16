@@ -48,11 +48,11 @@ export class LoginpagePage {
         }, 4000);
       }
     });
-    this.statusBar.backgroundColorByHexString('#ff6d79');
+    this.statusBar.backgroundColorByHexString('#8526e4');
   }
 
   ionViewDidLoad() {
-    this.statusBar.backgroundColorByHexString('#ff6d79');
+    this.statusBar.backgroundColorByHexString('#8526e4');
   }
 
 

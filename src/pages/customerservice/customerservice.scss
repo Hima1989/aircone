@@ -1,4 +1,25 @@
-page-customerservice {}
+page-customerservice {
+    .careNumber {
+        p {
+            font-size: 18px;
+            padding: 10px;
+            background: $colorGray;
+            color: #fff;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            ion-icon {
+                padding-right: 5px;
+                color: #fff;
+                font-size: 30px;
+            }
+            .whatsApp {
+                color: #44c003;
+            }
+        }
+    }
+}
 
 .header-background {
     .toolbar-background-md {

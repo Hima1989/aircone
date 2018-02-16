@@ -17,10 +17,12 @@ textarea.text-input {
 
 page-status {
     .selectWrapper {
+        width: 0;
         .select-icon {
             visibility: hidden;
+            width: 0;
         }
-         }
+    }
     .statusBlock {
         padding: 25px 0;
         .smileReview {

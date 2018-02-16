@@ -100,23 +100,23 @@ export class MechloginPage {
           localStorage.setItem('userData', JSON.stringify(userInfo));
         // } 
       } else if (this.data.status === 404) {
-        this.toast.show(`User or Password mismatch`, '3000', 'center').subscribe(
-          toast => {
-          }
-        );   
+        // this.toast.show(`User or Password mismatch`, '3000', 'center').subscribe(
+        //   toast => {
+        //   }
+        // );   
       }
       else{
         
-        this.toast.show('Invalied User Id and Password', '5000', 'center').subscribe(
-          toast => {
-          }
-        );
+        // this.toast.show('Invalied User Id and Password', '5000', 'center').subscribe(
+        //   toast => {
+        //   }
+        // );
       }
     }).catch( err => {
-        this.toast.show(`User not verified Yet`, '3000', 'top').subscribe(
-          toast => {
-          }
-        );  
+        // this.toast.show(`User not verified Yet`, '3000', 'top').subscribe(
+        //   toast => {
+        //   }
+        // );  
           })
     
 

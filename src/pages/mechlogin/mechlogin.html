@@ -56,11 +56,11 @@
                     <button ion-button class="submit-btn" full round type="submit">Login</button>
                 </ion-col>
             </ion-row>
-            <ion-row >
-                <ion-col *ngIf="!mechLogin" class="signup-col" pull-left>
+            <ion-row>
+                <ion-col *ngIf="!mechLogin" class="signup-col">
                     <a (click)="signUp()">Sign Up</a>
                 </ion-col>
-                <ion-col class="signup-col" pull-right>
+                <ion-col class="signup-col" text-right>
                     <a (click)="forgotPassword()">forgot password</a>
                 </ion-col>
             </ion-row>
