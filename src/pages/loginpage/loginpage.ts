@@ -146,48 +146,48 @@ export class LoginpagePage {
   }
 
   facebookLogin() {
-                    // this.toast.show(`Google Login comming soon...`, '3000', 'top').subscribe(
-                    //   toast => {
-                    //   }
-                    // ); 
+                    this.toast.show(`Google Login comming soon...`, '3000', 'top').subscribe(
+                      toast => {
+                      }
+                    ); 
         //  var userDetails = {"identifier":"gleedtechuser@gmail.com","password":"123123123","email":"gleedtechuser@gmail.com"}
 
-         var userDetails = {"identifier":"doddibalubharadwaj@gmail.com","password":"123123123","email":"doddibalubharadwaj@gmail.com"}
+        //  var userDetails = {"identifier":"doddibalubharadwaj@gmail.com","password":"123123123","email":"doddibalubharadwaj@gmail.com"}
 
-            this.airconeProvider.userLogin(userDetails)
-              .then(res => {
-                var tempData = [];                
-                tempData.push(res);
-                this.data = res;
-                console.log(this.data)
-                if (this.data.status === 200 && this.data.user.role[0] == 'USER') {
-                  this.navCtrl.setRoot(HomePage);                                      
-                  if (!tempData[0].user.firstName || !tempData[0].user.email || !tempData[0].user.phoneNumber || tempData[0].user.firstName == "" || tempData[0].user.email == "" || tempData[0].user.phoneNumber == "") {
-                    this.navCtrl.push(ProfilePage)
-                    // this.toast.show(`Please Update Profile`, '5000', 'center').subscribe(
-                    //   toast => {
-                    //   }
-                    // );                 
-                  } else {
-                    // this.toast.show(`Logged in as `+tempData[0].user.firstName, '3000', 'top').subscribe(
-                    //   toast => {
-                    //   }
-                    // );  
-                    this.navCtrl.setRoot(HomePage);                                                          
-                  }
-                  var userInfo = {
-                    "firstName": tempData[0].user.firstName,
-                    "email": tempData[0].user.email,
-                    "phoneNumber": tempData[0].user.phoneNumber,
-                    "id": tempData[0].user.id,
-                    "lastName": tempData[0].user.lastName,
-                    "tokenId": tempData[0].user.tokenId,
-                    "role": tempData[0].user.role,
-                    "accountType": tempData[0].user.accountType,
-                    "coords": this.coords,
-                  }
-                  localStorage.setItem('userData', JSON.stringify(userInfo));
-                } 
+        //     this.airconeProvider.userLogin(userDetails)
+        //       .then(res => {
+        //         var tempData = [];                
+        //         tempData.push(res);
+        //         this.data = res;
+        //         console.log(this.data)
+        //         if (this.data.status === 200 && this.data.user.role[0] == 'USER') {
+        //           this.navCtrl.setRoot(HomePage);                                      
+        //           if (!tempData[0].user.firstName || !tempData[0].user.email || !tempData[0].user.phoneNumber || tempData[0].user.firstName == "" || tempData[0].user.email == "" || tempData[0].user.phoneNumber == "") {
+        //             this.navCtrl.push(ProfilePage)
+        //             // this.toast.show(`Please Update Profile`, '5000', 'center').subscribe(
+        //             //   toast => {
+        //             //   }
+        //             // );                 
+        //           } else {
+        //             // this.toast.show(`Logged in as `+tempData[0].user.firstName, '3000', 'top').subscribe(
+        //             //   toast => {
+        //             //   }
+        //             // );  
+        //             this.navCtrl.setRoot(HomePage);                                                          
+        //           }
+        //           var userInfo = {
+        //             "firstName": tempData[0].user.firstName,
+        //             "email": tempData[0].user.email,
+        //             "phoneNumber": tempData[0].user.phoneNumber,
+        //             "id": tempData[0].user.id,
+        //             "lastName": tempData[0].user.lastName,
+        //             "tokenId": tempData[0].user.tokenId,
+        //             "role": tempData[0].user.role,
+        //             "accountType": tempData[0].user.accountType,
+        //             "coords": this.coords,
+        //           }
+        //           localStorage.setItem('userData', JSON.stringify(userInfo));
+        //         } 
 
         //         // else if (this.data.status === 200 && this.data.user.role[0] == 'MECHANIC') {
         //         //   this.navCtrl.push(MechanicPage);
@@ -243,7 +243,7 @@ export class LoginpagePage {
 
     //   }, function (error) {
     //     // alert(error);
-      });
+      // });
   }
 
   doGoogleLogin() {
@@ -262,7 +262,7 @@ export class LoginpagePage {
   }
 
   login() {
-    this.navCtrl.push(MechloginPage, {mechLogin: false} );
+    this.navCtrl.push(MechloginPage, {mechLogin: false, resetUserPassword: true} );
   }
 
 }

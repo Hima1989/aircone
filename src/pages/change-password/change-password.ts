@@ -4,7 +4,7 @@ import {Validators, FormBuilder } from '@angular/forms';
 import { Toast } from '@ionic-native/toast';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { MechanicPage } from '../mechanic/mechanic';
-import { MechloginPage } from '../mechlogin/mechlogin';
+import { LoginpagePage } from '../loginpage/loginpage';
 import { HomePage } from '../home/home';
 
 /**
@@ -26,10 +26,14 @@ export class ChangePasswordPage {
   data;
   forChangePassword;
   forMech;
+  resetUserPassword;
   constructor(private toast: Toast, public navCtrl: NavController, public navParams: NavParams, private airconeProvider: AirconeProvider, private formBuilder: FormBuilder, public platform: Platform) {
     if(navParams.get("forChangePassword")) {
       this.forChangePassword = true
       this.getUserDetails();      
+    }
+    if(navParams.get("resetUserPassword")) {
+      this.resetUserPassword = true
     }
     if(navParams.get("forMech")) {
       this.forMech = true
@@ -89,6 +93,7 @@ export class ChangePasswordPage {
             var user = JSON.parse(userData);
             if (pass.newPass == pass.ReNewPass && pass.oldPass && this.forMech === false) {
               if(this.userDetails.accountType) {
+                
                 this.airconeProvider.changeuserPassword(user.id, pass)
                 .then(res => {
                   var tempData = [];                
@@ -98,7 +103,7 @@ export class ChangePasswordPage {
                     this.navCtrl.setRoot(HomePage).then(() =>{
                       this.navCtrl.popToRoot();
                  });                   
-                  this.toast.show(`New Password has updated`, '3000', 'center').subscribe(
+                  this.toast.show(`New Password has updated, Check your mail to change password`, '5000', 'center').subscribe(
                       toast => {
                       })
                   } else if (this.data.status === 404) {
@@ -108,6 +113,7 @@ export class ChangePasswordPage {
                   }
                 })  
               } else {
+                
                 this.airconeProvider.changePassword(user.id, pass)
                 .then(res => {
                   var tempData = [];                
@@ -132,20 +138,25 @@ export class ChangePasswordPage {
                 })
             }
           } else {
+            
             if (pass.newPass == pass.ReNewPass) {
-              if(this.userDetails.accountType) { 
+              if(this.resetUserPassword) {                 
                 this.airconeProvider.resetUserPassword(pass)
                 .then( res => {
-                  this.toast.show(`New Password has updated`, '3000', 'center').subscribe(
+                  this.data = res;
+                  this.toast.show(`Check your mail To conform Reset Password`, '5000', 'center').subscribe(
                     toast => {
                     })
+                  this.navCtrl.push(LoginpagePage)                      
                 })
               } else {
+                
                 this.airconeProvider.resetPassword(pass)
                 .then( res => {
                   this.toast.show(`New Password has updated`, '3000', 'center').subscribe(
                     toast => {
                     })
+                    this.navCtrl.push(LoginpagePage)
                 })
               }
 

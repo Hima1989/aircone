@@ -257,9 +257,9 @@ export class MyApp {
     this.menuCtrl.close();
     this.nav.push(LoginpagePage)
     localStorage.removeItem("userData")
-    //   this.fb.logout()
-    // .then( res => {})
-    // .catch(e => console.log('Error logout from Facebook', e));
+      this.fb.logout()
+    .then( res => {})
+    .catch(e => console.log('Error logout from Facebook', e));
   //  this.nav.push(LoginpagePage); 
    }
 
