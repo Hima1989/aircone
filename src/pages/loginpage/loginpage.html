@@ -19,7 +19,7 @@
             </ion-row>
         </ion-grid>-->
         <img src="assets/images/login.png" />
-        <p>1 Million Happy Customers</p>
+        <p>Happy customers with our service</p>
     </div>
     <div class="login-heading">
         <h4>Continue with</h4>
@@ -33,13 +33,18 @@
                     <div class="clear"></div>
                 </div>
                 <div class="terms">
-                    <p (click)="login()">Login/Sign Up</p>
-                    <p>By continuing, you agree to our</p>
-                    <a>Terms & Conditions</a>
+                    <p>
+                        <span class="meclogin" (click)="login()">Login/Sign Up</span>
+                    </p>
+                    <p>
+                        <span class="meclogin" (click)="mechLogin()">Login as a Mechanic</span>
+                    </p>
                 </div>
                 <div class="terms">
-                    <span class="meclogin" (click)="mechLogin()">Login as a Mechanic</span>
+                    <p class="termsConditions">By continuing, you agree to our</p>
+                    <a>Terms & Conditions</a>
                 </div>
+
             </ion-col>
         </ion-row>
     </ion-grid>
