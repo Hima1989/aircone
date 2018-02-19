@@ -20,6 +20,15 @@ page-mech-home {
         font-size: 20px;
         font-weight: 700;
     }
+    .userPrice {
+        border-top: 1px solid $colorLightWhite;
+        padding: 10px 0;
+        margin-top: 10px;
+        p.finalPrice {
+            color: $btnRed;
+            border-top: 1px solid $colorLightWhite;
+        }
+    }
 }
 
 // * {

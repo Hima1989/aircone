@@ -29,17 +29,10 @@
     <ion-item>Status: {{serviceInfo.status}}</ion-item>-->
         <ion-item class="addressBlock">
             <div class="addressText">
-                    <p><span class="fielsList">Service Info</span></p>
-                    
+                <p text-center><span class="fielsList">Service Info</span></p>
                 <p><span class="fielsList">ServiceName</span><span class="userList">:{{serviceInfo.serviceName}},</span></p>
                 <p><span class="fielsList">Status</span><span class="userList">:{{serviceInfo.status}},</span></p>
-                <div *ngIf="serviceInfo.finalSpare || serviceInfo.finalService">
-                <p *ngFor="let serviceSpareInfo of request.finalSpare"><span class="fielsList">{{serviceSpareInfo.sparename}}</span><span class="userList">:{{serviceSpareInfo.sparerate *serviceSpareInfo.rate}},</span></p>
-                <p *ngFor="let serviceSpareInfo of request.finalService"><span class="fielsList">{{serviceSpareInfo.name}}, {{serviceSpareInfo.type}}</span><span class="userList">:{{serviceSpareInfo.Price *serviceSpareInfo.rate}},</span></p>
-                <p><span class="fielsList">Final Price</span><span class="userList">:{{request.finalCharge}},</span></p>
-                </div>
                 <p><span class="fielsList">User Info</span></p>
-                
                 <p><span class="fielsList">user name</span><span class="userList">:{{userRequest.Name}},</span></p>
                 <p><span class="fielsList">phone</span><span class="userList">:{{userRequest.Phone}},</span></p>
                 <p><span class="fielsList">Alternative Ph</span><span class="userList">:{{userRequest.AltPhone}},</span></p>
@@ -47,6 +40,11 @@
                 <p><span class="fielsList">Street </span><span class="userList">:{{userRequest.Street}},</span></p>
                 <p><span class="fielsList">Area </span><span class="userList">:{{userRequest.Area}},</span></p>
                 <p><span class="fielsList">City </span><span class="userList">:{{userRequest.City}}.</span></p>
+                <div *ngIf="serviceInfo.finalSpare || serviceInfo.finalService" class="userPrice">
+                    <p *ngFor="let serviceSpareInfo of request.finalSpare"><span class="fielsList">{{serviceSpareInfo.sparename}}</span><span class="userList">:{{serviceSpareInfo.sparerate *serviceSpareInfo.rate}}/-</span></p>
+                    <p *ngFor="let serviceSpareInfo of request.finalService"><span class="fielsList">{{serviceSpareInfo.name}}, {{serviceSpareInfo.type}}</span><span class="userList">:{{serviceSpareInfo.Price *serviceSpareInfo.rate}}/-</span></p>
+                    <p class="finalPrice"><span class="fielsList">Final Price</span><span class="userList">:{{request.finalCharge}}/-</span></p>
+                </div>
             </div>
         </ion-item>
     </ion-list>
