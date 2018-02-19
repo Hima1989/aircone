@@ -13,7 +13,7 @@ ion-spinner * {
     margin: auto;
     stroke: #444;
     fill: #222;
-  }
+}
 
 .clear {
     clear: both;
@@ -38,7 +38,7 @@ ion-spinner * {
     .slide-img.swiper-slide {
         height: 200px;
         img {
-            max-height: inherit;
+            // max-height: inherit;
         }
         .slide-zoom {
             position: absolute;
