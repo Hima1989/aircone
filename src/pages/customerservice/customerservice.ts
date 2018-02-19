@@ -22,7 +22,6 @@ import { CallNumber } from '@ionic-native/call-number';
 export class CustomerservicePage {
 
   comment;
-  number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, private toast: Toast, public platform: Platform, private callNumber: CallNumber) {
     platform.registerBackButtonAction(() => {
@@ -36,7 +35,7 @@ export class CustomerservicePage {
   }
 
   callAdminNumber() {
-    this.callNumber.callNumber(this.number, true)
+    this.callNumber.callNumber("9705931593", true)
     .then(() => {})
     .catch(() => {});
   }
