@@ -73,26 +73,33 @@ export class SignupPage {
       this.airconeProvider.appUserRegister(this.orderForm.value)
       .then( res => {
          this.data = res;
+         console.log(this.data)
         if(this.data.status == 412) {
           this.toast.show(`User Already exixted`, '5000', 'center').subscribe(
             toast => {
             }
           );  
         }
-        this.orderForm.reset()        
-        this.presentToast()
-        this.navCtrl.push(MechloginPage, {mechLogin: false} );
+        if(this.data.status == 200) {
+          this.toast.show(`User Account is created check your mail to active account`, '5000', 'center').subscribe(
+            toast => {
+            }
+          );  
+          this.navCtrl.push(MechloginPage, {mechLogin: false} );
+
+        }
       })
     } else {
       this.updateToast()
+      
     }
   }
-  presentToast() {
-     this.toast.show(`Account Successfully Created`, '5000', 'center').subscribe(
-            toast => {
-            }
-          );     
-  }
+  // presentToast() {
+  //    this.toast.show(`Account Successfully Created, Go and check your mail To active Account..`, '5000', 'center').subscribe(
+  //           toast => {
+  //           }
+  //         );     
+  // }
 
   updateToast() {
      this.toast.show(`passwords missmatch`, '5000', 'center').subscribe(

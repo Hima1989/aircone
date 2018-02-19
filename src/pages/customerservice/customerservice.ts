@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { Toast } from '@ionic-native/toast';
 import { HomePage } from '../home/home';
+import { CallNumber } from '@ionic-native/call-number';
 
 // import { ServicesHomePage } from '../services-home/services-home';
 
@@ -21,8 +22,9 @@ import { HomePage } from '../home/home';
 export class CustomerservicePage {
 
   comment;
+  number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, private toast: Toast, public platform: Platform) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, private toast: Toast, public platform: Platform, private callNumber: CallNumber) {
     platform.registerBackButtonAction(() => {
       this.navCtrl.setRoot(HomePage).then(() =>{
         this.navCtrl.popToRoot();
@@ -31,6 +33,12 @@ export class CustomerservicePage {
   }
 
   ionViewDidLoad() {
+  }
+
+  callAdminNumber() {
+    this.callNumber.callNumber(this.number, true)
+    .then(() => {})
+    .catch(() => {});
   }
 
   servicesubmit(){

@@ -6,6 +6,9 @@ page-repair {
             color: $colorBlack;
         }
     }
+    .finalBtns {
+        margin: 10px 0;
+    }
     .profile-item {
         .selectType {
             width: 23%;
@@ -15,7 +18,8 @@ page-repair {
         }
     }
     .priceBill .col.priceCol {
-        background-color: lightgrey;
+        background-color: $colorGray;
+        color: $colorWhite;
         .nullPadding {
             align-items: inherit;
             min-height: auto;
@@ -34,7 +38,7 @@ page-repair {
         }
     }
     .col.priceCol {
-        border: solid 1px grey;
+        border: solid 1px $colorBlack;
         border-bottom-style: none;
         border-right-style: none;
         position: relative;
@@ -45,10 +49,10 @@ page-repair {
         }
     }
     .col.priceCol:last-child {
-        border-right: solid 1px grey;
+        border-right: solid 1px $colorBlack;
     }
     .row:last-child .col.priceCol {
-        border-bottom: solid 1px grey;
+        border-bottom: solid 1px $colorBlack;
     }
     .nullPadding {
         padding: 0;
