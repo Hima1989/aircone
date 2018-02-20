@@ -48,14 +48,14 @@
                 <ion-item>
                     <ion-label floating class="machLogin">password</ion-label>
                     <ion-input type="{{typePass}}" formControlName="password" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
-                    
+                    <button class="passwordEye" ion-button clear color="dark" type="button" item-right><ion-icon ios="ios-eye" (click)="changePassType()" md="md-eye"></ion-icon></button>
                 </ion-item>
-                <ion-icon ios="ios-eye" (click)="changePassType()" md="md-eye"></ion-icon>
+                <!--<ion-icon ios="ios-eye" (click)="changePassType()" md="md-eye"></ion-icon>-->
             </ion-list>
 
             <ion-row>
                 <ion-col class="signup-col">
-                        
+
                     <button ion-button class="submit-btn" full round type="submit">Login</button>
                 </ion-col>
             </ion-row>
