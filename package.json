@@ -104,15 +104,15 @@
       "cordova-plugin-compat": {},
       "cordova-plugin-x-toast": {},
       "phonegap-plugin-local-notification": {},
-      "cordova-plugin-facebook4": {
-        "APP_ID": "161659434566848",
-        "APP_NAME": "airCone"
-      },
       "cordova-plugin-googleplus": {
         "REVERSED_CLIENT_ID": "399098528529-ekgcf7skomc1a4j37p52e1hfere4p9vo.apps.googleusercontent.com"
       },
       "mx.ferreyra.callnumber": {},
-      "cordova-plugin-nativegeocoder": {}
+      "cordova-plugin-nativegeocoder": {},
+      "cordova-plugin-facebook4": {
+        "APP_ID": "190645805025239",
+        "APP_NAME": "aertech"
+      }
     },
     "platforms": [
       "android",

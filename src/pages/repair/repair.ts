@@ -29,18 +29,19 @@ export class RepairPage {
   finalService
   constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, public alertCtrl: AlertController, public platform: Platform, private toast: Toast) {
     this.request = navParams.get("request")
-    this.finalSpare = this.request.finalSpare
-    this.finalService = this.request.finalService    
-    this.finalCharge = this.request.finalCharge
-        if(this.request.finalSpare) {  
+    // this.finalSpare = this.request.finalSpare
+    // this.finalService = this.request.finalService    
+    // this.finalCharge = this.request.finalCharge
+        if(this.request.finalSpare !== undefined) {  
         this.finalSpare = this.request.finalSpare
     }
-    if(this.request.finalService) {
+    if(this.request.finalService !== undefined) {
       this.finalService = this.request.finalService          
     }
     if (this.request.finalCharge) {
       this.finalCharge = this.request.finalCharge      
     }
+    console.log(this.request)
     this.getCompleted = navParams.get("status")    
     this.getAllServiceSpares();
     this.getService();

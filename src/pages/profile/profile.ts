@@ -28,6 +28,7 @@ export class ProfilePage {
   referral: boolean = true;
   forMech: boolean;
   forUser: boolean;
+  data;
   constructor(private toast: Toast, public navCtrl: NavController, public navParams: NavParams, public camera:Camera, public airconeProvider: AirconeProvider, public menu: MenuController, public platform: Platform) {
     this.getUserDetails();
     // this.menu.enable(true, 'user');
@@ -61,15 +62,24 @@ export class ProfilePage {
       }
       this.airconeProvider.userDetailsUpdate(this.userDetails)
       .then(res => {        
-        this.updateToast();
-        if (this.forUser) {
-          this.navCtrl.setRoot(HomePage).then(() =>{
-            this.navCtrl.popToRoot();
-          });
-        }
-        if (this.forMech) {
-          this.navCtrl.push(MechanicPage);          
-        }
+        this.data = res;
+        if (this.data.status == 404) {
+          this.toast.show(`PhoneNumber already used for another account`, '5000', 'center').subscribe(
+            toast => {
+            }
+          ); 
+        } else {
+          this.updateToast();
+          if (this.forUser) {
+            this.navCtrl.setRoot(HomePage).then(() =>{
+              this.navCtrl.popToRoot();
+            });
+          }
+          if (this.forMech) {
+            this.navCtrl.push(MechanicPage);          
+          }
+        } 
+
       })
     }
   }

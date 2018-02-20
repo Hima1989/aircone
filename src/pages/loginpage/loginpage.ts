@@ -36,7 +36,9 @@ export class LoginpagePage {
   constructor(private nativeGeocoder: NativeGeocoder, private statusBar:StatusBar, public platform: Platform, public navCtrl: NavController, public googlePlus: GooglePlus, public navParams: NavParams, private fb: Facebook, public airconeProvider: AirconeProvider, private geolocation: Geolocation,private toast: Toast) {
     platform.registerBackButtonAction(() => {
       if (this.backButtonPressed) {
-        this.platform.exitApp();
+        this.fb.logout()
+        .then( res => {this.platform.exitApp();})
+        .catch(e => console.log('Error logout from Facebook', e));        
       } else {
         this.toast.show(`Press again to exit aer Tech`, '4000', 'bottom').subscribe(
           toast => {
