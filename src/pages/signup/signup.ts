@@ -6,6 +6,7 @@ import { AirconeProvider } from '../../providers/aircone/aircone';
 import { MechloginPage } from '../mechlogin/mechlogin';
 import {Validators, FormBuilder } from '@angular/forms';
 import { Geolocation } from '@ionic-native/geolocation';
+import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
 
 /**
  * Generated class for the SignupPage page.
@@ -27,11 +28,13 @@ export class SignupPage {
   referredBy;
   coords;
   data;
+  typePass = "password";
+  typePassStatus = true;
   constructor(private toast: Toast, public navCtrl: NavController, public navParams: NavParams, public camera:Camera, public airconeProvider: AirconeProvider, public platform: Platform, private formBuilder: FormBuilder, private geolocation: Geolocation) {
 
     this.orderForm  = this.formBuilder.group({
       firstName: ['', Validators.required],
-      phoneNumber: ['', Validators.required],      
+      mobileNumber: ['', Validators.required],      
       email: ['', Validators.required],
       password: ['', Validators.required],
       rePassword: ['', Validators.required],
@@ -73,7 +76,6 @@ export class SignupPage {
       this.airconeProvider.appUserRegister(this.orderForm.value)
       .then( res => {
          this.data = res;
-         console.log(this.data)
         if(this.data.status == 412) {
           this.toast.show(`User Already exixted`, '5000', 'center').subscribe(
             toast => {
@@ -106,6 +108,16 @@ export class SignupPage {
             toast => {
             }
           );     
+  }
+
+  changePassType() {
+    if (this.typePassStatus) {
+      this.typePass = "text";   
+      this.typePassStatus = false;   
+    } else {
+      this.typePass = "password"; 
+      this.typePassStatus = true;            
+    }
   }
 
   accessGallery(){

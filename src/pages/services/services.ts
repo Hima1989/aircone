@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams, App, MenuController, Platform } fr
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { ServicesHomePage } from '../services-home/services-home';
 import { HomePage } from '../home/home';
-import { Toast } from '@ionic-native/toast';
 // import { HomePage } from '../home/home';
 
 /**
@@ -25,7 +24,7 @@ export class ServicesPage {
   // backButtonPressed: boolean;
   // backButtonPressedTimer;  
   
-  constructor(private toast: Toast, public platform: Platform, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, public app: App, public menu: MenuController) {
+  constructor(public platform: Platform, public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, public app: App, public menu: MenuController) {
     this.loadServices();
     // menu.enable(true)
     // platform.

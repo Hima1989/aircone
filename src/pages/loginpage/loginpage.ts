@@ -10,6 +10,7 @@ import { MechloginPage } from '../mechlogin/mechlogin';
 import { Toast } from '@ionic-native/toast';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
+import { NativeGeocoder, NativeGeocoderReverseResult } from '@ionic-native/native-geocoder';
 /**
  * Generated class for the LoginpagePage page.
  *
@@ -30,12 +31,14 @@ export class LoginpagePage {
   backButtonPressed: boolean
   backButtonPressedTimer;
   errr;
-  constructor(private statusBar:StatusBar, public platform: Platform, public navCtrl: NavController, public googlePlus: GooglePlus, public navParams: NavParams, private fb: Facebook, public airconeProvider: AirconeProvider, private geolocation: Geolocation,private toast: Toast) {
+  userLocation: any = {};
+  userLocation1;
+  constructor(private nativeGeocoder: NativeGeocoder, private statusBar:StatusBar, public platform: Platform, public navCtrl: NavController, public googlePlus: GooglePlus, public navParams: NavParams, private fb: Facebook, public airconeProvider: AirconeProvider, private geolocation: Geolocation,private toast: Toast) {
     platform.registerBackButtonAction(() => {
       if (this.backButtonPressed) {
         this.platform.exitApp();
       } else {
-        this.toast.show(`Press again to exit airTech`, '4000', 'bottom').subscribe(
+        this.toast.show(`Press again to exit aer Tech`, '4000', 'bottom').subscribe(
           toast => {
           }
         );
@@ -75,9 +78,18 @@ export class LoginpagePage {
         latitude: resp.coords.latitude,
         longitude: resp.coords.longitude
       }
+
      }).catch((error) => {
        console.log('Error getting location', error);
      });
+     if (this.coords) {
+      this.nativeGeocoder.reverseGeocode(this.coords.latitude, this.coords.longitude)
+      .then((result: NativeGeocoderReverseResult) => {
+        this.coords.userLocation = JSON.stringify(result[0].subLocality);
+      })
+      .catch((error: any) => console.log(error));
+     }
+
 
   }
 
@@ -113,7 +125,7 @@ export class LoginpagePage {
           
           // if (this.data.status === 200 && this.data.user.role[0] == 'USER') {
             this.navCtrl.setRoot(HomePage);                                      
-            if (!tempData[0].firstName || tempData[0].email == null || tempData[0].phoneNumber == null || tempData[0].firstName == "" || tempData[0].email == "" || tempData[0].phoneNumber == "") {
+            if (!tempData[0].firstName || tempData[0].email == null || tempData[0].mobileNumber == null || tempData[0].firstName == "" || tempData[0].email == "" || tempData[0].mobileNumber == "") {
               this.navCtrl.push(ProfilePage)
               this.toast.show(`Please Update Profile`, '5000', 'center').subscribe(
                 toast => {
@@ -248,7 +260,7 @@ export class LoginpagePage {
 
   doGoogleLogin() {
     this.googlePlus.login({
-      'scopes': '', // optional, space-separated list of scopes, If not included or empty, defaults to `profile` and `email`.
+      // 'scopes': '', // optional, space-separated list of scopes, If not included or empty, defaults to `profile` and `email`.
       'webClientId': '399098528529-ekgcf7skomc1a4j37p52e1hfere4p9vo.apps.googleusercontent.com', // optional clientId of your Web application from Credentials settings of your project - On Android, this MUST be included to get an idToken. On iOS, it is not required.
       'offline': true
     })

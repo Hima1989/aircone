@@ -46,7 +46,7 @@ export class HomePage {
       if (this.backButtonPressed) {
         this.platform.exitApp();
       } else {
-        this.toast.show(`Press again to exit airTech`, '4000', 'bottom').subscribe(
+        this.toast.show(`Press again to exit aer Tech`, '4000', 'bottom').subscribe(
           toast => {
           }
         );
@@ -189,6 +189,7 @@ loadMap() {
       };
   
       this.map = GoogleMaps.create('map', mapOptions);
+      this.map.setCompassEnabled(false)
       this.map.one(GoogleMapsEvent.MAP_READY)
         .then(() => {
             // for (var i = 0; i < locations.length; i++) {

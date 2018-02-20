@@ -5,6 +5,7 @@ import { AirconeProvider } from '../../providers/aircone/aircone';
 import { Toast } from '@ionic-native/toast';
 import { MechanicPage } from '../mechanic/mechanic';
 import { HomePage } from '../home/home';
+// import {Validators, FormBuilder } from '@angular/forms';
 
 
 /**
@@ -32,7 +33,9 @@ export class ProfilePage {
     // this.menu.enable(true, 'user');
     // this.menu.enable(false, 'mech');
     // this.orderForm  = this.formBuilder.group({
-          
+    //   firstName: ['', Validators.required],
+    //   email: ['', Validators.required],
+    //   mobileNumber: ['', Validators.required]   
     // });
     platform.registerBackButtonAction(() => {
       if (this.forUser) {
@@ -50,13 +53,12 @@ export class ProfilePage {
   }
 
   submitDetails() {
-    if(this.userDetails.firstName == undefined || this.userDetails.phoneNumber == undefined || this.userDetails.phoneNumber == "" || this.userDetails.firstName == ""){
+    if(this.userDetails.firstName == undefined || this.userDetails.mobileNumber == undefined || this.userDetails.mobileNumber == "" || this.userDetails.firstName == ""){
       this.presentToast();
     }else{
       if (this.myfile) {
         this.userDetails.image = this.myfile.imageURL;
       }
-      console.log(this.userDetails)
       this.airconeProvider.userDetailsUpdate(this.userDetails)
       .then(res => {        
         this.updateToast();
