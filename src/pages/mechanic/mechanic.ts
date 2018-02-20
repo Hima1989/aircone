@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, MenuController, Platform } from 'i
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { MechHomePage } from '../mech-home/mech-home';
 import { Toast } from '@ionic-native/toast';
+import { StatusBar } from '@ionic-native/status-bar';
+
 /**
  * Generated class for the MechanicPage page.
  *
@@ -24,7 +26,7 @@ export class MechanicPage {
   getCompleted: boolean = false;
   backButtonPressed: boolean
   backButtonPressedTimer;
-  constructor(private toast: Toast, public navCtrl: NavController, public navParams: NavParams, private airconeProvider: AirconeProvider, public menu: MenuController, public platform: Platform) {
+  constructor(private statusBar:StatusBar, private toast: Toast, public navCtrl: NavController, public navParams: NavParams, private airconeProvider: AirconeProvider, public menu: MenuController, public platform: Platform) {
     this.menu.enable(false, 'user');
     this.menu.enable(true, 'mech');
     if (navParams.get("status")) {
@@ -35,7 +37,7 @@ export class MechanicPage {
       if (this.backButtonPressed) {
         this.platform.exitApp();
       } else {
-        this.toast.show(`Press again to exit airTech`, '4000', 'bottom').subscribe(
+        this.toast.show(`Press again to exit aer Tech`, '4000', 'bottom').subscribe(
           toast => {
           }
         );
@@ -62,7 +64,9 @@ export class MechanicPage {
   }
 
   ionViewDidLoad() {
+    this.statusBar.backgroundColorByHexString('#dedede');
   }
+
 
   getMechanicRequestList() {
     var userData = JSON.parse(localStorage.getItem('userData'))

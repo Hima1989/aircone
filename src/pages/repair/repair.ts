@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, AlertController, Platform } from '
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { MechanicPage } from '../mechanic/mechanic';
 import { MechHomePage } from '../mech-home/mech-home';
+import { Toast } from '@ionic-native/toast';
+
 /**
  * Generated class for the RepairPage page.
  *
@@ -25,8 +27,20 @@ export class RepairPage {
   service;
   getCompleted;
   finalService
-  constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, public alertCtrl: AlertController, public platform: Platform) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, public alertCtrl: AlertController, public platform: Platform, private toast: Toast) {
     this.request = navParams.get("request")
+    this.finalSpare = this.request.finalSpare
+    this.finalService = this.request.finalService    
+    this.finalCharge = this.request.finalCharge
+        if(this.request.finalSpare) {  
+        this.finalSpare = this.request.finalSpare
+    }
+    if(this.request.finalService) {
+      this.finalService = this.request.finalService          
+    }
+    if (this.request.finalCharge) {
+      this.finalCharge = this.request.finalCharge      
+    }
     this.getCompleted = navParams.get("status")    
     this.getAllServiceSpares();
     this.getService();
@@ -63,11 +77,11 @@ export class RepairPage {
   }
 
   removeSpare(spare) {
-    this.finalService.splice(this.finalService.indexOf(spare),1)
+    this.finalSpare.splice(this.finalSpare.indexOf(spare),1)    
   }
 
   removeService(service) {
-    this.finalSpare.splice(this.finalSpare.indexOf(service),1)
+    this.finalService.splice(this.finalService.indexOf(service),1)    
   }
 
   getAllServiceSpares() {
@@ -82,20 +96,27 @@ export class RepairPage {
     this.airconeProvider.getOneService(this.request.serviceId)
     .then(res => {
       this.service = res;
+      console.log(this.service)
     });
   }
 
   sendBudget() {
 
     var finalSparePrice = 0;
-    this.finalSpare.forEach(spare => {
-      finalSparePrice += spare.rate*spare.sparerate
-    });
+    if (this.finalSpare) {
+      this.finalSpare.forEach(spare => {
+        finalSparePrice += spare.rate*spare.sparerate
+      });
+    }
+
 
     var finalServicePrice = 0;
-    this.finalService.forEach(service => {
-      finalServicePrice += service.rate*service.Price
-    });
+    if (this.finalService) {
+      this.finalService.forEach(service => {
+        finalServicePrice += service.rate*service.Price
+      });
+    }
+
 
     var finalCharge = finalSparePrice + finalServicePrice
     this.finalCharge = finalCharge
@@ -109,6 +130,10 @@ export class RepairPage {
       this.airconeProvider.closeRequest(this.request.id, this.finalSpareServiceCharge)
       .then ( data => {
         this.navCtrl.push(MechanicPage, {status: this.getCompleted})
+                this.toast.show(`Thanx for using our service`, '3000', 'top').subscribe(
+          toast => {
+          }
+        );  
       })
     } else {
       let alert = this.alertCtrl.create({

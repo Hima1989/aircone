@@ -47,12 +47,15 @@
                 </ion-item>
                 <ion-item>
                     <ion-label floating class="machLogin">password</ion-label>
-                    <ion-input type="password" formControlName="password" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
+                    <ion-input type="{{typePass}}" formControlName="password" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
+                    
                 </ion-item>
+                <ion-icon ios="ios-eye" (click)="changePassType()" md="md-eye"></ion-icon>
             </ion-list>
 
             <ion-row>
                 <ion-col class="signup-col">
+                        
                     <button ion-button class="submit-btn" full round type="submit">Login</button>
                 </ion-col>
             </ion-row>

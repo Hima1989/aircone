@@ -31,7 +31,7 @@
             <ion-option *ngFor="let sub of service.subServicePrice" [value]="sub">{{sub.name}}, {{sub.type}}</ion-option>
         </ion-select>
         <!--<ion-label>Quantity</ion-label>-->
-        <ion-select name="sparerateQuantity" [(ngModel)]="serviceRateQuantity" class="selectType spareSelect" placeholder="Qty">
+        <!-- <ion-select name="sparerateQuantity" [(ngModel)]="serviceRateQuantity" class="selectType spareSelect" placeholder="Qty">
             <ion-option value="1">1</ion-option>
             <ion-option value="2">2</ion-option>
             <ion-option value="3">3</ion-option>
@@ -42,7 +42,7 @@
             <ion-option value="8">8</ion-option>
             <ion-option value="9">9</ion-option>
             <ion-option value="10">10</ion-option>
-        </ion-select>
+        </ion-select> -->
     </ion-item>
 
     <form (ngSubmit)="sendBudget()">

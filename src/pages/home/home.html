@@ -47,7 +47,7 @@
                         <img [src]="comment.image ? comment.image : 'assets/images/cus-img.png'">
                     </ion-avatar>
                     <h2 class="cus-name">{{comment.user.userName}}</h2>
-                    <p class="cus-nav">Akkayyapalem</p>
+                    <p class="cus-nav">{{comment.coords.userLocation}}</p>
                     <ion-avatar item-end>
                         <img class="smileReview" float-right *ngIf="comment.rating == 1" src="assets/images/rating1.png">
                         <img class="smileReview" float-right *ngIf="comment.rating == 2" src="assets/images/rating2.png">

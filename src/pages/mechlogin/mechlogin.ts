@@ -28,6 +28,8 @@ export class MechloginPage {
   data;
   mechLogin: boolean;
   resetUserPassword;
+  typePass = "password";
+  typePassStatus = true;
   constructor(private statusBar:StatusBar, private toast: Toast, public navCtrl: NavController,public airconeProvider: AirconeProvider, public navParams: NavParams, private formBuilder: FormBuilder, public platform: Platform) {
     this.loginForm = this.formBuilder.group({
       identifier: ['', Validators.required],
@@ -49,6 +51,16 @@ export class MechloginPage {
 
   ionViewDidLoad() {
     this.statusBar.backgroundColorByHexString('#dedede');
+  }
+
+  changePassType() {
+    if (this.typePassStatus) {
+      this.typePass = "text";   
+      this.typePassStatus = false;   
+    } else {
+      this.typePass = "password"; 
+      this.typePassStatus = true;            
+    }
   }
 
   login() {
@@ -79,7 +91,7 @@ export class MechloginPage {
         );  
       } else if (this.data.status === 200 && this.data.user.role[0] == 'USER'){
           this.navCtrl.setRoot(HomePage);                                      
-          if (this.data.user.firstName == null || this.data.user.email == null || this.data.user.phoneNumber == null || this.data.user.firstName == "" || this.data.user.email == "" || this.data.user.phoneNumber == "") {
+          if (this.data.user.firstName == null || this.data.user.email == null || this.data.user.mobileNumber == null || this.data.user.firstName == "" || this.data.user.email == "" || this.data.user.mobileNumber == "") {
             this.navCtrl.push(ProfilePage)
             this.toast.show(`Please Update Profile`, '5000', 'center').subscribe(
               toast => {
