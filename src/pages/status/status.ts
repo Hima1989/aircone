@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, Platform } from 'ionic-angular';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { RequestslistPage } from '../requestslist/requestslist';
 import { Toast } from '@ionic-native/toast';
@@ -29,7 +29,7 @@ export class StatusPage {
   popUp: boolean = true
   gsmile: any = {gs1: 's', gs2: 's', gs3: 's', gs4: 's', gs5: 's'}
   lsmile: any = {ls1: '', ls2: '', ls3: '', ls4: '', ls5: ''}
-  constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController, public airconeProvider: AirconeProvider,private toast: Toast) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController, public airconeProvider: AirconeProvider,private toast: Toast, public platform: Platform) {
     this.request = navParams.get("request")
     if (this.request.status == 'ORDER_REQUESTED') {
       this.requested = 'requested';
@@ -40,6 +40,9 @@ export class StatusPage {
     if (this.request.status == 'ORDER_APPROVED') {
       this.approved = 'approved';
     }
+    platform.registerBackButtonAction(() => {
+      this.navCtrl.push(RequestslistPage)      
+    });
   }
 
   ionViewDidLoad() {

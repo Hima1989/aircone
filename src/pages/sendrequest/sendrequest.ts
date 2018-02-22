@@ -77,7 +77,6 @@ export class SendrequestPage {
   var patt = new RegExp("^[1-9][0-9]{5}$");
   var res = patt.test(event)
     if (res) {
-      console.log(event)
       this.airconeProvider.getUserPincode(event)
       .then( res => {
         this.data = res;
