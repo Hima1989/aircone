@@ -33,4 +33,7 @@
             <button class="button {{request.status}}a">ACCEPTED</button>
         </div>
     </ion-item>
+    <ion-item *ngIf="norequest">
+        <p>You hav'nt make any Requests Yet !</p>
+    </ion-item>
 </ion-content>

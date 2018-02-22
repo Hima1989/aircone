@@ -5,12 +5,6 @@ import {Validators, FormBuilder } from '@angular/forms';
 import { ManageAddressPage } from '../manage-address/manage-address';
 import { Toast } from '@ionic-native/toast';
 
-/**
- * Generated class for the AddaddressPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -149,16 +143,11 @@ export class AddaddressPage {
       .then( res => {
         this.data = res;
         if (this.data.status == 200) {
-              // let toast = this.toastCtrl.create({
-              // message: 'Location Available',
-              // duration: 4000,
-              // position: 'bottom'
-              // });
+          
               this.toast.show(`Location available`, '5000', 'center').subscribe(
   toast => {
   }
 );
-              // toast.present();
         } else if (this.data.status == 404) {
           this.toast.show(`Location not available`, '5000', 'center').subscribe(
             toast => {

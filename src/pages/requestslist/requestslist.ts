@@ -19,7 +19,7 @@ import { HomePage } from '../home/home';
 export class RequestslistPage {
 
   requests;
-
+  norequest;
   constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, public platform: Platform) {
     this.loadRequests()
     platform.registerBackButtonAction(() => {
@@ -37,6 +37,9 @@ export class RequestslistPage {
     this.airconeProvider.loadRequests(userData.id)
     .then(res => {
       this.requests = res;
+      if(this.requests.length === 0) {
+        this.norequest = true;
+      } 
     })
   }
 
@@ -53,7 +56,6 @@ export class RequestslistPage {
     }
 
   delete(request) {
-  //  console.log(request)
     this.airconeProvider.deleteRequests(request.id)
     .then(res => {
       this.requests.splice(this.requests.indexOf(request),1)

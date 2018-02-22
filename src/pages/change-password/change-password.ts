@@ -53,11 +53,7 @@ export class ChangePasswordPage {
       ReNewPass: ['', Validators.required],
     })
     platform.registerBackButtonAction(() => {
-      // if (this.forChangePassword) {
-      //   this.navCtrl.push(MechanicPage, {status: true})      
-      // } else {
-      //   this.navCtrl.push(MechloginPage)
-      // }
+ 
       this.navCtrl.pop()
     });
   }
@@ -67,11 +63,7 @@ export class ChangePasswordPage {
 
   goBack() {
     this.navCtrl.pop()
-    // if (this.forChangePassword) {
-    //   this.navCtrl.push(MechanicPage, {status: true})      
-    // } else {
-    //   this.navCtrl.push(MechloginPage)
-    // }
+  
   }
     
       getUserDetails() {
