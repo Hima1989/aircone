@@ -17,42 +17,28 @@
     </ion-grid>
 </ion-header>
 <ion-content>
-    <!--<div class="service-top">
-        <ion-grid>
-            <ion-row>
-                <ion-col col-2 text-left>
-                    <ion-icon class="icon-back" ios="ios-arrow-back" md="md-arrow-back" (click)="goBack()"></ion-icon>
-                </ion-col>
-                <ion-col col-8 text-center>
-                    <ion-title class="title tittle-name">{{service.serviceName}}</ion-title>
-                </ion-col>
-            </ion-row>
-        </ion-grid>
-    </div>-->    
     <ion-slides class="slide-block" *ngIf="service.slider && service.slider.length" autoplay="3000" loop="true" speed="500" shouldLockSwipes=true>
         <ion-slide class="slide-img" *ngFor="let img of service.slider">
             <img src={{img}} />
-            <!--<ion-img width="80" height="80" src="..."></ion-img>-->
         </ion-slide>
     </ion-slides>
     <div class="service-block">
         <p class="service-content">{{service.description}}</p>
     </div>
-    <!-- <ion-spinner name="bubbles" *ngIf="showSpinner"></ion-spinner> -->
-    
+
     <div class="price-chart">
         <div class="service-block">
             <h5>Price chart</h5>
+
             <ion-row>
                 <ion-slides class="serviceBlockImg" loop="true" (click)="presentProfileModal()">
-                    <ion-slide col-4 class="" *ngFor="let img of service.priceChart">
+                    <ion-slide col-4 class="" *ngFor="let img of service.priceChart" class="priceListImg">
                         <img src="{{img}}" imageViewer>
                     </ion-slide>
                 </ion-slides>
                 <ion-col>
-                    <!-- <p class="service-content"><b>Note:</b> {{service.note}}</p> -->
-                    <ul>
-                         
+                    <ul class="termsList">
+
                         <li *ngFor="let note of service.note">
                             {{note}}
                         </li>
@@ -67,6 +53,5 @@
         <button class="btn-hrx" (click)="sendRequest(service.id)" ion-button round><ion-icon class="icons navigate nav-request" ios="ios-navigate" md="md-navigate"></ion-icon>Send Request</button>
     </ion-avatar>
 
-    
-</ion-content>
 
+</ion-content>

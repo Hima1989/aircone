@@ -5,6 +5,13 @@ page-services-home {
     .service-block {
         padding: 5px 16px;
     }
+    .termsList {
+        margin-left: 15px;
+        li {
+            // display: block;
+            padding-bottom: 5px;
+        }
+    }
 }
 
 ion-spinner * {
@@ -39,6 +46,7 @@ ion-spinner * {
         height: 200px;
         img {
             // max-height: inherit;
+            // width: 100%;
         }
         .slide-zoom {
             position: absolute;
