@@ -49,7 +49,7 @@ export class CustomerservicePage {
     }
     this.airconeProvider.sendFeedback(requestDetails)
     .then(res => {
-      this.toast.show(`Thanks For Your Service, We Will Consider Your FeedBack!`, '5000', 'center').subscribe(
+      this.toast.show(`Thank You, We Will Consider Your FeedBack!`, '5000', 'center').subscribe(
         toast => {
         }
       );

@@ -35,10 +35,7 @@ export class LoginpagePage {
   userLocation1;
   constructor(private nativeGeocoder: NativeGeocoder, private statusBar:StatusBar, public platform: Platform, public navCtrl: NavController, public googlePlus: GooglePlus, public navParams: NavParams, private fb: Facebook, public airconeProvider: AirconeProvider, private geolocation: Geolocation,private toast: Toast, public modalCtrl: ModalController) {
     platform.registerBackButtonAction(() => {
-      if (this.backButtonPressed) {
-        // this.fb.logout()
-        // .then( res => {this.platform.exitApp();})
-        // .catch(e => console.log('Error logout from Facebook', e));   
+      if (this.backButtonPressed) {  
         this.platform.exitApp();     
       } else {
         this.toast.show(`Press again to exit aer Tech`, '4000', 'bottom').subscribe(
@@ -61,10 +58,6 @@ export class LoginpagePage {
     this.statusBar.backgroundColorByHexString('#8526e4');
   }
 
-
-  // ionViewDidLoad() {
-  //   console.log('ionViewDidLoad LoginpagePage');
-  // }
 
   ngAfterViewInit() {
     this.platform.ready().then(() => {
@@ -99,21 +92,14 @@ export class LoginpagePage {
   tempLogin() {
     this.fb.login(['public_profile', 'user_friends', 'email'])
     .then((res: FacebookLoginResponse) => {
-      // console.log(res.authResponse.)
-      this.getUserDetail(res.authResponse.userID)
-      // console.log('Logged into Facebook!', res)
-      
+      this.getUserDetail(res.authResponse.userID)      
     }
   )
     .catch(e => 
       {
         console.log("not get")
       }
-      // console.log('Error logging into Facebook', e)
     );
-  
-  
-  // this.fb.logEvent(this.fb.EVENTS.EVENT_NAME_ADDED_TO_CART);
   }
 
   getUserDetail(userid) {
@@ -167,14 +153,13 @@ export class LoginpagePage {
                     ); 
         //  var userDetails = {"identifier":"gleedtechuser@gmail.com","password":"123123123","email":"gleedtechuser@gmail.com"}
 
-        //  var userDetails = {"identifier":"doddibalubharadwaj@gmail.com","password":"123123123","email":"doddibalubharadwaj@gmail.com"}
+        //  var userDetails = {"identifier":"doddibalubharadwaj@gmail.com","password":"123","email":"doddibalubharadwaj@gmail.com"}
 
         //     this.airconeProvider.userLogin(userDetails)
         //       .then(res => {
         //         var tempData = [];                
         //         tempData.push(res);
         //         this.data = res;
-        //         console.log(this.data)
         //         if (this.data.status === 200 && this.data.user.role[0] == 'USER') {
         //           this.navCtrl.setRoot(HomePage);                                      
         //           if (!tempData[0].user.firstName || !tempData[0].user.email || !tempData[0].user.phoneNumber || tempData[0].user.firstName == "" || tempData[0].user.email == "" || tempData[0].user.phoneNumber == "") {
@@ -193,7 +178,7 @@ export class LoginpagePage {
         //           var userInfo = {
         //             "firstName": tempData[0].user.firstName,
         //             "email": tempData[0].user.email,
-        //             "phoneNumber": tempData[0].user.phoneNumber,
+        //             "mobileNumber": tempData[0].user.phoneNumber,
         //             "id": tempData[0].user.id,
         //             "lastName": tempData[0].user.lastName,
         //             "tokenId": tempData[0].user.tokenId,
@@ -203,62 +188,8 @@ export class LoginpagePage {
         //           }
         //           localStorage.setItem('userData', JSON.stringify(userInfo));
         //         } 
-
-        //         // else if (this.data.status === 200 && this.data.user.role[0] == 'MECHANIC') {
-        //         //   this.navCtrl.push(MechanicPage);
-        //         //   var mechUserInfo = {
-        //         //     "firstName": tempData[0].user.firstName,
-        //         //     "email": tempData[0].user.email,
-        //         //     "phoneNumber": tempData[0].user.phoneNumber,
-        //         //     "id": tempData[0].user.id,
-        //         //     "lastName": tempData[0].user.lastName,
-        //         //     "tokenId": tempData[0].user.tokenId,
-        //         //     "role": tempData[0].user.role,
-        //         //     "coords": this.coords
-        //         //   }
-        //         //   localStorage.setItem('userData', JSON.stringify(mechUserInfo));
-        //         // }
         //       })
             
-
-    // alert("clicked")
-    // // this.navCtrl.push(HomePage);
-    // let permissions = new Array<string>();
-    // // let nav = this.navCtrl;
-    // // let env = this;
-    // //the permissions your facebook app needs from the user
-    // permissions = ["public_profile"];
-    // this.fb.login(permissions)
-    //   .then(function (response) {
-    //     let userId = response.authResponse.userID;
-    //     let params = new Array<string>();
-
-    //     //Getting name and gender properties
-    //     this.fb.api("/me?fields=name,gender", params)
-    //       .then(function (user) {
-    //         user.picture = "https://graph.facebook.com/" + userId + "/picture?type=large";
-    //       alert(user)
-    //         // now we have the users info, let's save it in the NativeStorage
-    //         var userDetails: any = {
-    //           firstName: user.name,
-    //           email: user.email,
-    //           profilePic: user.picture,
-    //           role: "USER",
-    //           socialType: 'FACEBOOK'
-    //         };
-
-    //         this.airconeProvider.socialLogin(userDetails)
-    //           .then(res => {
-    //             // var a: any = res;
-    //             localStorage.setItem('user', userId);
-    //             // var b = localStorage.getItem('user');
-    //             // alert(b);
-    //           })
-    //       })
-
-    //   }, function (error) {
-    //     // alert(error);
-      // });
   }
 
   doGoogleLogin() {

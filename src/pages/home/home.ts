@@ -77,31 +77,6 @@ export class HomePage {
     this.statusBar.backgroundColorByHexString('#dedede');
   }
 
-  // presentToast() {
-  //   let toast = this.toastCtrl.create({
-  //     message: 'Double Click To Exit',
-  //     duration: 3000,
-  //     position: 'bottom'
-  //   });
-  //   toast.present();
-  // }
-
-// ngAfterViewInit() {
-//   this.platform.ready().then(() => {
-//     this.loadMap();
-//   });  
-// }
-
-  // ionViewDidLoad() {
-  // }
-
-//   ionViewWillEnter() {
-//   this.platform.ready().then(() => {
-//     this.loadMap();
-//   });  
-
-// }
-
 
 ionViewWillEnter() {
   this.platform.ready().then(() => {
@@ -113,47 +88,8 @@ ionViewWillEnter() {
 this.load.present()
 }
 
-// loadMap() {
-//   var locations = [
-// {latitude: -33.890542, longitude: 151.274856},
-// {latitude: -33.923036, longitude: 151.259052},
-// {latitude: -34.028249, longitude: 151.157507},
-// {latitude: -33.80010128657071, longitude: 151.28747820854187},
-// {latitude: -33.950198, longitude: 151.259302}
-// ];
-// let self = this;
-
-// let mapOptions: GoogleMapOptions = {
-//     camera: {
-//         target: {
-//             lat: -33.890542,
-//             lng: 151.274856
-//         },
-//         zoom: 15,
-//         tilt: 30
-//     }
-// };
-
-// this.map = GoogleMaps.create('map', mapOptions);
-
-// // let restaurants = this.restaurants;
-// this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-//     self.load.dismiss();
-//     // this.load.dismiss()
-// // console.log("entered")
-//     for (let location of locations) {
-//         let restaurant_position: LatLng = new LatLng(location.latitude, location.longitude);
-
-//         this.map.addMarker({position: restaurant_position })
-//         .then((marker) => {
-//       });
-//     }
-
-// });
-// }
 
 loadMap() {
-  // let self = this
   this.airconeProvider.getUserComments()
   .then(res => {
     this.comments = res;
@@ -173,8 +109,8 @@ loadMap() {
       let mapOptions: GoogleMapOptions = {
         camera: {          
         target: {
-          lat: 17.7262172,
-          lng: 83.31547030000002
+          lat: 17.7366,
+          lng: 83.3085
         },
           zoom: 11.5,
           tilt: 30,
@@ -192,23 +128,6 @@ loadMap() {
       this.map.setCompassEnabled(false)
       this.map.one(GoogleMapsEvent.MAP_READY)
         .then(() => {
-            // for (var i = 0; i < locations.length; i++) {
-            //   this.map.addMarker({
-            //       title: locations[i].latitude,
-            //       icon: 'blue',
-            //       animation: 'DROP',
-            //       position: {
-            //         lat: locations[i].latitude,
-            //         lng: locations[i].longitude
-            //       }
-            //     })
-            //     .then(marker => {
-            //       marker.on(GoogleMapsEvent.MARKER_CLICK)
-            //         .subscribe(() => {
-            //           alert('exixtent user');
-            //         });
-            //     });
-            //   }
             for (let location of locations) {
               let restaurant_position: LatLng = new LatLng(location.latitude, location.longitude);
       
