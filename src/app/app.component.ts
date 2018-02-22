@@ -199,9 +199,15 @@ export class MyApp {
 
   otherShare() {
     var userData = JSON.parse(localStorage.getItem('userData'));
+    var data
+    if(userData.referralCode) {
+       data = "https://play.google.com/store/apps/details?id=com.gleed.mytips&hl=en"+""+"Referral Code"+userData.referralCode
+    } else {
+       data = "https://play.google.com/store/apps/details?id=com.gleed.mytips&hl=en"
+    }
 
-    this.socialSharing.share("Home services","aerTech app",
-      "https://play.google.com/store/apps/details?id=com.gleed.mytips&hl=en"+""+"Referral Code"+userData.referralCode
+    this.socialSharing.share("Home services","aerTech app","http://www.sosseafest.org/wp-content/uploads/2018/02/Valuable-Tool-Clipart-72-For-Your-Science-Clipart-with-Tool-Clipart.jpg", data
+      
     )
       .then((data) => {
       },
