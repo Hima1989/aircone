@@ -9,10 +9,10 @@
                     <h3 class="content-heading" text-center>{{service.serviceName}}</h3>
                 </ion-title>
             </ion-col>
-            <ion-col col-2 text-right class="iconNotification">
+            <!-- <ion-col col-2 text-right class="iconNotification">
                 <ion-icon ios="ios-notifications-outline" md="md-notifications-outline" class="icons"></ion-icon>
                 <span class="notification-value"></span>
-            </ion-col>
+            </ion-col> -->
         </ion-row>
     </ion-grid>
 </ion-header>
@@ -50,7 +50,13 @@
                     </ion-slide>
                 </ion-slides>
                 <ion-col>
-                    <p class="service-content"><b>Note:</b> {{service.note}}</p>
+                    <!-- <p class="service-content"><b>Note:</b> {{service.note}}</p> -->
+                    <ul>
+                         
+                        <li *ngFor="let note of service.note">
+                            {{note}}
+                        </li>
+                    </ul>
                 </ion-col>
             </ion-row>
         </div>

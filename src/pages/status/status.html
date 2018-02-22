@@ -36,7 +36,7 @@
     <button ion-button class="btn-hrx" [disabled]="request.status == 'ORDER_CLOSED'" (click)="openPopUp()">Cancel Request</button>
     <div class="clear"></div>
     <div class="selectWrapper">
-        <ion-select *ngIf="popUp" (ionChange)="cancelRequest()" [(ngModel)]="reasons">
+        <ion-select *ngIf="popUp" [disabled]="request.status == 'ORDER_CLOSED'" (ionChange)="cancelRequest()" [(ngModel)]="reasons">
             <ion-option value="Not intrested">Not intrested</ion-option>
             <ion-option value="late service">late service</ion-option>
             <ion-option value="high Price">high Price</ion-option>

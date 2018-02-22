@@ -33,10 +33,10 @@ export class ServicesHomePage {
     this.serviceId = navParams.get("id");    
     this.getService()
     // this.platform.ready().then(() => {
-      console.log("clicked")
       this.platform.registerBackButtonAction(() => {
         this.navCtrl.push(ServicesPage);
       });
+      
 //  });
 // this.presentLoadingCustom();
   }

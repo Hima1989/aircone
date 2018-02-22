@@ -26,16 +26,18 @@ export class RepairPage {
   finalSpareServiceCharge;
   service;
   getCompleted;
-  finalService
+  finalService;
+  comment;
+  showComment: boolean = false;
   constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, public alertCtrl: AlertController, public platform: Platform, private toast: Toast) {
     this.request = navParams.get("request")
-    this.finalSpare = this.request.finalSpare
-    this.finalService = this.request.finalService    
-    this.finalCharge = this.request.finalCharge
-        if(this.request.finalSpare) {  
+    // this.finalSpare = this.request.finalSpare
+    // this.finalService = this.request.finalService    
+    // this.finalCharge = this.request.finalCharge
+        if(this.request.finalSpare !== undefined) {  
         this.finalSpare = this.request.finalSpare
     }
-    if(this.request.finalService) {
+    if(this.request.finalService !== undefined) {
       this.finalService = this.request.finalService          
     }
     if (this.request.finalCharge) {
@@ -50,6 +52,14 @@ export class RepairPage {
   }
 
   ionViewDidLoad() {
+  }
+
+  showSpareComment() {
+    if (this.showComment === false) {
+    this.showComment = true;
+    } else {
+      this.showComment = false;
+    }
   }
 
   spareSelect(topping) {
@@ -96,7 +106,6 @@ export class RepairPage {
     this.airconeProvider.getOneService(this.request.serviceId)
     .then(res => {
       this.service = res;
-      console.log(this.service)
     });
   }
 
@@ -121,7 +130,11 @@ export class RepairPage {
     var finalCharge = finalSparePrice + finalServicePrice
     this.finalCharge = finalCharge
 
-     this.finalSpareServiceCharge = {finalSparePrice: finalSparePrice, finalSpare: this.finalSpare, finalServicePrice: finalServicePrice, finalService: this.finalService, finalCharge: finalCharge }
+    if(!this.comment) {
+      this.comment = "empty list"
+    }
+
+     this.finalSpareServiceCharge = {finalSparePrice: finalSparePrice, finalSpare: this.finalSpare, finalServicePrice: finalServicePrice, finalService: this.finalService, finalCharge: finalCharge, extras: this.comment }
      
     }
   
@@ -147,6 +160,7 @@ export class RepairPage {
   }
 
   getSpareStatus() {
+
     if (this.finalSpareServiceCharge && this.finalCharge) {
       this.airconeProvider.getSpareStatus(this.request.id, this.finalSpareServiceCharge)
       .then ( data => {

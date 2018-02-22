@@ -6,7 +6,7 @@ import { AirconeProvider } from '../../providers/aircone/aircone';
 import { MechloginPage } from '../mechlogin/mechlogin';
 import {Validators, FormBuilder } from '@angular/forms';
 import { Geolocation } from '@ionic-native/geolocation';
-import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
+import { NativeGeocoder, NativeGeocoderReverseResult } from '@ionic-native/native-geocoder';
 
 /**
  * Generated class for the SignupPage page.
@@ -30,7 +30,7 @@ export class SignupPage {
   data;
   typePass = "password";
   typePassStatus = true;
-  constructor(private toast: Toast, public navCtrl: NavController, public navParams: NavParams, public camera:Camera, public airconeProvider: AirconeProvider, public platform: Platform, private formBuilder: FormBuilder, private geolocation: Geolocation) {
+  constructor(private nativeGeocoder: NativeGeocoder, private toast: Toast, public navCtrl: NavController, public navParams: NavParams, public camera:Camera, public airconeProvider: AirconeProvider, public platform: Platform, private formBuilder: FormBuilder, private geolocation: Geolocation) {
 
     this.orderForm  = this.formBuilder.group({
       firstName: ['', Validators.required],
@@ -58,6 +58,13 @@ export class SignupPage {
          }).catch((error) => {
            console.log('Error getting location', error);
          });
+         if (this.coords) {
+          this.nativeGeocoder.reverseGeocode(this.coords.latitude, this.coords.longitude)
+          .then((result: NativeGeocoderReverseResult) => {
+            this.coords.userLocation = JSON.stringify(result[0].subLocality);
+          })
+          .catch((error: any) => console.log(error));
+         }
     
       }
 
