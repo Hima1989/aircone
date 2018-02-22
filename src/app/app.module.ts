@@ -3,11 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
-//import { Push } from "@ionic-native/push";
-//import { Network } from "@ionic-native/network";
-
-
-import { AboutPage } from '../pages/about/about';
 import { SignupPage } from '../pages/signup/signup';
 import { HomePage } from '../pages/home/home';
 import { LoginpagePage } from '../pages/loginpage/loginpage';
@@ -17,8 +12,6 @@ import { Profile } from '../pages/services-home/services-home';
 import { CustomerservicePage } from '../pages/customerservice/customerservice';
 import { ProfilePage } from '../pages/profile/profile';
 import { SendrequestPage } from '../pages/sendrequest/sendrequest';
-// import { SendrequestModelPage } from '../pages/sendrequest/sendrequest';
-// import { ViewAddress } from '../pages/sendrequest/sendrequest';
 import { NotificationsPage } from '../pages/notifications/notifications';
 import { RequestslistPage } from '../pages/requestslist/requestslist';
 import { StatusPage } from '../pages/status/status';
@@ -29,6 +22,7 @@ import { RepairPage } from '../pages/repair/repair';
 import { MechloginPage } from '../pages/mechlogin/mechlogin';
 import { ManageAddressPage } from '../pages/manage-address/manage-address';
 import { AddaddressPage } from '../pages/addaddress/addaddress';
+import { Terms } from '../pages/loginpage/loginpage';
 
 import { Ionic2RatingModule } from 'ionic2-rating';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -63,7 +57,6 @@ import { GoogleMaps } from '@ionic-native/google-maps';
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
     SignupPage,
     HomePage,
     LoginpagePage,
@@ -71,7 +64,6 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     ServicesHomePage,
     ProfilePage,
     SendrequestPage,
-    // SendrequestModelPage,
     NotificationsPage,
     RequestslistPage,
     StatusPage,
@@ -82,10 +74,9 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     RepairPage,
     MechloginPage,
     ManageAddressPage,
-    // Address,
     ChangePasswordPage,
-    AddaddressPage
-    // ViewAddress
+    AddaddressPage,
+    Terms
   ],
   imports: [
     BrowserModule,
@@ -97,7 +88,6 @@ import { GoogleMaps } from '@ionic-native/google-maps';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
     SignupPage,
     HomePage,
     LoginpagePage,
@@ -105,7 +95,6 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     ServicesHomePage,
     ProfilePage,
     SendrequestPage,
-    // SendrequestModelPage,
     NotificationsPage,
     RequestslistPage,
     StatusPage,
@@ -116,10 +105,9 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     RepairPage,
     MechloginPage,
     ManageAddressPage,
-    // Address,
     ChangePasswordPage,
-    AddaddressPage
-    // ViewAddress
+    AddaddressPage,
+    Terms
   ],
   providers: [
     StatusBar,

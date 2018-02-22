@@ -6,7 +6,7 @@ import { AirconeProvider } from '../../providers/aircone/aircone';
 import { MechloginPage } from '../mechlogin/mechlogin';
 import {Validators, FormBuilder } from '@angular/forms';
 import { Geolocation } from '@ionic-native/geolocation';
-import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
+import { NativeGeocoder, NativeGeocoderReverseResult } from '@ionic-native/native-geocoder';
 
 /**
  * Generated class for the SignupPage page.

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, ViewController, ModalController } from 'ionic-angular';
 // import { Facebook } from '@ionic-native/facebook';
 import { AirconeProvider } from '../../providers/aircone/aircone';
 import { HomePage } from '../home/home';
@@ -33,12 +33,13 @@ export class LoginpagePage {
   errr;
   userLocation: any = {};
   userLocation1;
-  constructor(private nativeGeocoder: NativeGeocoder, private statusBar:StatusBar, public platform: Platform, public navCtrl: NavController, public googlePlus: GooglePlus, public navParams: NavParams, private fb: Facebook, public airconeProvider: AirconeProvider, private geolocation: Geolocation,private toast: Toast) {
+  constructor(private nativeGeocoder: NativeGeocoder, private statusBar:StatusBar, public platform: Platform, public navCtrl: NavController, public googlePlus: GooglePlus, public navParams: NavParams, private fb: Facebook, public airconeProvider: AirconeProvider, private geolocation: Geolocation,private toast: Toast, public modalCtrl: ModalController) {
     platform.registerBackButtonAction(() => {
       if (this.backButtonPressed) {
-        this.fb.logout()
-        .then( res => {this.platform.exitApp();})
-        .catch(e => console.log('Error logout from Facebook', e));        
+        // this.fb.logout()
+        // .then( res => {this.platform.exitApp();})
+        // .catch(e => console.log('Error logout from Facebook', e));   
+        this.platform.exitApp();     
       } else {
         this.toast.show(`Press again to exit aer Tech`, '4000', 'bottom').subscribe(
           toast => {
@@ -278,5 +279,31 @@ export class LoginpagePage {
   login() {
     this.navCtrl.push(MechloginPage, {mechLogin: false, resetUserPassword: true} );
   }
+
+  presentProfileModal() {
+    let profileModal = this.modalCtrl.create(Terms);
+    profileModal.present();
+  }
+
+}
+
+
+@Component({
+  selector: 'terms-home',
+  templateUrl: 'terms.html',
+})
+export class Terms {
+  serviceId;
+  service = {};
+ constructor(public viewCtrl: ViewController, public platform: Platform, public airconeProvider: AirconeProvider, params: NavParams) {
+
+    this.platform.registerBackButtonAction(() => {
+      this.viewCtrl.dismiss();   
+    });
+ }
+
+ dismiss() {
+   this.viewCtrl.dismiss();
+ }
 
 }

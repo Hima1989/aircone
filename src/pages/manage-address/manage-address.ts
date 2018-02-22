@@ -27,6 +27,7 @@ export class ManageAddressPage {
   oldAddress;
   serviceId;
   forRequest: boolean = false; 
+  noaddress: boolean = false;
   constructor(public app: App, public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams, public alertCtrl: AlertController, public airconeProvider: AirconeProvider, public modalCtrl: ModalController, public platform: Platform) {
     if (navParams.get("id")) {
       this.serviceId = navParams.get("id"); 
@@ -63,6 +64,9 @@ export class ManageAddressPage {
       this.airconeProvider.getUserAddress(userData.id)
       .then(data => {
         this.oldAddress = data;
+        if(this.oldAddress.length === 0) {
+          this.noaddress = true;
+        }       
       })    
    }
 
