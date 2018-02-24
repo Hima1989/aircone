@@ -70,7 +70,7 @@ export class CustomerservicePage {
   }
 }
 presentToast() {
-    this.toast.show(`Please Enter Comment`, '5000', 'center').subscribe(
+    this.toast.show(`Please Enter Comment`, '5000', 'top').subscribe(
   toast => {
   }
 );
