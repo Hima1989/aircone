@@ -36,12 +36,15 @@
         <button ion-button type="submit" class="btn-hrx sendComment" float-right>Submit</button>
         <div class="clear"></div>
     </form>
-    <div class="careNumber" text-center>
+    <div class="careNumber" *ngIf="settings" text-center>
         <p (click)="callAdminNumber()">
-            <ion-icon ios="ios-call" md="md-call"></ion-icon><b>-</b>(970)-593-1593
+            <ion-icon ios="ios-call" md="md-call"></ion-icon><b>-</b>{{settings.mobileNumber}}
         </p>
         <p>
-            <ion-icon class="whatsApp" ios="logo-whatsapp" md="logo-whatsapp"></ion-icon><b>-</b>(970)-593-1593
+            <ion-icon class="whatsApp" ios="logo-whatsapp" md="logo-whatsapp"></ion-icon><b>-</b>{{settings.whatsAppNumber}}
+        </p>
+        <p>
+            <ion-icon ios="ios-mail" md="md-mail"></ion-icon> <span>&#160;</span> {{settings.email}}
         </p>
     </div>
 </ion-content>

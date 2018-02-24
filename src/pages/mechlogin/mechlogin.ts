@@ -104,6 +104,9 @@ export class MechloginPage {
             );  
             this.navCtrl.setRoot(HomePage);                                                          
           }
+          if(!this.data.user.referredBy) {
+            this.data.user.referredBy = ''
+          }
           var userInfo = {
             "firstName": this.data.user.firstName,
             "email": this.data.user.email,
@@ -112,7 +115,7 @@ export class MechloginPage {
             "tokenId": this.data.user.tokenId,
             "accountType": this.data.user.accountType,
             "role": this.data.user.role,
-            // "coords": this.coords
+            "referralCode": this.data.user.referredBy            
           }
           localStorage.setItem('userData', JSON.stringify(userInfo));
         // } 

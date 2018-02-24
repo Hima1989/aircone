@@ -45,7 +45,6 @@ baseURL = "https://air-cone-backend.appspot.com"; //production
 
 
   userLogin(data) {
-    console.log("hitted")
     return new Promise(resolve => {
       this.http.post(this.baseURL+'/user/login',data)
         .map(res => res.json())
@@ -69,7 +68,6 @@ baseURL = "https://air-cone-backend.appspot.com"; //production
   }
 
   changeuserPassword(userId, data) {
-    console.log("hitted")
     return new Promise(resolve => {
       this.http.post(this.baseURL+'/user/' +userId+ '/changePassword/userPassword',data)
         .map(res => res.json())
@@ -284,7 +282,6 @@ baseURL = "https://air-cone-backend.appspot.com"; //production
   }
 
   getMechanicCompletedRequests(mechId) {
-    console.log("provide hitted")
     return new Promise(resolve => {
       this.http.get(this.baseURL+'/get/'+mechId+'/allMechCompletedRequest')
       .map(res => res.json())
@@ -408,6 +405,17 @@ baseURL = "https://air-cone-backend.appspot.com"; //production
   deleteUserAddress(userId, data) {
     return new Promise(resolve => {
       this.http.post(this.baseURL+'/user/'+userId+ '/'+data.id+ '/deleteUserAddress', data)       
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        })
+    });
+  }
+
+  getSettings() {
+    return new Promise(resolve => {
+      this.http.get(this.baseURL+'/get/settings')       
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;

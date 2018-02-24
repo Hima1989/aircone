@@ -112,7 +112,7 @@ loadMap() {
           lat: 17.7366,
           lng: 83.3085
         },
-          zoom: 11.5,
+          zoom: 10,
           tilt: 30,
         },
         gestures:{
