@@ -109,18 +109,18 @@ loadMap() {
       let mapOptions: GoogleMapOptions = {
         camera: {          
         target: {
-          lat: 17.7366,
-          lng: 83.3085
+          lat: 17.6881,
+          lng: 83.2131
         },
           zoom: 11.5,
           tilt: 30,
-        },
-        gestures:{
-          rotate:false,
-          tilt:false,
-          scroll:false,
-          zoom: false
         }
+        // gestures:{
+        //   rotate:false,
+        //   tilt:false,
+        //   scroll:false,
+        //   zoom: false
+        // }
       
       };
   

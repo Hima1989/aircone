@@ -127,6 +127,9 @@ export class LoginpagePage {
               );  
               this.navCtrl.setRoot(HomePage);                                                          
             }
+            if(!tempData[0].referredBy) {
+              tempData[0].referredBy = ''
+            }
             var userInfo = {
               "firstName": tempData[0].firstName,
               "email": tempData[0].email,
@@ -135,10 +138,9 @@ export class LoginpagePage {
               "tokenId": tempData[0].tokenId,
               "role": tempData[0].role,
               "accountType": tempData[0].accountType,
-              // "coords": this.coords
+              "referralCode": tempData[0].referredBy,
             }
             localStorage.setItem('userData', JSON.stringify(userInfo));
-          // } 
         })
       })
       .catch(e => {
@@ -153,7 +155,7 @@ export class LoginpagePage {
                     ); 
         //  var userDetails = {"identifier":"gleedtechuser@gmail.com","password":"123123123","email":"gleedtechuser@gmail.com"}
 
-        //  var userDetails = {"identifier":"doddibalubharadwaj@gmail.com","password":"123","email":"doddibalubharadwaj@gmail.com"}
+        //  var userDetails = {"identifier":"doddibalubharadwaj@gmail.com","password":"123123123","email":"doddibalubharadwaj@gmail.com"}
 
         //     this.airconeProvider.userLogin(userDetails)
         //       .then(res => {
@@ -225,12 +227,19 @@ export class LoginpagePage {
 })
 export class Terms {
   serviceId;
-  service = {};
+  settings: any = {}
  constructor(public viewCtrl: ViewController, public platform: Platform, public airconeProvider: AirconeProvider, params: NavParams) {
-
+  this.getSettings();
     this.platform.registerBackButtonAction(() => {
       this.viewCtrl.dismiss();   
     });
+ }
+
+ getSettings() {
+   this.airconeProvider.getSettings()
+   .then( res => {
+    this.settings = res[0];
+   })
  }
 
  dismiss() {
