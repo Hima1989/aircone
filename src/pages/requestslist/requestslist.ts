@@ -37,7 +37,7 @@ export class RequestslistPage {
     this.airconeProvider.loadRequests(userData.id)
     .then(res => {
       this.requests = res;
-      if(this.requests.length === 0) {
+      if(this.requests.length === 0 || !this.requests) {
         this.norequest = true;
       } 
     })

@@ -88,6 +88,36 @@ page-status {
         width: 100%;
         display: block;
     }
+    .cusPrice {
+        border: 1px solid $borderColor;
+        border-radius: 5px;
+        padding: 0 10px;
+        margin-top: 10px;
+        p {
+            text-align: center;
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .userPrice {
+            p {
+                font-size: 16px;
+                text-align: left;
+                span {
+                    display: inline-block;
+                }
+                .fielsList {
+                    width: 65%;
+                }
+                .userList {
+                    width: 35%;
+                }
+            }
+            .finalPrice {
+                border-top: 1px solid $borderColor;
+                color: $btnRed;
+            }
+        }
+    }
 }
 
 .status-line {

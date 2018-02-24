@@ -22,8 +22,9 @@ import { CallNumber } from '@ionic-native/call-number';
 export class CustomerservicePage {
 
   comment;
-
+  settings
   constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, private toast: Toast, public platform: Platform, private callNumber: CallNumber) {
+    this.getSettings();
     platform.registerBackButtonAction(() => {
       this.navCtrl.setRoot(HomePage).then(() =>{
         this.navCtrl.popToRoot();
@@ -31,11 +32,18 @@ export class CustomerservicePage {
     }); 
   }
 
+  getSettings() {
+    this.airconeProvider.getSettings()
+    .then( res => {
+     this.settings = res[0];
+    })
+  }
+
   ionViewDidLoad() {
   }
 
   callAdminNumber() {
-    this.callNumber.callNumber("9705931593", true)
+    this.callNumber.callNumber(this.settings.mobileNumber, true)
     .then(() => {})
     .catch(() => {});
   }
@@ -62,7 +70,7 @@ export class CustomerservicePage {
   }
 }
 presentToast() {
-    this.toast.show(`Please Enter Comment`, '5000', 'center').subscribe(
+    this.toast.show(`Please Enter Comment`, '5000', 'top').subscribe(
   toast => {
   }
 );

@@ -40,6 +40,8 @@
                 <p><span class="fielsList">Street </span><span class="userList">:{{userRequest.Street}},</span></p>
                 <p><span class="fielsList">Area </span><span class="userList">:{{userRequest.Area}},</span></p>
                 <p><span class="fielsList">City </span><span class="userList">:{{userRequest.City}}.</span></p>
+                <p><span class="fielsList">Request Date </span><span class="userList">: {{request.createdAt | date}}</span></p>
+                <p *ngIf="serviceInfo.finalService"><span class="fielsList">Completed Date </span><span class="userList">: {{request.updatedAt | date}}</span></p>
                 <div *ngIf="serviceInfo.finalSpare || serviceInfo.finalService" class="userPrice">
                     <p *ngFor="let serviceSpareInfo of request.finalSpare"><span class="fielsList">{{serviceSpareInfo.sparename}}</span><span class="userList">:{{serviceSpareInfo.sparerate *serviceSpareInfo.rate}}/-</span></p>
                     <p *ngFor="let serviceSpareInfo of request.finalService"><span class="fielsList">{{serviceSpareInfo.name}}, {{serviceSpareInfo.type}}</span><span class="userList">:{{serviceSpareInfo.Price *serviceSpareInfo.rate}}/-</span></p>
