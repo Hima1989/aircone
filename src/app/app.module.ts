@@ -12,7 +12,6 @@ import { Profile } from '../pages/services-home/services-home';
 import { CustomerservicePage } from '../pages/customerservice/customerservice';
 import { ProfilePage } from '../pages/profile/profile';
 import { SendrequestPage } from '../pages/sendrequest/sendrequest';
-import { NotificationsPage } from '../pages/notifications/notifications';
 import { RequestslistPage } from '../pages/requestslist/requestslist';
 import { StatusPage } from '../pages/status/status';
 import { MechanicPage } from '../pages/mechanic/mechanic';
@@ -64,7 +63,6 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     ServicesHomePage,
     ProfilePage,
     SendrequestPage,
-    NotificationsPage,
     RequestslistPage,
     StatusPage,
     Profile,
@@ -95,7 +93,6 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     ServicesHomePage,
     ProfilePage,
     SendrequestPage,
-    NotificationsPage,
     RequestslistPage,
     StatusPage,
     Profile,

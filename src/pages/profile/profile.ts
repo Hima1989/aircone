@@ -104,7 +104,6 @@ export class ProfilePage {
        this.base64Image = 'data:image/jpeg;base64,'+imageData;
        this.fileChange()
       }, (err) => {
-       console.log(err);
      });
    }
 
@@ -116,7 +115,6 @@ export class ProfilePage {
       this.myfile = data;
       },
    err => {
-     console.log(err);
      });
    }
 
@@ -138,7 +136,6 @@ export class ProfilePage {
     this.airconeProvider.loaduser(user.id)
     .then(data => {
      this.userDetails = data
-     console.log(this.userDetails)
      if(this.userDetails.role[0] == 'MECHANIC') {
        this.forMech = true;
        this.forUser = false;

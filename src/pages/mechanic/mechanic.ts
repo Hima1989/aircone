@@ -51,15 +51,6 @@ export class MechanicPage {
       }
       this.menu.close()    
     });
-    // if (localStorage.getItem("userData")) {
-    //   var userDetails  = JSON.parse(localStorage.getItem("userData"));
-    //   // this.role = userDetails.role[0];
-    //   // console.log(this.role)
-    //   if (userDetails.role[0] == 'USER') {
-    //     this.role = false;
-        
-    //   }
-    // }
 
   }
 

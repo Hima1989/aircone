@@ -71,15 +71,12 @@ export class ChangePasswordPage {
          var user = JSON.parse(userData);
          this.airconeProvider.loaduser(user.id)
          .then(data => {
-           this.userDetails = data;
-           console.log(this.userDetails)
-           
+           this.userDetails = data;           
          })
       }
     
       submitDetails() {
           var pass = this.orderForm.value
-          console.log(this.forMech === false)
           if (this.forChangePassword) {
             var  userData = localStorage.getItem('userData');
             var user = JSON.parse(userData);
