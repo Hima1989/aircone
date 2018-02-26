@@ -86,7 +86,7 @@ export class SendrequestPage {
               // duration: 4000,
               // position: 'bottom'
               // });
-              this.toast.show(`Location available`, '5000', 'center').subscribe(
+              this.toast.show('Request for'+this.data.pincode.location+'is available', '3000', 'center').subscribe(
   toast => {
   }
 );

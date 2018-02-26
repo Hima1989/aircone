@@ -144,7 +144,7 @@ export class AddaddressPage {
         this.data = res;
         if (this.data.status == 200) {
           
-              this.toast.show(`Location available`, '5000', 'center').subscribe(
+              this.toast.show('Request for' + this.data.pincode.location+ 'is available', '5000', 'center').subscribe(
   toast => {
   }
 );
