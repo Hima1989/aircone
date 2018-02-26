@@ -38,6 +38,8 @@ export class HomePage {
   backButtonPressedTimer;
   load;
   accountType;
+  // llatitude = 17.6881;
+  // llongitude = 83.2131;
  // public location: any;
 
  map: GoogleMap;
@@ -109,18 +111,18 @@ loadMap() {
       let mapOptions: GoogleMapOptions = {
         camera: {          
         target: {
-          lat: 17.6881,
-          lng: 83.2131
+          lat: 17.7262,
+          lng: 83.3155
         },
-          zoom: 11.5,
+          zoom: 12,
           tilt: 30,
+        },
+        gestures:{
+          rotate:false,
+          tilt:false,
+          scroll:false,
+          zoom: false
         }
-        // gestures:{
-        //   rotate:false,
-        //   tilt:false,
-        //   scroll:false,
-        //   zoom: false
-        // }
       
       };
   
@@ -131,7 +133,7 @@ loadMap() {
             for (let location of locations) {
               let restaurant_position: LatLng = new LatLng(location.latitude, location.longitude);
       
-              this.map.addMarker({position: restaurant_position })
+              this.map.addMarker({position: restaurant_position})
               .then((marker) => { 
             });
           }

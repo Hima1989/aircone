@@ -206,7 +206,7 @@ export class MyApp {
        data = "https://play.google.com/store/apps/details?id=com.gleed.aircone3&hl=en"
     }
 
-    this.socialSharing.share("Home services","aerTech app","http://www.sosseafest.org/wp-content/uploads/2018/02/Valuable-Tool-Clipart-72-For-Your-Science-Clipart-with-Tool-Clipart.jpg", data
+    this.socialSharing.share("Home services","aerTech app","http://oi64.tinypic.com/25fptna.jpg", data
       
     )
       .then((data) => {
