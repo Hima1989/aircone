@@ -16,7 +16,7 @@
                 </ion-title>
             </ion-col>
             <ion-col col-2 text-right>
-                <ion-item><ion-icon ios="ios-add" (click)="showSpareComment()" md="md-add"></ion-icon></ion-item>                    
+                <ion-icon class="icon-back" ios="ios-add" (click)="showSpareComment()" md="md-add"></ion-icon>
             </ion-col>
         </ion-row>
     </ion-grid>
@@ -121,7 +121,7 @@
             </div>
         </div>
         <ion-label *ngIf="finalCharge">Final Service Charge: {{finalCharge}}/-</ion-label>
-        <ion-textarea type="text" rows="4" cols="50" class="input" *ngIf="showComment" [(ngModel)]="comment" name="description" placeholder="Enter spare parts names with ',' separation"></ion-textarea>        
+        <ion-textarea type="text" rows="4" cols="50" class="input" *ngIf="showComment" [(ngModel)]="comment" name="description" placeholder="Enter spare parts names with ',' separation"></ion-textarea>
         <div class="finalBtns">
             <button color="light" type="submit" ion-button round>Setup Final Price</button>
             <button color="dark" (click)="getSpareStatus()" ion-button round>Agree Final Price</button>

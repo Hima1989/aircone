@@ -35,12 +35,12 @@
     </ion-row>
     <button ion-button class="btn-hrx" [disabled]="request.status == 'ORDER_CLOSED'" (click)="openPopUp()">Cancel Request</button>
     <div class="clear"></div>
-    <div *ngIf="request.finalCharge">
+    <div *ngIf="request.finalCharge" class="cusPrice">
         <p>Service Info</p>
         <div *ngIf="request.finalSpare || request.finalService" class="userPrice">
-                <p *ngFor="let serviceSpareInfo of request.finalSpare"><span class="fielsList">{{serviceSpareInfo.sparename}}</span><span class="userList">:{{serviceSpareInfo.sparerate *serviceSpareInfo.rate}}/-</span></p>
-                <p *ngFor="let serviceSpareInfo of request.finalService"><span class="fielsList">{{serviceSpareInfo.name}}, {{serviceSpareInfo.type}}</span><span class="userList">:{{serviceSpareInfo.Price *serviceSpareInfo.rate}}/-</span></p>
-                <p class="finalPrice"><span class="fielsList">Final Price</span><span class="userList">:{{request.finalCharge}}/-</span></p>
+            <p *ngFor="let serviceSpareInfo of request.finalSpare"><span class="fielsList">{{serviceSpareInfo.sparename}}</span><span class="userList">:{{serviceSpareInfo.sparerate *serviceSpareInfo.rate}}/-</span></p>
+            <p *ngFor="let serviceSpareInfo of request.finalService"><span class="fielsList">{{serviceSpareInfo.name}}, {{serviceSpareInfo.type}}</span><span class="userList">:{{serviceSpareInfo.Price *serviceSpareInfo.rate}}/-</span></p>
+            <p class="finalPrice"><span class="fielsList">Final Price</span><span class="userList">:{{request.finalCharge}}/-</span></p>
         </div>
     </div>
     <div class="selectWrapper">
