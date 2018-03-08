@@ -16,7 +16,7 @@
             <img src="{{request.serviceImage}}">
         </ion-avatar>
         <h2>{{request.serviceName}} Service</h2>
-        <p>ID: {{request.id}}</p>
+        <p>ID: {{request.requestId}}</p>
         <div *ngIf="request.status=='ORDER_REQUESTED'">
             <button class="button {{request.status}}a">PENDING</button>
         </div>

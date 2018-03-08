@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav, MenuController, AlertController, ToastController  } from 'ionic-angular';
+import { Platform, Nav, MenuController, AlertController, ToastController, LoadingController  } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 //import { Push, PushObject } from "@ionic-native/push";
@@ -40,12 +40,13 @@ export class MyApp {
   mechPage: any = MechanicPage
   data: any = {id: 1}
   userInfo;
-  role
+  role;
+  load;
  // nav: NavController
 
   constructor(
     // public AdMob: AdMob,
-     public airconeProvider: AirconeProvider, public platform: Platform, public alertCtrl: AlertController, public statusBar: StatusBar, public splashScreen: SplashScreen, public menuCtrl: MenuController, public toast: ToastController, private socialSharing: SocialSharing, private fb: Facebook) {
+     public airconeProvider: AirconeProvider, public platform: Platform, public alertCtrl: AlertController, public statusBar: StatusBar, public splashScreen: SplashScreen, public menuCtrl: MenuController, public toast: ToastController, private socialSharing: SocialSharing, private fb: Facebook, private loading: LoadingController) {
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -198,6 +199,10 @@ export class MyApp {
   // }
 
   otherShare() {
+    this.load = this.loading.create({
+      content: 'Please Wait...'
+  });
+  this.load.present()
     var userData = JSON.parse(localStorage.getItem('userData'));
     var data
     if(userData.referralCode) {
@@ -210,8 +215,10 @@ export class MyApp {
       
     )
       .then((data) => {
+        this.load.dismiss();
       },
       (err) => {
+        this.load.dismiss();
       })
       this.menuCtrl.close();      
   }
