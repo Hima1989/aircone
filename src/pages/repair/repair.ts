@@ -29,6 +29,7 @@ export class RepairPage {
   finalService;
   comment;
   showComment: boolean = false;
+  extraSpare: any = []
   constructor(public navCtrl: NavController, public navParams: NavParams, public airconeProvider: AirconeProvider, public alertCtrl: AlertController, public platform: Platform, private toast: Toast) {
     this.request = navParams.get("request")
     // this.finalSpare = this.request.finalSpare
@@ -55,11 +56,19 @@ export class RepairPage {
   }
 
   showSpareComment() {
-    if (this.showComment === false) {
+    // if (this.showComment === false) {
     this.showComment = true;
-    } else {
-      this.showComment = false;
+    // } else {
+    //   this.showComment = false;
+    // }
+    if(this.comment) {
+      this.extraSpare.push(this.comment)      
+      this.comment = ''
     }
+  }
+
+  removeEctraSpare(ext) {
+    this.extraSpare.splice(this.extraSpare.indexOf(ext), 1)
   }
 
   spareSelect(topping) {
@@ -130,12 +139,11 @@ export class RepairPage {
     var finalCharge = finalSparePrice + finalServicePrice
     this.finalCharge = finalCharge
 
-    if(!this.comment) {
-      this.comment = "empty list"
-    }
+    // if(!this.comment) {
+    //   this.comment = "empty list"
+    // }
 
-     this.finalSpareServiceCharge = {finalSparePrice: finalSparePrice, finalSpare: this.finalSpare, finalServicePrice: finalServicePrice, finalService: this.finalService, finalCharge: finalCharge, extras: this.comment }
-     
+     this.finalSpareServiceCharge = {finalSparePrice: finalSparePrice, finalSpare: this.finalSpare, finalServicePrice: finalServicePrice, finalService: this.finalService, finalCharge: finalCharge, extras: this.extraSpare }
     }
   
   closeRequest() {

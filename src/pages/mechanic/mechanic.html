@@ -24,7 +24,7 @@
             <img src="{{request.serviceImage}}">
         </ion-avatar>
         <h2 class="serviceCategory">{{request.serviceName}} Service</h2>
-        <p>ID: {{request.id}}</p>
+        <p>ID: {{request.requestId}}</p>
         <p>{{request.createdAt | date}}</p>
         <button (click)="goToRequest(request)" ion-button clear item-end>View</button>
     </ion-item>

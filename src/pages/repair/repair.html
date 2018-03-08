@@ -121,7 +121,23 @@
             </div>
         </div>
         <ion-label *ngIf="finalCharge">Final Service Charge: {{finalCharge}}/-</ion-label>
-        <ion-textarea type="text" rows="4" cols="50" class="input" *ngIf="showComment" [(ngModel)]="comment" name="description" placeholder="Enter spare parts names with ',' separation"></ion-textarea>
+        <!-- <ion-textarea type="text" rows="4" cols="50" class="input" *ngIf="showComment" [(ngModel)]="comment" name="description" placeholder="Enter spare parts names with ',' separation"></ion-textarea> -->
+        <div *ngIf="showComment">
+        <ion-input name="extraSpare" [(ngModel)]="comment" placeholder="Write Spare"></ion-input>
+        <!-- <span>        
+            <span *ngFor="let ext of extraSpare">
+            <p class="listView">{{ext}}</p>
+            <ion-icon (click)="removeEctraSpare(ext)" ios="ios-trash" md="md-trash"></ion-icon>
+            </span>
+        </span> -->
+        <ion-item class="profile-item profileListView" *ngFor="let ext of extraSpare">
+                <ion-label class="addItem">
+                    <ion-icon class="cancelBtn" ios="ios-close-circle" (click)="removeEctraSpare(ext)" md="md-close-circle"></ion-icon>
+                </ion-label>
+                <ion-label class="listView" text-center>{{ext}}</ion-label>
+        </ion-item>
+
+        </div>
         <div class="finalBtns">
             <button color="light" type="submit" ion-button round>Setup Final Price</button>
             <button color="dark" (click)="getSpareStatus()" ion-button round>Agree Final Price</button>
