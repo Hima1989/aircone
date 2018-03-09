@@ -206,9 +206,9 @@ export class MyApp {
     var userData = JSON.parse(localStorage.getItem('userData'));
     var data
     if(userData.referralCode) {
-       data = "https://play.google.com/store/apps/details?id=com.gleed.aircone3&hl=en"+" "+"Referral Code"+userData.referralCode
+       data = "https://play.google.com/apps/publish/?account=8534382332623462993#MarketListingPlace:p=com.gleed.aircone"+" "+"Referral Code"+userData.referralCode
     } else {
-       data = "https://play.google.com/store/apps/details?id=com.gleed.aircone3&hl=en"
+       data = "https://play.google.com/apps/publish/?account=8534382332623462993#MarketListingPlace:p=com.gleed.aircone"
     }
 
     this.socialSharing.share("Home services","aerTech app","http://oi64.tinypic.com/25fptna.jpg", data

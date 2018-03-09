@@ -71,7 +71,7 @@ export class MechloginPage {
       var tempData = [];                
       tempData.push(res);
       this.data = res;
-      if (this.data.status === 200 && this.data.user.role[0] == 'MECHANIC') {
+      if (this.data.status === 200 && this.data.user.role[0] == 'MECHANIC' && this.mechLogin) {
         this.navCtrl.push(MechanicPage); 
         this.navCtrl.setRoot(MechanicPage);                                                                  
         var mechUserInfo = {
@@ -89,7 +89,7 @@ export class MechloginPage {
           toast => {
           }
         );  
-      } else if (this.data.status === 200 && this.data.user.role[0] == 'USER'){
+      } else if (this.data.status === 200 && this.data.user.role[0] == 'USER' && !this.mechLogin){
           this.navCtrl.setRoot(HomePage);                                      
           if (this.data.user.firstName == null || this.data.user.email == null || this.data.user.mobileNumber == null || this.data.user.firstName == "" || this.data.user.email == "" || this.data.user.mobileNumber == "") {
             this.navCtrl.push(ProfilePage)

@@ -14,7 +14,7 @@ export class AirconeProvider {
 
   data;
   paramData;
-  baseURL = "ec2-52-15-87-36.us-east-2.compute.amazonaws.com"; //production
+  baseURL = "http://ec2-52-15-87-36.us-east-2.compute.amazonaws.com"; //production
     // baseURL = "http://localhost:80"; //development
   constructor(public http: Http, public device: Device) {
   }
